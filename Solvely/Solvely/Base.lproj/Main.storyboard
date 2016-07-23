@@ -111,6 +111,16 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXB-68-Mzz">
+                                <rect key="frame" x="270" y="504" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="NhF-b6-yQd"/>
+                                </constraints>
+                                <state key="normal" image="solvely"/>
+                                <connections>
+                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="JR0-6y-jjh"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po5-Gt-5Db">
                                 <rect key="frame" x="281" y="562" width="38" height="30"/>
                                 <state key="normal" title="Solve">
@@ -120,14 +130,15 @@
                                     <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="ysx-Pe-nQx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXB-68-Mzz">
-                                <rect key="frame" x="270" y="504" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="NhF-b6-yQd"/>
-                                </constraints>
-                                <state key="normal" image="solvely"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H69-gJ-24q">
+                                <rect key="frame" x="20" y="504" width="560" height="88"/>
+                                <color key="backgroundColor" red="0.0078431377187371254" green="0.76470589637756348" blue="0.60392159223556519" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Want me to solve another?">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="JR0-6y-jjh"/>
+                                    <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="gYA-7R-adi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,18 +150,25 @@
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="A9A-Ql-AWD" secondAttribute="centerX" id="Fgq-8X-8eZ"/>
                             <constraint firstItem="A9A-Ql-AWD" firstAttribute="top" secondItem="llO-5w-jPw" secondAttribute="bottom" constant="8" symbolic="YES" id="Gkl-1N-Pk9"/>
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" symbolic="YES" id="JbW-Uq-s4b"/>
+                            <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="H69-gJ-24q" secondAttribute="bottom" constant="8" id="NGH-J5-yZ8"/>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="po5-Gt-5Db" secondAttribute="bottom" constant="8" symbolic="YES" id="TQg-me-prd"/>
                             <constraint firstItem="llO-5w-jPw" firstAttribute="leading" secondItem="abO-fe-15n" secondAttribute="leadingMargin" id="TsR-cG-MJd"/>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="llO-5w-jPw" secondAttribute="bottom" constant="509" id="XLx-hW-27V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H69-gJ-24q" secondAttribute="trailing" id="Yqq-tG-RMg"/>
                             <constraint firstItem="A9A-Ql-AWD" firstAttribute="leading" secondItem="llO-5w-jPw" secondAttribute="leading" id="ddF-bz-zRv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="H69-gJ-24q" secondAttribute="leading" id="gR9-dI-2gS"/>
+                            <constraint firstItem="H69-gJ-24q" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" id="khe-U1-0Nj"/>
                             <constraint firstItem="llO-5w-jPw" firstAttribute="trailing" secondItem="abO-fe-15n" secondAttribute="trailingMargin" id="omJ-YG-fLl"/>
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="po5-Gt-5Db" secondAttribute="centerX" id="tDV-Tm-DRJ"/>
+                            <constraint firstItem="H69-gJ-24q" firstAttribute="centerX" secondItem="abO-fe-15n" secondAttribute="centerX" id="wsY-PB-TVl"/>
                             <constraint firstAttribute="bottom" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="104" id="xwH-Y3-Ael"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="answersTableView" destination="A9A-Ql-AWD" id="Cb8-Aq-bzz"/>
+                        <outlet property="solveAnotherButton" destination="H69-gJ-24q" id="6zF-aa-e6X"/>
                         <outlet property="solveButton" destination="GXB-68-Mzz" id="Cgx-uO-RuF"/>
+                        <outlet property="solveLabelButton" destination="po5-Gt-5Db" id="vGh-M2-3r7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFn-cw-nLh" userLabel="First Responder" sceneMemberID="firstResponder"/>

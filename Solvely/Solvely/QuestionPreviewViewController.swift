@@ -33,6 +33,10 @@ class QuestionPreviewViewController: UIViewController {
     
     @IBOutlet weak var solveButton: UIButton!
     
+    @IBOutlet weak var solveAnotherButton: UIButton!
+    
+    @IBOutlet weak var solveLabelButton: UIButton!
+    
     private var answerChoices = ["A) India", "B) Pakistan", "C) Afghanistan", "D) Bolivia"]
     
     override func viewDidLoad() {
@@ -53,6 +57,10 @@ class QuestionPreviewViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func solveAnother(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func solve(sender: UIButton) {
         let correctAnswer = "C) Afghanistan"
         
@@ -65,6 +73,10 @@ class QuestionPreviewViewController: UIViewController {
                 cell.selectAsIncorrect()
             }
         }
+        
+        self.solveLabelButton.removeFromSuperview()
+        self.solveButton.removeFromSuperview()
+        self.solveAnotherButton.hidden = false
     }
 }
 
