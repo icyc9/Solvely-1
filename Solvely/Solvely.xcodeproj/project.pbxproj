@@ -7,15 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
+		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581B1D43207100D317EE /* AppDelegate.swift */; };
 		02A5581E1D43207100D317EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581D1D43207100D317EE /* ViewController.swift */; };
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
-		02A558231D43207100D317EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A558241D43207100D317EE /* LaunchScreen.storyboard */; };
 		17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		028565861D4338C800FC36E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		02A558181D43207100D317EE /* Solvely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solvely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A5581B1D43207100D317EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A5581D1D43207100D317EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +77,7 @@
 			children = (
 				02A5581B1D43207100D317EE /* AppDelegate.swift */,
 				02A5581D1D43207100D317EE /* ViewController.swift */,
+				028565841D43341100FC36E2 /* CameraViewController.swift */,
 				02A5581F1D43207100D317EE /* Main.storyboard */,
 				02A558221D43207100D317EE /* Assets.xcassets */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
@@ -101,6 +116,7 @@
 				02A558161D43207100D317EE /* Resources */,
 				62126A40E1C5B0D6365A0273 /* 📦 Embed Pods Frameworks */,
 				B80CCF670F8806A3FD033F21 /* 📦 Copy Pods Resources */,
+				028565861D4338C800FC36E2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -149,8 +165,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */,
 				02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */,
-				02A558231D43207100D317EE /* Assets.xcassets in Resources */,
 				02A558211D43207100D317EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +228,7 @@
 			files = (
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
 				02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */,
+				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
