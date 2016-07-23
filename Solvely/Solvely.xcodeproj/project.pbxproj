@@ -91,11 +91,11 @@
 			children = (
 				02878B131D43498D00935EBA /* controllers */,
 				02A5581B1D43207100D317EE /* AppDelegate.swift */,
+				02878B141D43499B00935EBA /* Constants.swift */,
 				02A5581F1D43207100D317EE /* Main.storyboard */,
 				02A558221D43207100D317EE /* Assets.xcassets */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
 				02A558271D43207100D317EE /* Info.plist */,
-				02878B141D43499B00935EBA /* Constants.swift */,
 			);
 			path = Solvely;
 			sourceTree = "<group>";

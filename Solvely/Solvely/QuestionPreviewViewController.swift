@@ -13,6 +13,17 @@ class AnswerTableViewCell: UITableViewCell {
     
     func selectAsAnswer() {
         self.contentView.backgroundColor = Colors.green
+//        let checkImage = UIImageView(image: UIImage(named: "check"))
+//        self.contentView.addSubview(checkImage)
+//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Left, relatedBy: .Equal, toItem: answerChoiceLabel, attribute: .Right, multiplier: 1, constant: 8))
+//        
+//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: 8))
+//            
+//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1, constant: 0))
+    }
+    
+    func selectAsIncorrect() {
+        self.contentView.backgroundColor = Colors.red
     }
 }
 
@@ -43,11 +54,17 @@ class QuestionPreviewViewController: UIViewController {
     }
     
     @IBAction func solve(sender: UIButton) {
-        let answer = "C) Afghanistan"
+        let correctAnswer = "C) Afghanistan"
         
-        let answerCell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerChoices.indexOf(answer)!, inSection: 0)) as! AnswerTableViewCell
-        
-        answerCell.selectAsAnswer()
+        for answer in answerChoices {
+            let cell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerChoices.indexOf(answer)!, inSection: 0)) as! AnswerTableViewCell
+            if answer == correctAnswer {
+                cell.selectAsAnswer()
+            }
+            else {
+                cell.selectAsIncorrect()
+            }
+        }
     }
 }
 
