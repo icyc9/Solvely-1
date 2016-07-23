@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import CameraEngine
 
 class ViewController: UIViewController {
 
+    private let cameraEngine = CameraEngine()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.cameraEngine.captureDevice
+        self.cameraEngine.startSession()
     }
 
+    override func viewDidLayoutSubviews() {
+        let layer = self.cameraEngine.previewLayer
+        layer.frame = self.view.bounds
+        self.view.layer.insertSublayer(layer, atIndex: 0)
+        self.view.layer.masksToBounds = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

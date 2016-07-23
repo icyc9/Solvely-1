@@ -12,6 +12,7 @@
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
 		02A558231D43207100D317EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A558241D43207100D317EE /* LaunchScreen.storyboard */; };
+		17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		02A558221D43207100D317EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A558251D43207100D317EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A558271D43207100D317EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.release.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.release.xcconfig"; sourceTree = "<group>"; };
+		A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solvely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				02A5581A1D43207100D317EE /* Solvely */,
 				02A558191D43207100D317EE /* Products */,
+				48B3F0E718A3B734ACCFE346 /* Pods */,
+				F7364496991433B47A713117 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = Solvely;
 			sourceTree = "<group>";
 		};
+		48B3F0E718A3B734ACCFE346 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */,
+				07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F7364496991433B47A713117 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02A5582A1D43207100D317EE /* Build configuration list for PBXNativeTarget "Solvely" */;
 			buildPhases = (
+				AC50F4FB0EC73FC788A881D3 /* 📦 Check Pods Manifest.lock */,
 				02A558141D43207100D317EE /* Sources */,
 				02A558151D43207100D317EE /* Frameworks */,
 				02A558161D43207100D317EE /* Resources */,
+				62126A40E1C5B0D6365A0273 /* 📦 Embed Pods Frameworks */,
+				B80CCF670F8806A3FD033F21 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62126A40E1C5B0D6365A0273 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Solvely/Pods-Solvely-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC50F4FB0EC73FC788A881D3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B80CCF670F8806A3FD033F21 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Solvely/Pods-Solvely-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02A558141D43207100D317EE /* Sources */ = {
@@ -247,6 +322,7 @@
 		};
 		02A5582B1D43207100D317EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Solvely/Info.plist;
@@ -259,6 +335,7 @@
 		};
 		02A5582C1D43207100D317EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Solvely/Info.plist;
@@ -288,6 +365,7 @@
 				02A5582C1D43207100D317EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
