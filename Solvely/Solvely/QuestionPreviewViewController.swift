@@ -10,6 +10,10 @@ import UIKit
 
 class AnswerTableViewCell: UITableViewCell {
     @IBOutlet weak var answerChoiceLabel: UILabel!
+    
+    func selectAsAnswer() {
+        self.contentView.backgroundColor = Colors.green
+    }
 }
 
 class QuestionPreviewViewController: UIViewController {
@@ -37,7 +41,14 @@ class QuestionPreviewViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    @IBAction func solve(sender: UIButton) {
+        let answer = "C) Afghanistan"
+        
+        let answerCell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerChoices.indexOf(answer)!, inSection: 0)) as! AnswerTableViewCell
+        
+        answerCell.selectAsAnswer()
+    }
 }
 
 extension QuestionPreviewViewController: UITableViewDataSource {

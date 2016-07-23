@@ -92,7 +92,7 @@
                                                     <rect key="frame" x="16" y="9" width="536" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" red="0.0078431377187371254" green="0.76470589637756348" blue="0.60392159223556519" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.52156862745098043" green="0.68235294117647061" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,6 +116,9 @@
                                 <state key="normal" title="Solve">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="ysx-Pe-nQx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXB-68-Mzz">
                                 <rect key="frame" x="270" y="504" width="60" height="60"/>
@@ -123,6 +126,9 @@
                                     <constraint firstAttribute="width" constant="60" id="NhF-b6-yQd"/>
                                 </constraints>
                                 <state key="normal" image="solvely"/>
+                                <connections>
+                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="JR0-6y-jjh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,7 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="answersTableView" destination="A9A-Ql-AWD" id="Cb8-Aq-bzz"/>
-                        <outlet property="solveButton" destination="GXB-68-Mzz" id="Lf9-mH-Ocp"/>
+                        <outlet property="solveButton" destination="GXB-68-Mzz" id="Cgx-uO-RuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFn-cw-nLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
