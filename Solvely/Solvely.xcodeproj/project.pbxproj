@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
 		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
+		028565891D4341C600FC36E2 /* QuestionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */; };
 		02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581B1D43207100D317EE /* AppDelegate.swift */; };
 		02A5581E1D43207100D317EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581D1D43207100D317EE /* ViewController.swift */; };
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPreviewViewController.swift; sourceTree = "<group>"; };
 		02A558181D43207100D317EE /* Solvely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solvely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A5581B1D43207100D317EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A5581D1D43207100D317EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				02A558221D43207100D317EE /* Assets.xcassets */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
 				02A558271D43207100D317EE /* Info.plist */,
+				028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */,
 			);
 			path = Solvely;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
 				02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */,
 				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
+				028565891D4341C600FC36E2 /* QuestionPreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
