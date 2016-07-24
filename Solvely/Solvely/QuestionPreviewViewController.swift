@@ -37,6 +37,8 @@ class QuestionPreviewViewController: UIViewController {
     
     @IBOutlet weak var solveLabelButton: UIButton!
     
+    @IBOutlet weak var questionTextView: UITextView!
+    
     private var answerChoices = ["A) India", "B) Pakistan", "C) Afghanistan", "D) Bolivia"]
     
     override func viewDidLoad() {
@@ -44,13 +46,13 @@ class QuestionPreviewViewController: UIViewController {
         answersTableView.delegate = self
         answersTableView.dataSource = self
         
+        self.answersTableView.layer.cornerRadius = Radius.inputCornerRadius
         self.solveButton.layer.cornerRadius = 20
-        
         self.solveButton.layer.borderWidth = 4
-        
         self.solveButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
         self.solveButton.layer.masksToBounds = true
+        
+        self.questionTextView.layer.cornerRadius = Radius.inputCornerRadius
     }
 
     override func didReceiveMemoryWarning() {

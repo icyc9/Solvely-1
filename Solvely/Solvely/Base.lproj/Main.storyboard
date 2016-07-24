@@ -26,7 +26,7 @@
                                 </constraints>
                                 <state key="normal" image="solvely"/>
                                 <connections>
-                                    <segue destination="dOU-1A-FEq" kind="popoverPresentation" popoverAnchorView="nRO-dl-93d" id="UUo-wh-RJ6">
+                                    <segue destination="6N8-dR-Aeb" kind="popoverPresentation" popoverAnchorView="nRO-dl-93d" id="3EK-77-Ghx">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -46,6 +46,81 @@
             </objects>
             <point key="canvasLocation" x="210" y="193"/>
         </scene>
+        <!--Edit Question View Controller-->
+        <scene sceneID="rtj-nf-x4q">
+            <objects>
+                <viewController id="6N8-dR-Aeb" customClass="EditQuestionViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pBp-ee-1UT"/>
+                        <viewControllerLayoutGuide type="bottom" id="bG2-oH-6Xk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="edU-ih-HTP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfP-rq-Kt7">
+                                <rect key="frame" x="20" y="504" width="560" height="88"/>
+                                <color key="backgroundColor" red="0.0078431377190000002" green="0.76470589639999997" blue="0.60392159219999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="ZGy-Wy-6Zk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Looks good. Solve it!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="nzQ-cT-r1t"/>
+                                    <segue destination="dOU-1A-FEq" kind="show" id="t8m-Nm-0KI"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When did Abe Lincoln die?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XDz-9m-9hJ">
+                                <rect key="frame" x="20" y="148" width="560" height="348"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.4313725531" green="0.47450980539999998" blue="0.52549022440000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please make sure I read your question correct!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4qD-Wk-ig5">
+                                <rect key="frame" x="28" y="96" width="544" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solvely" translatesAutoresizingMaskIntoConstraints="NO" id="9my-7I-IcC">
+                                <rect key="frame" x="270" y="28" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Fmf-MT-3wM"/>
+                                    <constraint firstAttribute="width" constant="60" id="qvb-U1-W8z"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4qD-Wk-ig5" firstAttribute="centerX" secondItem="XDz-9m-9hJ" secondAttribute="centerX" id="1XL-eb-uTJ"/>
+                            <constraint firstItem="XDz-9m-9hJ" firstAttribute="leading" secondItem="edU-ih-HTP" secondAttribute="leadingMargin" id="36f-oP-ftL"/>
+                            <constraint firstItem="9my-7I-IcC" firstAttribute="top" secondItem="pBp-ee-1UT" secondAttribute="bottom" constant="8" id="3f8-lO-33V"/>
+                            <constraint firstItem="4qD-Wk-ig5" firstAttribute="top" secondItem="9my-7I-IcC" secondAttribute="bottom" constant="8" symbolic="YES" id="4eb-dA-GcN"/>
+                            <constraint firstItem="bG2-oH-6Xk" firstAttribute="top" secondItem="dfP-rq-Kt7" secondAttribute="bottom" constant="8" symbolic="YES" id="D6P-vb-q2O"/>
+                            <constraint firstItem="dfP-rq-Kt7" firstAttribute="top" secondItem="XDz-9m-9hJ" secondAttribute="bottom" constant="8" symbolic="YES" id="HOq-0f-I3S"/>
+                            <constraint firstItem="4qD-Wk-ig5" firstAttribute="leading" secondItem="edU-ih-HTP" secondAttribute="leadingMargin" constant="8" id="bdE-Rt-P8U"/>
+                            <constraint firstItem="XDz-9m-9hJ" firstAttribute="trailing" secondItem="edU-ih-HTP" secondAttribute="trailingMargin" id="fMC-Dd-XCd"/>
+                            <constraint firstItem="9my-7I-IcC" firstAttribute="centerX" secondItem="4qD-Wk-ig5" secondAttribute="centerX" id="lkg-Pa-eQ6"/>
+                            <constraint firstItem="XDz-9m-9hJ" firstAttribute="trailing" secondItem="dfP-rq-Kt7" secondAttribute="trailing" id="oXZ-eZ-der"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4qD-Wk-ig5" secondAttribute="trailing" constant="8" id="r23-yM-FCh"/>
+                            <constraint firstItem="XDz-9m-9hJ" firstAttribute="leading" secondItem="dfP-rq-Kt7" secondAttribute="leading" id="uWx-eg-fAu"/>
+                            <constraint firstItem="XDz-9m-9hJ" firstAttribute="top" secondItem="4qD-Wk-ig5" secondAttribute="bottom" constant="25" id="wmL-gt-A3E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logo" destination="9my-7I-IcC" id="s3w-qU-d69"/>
+                        <outlet property="questionTextView" destination="XDz-9m-9hJ" id="6M6-IM-6XF"/>
+                        <outlet property="solveButton" destination="dfP-rq-Kt7" id="So3-JV-of0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3q-xt-Ljm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-181" y="1078"/>
+        </scene>
         <!--Question Preview View Controller-->
         <scene sceneID="tA3-Vf-xlh">
             <objects>
@@ -58,25 +133,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llO-5w-jPw">
-                                <rect key="frame" x="20" y="28" width="560" height="63"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What country was formed in 1947 as a result of religious tensions in India?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xv-xc-qHs">
-                                        <rect key="frame" x="16" y="18" width="528" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="0.43137254899999999" green="0.47450980390000003" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="2Xv-xc-qHs" firstAttribute="centerY" secondItem="llO-5w-jPw" secondAttribute="centerY" id="Bfb-jX-Pe1"/>
-                                    <constraint firstItem="2Xv-xc-qHs" firstAttribute="centerX" secondItem="llO-5w-jPw" secondAttribute="centerX" id="Kl0-gJ-IaG"/>
-                                    <constraint firstItem="2Xv-xc-qHs" firstAttribute="leading" secondItem="llO-5w-jPw" secondAttribute="leading" constant="16" id="uYk-sb-Q8B"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-Ql-AWD">
-                                <rect key="frame" x="20" y="99" width="560" height="397"/>
+                                <rect key="frame" x="20" y="166" width="560" height="330"/>
                                 <color key="backgroundColor" red="0.5215686559677124" green="0.68235296010971069" blue="0.97647058963775635" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +143,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CBt-bp-ATG" id="l1u-US-4cx">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A) Pakistan" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRU-xN-IOy">
@@ -141,24 +199,33 @@
                                     <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="gYA-7R-adi"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When did Abe Lincoln die?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-ak-nE4">
+                                <rect key="frame" x="20" y="38" width="560" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Yl0-Dg-4cU"/>
+                                </constraints>
+                                <color key="textColor" red="0.43137255311012268" green="0.47450980544090271" blue="0.52549022436141968" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="GXB-68-Mzz" secondAttribute="bottom" constant="36" id="0T8-1U-GUD"/>
-                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="trailing" secondItem="llO-5w-jPw" secondAttribute="trailing" id="6UY-PF-13G"/>
-                            <constraint firstItem="llO-5w-jPw" firstAttribute="top" secondItem="M4E-QM-Vnq" secondAttribute="bottom" constant="8" id="Dv8-Nd-dnq"/>
+                            <constraint firstItem="g7g-ak-nE4" firstAttribute="top" secondItem="M4E-QM-Vnq" secondAttribute="bottom" constant="18" id="9yz-Yy-iPs"/>
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="A9A-Ql-AWD" secondAttribute="centerX" id="Fgq-8X-8eZ"/>
-                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="top" secondItem="llO-5w-jPw" secondAttribute="bottom" constant="8" symbolic="YES" id="Gkl-1N-Pk9"/>
+                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="leading" secondItem="H69-gJ-24q" secondAttribute="leading" id="GQL-YE-Akr"/>
+                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="top" secondItem="g7g-ak-nE4" secondAttribute="bottom" constant="8" symbolic="YES" id="Gta-K4-4ig"/>
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" symbolic="YES" id="JbW-Uq-s4b"/>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="H69-gJ-24q" secondAttribute="bottom" constant="8" id="NGH-J5-yZ8"/>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="po5-Gt-5Db" secondAttribute="bottom" constant="8" symbolic="YES" id="TQg-me-prd"/>
-                            <constraint firstItem="llO-5w-jPw" firstAttribute="leading" secondItem="abO-fe-15n" secondAttribute="leadingMargin" id="TsR-cG-MJd"/>
-                            <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="llO-5w-jPw" secondAttribute="bottom" constant="509" id="XLx-hW-27V"/>
+                            <constraint firstItem="g7g-ak-nE4" firstAttribute="trailing" secondItem="A9A-Ql-AWD" secondAttribute="trailing" id="UbF-3K-hb7"/>
+                            <constraint firstItem="g7g-ak-nE4" firstAttribute="leading" secondItem="A9A-Ql-AWD" secondAttribute="leading" id="X4v-8X-N6a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H69-gJ-24q" secondAttribute="trailing" id="Yqq-tG-RMg"/>
-                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="leading" secondItem="llO-5w-jPw" secondAttribute="leading" id="ddF-bz-zRv"/>
+                            <constraint firstItem="A9A-Ql-AWD" firstAttribute="trailing" secondItem="H69-gJ-24q" secondAttribute="trailing" id="fyG-ro-tew"/>
                             <constraint firstAttribute="leadingMargin" secondItem="H69-gJ-24q" secondAttribute="leading" id="gR9-dI-2gS"/>
                             <constraint firstItem="H69-gJ-24q" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" id="khe-U1-0Nj"/>
-                            <constraint firstItem="llO-5w-jPw" firstAttribute="trailing" secondItem="abO-fe-15n" secondAttribute="trailingMargin" id="omJ-YG-fLl"/>
                             <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="po5-Gt-5Db" secondAttribute="centerX" id="tDV-Tm-DRJ"/>
                             <constraint firstItem="H69-gJ-24q" firstAttribute="centerX" secondItem="abO-fe-15n" secondAttribute="centerX" id="wsY-PB-TVl"/>
                             <constraint firstAttribute="bottom" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="104" id="xwH-Y3-Ael"/>
@@ -166,6 +233,7 @@
                     </view>
                     <connections>
                         <outlet property="answersTableView" destination="A9A-Ql-AWD" id="Cb8-Aq-bzz"/>
+                        <outlet property="questionTextView" destination="g7g-ak-nE4" id="KyP-LI-hB9"/>
                         <outlet property="solveAnotherButton" destination="H69-gJ-24q" id="6zF-aa-e6X"/>
                         <outlet property="solveButton" destination="GXB-68-Mzz" id="Cgx-uO-RuF"/>
                         <outlet property="solveLabelButton" destination="po5-Gt-5Db" id="vGh-M2-3r7"/>
@@ -173,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFn-cw-nLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="931"/>
+            <point key="canvasLocation" x="580" y="1022"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
