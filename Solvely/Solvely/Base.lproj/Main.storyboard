@@ -26,9 +26,7 @@
                                 </constraints>
                                 <state key="normal" image="solvely"/>
                                 <connections>
-                                    <segue destination="3Tx-Yj-M4G" kind="popoverPresentation" popoverAnchorView="nRO-dl-93d" id="10J-Sh-KI9">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="3Tx-Yj-M4G" kind="presentation" id="X9i-yt-z6u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -230,14 +228,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hah-I7-3Kk">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="233" width="600" height="367"/>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="peV-Jr-Zrv" firstAttribute="top" secondItem="Hah-I7-3Kk" secondAttribute="bottom" id="95P-fp-Kvn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hah-I7-3Kk" secondAttribute="trailing" constant="-20" id="PAO-1o-KmC"/>
-                            <constraint firstItem="Hah-I7-3Kk" firstAttribute="top" secondItem="8rg-6V-8JQ" secondAttribute="topMargin" id="TLc-8b-8Yk"/>
+                            <constraint firstItem="Hah-I7-3Kk" firstAttribute="top" secondItem="8rg-6V-8JQ" secondAttribute="topMargin" constant="233" id="TLc-8b-8Yk"/>
                             <constraint firstItem="Hah-I7-3Kk" firstAttribute="leading" secondItem="8rg-6V-8JQ" secondAttribute="leadingMargin" constant="-20" id="ggD-Qf-NHF"/>
                         </constraints>
                     </view>

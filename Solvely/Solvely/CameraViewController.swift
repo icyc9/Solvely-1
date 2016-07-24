@@ -40,4 +40,9 @@ class CameraViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        segue.destinationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+    }
 }
