@@ -31,11 +31,7 @@ class QuestionPreviewViewController: UIViewController {
 
     @IBOutlet weak var answersTableView: UITableView!
     
-    @IBOutlet weak var solveButton: UIButton!
-    
     @IBOutlet weak var solveAnotherButton: UIButton!
-    
-    @IBOutlet weak var solveLabelButton: UIButton!
     
     @IBOutlet weak var questionTextView: UITextView!
     
@@ -46,12 +42,12 @@ class QuestionPreviewViewController: UIViewController {
         answersTableView.delegate = self
         answersTableView.dataSource = self
         
-        self.answersTableView.layer.cornerRadius = Radius.inputCornerRadius
-        self.solveButton.layer.cornerRadius = 20
-        self.solveButton.layer.borderWidth = 4
-        self.solveButton.layer.borderColor = UIColor.whiteColor().CGColor
-        self.solveButton.layer.masksToBounds = true
+        answersTableView.reloadData()
         
+        solve()
+        
+        self.answersTableView.layer.cornerRadius = Radius.inputCornerRadius
+        self.solveAnotherButton.layer.cornerRadius = Radius.buttonCornerRadius
         self.questionTextView.layer.cornerRadius = Radius.inputCornerRadius
     }
 
@@ -63,7 +59,7 @@ class QuestionPreviewViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func solve(sender: UIButton) {
+    private func solve() {
         let correctAnswer = "C) Afghanistan"
         
         for answer in answerChoices {
@@ -76,8 +72,6 @@ class QuestionPreviewViewController: UIViewController {
             }
         }
         
-        self.solveLabelButton.removeFromSuperview()
-        self.solveButton.removeFromSuperview()
         self.solveAnotherButton.hidden = false
     }
 }

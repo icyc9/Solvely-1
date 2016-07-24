@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol EditQuestionViewControllerDelegate {
+    func userDidValidateQuestion()
+}
+
 class EditQuestionViewController: UIViewController {
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var solveButton: UIButton!
+    
+    var delegate: EditQuestionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,4 +31,9 @@ class EditQuestionViewController: UIViewController {
         self.logo.layer.masksToBounds = true
     }
     
+    @IBAction func solve(sender: AnyObject) {
+        if delegate != nil {
+            delegate?.userDidValidateQuestion()
+        }
+    }
 }

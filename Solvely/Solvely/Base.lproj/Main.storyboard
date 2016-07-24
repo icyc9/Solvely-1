@@ -26,7 +26,7 @@
                                 </constraints>
                                 <state key="normal" image="solvely"/>
                                 <connections>
-                                    <segue destination="6N8-dR-Aeb" kind="popoverPresentation" popoverAnchorView="nRO-dl-93d" id="3EK-77-Ghx">
+                                    <segue destination="3Tx-Yj-M4G" kind="popoverPresentation" popoverAnchorView="nRO-dl-93d" id="10J-Sh-KI9">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -49,7 +49,7 @@
         <!--Edit Question View Controller-->
         <scene sceneID="rtj-nf-x4q">
             <objects>
-                <viewController id="6N8-dR-Aeb" customClass="EditQuestionViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="check" id="6N8-dR-Aeb" customClass="EditQuestionViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pBp-ee-1UT"/>
                         <viewControllerLayoutGuide type="bottom" id="bG2-oH-6Xk"/>
@@ -69,8 +69,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="solve:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="JSs-FR-d66"/>
                                     <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="nzQ-cT-r1t"/>
-                                    <segue destination="dOU-1A-FEq" kind="show" id="t8m-Nm-0KI"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When did Abe Lincoln die?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XDz-9m-9hJ">
@@ -119,12 +119,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3q-xt-Ljm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-181" y="1078"/>
+            <point key="canvasLocation" x="371" y="1195"/>
         </scene>
         <!--Question Preview View Controller-->
         <scene sceneID="tA3-Vf-xlh">
             <objects>
-                <viewController id="dOU-1A-FEq" customClass="QuestionPreviewViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="solved" id="dOU-1A-FEq" customClass="QuestionPreviewViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4E-QM-Vnq"/>
                         <viewControllerLayoutGuide type="bottom" id="hYy-cy-GTw"/>
@@ -169,26 +169,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXB-68-Mzz">
-                                <rect key="frame" x="270" y="504" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="NhF-b6-yQd"/>
-                                </constraints>
-                                <state key="normal" image="solvely"/>
-                                <connections>
-                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="JR0-6y-jjh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po5-Gt-5Db">
-                                <rect key="frame" x="281" y="562" width="38" height="30"/>
-                                <state key="normal" title="Solve">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="solve:" destination="dOU-1A-FEq" eventType="touchUpInside" id="ysx-Pe-nQx"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H69-gJ-24q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H69-gJ-24q">
                                 <rect key="frame" x="20" y="504" width="560" height="88"/>
                                 <color key="backgroundColor" red="0.0078431377187371254" green="0.76470589637756348" blue="0.60392159223556519" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -212,21 +193,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="GXB-68-Mzz" secondAttribute="bottom" constant="36" id="0T8-1U-GUD"/>
                             <constraint firstItem="g7g-ak-nE4" firstAttribute="top" secondItem="M4E-QM-Vnq" secondAttribute="bottom" constant="18" id="9yz-Yy-iPs"/>
-                            <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="A9A-Ql-AWD" secondAttribute="centerX" id="Fgq-8X-8eZ"/>
                             <constraint firstItem="A9A-Ql-AWD" firstAttribute="leading" secondItem="H69-gJ-24q" secondAttribute="leading" id="GQL-YE-Akr"/>
                             <constraint firstItem="A9A-Ql-AWD" firstAttribute="top" secondItem="g7g-ak-nE4" secondAttribute="bottom" constant="8" symbolic="YES" id="Gta-K4-4ig"/>
-                            <constraint firstItem="GXB-68-Mzz" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" symbolic="YES" id="JbW-Uq-s4b"/>
                             <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="H69-gJ-24q" secondAttribute="bottom" constant="8" id="NGH-J5-yZ8"/>
-                            <constraint firstItem="hYy-cy-GTw" firstAttribute="top" secondItem="po5-Gt-5Db" secondAttribute="bottom" constant="8" symbolic="YES" id="TQg-me-prd"/>
                             <constraint firstItem="g7g-ak-nE4" firstAttribute="trailing" secondItem="A9A-Ql-AWD" secondAttribute="trailing" id="UbF-3K-hb7"/>
                             <constraint firstItem="g7g-ak-nE4" firstAttribute="leading" secondItem="A9A-Ql-AWD" secondAttribute="leading" id="X4v-8X-N6a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H69-gJ-24q" secondAttribute="trailing" id="Yqq-tG-RMg"/>
                             <constraint firstItem="A9A-Ql-AWD" firstAttribute="trailing" secondItem="H69-gJ-24q" secondAttribute="trailing" id="fyG-ro-tew"/>
                             <constraint firstAttribute="leadingMargin" secondItem="H69-gJ-24q" secondAttribute="leading" id="gR9-dI-2gS"/>
                             <constraint firstItem="H69-gJ-24q" firstAttribute="top" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="8" id="khe-U1-0Nj"/>
-                            <constraint firstItem="GXB-68-Mzz" firstAttribute="centerX" secondItem="po5-Gt-5Db" secondAttribute="centerX" id="tDV-Tm-DRJ"/>
                             <constraint firstItem="H69-gJ-24q" firstAttribute="centerX" secondItem="abO-fe-15n" secondAttribute="centerX" id="wsY-PB-TVl"/>
                             <constraint firstAttribute="bottom" secondItem="A9A-Ql-AWD" secondAttribute="bottom" constant="104" id="xwH-Y3-Ael"/>
                         </constraints>
@@ -235,13 +211,88 @@
                         <outlet property="answersTableView" destination="A9A-Ql-AWD" id="Cb8-Aq-bzz"/>
                         <outlet property="questionTextView" destination="g7g-ak-nE4" id="KyP-LI-hB9"/>
                         <outlet property="solveAnotherButton" destination="H69-gJ-24q" id="6zF-aa-e6X"/>
-                        <outlet property="solveButton" destination="GXB-68-Mzz" id="Cgx-uO-RuF"/>
-                        <outlet property="solveLabelButton" destination="po5-Gt-5Db" id="vGh-M2-3r7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFn-cw-nLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="1022"/>
+            <point key="canvasLocation" x="1087" y="1899"/>
+        </scene>
+        <!--Solver View Controller-->
+        <scene sceneID="dNa-lJ-rTh">
+            <objects>
+                <viewController id="3Tx-Yj-M4G" customClass="SolverViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pJM-Jk-uh0"/>
+                        <viewControllerLayoutGuide type="bottom" id="peV-Jr-Zrv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8rg-6V-8JQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hah-I7-3Kk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="peV-Jr-Zrv" firstAttribute="top" secondItem="Hah-I7-3Kk" secondAttribute="bottom" id="95P-fp-Kvn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hah-I7-3Kk" secondAttribute="trailing" constant="-20" id="PAO-1o-KmC"/>
+                            <constraint firstItem="Hah-I7-3Kk" firstAttribute="top" secondItem="8rg-6V-8JQ" secondAttribute="topMargin" id="TLc-8b-8Yk"/>
+                            <constraint firstItem="Hah-I7-3Kk" firstAttribute="leading" secondItem="8rg-6V-8JQ" secondAttribute="leadingMargin" constant="-20" id="ggD-Qf-NHF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Hah-I7-3Kk" id="sLf-dv-g0d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pD6-mo-dmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-311" y="1070"/>
+        </scene>
+        <!--Solving View Controller-->
+        <scene sceneID="VXX-bO-erd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-mf-b3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="solving" id="Yv3-qX-e7F" customClass="SolvingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ute-2f-tRA"/>
+                        <viewControllerLayoutGuide type="bottom" id="H0L-6X-i0S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="K9S-9v-y3o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-EH-TS1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="260" y="245" width="80" height="74"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="eSL-0V-6dw"/>
+                                    <constraint firstAttribute="width" constant="80" id="vTy-Uf-np9"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Computing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6b-NzU">
+                                <rect key="frame" x="28" y="327" width="544" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="w6C-6b-NzU" firstAttribute="leading" secondItem="K9S-9v-y3o" secondAttribute="leadingMargin" constant="8" id="Go3-L0-7pS"/>
+                            <constraint firstItem="w6C-6b-NzU" firstAttribute="top" secondItem="ERe-EH-TS1" secondAttribute="bottom" constant="8" id="NYN-EY-ArT"/>
+                            <constraint firstItem="ERe-EH-TS1" firstAttribute="top" secondItem="Ute-2f-tRA" secondAttribute="bottom" constant="245" id="SyS-bW-B0Y"/>
+                            <constraint firstItem="ERe-EH-TS1" firstAttribute="centerX" secondItem="K9S-9v-y3o" secondAttribute="centerX" id="een-eg-oxM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w6C-6b-NzU" secondAttribute="trailing" constant="8" id="ehE-iW-T2G"/>
+                            <constraint firstItem="w6C-6b-NzU" firstAttribute="centerX" secondItem="K9S-9v-y3o" secondAttribute="centerX" id="t95-uo-txd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indicatorView" destination="ERe-EH-TS1" id="U2x-W8-bGS"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1360" y="1177"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
