@@ -14,6 +14,7 @@ class CameraViewController: UIViewController {
 
     private let cameraEngine = CameraEngine()
     private var popup: PopupViewController?
+    private var isFlashToggled = false
     
     @IBOutlet weak var solveButton: UIButton!
     
@@ -25,6 +26,7 @@ class CameraViewController: UIViewController {
         self.solveButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.solveButton.layer.masksToBounds = true
         
+        self.cameraEngine.cameraFocus = .ContinuousAutoFocus
         self.cameraEngine.captureDevice
         self.cameraEngine.startSession()
     }
@@ -39,6 +41,24 @@ class CameraViewController: UIViewController {
     @IBAction func solve(sender: UIButton) {
         self.cameraEngine.capturePhoto { (image: UIImage?, error: NSError?) -> (Void) in
             self.crop(image!)
+        }
+    }
+    
+    @IBAction func toggleFlash(sender: UIButton) {
+        isFlashToggled = !isFlashToggled
+        
+        if isFlashToggled {
+            self.cameraEngine.flashMode = .On
+        }
+        else {
+            self.cameraEngine.flashMode = .Off
+        }
+        
+        if isFlashToggled {
+            sender.setImage(UIImage(named: "flash on"), forState: UIControlState.Normal)
+        }
+        else {
+            sender.setImage(UIImage(named: "flash off"), forState: UIControlState.Normal)
         }
     }
     

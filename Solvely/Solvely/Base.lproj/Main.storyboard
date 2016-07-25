@@ -29,10 +29,19 @@
                                     <action selector="solve:" destination="cKw-R9-089" eventType="touchUpInside" id="oBi-FT-X0I"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygT-Rh-GAs">
+                                <rect key="frame" x="550" y="28" width="30" height="30"/>
+                                <state key="normal" image="flash off"/>
+                                <connections>
+                                    <action selector="toggleFlash:" destination="cKw-R9-089" eventType="touchUpInside" id="oeQ-6Q-W7u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="ygT-Rh-GAs" firstAttribute="top" secondItem="5bk-fL-aeO" secondAttribute="bottom" constant="8" id="Udx-Q8-249"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ygT-Rh-GAs" secondAttribute="trailing" id="YCg-p6-8vL"/>
                             <constraint firstItem="aLV-Wa-5GG" firstAttribute="top" secondItem="nRO-dl-93d" secondAttribute="bottom" constant="20" id="omZ-Fq-oUr"/>
                             <constraint firstItem="nRO-dl-93d" firstAttribute="centerX" secondItem="NhW-vH-ciJ" secondAttribute="centerX" id="yCH-4V-v8m"/>
                         </constraints>
@@ -481,6 +490,7 @@
         <image name="cancel" width="30" height="30"/>
         <image name="create" width="30" height="30"/>
         <image name="down" width="30" height="30"/>
+        <image name="flash off" width="30" height="30"/>
         <image name="next" width="30" height="30"/>
         <image name="solvely" width="128" height="128"/>
     </resources>
