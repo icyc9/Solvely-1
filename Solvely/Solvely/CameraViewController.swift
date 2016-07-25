@@ -12,6 +12,7 @@ import CameraEngine
 class CameraViewController: UIViewController {
 
     private let cameraEngine = CameraEngine()
+    private var popup: PopupViewController?
     
     @IBOutlet weak var solveButton: UIButton!
     
@@ -37,6 +38,19 @@ class CameraViewController: UIViewController {
         self.view.layer.masksToBounds = true
     }
     
+    @IBAction func solve(sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as! PopupViewController
+        
+        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
+        
+        editProblemViewController!.delegate = self
+        
+        self.popup!.contentController = editProblemViewController
+        
+        self.presentViewController(popup!, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -44,5 +58,40 @@ class CameraViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         segue.destinationViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         segue.destinationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+    }
+    
+    private func showPopupWithContent(content: UIViewController) {
+        self.popup?.dismissViewControllerAnimated(true, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as! PopupViewController
+        
+        self.popup!.contentController = content
+        
+        self.presentViewController(popup!, animated: true, completion: nil)
+    }
+}
+
+extension CameraViewController: EditQuestionViewControllerDelegate {
+    
+    func userDidValidateQuestion() {
+        self.popup?.dismissViewControllerAnimated(true, completion: nil)
+        
+        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solving") as? SolvingViewController
+        
+        solvingViewController!.delegate = self
+        self.showPopupWithContent(solvingViewController!)
+    }
+}
+
+extension CameraViewController: SolvingViewControllerDelegate {
+    
+    func didFinishSolving() {
+        self.popup?.dismissViewControllerAnimated(true, completion: nil)
+        
+        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? QuestionPreviewViewController
+        
+        self.showPopupWithContent(solvingViewController!)
     }
 }

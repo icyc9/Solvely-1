@@ -10,6 +10,7 @@
 		027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */; };
 		027C35821D4492E000B7EA5A /* SolvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35811D4492E000B7EA5A /* SolvingViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
+		027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35851D457ACF00B7EA5A /* PopupViewController.swift */; };
 		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
 		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		028565891D4341C600FC36E2 /* QuestionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */; };
@@ -37,6 +38,7 @@
 		027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		027C35811D4492E000B7EA5A /* SolvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvingViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
+		027C35851D457ACF00B7EA5A /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPreviewViewController.swift; sourceTree = "<group>"; };
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */,
 				027C35811D4492E000B7EA5A /* SolvingViewController.swift */,
 				027C35831D449F1200B7EA5A /* SolverViewController.swift */,
+				027C35851D457ACF00B7EA5A /* PopupViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */,
 				027C35821D4492E000B7EA5A /* SolvingViewController.swift in Sources */,
 				02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */,
+				027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */,
 				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
 				028565891D4341C600FC36E2 /* QuestionPreviewViewController.swift in Sources */,
 				027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */,
