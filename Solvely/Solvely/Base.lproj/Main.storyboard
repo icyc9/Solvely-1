@@ -30,7 +30,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="aLV-Wa-5GG" firstAttribute="top" secondItem="nRO-dl-93d" secondAttribute="bottom" constant="20" id="omZ-Fq-oUr"/>
                             <constraint firstItem="nRO-dl-93d" firstAttribute="centerX" secondItem="NhW-vH-ciJ" secondAttribute="centerX" id="yCH-4V-v8m"/>
@@ -42,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7H-PP-nAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="193"/>
+            <point key="canvasLocation" x="204" y="231"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="AAy-RS-zpu">

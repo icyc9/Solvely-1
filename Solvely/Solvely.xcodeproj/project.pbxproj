@@ -39,6 +39,7 @@
 		027C35811D4492E000B7EA5A /* SolvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvingViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
 		027C35851D457ACF00B7EA5A /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPreviewViewController.swift; sourceTree = "<group>"; };
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 				02A558221D43207100D317EE /* Assets.xcassets */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
 				02A558271D43207100D317EE /* Info.plist */,
+				027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */,
 			);
 			path = Solvely;
 			sourceTree = "<group>";
@@ -374,11 +376,14 @@
 			baseConfigurationReference = FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Solvely/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solvely.Solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Solvely/Solvely-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -387,11 +392,13 @@
 			baseConfigurationReference = 07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Solvely/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solvely.Solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Solvely/Solvely-Bridging-Header.h";
 			};
 			name = Release;
 		};

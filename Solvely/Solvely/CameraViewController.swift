@@ -8,6 +8,7 @@
 
 import UIKit
 import CameraEngine
+import TOCropViewController
 
 class CameraViewController: UIViewController {
 
@@ -20,17 +21,14 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         
         self.solveButton.layer.cornerRadius = 20
-        
         self.solveButton.layer.borderWidth = 4
-        
         self.solveButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
         self.solveButton.layer.masksToBounds = true
         
         self.cameraEngine.captureDevice
         self.cameraEngine.startSession()
     }
-
+    
     override func viewDidLayoutSubviews() {
         let layer = self.cameraEngine.previewLayer
         layer.frame = self.view.bounds
@@ -39,16 +37,9 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func solve(sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as! PopupViewController
-        
-        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
-        
-        editProblemViewController!.delegate = self
-        
-        self.popup!.contentController = editProblemViewController
-        
-        self.presentViewController(popup!, animated: true, completion: nil)
+        self.cameraEngine.capturePhoto { (image: UIImage?, error: NSError?) -> (Void) in
+            self.crop(image!)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,9 +56,30 @@ class CameraViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as! PopupViewController
+        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
         
         self.popup!.contentController = content
+        
+        self.presentViewController(popup!, animated: true, completion: nil)
+    }
+    
+    private func crop(image: UIImage) {
+        let crop = TOCropViewController(image: image)
+        
+        crop.delegate = self
+        
+        self.presentViewController(crop, animated: true, completion: nil)
+    }
+    
+    private func processImage(image: UIImage) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+        
+        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
+        
+        editProblemViewController!.delegate = self
+        
+        self.popup!.contentController = editProblemViewController
         
         self.presentViewController(popup!, animated: true, completion: nil)
     }
@@ -93,5 +105,16 @@ extension CameraViewController: SolvingViewControllerDelegate {
         let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? QuestionPreviewViewController
         
         self.showPopupWithContent(solvingViewController!)
+    }
+}
+
+extension CameraViewController: TOCropViewControllerDelegate {
+    
+    func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
+        
+        self.dismissViewControllerAnimated(true, completion: {
+            self.processImage(image!)
+        })
+        
     }
 }

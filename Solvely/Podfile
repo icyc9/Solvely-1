@@ -8,4 +8,5 @@ target 'Solvely' do
   # Pods for Solvely
   pod "CameraEngine"
   pod 'NVActivityIndicatorView'
+  pod 'TOCropViewController'
 end
