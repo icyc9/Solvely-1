@@ -11,6 +11,7 @@
 		027C35821D4492E000B7EA5A /* SolvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35811D4492E000B7EA5A /* SolvingViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
 		027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35851D457ACF00B7EA5A /* PopupViewController.swift */; };
+		027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35A41D45C68400B7EA5A /* OCRService.swift */; };
 		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
 		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		028565891D4341C600FC36E2 /* QuestionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */; };
@@ -40,6 +41,7 @@
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
 		027C35851D457ACF00B7EA5A /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
+		027C35A41D45C68400B7EA5A /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		028565881D4341C600FC36E2 /* QuestionPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPreviewViewController.swift; sourceTree = "<group>"; };
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		027C35A31D45C67000B7EA5A /* services */ = {
+			isa = PBXGroup;
+			children = (
+				027C35A41D45C68400B7EA5A /* OCRService.swift */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
 		02878B131D43498D00935EBA /* controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		02A5581A1D43207100D317EE /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
+				027C35A31D45C67000B7EA5A /* services */,
 				02878B131D43498D00935EBA /* controllers */,
 				02A5581B1D43207100D317EE /* AppDelegate.swift */,
 				02878B141D43499B00935EBA /* Constants.swift */,
@@ -254,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */,
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
 				027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */,
@@ -377,8 +389,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Solvely/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solvely.Solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,8 +406,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Solvely/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.solvely.Solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";

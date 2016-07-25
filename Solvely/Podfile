@@ -9,4 +9,7 @@ target 'Solvely' do
   pod "CameraEngine"
   pod 'NVActivityIndicatorView'
   pod 'TOCropViewController'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'TesseractOCRiOS', '4.0.0'
+  pod 'havenondemand'
 end

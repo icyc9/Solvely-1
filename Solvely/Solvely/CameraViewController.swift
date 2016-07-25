@@ -9,12 +9,14 @@
 import UIKit
 import CameraEngine
 import TOCropViewController
+import TesseractOCR
 
 class CameraViewController: UIViewController {
 
     private let cameraEngine = CameraEngine()
     private var popup: PopupViewController?
     private var isFlashToggled = false
+    @IBOutlet weak var previewImage: UIImageView!
     
     @IBOutlet weak var solveButton: UIButton!
     
@@ -92,6 +94,17 @@ class CameraViewController: UIViewController {
     }
     
     private func processImage(image: UIImage) {
+        let ocr = OCRService()
+        ocr.convertImageToText(image)
+//        var tesseract:G8Tesseract = G8Tesseract(language:"eng");
+//        //tesseract.language = "eng+ita";
+//        tesseract.delegate = nil
+//        tesseract.charWhitelist = "01234567890";
+//        tesseract.image = image
+//        tesseract.recognize();
+//        
+//        NSLog("%@", tesseract.recognizedText);
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
         
@@ -133,6 +146,7 @@ extension CameraViewController: TOCropViewControllerDelegate {
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
         
         self.dismissViewControllerAnimated(true, completion: {
+            self.previewImage.image = image
             self.processImage(image!)
         })
         
