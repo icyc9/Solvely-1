@@ -263,10 +263,10 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1899"/>
         </scene>
-        <!--Solving View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="VXX-bO-erd">
             <objects>
-                <viewController storyboardIdentifier="solving" id="Yv3-qX-e7F" customClass="SolvingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loading" id="Yv3-qX-e7F" customClass="LoadingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ute-2f-tRA"/>
                         <viewControllerLayoutGuide type="bottom" id="H0L-6X-i0S"/>
@@ -278,13 +278,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XF-rJ-r0Y">
                                 <rect key="frame" x="233" y="245" width="134" height="109"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Computing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6b-NzU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6b-NzU">
                                         <rect key="frame" x="4" y="82" width="127" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-EH-TS1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-EH-TS1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                         <rect key="frame" x="27" y="0.0" width="80" height="74"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -295,9 +295,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="centerX" secondItem="w6C-6b-NzU" secondAttribute="centerX" id="0YU-oM-aZo"/>
                                     <constraint firstAttribute="width" constant="134" id="1cI-ph-v9X"/>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="centerX" secondItem="3XF-rJ-r0Y" secondAttribute="centerX" id="4oG-tq-AG7"/>
                                     <constraint firstItem="w6C-6b-NzU" firstAttribute="top" secondItem="ERe-EH-TS1" secondAttribute="bottom" constant="8" id="H0o-nB-e6x"/>
                                     <constraint firstAttribute="height" constant="109" id="RU0-rY-zMc"/>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="top" secondItem="3XF-rJ-r0Y" secondAttribute="top" id="vIJ-Sc-lRK"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-Lj-Eq1">
@@ -318,6 +321,7 @@
                     </view>
                     <connections>
                         <outlet property="indicatorView" destination="ERe-EH-TS1" id="U2x-W8-bGS"/>
+                        <outlet property="loadingMessageLabel" destination="w6C-6b-NzU" id="9pH-hG-c37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-mf-b3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,62 +487,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spY-u8-nG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-714" y="168"/>
-        </scene>
-        <!--Solving View Controller-->
-        <scene sceneID="hs0-al-tUc">
-            <objects>
-                <viewController storyboardIdentifier="reading_problem" id="0fg-Gm-0GJ" customClass="SolvingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fzK-d3-df4"/>
-                        <viewControllerLayoutGuide type="bottom" id="h0K-ZH-Inu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Ww-TI-Nw5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvO-JP-19L">
-                                <rect key="frame" x="184" y="245" width="234" height="109"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reading your problem..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1y-jT-qKn">
-                                        <rect key="frame" x="0.0" y="82" width="234" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9N4-d2-kFT" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                        <rect key="frame" x="76" y="0.0" width="80" height="74"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="234" id="6pA-oI-jt3"/>
-                                    <constraint firstAttribute="height" constant="109" id="xIK-Hl-g7r"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xd9-Gz-ZL1">
-                                <rect key="frame" x="20" y="20" width="30" height="30"/>
-                                <state key="normal" image="cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="0fg-Gm-0GJ" eventType="touchUpInside" id="i0N-Ib-vpA"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.16862745579999999" green="0.2392156869" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="xd9-Gz-ZL1" firstAttribute="leading" secondItem="1Ww-TI-Nw5" secondAttribute="leadingMargin" id="9qg-Fh-pUN"/>
-                            <constraint firstItem="fvO-JP-19L" firstAttribute="centerX" secondItem="1Ww-TI-Nw5" secondAttribute="centerX" constant="1" id="m9q-3R-Srn"/>
-                            <constraint firstItem="fvO-JP-19L" firstAttribute="centerY" secondItem="1Ww-TI-Nw5" secondAttribute="centerY" id="mGA-0P-Ye2"/>
-                            <constraint firstItem="xd9-Gz-ZL1" firstAttribute="top" secondItem="fzK-d3-df4" secondAttribute="bottom" id="srP-Ps-xmY"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="indicatorView" destination="9N4-d2-kFT" id="19Q-96-VYs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T3a-1F-99j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2009" y="1180"/>
         </scene>
     </scenes>
     <resources>

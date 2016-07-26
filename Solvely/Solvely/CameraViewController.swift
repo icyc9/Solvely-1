@@ -94,7 +94,8 @@ class CameraViewController: UIViewController {
     }
     
     private func processImage(image: UIImage) {
-        let ocrProgressController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("reading_problem")
+        let ocrProgressController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("loading") as! LoadingViewController
+        ocrProgressController.loadingMessage = "Reading your problem..."
         
         self.showPopupWithContent(ocrProgressController)
         
@@ -108,19 +109,9 @@ extension CameraViewController: EditQuestionViewControllerDelegate {
     func userDidValidateQuestion() {
         self.popup?.dismissViewControllerAnimated(true, completion: nil)
         
-        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solving") as? SolvingViewController
+        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("loading") as? LoadingViewController
         
-        solvingViewController!.delegate = self
-        self.showPopupWithContent(solvingViewController!)
-    }
-}
-
-extension CameraViewController: SolvingViewControllerDelegate {
-    
-    func didFinishSolving() {
-        self.popup?.dismissViewControllerAnimated(true, completion: nil)
-        
-        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+        solvingViewController?.loadingMessage = "Computing..."
         
         self.showPopupWithContent(solvingViewController!)
     }
@@ -142,23 +133,31 @@ extension CameraViewController: SolveServiceDelegate {
     func questionText(questionText: String) {
         print("questionText")
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
-        
-        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
-        
-        // Set the displayed text to be the OCR output
-        editProblemViewController?.questionText = questionText
-        editProblemViewController!.delegate = self
-        
-        self.popup!.contentController = editProblemViewController
-        
-        // Show a view controller that allows user to edit OCR output
-        self.presentViewController(popup!, animated: true, completion: nil)
+        self.popup?.dismissViewControllerAnimated(true) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+            
+            let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
+            
+            // Set the displayed text to be the OCR output
+            editProblemViewController?.questionText = questionText
+            editProblemViewController!.delegate = self
+            
+            self.popup!.contentController = editProblemViewController
+            
+            // Show a view controller that allows user to edit OCR output
+            self.presentViewController(self.popup!, animated: true, completion: nil)
+        }
     }
     
     func questionAnswered(correctAnswer: String) {
         print("questionAnswered")
+        
+        self.popup?.dismissViewControllerAnimated(true, completion: nil)
+        
+        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+        
+        self.showPopupWithContent(solvingViewController!)
     }
     
     func unknownError() {
