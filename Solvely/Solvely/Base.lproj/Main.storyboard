@@ -263,10 +263,10 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1899"/>
         </scene>
-        <!--Solving View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="VXX-bO-erd">
             <objects>
-                <viewController storyboardIdentifier="solving" id="Yv3-qX-e7F" customClass="SolvingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loading" id="Yv3-qX-e7F" customClass="LoadingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ute-2f-tRA"/>
                         <viewControllerLayoutGuide type="bottom" id="H0L-6X-i0S"/>
@@ -278,13 +278,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XF-rJ-r0Y">
                                 <rect key="frame" x="233" y="245" width="134" height="109"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Computing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6b-NzU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6b-NzU">
                                         <rect key="frame" x="4" y="82" width="127" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-EH-TS1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERe-EH-TS1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                         <rect key="frame" x="27" y="0.0" width="80" height="74"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -295,9 +295,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="centerX" secondItem="w6C-6b-NzU" secondAttribute="centerX" id="0YU-oM-aZo"/>
                                     <constraint firstAttribute="width" constant="134" id="1cI-ph-v9X"/>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="centerX" secondItem="3XF-rJ-r0Y" secondAttribute="centerX" id="4oG-tq-AG7"/>
                                     <constraint firstItem="w6C-6b-NzU" firstAttribute="top" secondItem="ERe-EH-TS1" secondAttribute="bottom" constant="8" id="H0o-nB-e6x"/>
                                     <constraint firstAttribute="height" constant="109" id="RU0-rY-zMc"/>
+                                    <constraint firstItem="ERe-EH-TS1" firstAttribute="top" secondItem="3XF-rJ-r0Y" secondAttribute="top" id="vIJ-Sc-lRK"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-Lj-Eq1">
@@ -318,11 +321,12 @@
                     </view>
                     <connections>
                         <outlet property="indicatorView" destination="ERe-EH-TS1" id="U2x-W8-bGS"/>
+                        <outlet property="loadingMessageLabel" destination="w6C-6b-NzU" id="9pH-hG-c37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-mf-b3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1360" y="1177"/>
+            <point key="canvasLocation" x="1362" y="1185"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -482,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spY-u8-nG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-447" y="193"/>
+            <point key="canvasLocation" x="-714" y="168"/>
         </scene>
     </scenes>
     <resources>
