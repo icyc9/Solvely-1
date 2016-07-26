@@ -1,8 +1,8 @@
 //
-//  QuestionPreviewViewController.swift
+//  ResultsViewController.swift
 //  Solvely
 //
-//  Created by Daniel Christopher on 7/23/16.
+//  Created by Daniel Christopher on 7/25/16.
 //  Copyright © 2016 Solvely. All rights reserved.
 //
 
@@ -13,13 +13,13 @@ class AnswerTableViewCell: UITableViewCell {
     
     func selectAsAnswer() {
         self.contentView.backgroundColor = Colors.green
-//        let checkImage = UIImageView(image: UIImage(named: "check"))
-//        self.contentView.addSubview(checkImage)
-//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Left, relatedBy: .Equal, toItem: answerChoiceLabel, attribute: .Right, multiplier: 1, constant: 8))
-//        
-//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: 8))
-//            
-//        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1, constant: 0))
+        //        let checkImage = UIImageView(image: UIImage(named: "check"))
+        //        self.contentView.addSubview(checkImage)
+        //        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Left, relatedBy: .Equal, toItem: answerChoiceLabel, attribute: .Right, multiplier: 1, constant: 8))
+        //
+        //        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .Right, relatedBy: .Equal, toItem: self.contentView, attribute: .Right, multiplier: 1, constant: 8))
+        //
+        //        self.contentView.addConstraint(NSLayoutConstraint(item: checkImage, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1, constant: 0))
     }
     
     func selectAsIncorrect() {
@@ -27,8 +27,8 @@ class AnswerTableViewCell: UITableViewCell {
     }
 }
 
-class QuestionPreviewViewController: UIViewController {
-
+class ResultsViewController: UIViewController {
+    
     @IBOutlet weak var answersTableView: UITableView!
     
     @IBOutlet weak var solveAnotherButton: UIButton!
@@ -50,7 +50,7 @@ class QuestionPreviewViewController: UIViewController {
         self.solveAnotherButton.layer.cornerRadius = Radius.buttonCornerRadius
         self.questionTextView.layer.cornerRadius = Radius.inputCornerRadius
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -76,7 +76,7 @@ class QuestionPreviewViewController: UIViewController {
     }
 }
 
-extension QuestionPreviewViewController: UITableViewDataSource {
+extension ResultsViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -93,6 +93,6 @@ extension QuestionPreviewViewController: UITableViewDataSource {
     }
 }
 
-extension QuestionPreviewViewController: UITableViewDelegate {
+extension ResultsViewController: UITableViewDelegate {
     
 }
