@@ -19,10 +19,12 @@ class EditQuestionViewController: UIViewController {
     @IBOutlet weak var solveButton: UIButton!
     
     var delegate: EditQuestionViewControllerDelegate?
+    var questionText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.questionTextView.text = questionText
         self.questionTextView.layer.cornerRadius = Radius.inputCornerRadius
         self.solveButton.layer.cornerRadius = Radius.buttonCornerRadius
         self.logo.layer.cornerRadius = 20

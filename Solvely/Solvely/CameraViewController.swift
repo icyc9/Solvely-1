@@ -11,16 +11,17 @@ import CameraEngine
 import TOCropViewController
 
 class CameraViewController: UIViewController {
-
     private let cameraEngine = CameraEngine()
     private var popup: PopupViewController?
     private var isFlashToggled = false
-    @IBOutlet weak var previewImage: UIImageView!
+    private var solveService: SolveService = SolveService()
     
     @IBOutlet weak var solveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.solveService.delegate = self
         
         self.solveButton.layer.cornerRadius = 20
         self.solveButton.layer.borderWidth = 4
@@ -93,27 +94,8 @@ class CameraViewController: UIViewController {
     }
     
     private func processImage(image: UIImage) {
-        let ocr = OCRService()
-        ocr.convertImageToText(image)
-//        var tesseract:G8Tesseract = G8Tesseract(language:"eng");
-//        //tesseract.language = "eng+ita";
-//        tesseract.delegate = nil
-//        tesseract.charWhitelist = "01234567890";
-//        tesseract.image = image
-//        tesseract.recognize();
-//        
-//        NSLog("%@", tesseract.recognizedText);
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
-        
-        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
-        
-        editProblemViewController!.delegate = self
-        
-        self.popup!.contentController = editProblemViewController
-        
-        self.presentViewController(popup!, animated: true, completion: nil)
+        // Take the cropped image and solve the problem in the image
+        solveService.solve(image)
     }
 }
 
@@ -145,9 +127,41 @@ extension CameraViewController: TOCropViewControllerDelegate {
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
         
         self.dismissViewControllerAnimated(true, completion: {
-            self.previewImage.image = image
             self.processImage(image!)
         })
         
+    }
+}
+
+extension CameraViewController: SolveServiceDelegate {
+    
+    func questionText(questionText: String) {
+        print("questionText")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+        
+        let editProblemViewController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
+        
+        // Set the displayed text to be the OCR output
+        editProblemViewController?.questionText = questionText
+        editProblemViewController!.delegate = self
+        
+        self.popup!.contentController = editProblemViewController
+        
+        // Show a view controller that allows user to edit OCR output
+        self.presentViewController(popup!, animated: true, completion: nil)
+    }
+    
+    func questionAnswered(correctAnswer: String) {
+        print("questionAnswered")
+    }
+    
+    func unknownError() {
+        print("unknownError")
+    }
+    
+    func invalidQuestionFormat() {
+        print("invalidQuestionFormat")
     }
 }
