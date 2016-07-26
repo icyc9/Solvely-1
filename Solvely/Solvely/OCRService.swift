@@ -6,6 +6,7 @@
 //  Copyright © 2016 Solvely. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import SwiftyJSON
 import havenondemand
@@ -63,7 +64,12 @@ class OCRService: HODClientDelegate {
         params["mode"] = "document_photo"
 //        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
         // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
-        delegate!.text("1) Who killed Abraham Lincoln?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams")
+        var text = "1) Who killed Abraham Lincoln?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
+        
+        // Correct OCR output
+        text = try! clean(text)
+   
+        delegate!.text(text)
     }
     
     func resizeImage(imageSize: CGSize, image: UIImage) -> NSData {
@@ -73,5 +79,22 @@ class OCRService: HODClientDelegate {
         let resizedImage = UIImagePNGRepresentation(newImage)
         UIGraphicsEndImageContext()
         return resizedImage!
+    }
+    
+    private func clean(var text: String) throws -> String {
+        // Remove leading and trailing whitespaces
+        text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        // Remove leading question number. Example: The "1)" in "1) question text"
+        let regex = try NSRegularExpression(pattern: "\\d*\\)", options: [])
+        let b = regex.matchesInString(text, options: [], range: NSRange(location: 0, length:  text.characters.count))[0].range
+        
+        // If the substring looking like a question number is at the beginning of the string, remove it. If not, it's probably not a question number so it can stay
+        if b.location == 0 {
+            let number = (text as NSString!).substringWithRange(b)
+            return text.stringByReplacingOccurrencesOfString(number, withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        }
+        
+        return text
     }
 }
