@@ -134,7 +134,7 @@ extension CameraViewController: SolvingViewControllerDelegate {
     func didFinishSolving() {
         self.popup?.dismissViewControllerAnimated(true, completion: nil)
         
-        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? QuestionPreviewViewController
+        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
         
         self.showPopupWithContent(solvingViewController!)
     }

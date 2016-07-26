@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pCH-ef-cOA">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -178,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="371" y="1195"/>
         </scene>
-        <!--Question Preview View Controller-->
+        <!--Results View Controller-->
         <scene sceneID="tA3-Vf-xlh">
             <objects>
-                <viewController storyboardIdentifier="solved" id="dOU-1A-FEq" customClass="QuestionPreviewViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="solved" id="dOU-1A-FEq" customClass="ResultsViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4E-QM-Vnq"/>
                         <viewControllerLayoutGuide type="bottom" id="hYy-cy-GTw"/>
@@ -277,7 +276,6 @@
         <!--Solving View Controller-->
         <scene sceneID="VXX-bO-erd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-mf-b3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="solving" id="Yv3-qX-e7F" customClass="SolvingViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ute-2f-tRA"/>
@@ -332,6 +330,7 @@
                         <outlet property="indicatorView" destination="ERe-EH-TS1" id="U2x-W8-bGS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-mf-b3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1360" y="1177"/>
         </scene>
