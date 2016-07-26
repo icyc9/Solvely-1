@@ -64,7 +64,7 @@ class OCRService: HODClientDelegate {
         params["mode"] = "document_photo"
 //        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
         // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
-        var text = "1) Who killed Abraham Lincoln?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
+        var text = "1) Who klled Abraha Lincoln in the theater durin a play?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
         
         // Correct OCR output
         text = try! clean(text)
@@ -87,14 +87,58 @@ class OCRService: HODClientDelegate {
         
         // Remove leading question number. Example: The "1)" in "1) question text"
         let regex = try NSRegularExpression(pattern: "\\d*\\)", options: [])
-        let b = regex.matchesInString(text, options: [], range: NSRange(location: 0, length:  text.characters.count))[0].range
+        let b = regex.matchesInString(text, options: [], range: NSRange(location: 0, length:  text.characters.count))
         
-        // If the substring looking like a question number is at the beginning of the string, remove it. If not, it's probably not a question number so it can stay
-        if b.location == 0 {
-            let number = (text as NSString!).substringWithRange(b)
-            return text.stringByReplacingOccurrencesOfString(number, withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        // Matches found for question number
+        if b.count > 0 {
+            let match = b[0]
+            // If the substring looking like a question number is at the beginning of the string, remove it. If not, it's probably not a question number so it can stay
+            if match.range.location == 0 {
+                let number = (text as NSString!).substringWithRange(match.range)
+                text = text.stringByReplacingOccurrencesOfString(number, withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            }
+        }
+        
+        text = removeSpecialCharsFromString(text)
+        text = autocorrect(text)
+        
+        print(text)
+        
+        return text
+    }
+    
+    private func autocorrect(var text: String) -> String {
+        let checker = UITextChecker()
+        
+        for word in text.wordList {
+            let misspelledRange = checker.rangeOfMisspelledWordInString(
+                word, range: NSRange(0..<word.utf16.count),
+                startingAt: 0, wrap: false, language: "en_US")
+            
+            // Auto correct word
+            if misspelledRange.location != NSNotFound,
+                let guesses = checker.guessesForWordRange(
+                    misspelledRange, inString: word, language: "en_US") as? [String] {
+                if guesses.first != nil {
+                    text = text.stringByReplacingOccurrencesOfString(word, withString: "(\(guesses.first!))")
+                }
+            }
         }
         
         return text
+    }
+    
+    private func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890),.!_?:%$\n".characters)
+        return String(text.characters.filter {okayChars.contains($0) })
+    }
+}
+
+extension String {
+    var wordList: [String] {
+        return componentsSeparatedByCharactersInSet(.punctuationCharacterSet())
+            .joinWithSeparator("")
+            .componentsSeparatedByString(" ")
     }
 }
