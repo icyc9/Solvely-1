@@ -61,7 +61,9 @@ class OCRService: HODClientDelegate {
         var params =  Dictionary<String,AnyObject>()
         params["file"] = filePath
         params["mode"] = "document_photo"
-        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
+//        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
+        // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
+        delegate!.text("1) Who killed Abraham Lincoln?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams")
     }
     
     func resizeImage(imageSize: CGSize, image: UIImage) -> NSData {
@@ -71,11 +73,5 @@ class OCRService: HODClientDelegate {
         let resizedImage = UIImagePNGRepresentation(newImage)
         UIGraphicsEndImageContext()
         return resizedImage!
-    }
-    
-    func havenOCR(imageData: String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.havenondemand.com/1/api/sync/ocrdocument/v1?apikey=\("1c028361-2a40-4eb0-8d6e-d74d6061d83d")")!)
-        request.HTTPMethod = "GET"
-        
     }
 }

@@ -94,6 +94,10 @@ class CameraViewController: UIViewController {
     }
     
     private func processImage(image: UIImage) {
+        let ocrProgressController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("reading_problem")
+        
+        self.showPopupWithContent(ocrProgressController)
+        
         // Take the cropped image and solve the problem in the image
         solveService.solve(image)
     }
