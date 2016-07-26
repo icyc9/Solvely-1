@@ -8,4 +8,8 @@ target 'Solvely' do
   # Pods for Solvely
   pod "CameraEngine"
   pod 'NVActivityIndicatorView'
+  pod 'TOCropViewController'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'havenondemand'
+  pod 'RxAlamofire'
 end

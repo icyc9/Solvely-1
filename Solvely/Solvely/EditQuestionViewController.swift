@@ -31,6 +31,10 @@ class EditQuestionViewController: UIViewController {
         self.logo.layer.masksToBounds = true
     }
     
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func solve(sender: AnyObject) {
         if delegate != nil {
             delegate?.userDidValidateQuestion()

@@ -12,20 +12,22 @@ class SolverViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     
+    var checkProblemController: EditQuestionViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let check = storyboard.instantiateViewControllerWithIdentifier("check") as! EditQuestionViewController
+        checkProblemController = storyboard.instantiateViewControllerWithIdentifier("check") as? EditQuestionViewController
         
-        check.delegate = self
+        checkProblemController!.delegate = self
         
         // Add question check page
-        self.addChildViewController(check)
-        self.containerView.frame = check.view.frame
-        self.containerView.addSubview(check.view)
+        self.addChildViewController(checkProblemController!)
+        self.containerView.frame = checkProblemController!.view.frame
+        self.containerView.addSubview(checkProblemController!.view)
         
-        check.didMoveToParentViewController(self)
+        checkProblemController!.didMoveToParentViewController(self)
     }
 }
 
@@ -35,9 +37,11 @@ extension SolverViewController: EditQuestionViewControllerDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let solving = storyboard.instantiateViewControllerWithIdentifier("solving")
         
+        solving.willMoveToParentViewController(nil)
+        checkProblemController!.view.removeFromSuperview()
+        
         // Add solving check page
         self.addChildViewController(solving)
-        self.containerView.frame = solving.view.frame
         self.containerView.addSubview(solving.view)
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
@@ -48,9 +52,7 @@ extension SolverViewController: EditQuestionViewControllerDelegate {
             // Add results page
             let answerViewController = storyboard.instantiateViewControllerWithIdentifier("solved")
             
-            self.addChildViewController(answerViewController)
-            self.containerView.frame = answerViewController.view.frame
-            self.containerView.addSubview(answerViewController.view)
+
         }
     }
 }
