@@ -12,6 +12,7 @@ import havenondemand
 
 protocol OCRServiceDelegate {
     func text(imageText: String)
+    func imageToTextError()
 }
 
 class OCRService: HODClientDelegate {
@@ -29,8 +30,6 @@ class OCRService: HODClientDelegate {
                 let i  = item as! OCRDocumentResponse.TextBlock
                 result += "" + i.text + "\n"
             }
-            
-            print(result)
             
             if delegate != nil {
                 delegate?.text(result)

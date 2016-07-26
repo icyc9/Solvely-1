@@ -35,27 +35,17 @@
                                     <action selector="toggleFlash:" destination="cKw-R9-089" eventType="touchUpInside" id="oeQ-6Q-W7u"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Od-OX-IFC">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="83a-zB-h1M"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="8Od-OX-IFC" firstAttribute="centerX" secondItem="nRO-dl-93d" secondAttribute="centerX" id="4X5-FE-Lfc"/>
-                            <constraint firstItem="8Od-OX-IFC" firstAttribute="top" secondItem="5bk-fL-aeO" secondAttribute="bottom" constant="216" id="RQf-3f-eix"/>
                             <constraint firstItem="ygT-Rh-GAs" firstAttribute="top" secondItem="5bk-fL-aeO" secondAttribute="bottom" constant="8" id="Udx-Q8-249"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ygT-Rh-GAs" secondAttribute="trailing" id="YCg-p6-8vL"/>
-                            <constraint firstItem="8Od-OX-IFC" firstAttribute="centerY" secondItem="NhW-vH-ciJ" secondAttribute="centerY" id="nsq-cj-1B8"/>
                             <constraint firstItem="aLV-Wa-5GG" firstAttribute="top" secondItem="nRO-dl-93d" secondAttribute="bottom" constant="20" id="omZ-Fq-oUr"/>
                             <constraint firstItem="nRO-dl-93d" firstAttribute="centerX" secondItem="NhW-vH-ciJ" secondAttribute="centerX" id="yCH-4V-v8m"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="previewImage" destination="8Od-OX-IFC" id="d7K-Em-TeU"/>
                         <outlet property="solveButton" destination="nRO-dl-93d" id="1Cd-6c-dAv"/>
                     </connections>
                 </viewController>
