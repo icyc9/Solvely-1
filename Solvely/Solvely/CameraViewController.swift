@@ -9,7 +9,6 @@
 import UIKit
 import CameraEngine
 import TOCropViewController
-import TesseractOCR
 
 class CameraViewController: UIViewController {
 

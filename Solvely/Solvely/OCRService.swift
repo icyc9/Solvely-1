@@ -10,14 +10,32 @@ import UIKit
 import SwiftyJSON
 import havenondemand
 
+protocol OCRServiceDelegate {
+    func text(imageText: String)
+}
+
 class OCRService: HODClientDelegate {
+    var delegate: OCRServiceDelegate?
     
     func requestCompletedWithJobID(response: String) {
-        print(response)
     }
     
-    func requestCompletedWithContent(response: String) {
-        print(response)
+    func requestCompletedWithContent(var response: String) {
+        let parser = HODResponseParser()
+        
+        if let res = parser.ParseOCRDocumentResponse(&response) {
+            var result = ""
+            for item in res.text_block {
+                let i  = item as! OCRDocumentResponse.TextBlock
+                result += "" + i.text + "\n"
+            }
+            
+            print(result)
+            
+            if delegate != nil {
+                delegate?.text(result)
+            }
+        }
     }
     
     func onErrorOccurred(errorMessage: String) {
@@ -56,67 +74,9 @@ class OCRService: HODClientDelegate {
         return resizedImage!
     }
     
-    func base64EncodeImage(image: UIImage) -> String {
-        var imagedata = UIImagePNGRepresentation(image)
-        
-        let oldSize: CGSize = image.size
-        let newSize: CGSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        imagedata = resizeImage(newSize, image: image)
-        
-        return imagedata!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
-    }
-    
     func havenOCR(imageData: String) {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.havenondemand.com/1/api/sync/ocrdocument/v1?apikey=\("1c028361-2a40-4eb0-8d6e-d74d6061d83d")")!)
         request.HTTPMethod = "GET"
         
     }
-    
-    func createRequest(imageData: String) {
-        // Create our request URL
-        let request = NSMutableURLRequest(
-            URL: NSURL(string: "https://vision.googleapis.com/v1/images:annotate?key=\("AIzaSyBYujLfKB2ZLsZI-cnCssdWkqkTpjOpJqk")")!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue(
-            NSBundle.mainBundle().bundleIdentifier ?? "",
-            forHTTPHeaderField: "X-Ios-Bundle-Identifier")
-        
-        // Build our API request
-        let jsonRequest: [String: AnyObject] = [
-            "requests": [
-                "image": [
-                    "content": imageData
-                ],
-                "features": [
-                    [
-                        "type": "TEXT_DETECTION",
-                        "maxResults": 1
-                    ]
-                ]
-            ]
-        ]
-        
-        // Serialize the JSON
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonRequest, options: [])
-        
-        // Run the request on a background thread
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            self.runRequestOnBackgroundThread(request)
-        });
-        
-    }
-    
-    func runRequestOnBackgroundThread(request: NSMutableURLRequest) {
-        
-        let session = NSURLSession.sharedSession()
-        
-        // run the request
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let json = JSON(data: data!)
-            print(json)
-        })
-        task.resume()
-    }
-    
 }
