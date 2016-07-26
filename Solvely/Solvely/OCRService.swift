@@ -87,14 +87,28 @@ class OCRService: HODClientDelegate {
         
         // Remove leading question number. Example: The "1)" in "1) question text"
         let regex = try NSRegularExpression(pattern: "\\d*\\)", options: [])
-        let b = regex.matchesInString(text, options: [], range: NSRange(location: 0, length:  text.characters.count))[0].range
+        let b = regex.matchesInString(text, options: [], range: NSRange(location: 0, length:  text.characters.count))
         
-        // If the substring looking like a question number is at the beginning of the string, remove it. If not, it's probably not a question number so it can stay
-        if b.location == 0 {
-            let number = (text as NSString!).substringWithRange(b)
-            return text.stringByReplacingOccurrencesOfString(number, withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        // Matches found for question number
+        if b.count > 0 {
+            let match = b[0]
+            // If the substring looking like a question number is at the beginning of the string, remove it. If not, it's probably not a question number so it can stay
+            if match.range.location == 0 {
+                let number = (text as NSString!).substringWithRange(match.range)
+                text = text.stringByReplacingOccurrencesOfString(number, withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            }
         }
         
+        text = removeSpecialCharsFromString(text)
+        
+        print(text)
+        
         return text
+    }
+    
+    private func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890),.!_?:%$\n".characters)
+        return String(text.characters.filter {okayChars.contains($0) })
     }
 }
