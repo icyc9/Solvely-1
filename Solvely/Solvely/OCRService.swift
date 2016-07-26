@@ -64,7 +64,7 @@ class OCRService: HODClientDelegate {
         params["mode"] = "document_photo"
 //        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
         // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
-        var text = "1) Who killed Abraham Lincoln?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
+        var text = "1) Who klled Abraha Lincoln in the theater durin a play?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
         
         // Correct OCR output
         text = try! clean(text)
@@ -100,8 +100,30 @@ class OCRService: HODClientDelegate {
         }
         
         text = removeSpecialCharsFromString(text)
+        text = autocorrect(text)
         
         print(text)
+        
+        return text
+    }
+    
+    private func autocorrect(var text: String) -> String {
+        let checker = UITextChecker()
+        
+        for word in text.wordList {
+            let misspelledRange = checker.rangeOfMisspelledWordInString(
+                word, range: NSRange(0..<word.utf16.count),
+                startingAt: 0, wrap: false, language: "en_US")
+            
+            // Auto correct word
+            if misspelledRange.location != NSNotFound,
+                let guesses = checker.guessesForWordRange(
+                    misspelledRange, inString: word, language: "en_US") as? [String] {
+                if guesses.first != nil {
+                    text = text.stringByReplacingOccurrencesOfString(word, withString: "(\(guesses.first!))")
+                }
+            }
+        }
         
         return text
     }
@@ -110,5 +132,13 @@ class OCRService: HODClientDelegate {
         let okayChars : Set<Character> =
             Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890),.!_?:%$\n".characters)
         return String(text.characters.filter {okayChars.contains($0) })
+    }
+}
+
+extension String {
+    var wordList: [String] {
+        return componentsSeparatedByCharactersInSet(.punctuationCharacterSet())
+            .joinWithSeparator("")
+            .componentsSeparatedByString(" ")
     }
 }
