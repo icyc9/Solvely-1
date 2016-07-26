@@ -1,0 +1,15 @@
+PODS:
+  - CameraEngine (0.9.2)
+  - NVActivityIndicatorView (2.7)
+
+DEPENDENCIES:
+  - CameraEngine
+  - NVActivityIndicatorView
+
+SPEC CHECKSUMS:
+  CameraEngine: 6c4c1ecaa1c8ac921b1ec5328e550f0e3501fa72
+  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
+
+PODFILE CHECKSUM: 0ad2a186dbcd22b8a5d58f1da436b6d406ad5fe4
+
+COCOAPODS: 1.0.0
