@@ -15,6 +15,7 @@ class CameraViewController: UIViewController {
     private var popup: PopupViewController?
     private var isFlashToggled = false
     private var solveService: SolveService = SolveService()
+    private var ocrText: String = ""
     
     @IBOutlet weak var solveButton: UIButton!
     
@@ -22,12 +23,7 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         
         self.solveService.delegate = self
-        
-        self.solveButton.layer.cornerRadius = 20
-        self.solveButton.layer.borderWidth = 4
-        self.solveButton.layer.borderColor = UIColor.whiteColor().CGColor
-        self.solveButton.layer.masksToBounds = true
-        
+
         self.cameraEngine.cameraFocus = .ContinuousAutoFocus
         self.cameraEngine.captureDevice
         self.cameraEngine.startSession()
@@ -74,15 +70,13 @@ class CameraViewController: UIViewController {
     }
     
     private func showPopupWithContent(content: UIViewController) {
-        self.popup?.dismissViewControllerAnimated(true, completion: nil)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
         
         self.popup!.contentController = content
         
-        self.presentViewController(popup!, animated: true, completion: nil)
+        self.presentViewController(self.popup!, animated: true, completion: nil)
     }
     
     private func crop(image: UIImage) {
@@ -99,21 +93,22 @@ class CameraViewController: UIViewController {
         
         self.showPopupWithContent(ocrProgressController)
         
-        // Take the cropped image and solve the problem in the image
-        solveService.solve(image)
+        // Get text from image
+        solveService.convertImageToText(image)
     }
 }
 
 extension CameraViewController: EditQuestionViewControllerDelegate {
     
     func userDidValidateQuestion() {
-        self.popup?.dismissViewControllerAnimated(true, completion: nil)
-        
-        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("loading") as? LoadingViewController
-        
-        solvingViewController?.loadingMessage = "Computing..."
-        
-        self.showPopupWithContent(solvingViewController!)
+        self.popup?.dismissViewControllerAnimated(true) { [weak self] in
+            let solvingViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("loading") as? LoadingViewController
+            
+            solvingViewController?.loadingMessage = "Computing..."
+            
+            self!.showPopupWithContent(solvingViewController!)
+            self!.solveService.solve(self!.ocrText)
+        }
     }
 }
 
@@ -132,6 +127,8 @@ extension CameraViewController: SolveServiceDelegate {
     
     func questionText(questionText: String) {
         print("questionText")
+        
+        self.ocrText = questionText
         
         self.popup?.dismissViewControllerAnimated(true) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -153,11 +150,11 @@ extension CameraViewController: SolveServiceDelegate {
     func questionAnswered(correctAnswer: String) {
         print("questionAnswered")
         
-        self.popup?.dismissViewControllerAnimated(true, completion: nil)
-        
-        let solvingViewController = storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
-        
-        self.showPopupWithContent(solvingViewController!)
+        self.popup?.dismissViewControllerAnimated(true) {[weak self] in
+            let solvedViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+            
+            self!.showPopupWithContent(solvedViewController!)
+        }
     }
     
     func unknownError() {

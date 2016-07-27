@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="80" id="jWD-eo-0wY"/>
                                     <constraint firstAttribute="width" constant="80" id="n2E-1Y-sbo"/>
                                 </constraints>
-                                <state key="normal" image="solvely"/>
+                                <state key="normal" backgroundImage="circle"/>
                                 <connections>
                                     <action selector="solve:" destination="cKw-R9-089" eventType="touchUpInside" id="oBi-FT-X0I"/>
                                 </connections>
@@ -215,7 +215,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When did Abe Lincoln die?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-ak-nE4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Who killed Abraham Lincoln in the theater during a play?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-ak-nE4">
                                 <rect key="frame" x="20" y="38" width="560" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -491,6 +491,7 @@
     </scenes>
     <resources>
         <image name="cancel" width="30" height="30"/>
+        <image name="circle" width="100" height="100"/>
         <image name="create" width="30" height="30"/>
         <image name="down" width="30" height="30"/>
         <image name="flash off" width="30" height="30"/>

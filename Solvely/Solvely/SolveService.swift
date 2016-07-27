@@ -20,7 +20,11 @@ class SolveService: OCRServiceDelegate {
     private var ocrService = OCRService()
     var delegate: SolveServiceDelegate?
     
-    func solve(image: UIImage) {
+    func solve(question: String) {
+        solveQuestion(question)
+    }
+    
+    func convertImageToText(image: UIImage) {
         ocrService.delegate = self
         ocrService.convertImageToText(image)
     }
@@ -31,33 +35,9 @@ class SolveService: OCRServiceDelegate {
     
     func text(imageText: String) {
         self.delegate!.questionText(imageText)
-        
-        solveQuestion(imageText)
     }
     
     private func solveQuestion(question: String) {
-        requestJSON(.GET, "http://192.168.1.11:5000/answer", parameters: ["question": question])
-            .doOnError({ error in
-                print(error)
-                self.delegate!.unknownError()
-            })
-            .subscribe(onNext: { (response, data) in
-                if response.statusCode == 200 {
-                    print(response)
-                
-                    if let json = data as? [String: AnyObject] {
-                        print(json)
-                    
-                        // todo: use actual json response
-                        self.delegate!.questionAnswered("A")
-                    }
-                }
-                else if response.statusCode == 400 {
-                    self.delegate!.invalidQuestionFormat()
-                }
-                else {
-                    self.delegate!.unknownError()
-                }
-            })
+        delegate?.questionAnswered("A")
     }
 }

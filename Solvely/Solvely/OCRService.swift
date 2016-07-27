@@ -64,7 +64,7 @@ class OCRService: HODClientDelegate {
         params["mode"] = "document_photo"
 //        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
         // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
-        var text = "1) Who klled Abraha Lincoln in the theater durin a play?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams"
+        var text = "1) Who killed Abraham Lincoln in the theater during a play?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams\nD)Karma Patel"
         
         // Correct OCR output
         text = try! clean(text)
