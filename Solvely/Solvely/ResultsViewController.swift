@@ -35,7 +35,7 @@ class ResultsViewController: UIViewController {
     
     @IBOutlet weak var questionTextView: UITextView!
     
-    private var answerChoices = ["A) India", "B) Pakistan", "C) Afghanistan", "D) Bolivia"]
+    private var answerChoices = ["A) John Wilkes Booth", "B) George Washington", "C) John Adams", "D) Karma Patel"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class ResultsViewController: UIViewController {
     }
     
     private func solve() {
-        let correctAnswer = "C) Afghanistan"
+        let correctAnswer = "A) John Wilkes Booth"
         
         for answer in answerChoices {
             let cell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerChoices.indexOf(answer)!, inSection: 0)) as! AnswerTableViewCell
