@@ -163,5 +163,16 @@ extension CameraViewController: SolveServiceDelegate {
     
     func invalidQuestionFormat() {
         print("invalidQuestionFormat")
+        self.popup?.dismissViewControllerAnimated(true) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+            
+            let messageViewController = storyboard.instantiateViewControllerWithIdentifier("bad_question_format") as? UIViewController
+            
+            self.popup!.contentController = messageViewController
+            
+            // Show a view controller that allows user to edit OCR output
+            self.presentViewController(self.popup!, animated: true, completion: nil)
+        }
     }
 }

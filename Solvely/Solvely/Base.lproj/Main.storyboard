@@ -167,6 +167,56 @@
             </objects>
             <point key="canvasLocation" x="371" y="1195"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fQ3-Ba-ZtA">
+            <objects>
+                <viewController storyboardIdentifier="bad_question_format" id="uga-lX-xMd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1AC-AH-Q9f"/>
+                        <viewControllerLayoutGuide type="bottom" id="dhT-sa-RJI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mmd-Re-zH8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solvely" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-73-rVR">
+                                <rect key="frame" x="270" y="28" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="hZs-If-JD0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORh-yJ-wB2">
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="q8w-0E-Rc5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't read your question!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OCT-cq-QE6">
+                                <rect key="frame" x="36" y="96" width="544" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="top" secondItem="f5A-73-rVR" secondAttribute="top" id="6vX-XV-s2x"/>
+                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" id="803-Xs-zv0"/>
+                            <constraint firstItem="OCT-cq-QE6" firstAttribute="trailing" secondItem="Mmd-Re-zH8" secondAttribute="trailingMargin" id="SST-RH-gfW"/>
+                            <constraint firstItem="OCT-cq-QE6" firstAttribute="top" secondItem="f5A-73-rVR" secondAttribute="bottom" constant="8" symbolic="YES" id="Snz-83-znO"/>
+                            <constraint firstItem="dhT-sa-RJI" firstAttribute="top" secondItem="OCT-cq-QE6" secondAttribute="bottom" constant="477" id="mx6-Jq-d18"/>
+                            <constraint firstItem="f5A-73-rVR" firstAttribute="centerX" secondItem="Mmd-Re-zH8" secondAttribute="centerX" id="neU-on-efW"/>
+                            <constraint firstItem="OCT-cq-QE6" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" constant="16" id="t9G-MH-Xyt"/>
+                            <constraint firstItem="OCT-cq-QE6" firstAttribute="top" secondItem="ORh-yJ-wB2" secondAttribute="bottom" constant="38" id="vjX-8g-WOf"/>
+                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="top" secondItem="1AC-AH-Q9f" secondAttribute="bottom" constant="8" symbolic="YES" id="xTE-IM-VgB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xi9-NH-iTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="1899"/>
+        </scene>
         <!--Results View Controller-->
         <scene sceneID="tA3-Vf-xlh">
             <objects>

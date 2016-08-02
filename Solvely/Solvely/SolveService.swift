@@ -34,7 +34,12 @@ class SolveService: OCRServiceDelegate {
     }
     
     func text(imageText: String) {
-        self.delegate!.questionText(imageText)
+        if imageText.isEmpty {
+            self.delegate!.invalidQuestionFormat()
+        }
+        else {
+            self.delegate!.questionText(imageText)
+        }
     }
     
     private func solveQuestion(question: String) {
