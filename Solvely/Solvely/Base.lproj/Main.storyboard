@@ -117,13 +117,6 @@
                                     <constraint firstAttribute="width" constant="60" id="qvb-U1-W8z"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-JQ-GCE">
-                                <rect key="frame" x="20" y="28" width="30" height="30"/>
-                                <state key="normal" image="cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="crZ-wI-Mst"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfP-rq-Kt7">
                                 <rect key="frame" x="20" y="536" width="560" height="56"/>
                                 <color key="backgroundColor" red="0.0078431377190000002" green="0.76470589639999997" blue="0.60392159219999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -135,6 +128,13 @@
                                 <connections>
                                     <action selector="solve:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="JSs-FR-d66"/>
                                     <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="nzQ-cT-r1t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-JQ-GCE">
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="crZ-wI-Mst"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="371" y="1195"/>
         </scene>
-        <!--View Controller-->
+        <!--Invalid Question View Controller-->
         <scene sceneID="fQ3-Ba-ZtA">
             <objects>
-                <viewController storyboardIdentifier="bad_question_format" id="uga-lX-xMd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bad_question_format" id="uga-lX-xMd" customClass="InvalidQuestionViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1AC-AH-Q9f"/>
                         <viewControllerLayoutGuide type="bottom" id="dhT-sa-RJI"/>
@@ -179,43 +179,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solvely" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-73-rVR">
-                                <rect key="frame" x="270" y="28" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="hZs-If-JD0"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORh-yJ-wB2">
-                                <rect key="frame" x="20" y="28" width="30" height="30"/>
-                                <state key="normal" image="cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="q8w-0E-Rc5"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't read your question!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OCT-cq-QE6">
-                                <rect key="frame" x="36" y="96" width="544" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I wasn't able to read your question!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iGE-VP-oIB">
+                                <rect key="frame" x="28" y="96" width="544" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TODO: Add pages about question format" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Plk-0N-n9T">
+                                <rect key="frame" x="20" y="131" width="560" height="397"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.4313725531" green="0.47450980539999998" blue="0.52549022440000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solvely" translatesAutoresizingMaskIntoConstraints="NO" id="znU-ct-bkC">
+                                <rect key="frame" x="270" y="28" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="LwD-xb-M3f"/>
+                                    <constraint firstAttribute="height" constant="60" id="hB4-Eu-Qxn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-gm-gJV">
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="loT-jz-G6B"/>
+                                    <action selector="goBack:" destination="uga-lX-xMd" eventType="touchUpInside" id="9VV-30-XF7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z2-RI-69l">
+                                <rect key="frame" x="20" y="536" width="560" height="56"/>
+                                <color key="backgroundColor" red="0.0078431377190000002" green="0.76470589639999997" blue="0.60392159219999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="16" maxX="8" maxY="16"/>
+                                <state key="normal" title="Got it!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="uga-lX-xMd" eventType="touchUpInside" id="E5A-pt-N7h"/>
+                                    <action selector="solve:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="K57-t0-04q"/>
+                                    <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="aHn-4S-QeQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="top" secondItem="f5A-73-rVR" secondAttribute="top" id="6vX-XV-s2x"/>
-                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" id="803-Xs-zv0"/>
-                            <constraint firstItem="OCT-cq-QE6" firstAttribute="trailing" secondItem="Mmd-Re-zH8" secondAttribute="trailingMargin" id="SST-RH-gfW"/>
-                            <constraint firstItem="OCT-cq-QE6" firstAttribute="top" secondItem="f5A-73-rVR" secondAttribute="bottom" constant="8" symbolic="YES" id="Snz-83-znO"/>
-                            <constraint firstItem="dhT-sa-RJI" firstAttribute="top" secondItem="OCT-cq-QE6" secondAttribute="bottom" constant="477" id="mx6-Jq-d18"/>
-                            <constraint firstItem="f5A-73-rVR" firstAttribute="centerX" secondItem="Mmd-Re-zH8" secondAttribute="centerX" id="neU-on-efW"/>
-                            <constraint firstItem="OCT-cq-QE6" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" constant="16" id="t9G-MH-Xyt"/>
-                            <constraint firstItem="OCT-cq-QE6" firstAttribute="top" secondItem="ORh-yJ-wB2" secondAttribute="bottom" constant="38" id="vjX-8g-WOf"/>
-                            <constraint firstItem="ORh-yJ-wB2" firstAttribute="top" secondItem="1AC-AH-Q9f" secondAttribute="bottom" constant="8" symbolic="YES" id="xTE-IM-VgB"/>
+                            <constraint firstItem="dhT-sa-RJI" firstAttribute="top" secondItem="1Z2-RI-69l" secondAttribute="bottom" constant="8" symbolic="YES" id="7In-00-UdX"/>
+                            <constraint firstItem="znU-ct-bkC" firstAttribute="centerX" secondItem="iGE-VP-oIB" secondAttribute="centerX" id="7m6-hz-JzQ"/>
+                            <constraint firstItem="ahX-gm-gJV" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" id="9se-Hz-MYw"/>
+                            <constraint firstItem="iGE-VP-oIB" firstAttribute="leading" secondItem="Mmd-Re-zH8" secondAttribute="leadingMargin" constant="8" id="Kkv-rP-kpM"/>
+                            <constraint firstItem="Plk-0N-n9T" firstAttribute="top" secondItem="iGE-VP-oIB" secondAttribute="bottom" constant="8" id="RGz-P9-8tD"/>
+                            <constraint firstItem="iGE-VP-oIB" firstAttribute="centerX" secondItem="Plk-0N-n9T" secondAttribute="centerX" id="SCK-4q-Mxc"/>
+                            <constraint firstItem="ahX-gm-gJV" firstAttribute="top" secondItem="znU-ct-bkC" secondAttribute="top" id="ZZM-bq-Jmg"/>
+                            <constraint firstItem="ahX-gm-gJV" firstAttribute="top" secondItem="1AC-AH-Q9f" secondAttribute="bottom" constant="8" symbolic="YES" id="b7I-AN-g2j"/>
+                            <constraint firstItem="iGE-VP-oIB" firstAttribute="top" secondItem="znU-ct-bkC" secondAttribute="bottom" constant="8" symbolic="YES" id="gK6-4Z-W23"/>
+                            <constraint firstItem="Plk-0N-n9T" firstAttribute="trailing" secondItem="1Z2-RI-69l" secondAttribute="trailing" id="jIG-c5-ZWv"/>
+                            <constraint firstItem="Plk-0N-n9T" firstAttribute="trailing" secondItem="Mmd-Re-zH8" secondAttribute="trailingMargin" id="k8J-4e-y3M"/>
+                            <constraint firstItem="Plk-0N-n9T" firstAttribute="leading" secondItem="1Z2-RI-69l" secondAttribute="leading" id="lVW-BY-JYt"/>
+                            <constraint firstItem="1Z2-RI-69l" firstAttribute="top" secondItem="Plk-0N-n9T" secondAttribute="bottom" constant="8" symbolic="YES" id="rck-fS-ccV"/>
+                            <constraint firstItem="ahX-gm-gJV" firstAttribute="leading" secondItem="Plk-0N-n9T" secondAttribute="leading" id="wLy-sR-cc6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logo" destination="znU-ct-bkC" id="GY0-Lx-a3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi9-NH-iTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="1899"/>
+            <point key="canvasLocation" x="10" y="1912"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="tA3-Vf-xlh">

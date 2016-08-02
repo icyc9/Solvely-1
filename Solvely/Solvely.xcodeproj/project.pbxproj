@@ -21,6 +21,7 @@
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
 		02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A558241D43207100D317EE /* LaunchScreen.storyboard */; };
 		02D25B481D46E83B00F9382E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D25B471D46E83B00F9382E /* ResultsViewController.swift */; };
+		02FAB4261D512F95009E4256 /* InvalidQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */; };
 		17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		02A558251D43207100D317EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A558271D43207100D317EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D25B471D46E83B00F9382E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidQuestionViewController.swift; sourceTree = "<group>"; };
 		07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.release.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.release.xcconfig"; sourceTree = "<group>"; };
 		A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solvely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				027C35851D457ACF00B7EA5A /* PopupViewController.swift */,
 				02D25B471D46E83B00F9382E /* ResultsViewController.swift */,
 				0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */,
+				02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02FAB4261D512F95009E4256 /* InvalidQuestionViewController.swift in Sources */,
 				027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */,
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,

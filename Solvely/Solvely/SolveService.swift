@@ -8,12 +8,19 @@
 
 import RxAlamofire
 import UIKit
+import RxSwift
 
 protocol SolveServiceDelegate {
     func questionText(questionText: String)
-    func questionAnswered(correctAnswer: String)
+    func questionAnswered(correctAnswer: SolveResult)
     func invalidQuestionFormat()
     func unknownError()
+}
+
+class SolveResult {
+    var answer: String!
+    var answerChoices: [String]!
+    var question: String!
 }
 
 class SolveService: OCRServiceDelegate {
@@ -21,7 +28,11 @@ class SolveService: OCRServiceDelegate {
     var delegate: SolveServiceDelegate?
     
     func solve(question: String) {
-        solveQuestion(question)
+        let r = SolveResult()
+        r.answer = "A) John Wilkes Booth"
+        r.answerChoices = ["A) John Wilkes Booth", "B) Rob", "C) Karma"]
+        r.question = "yo"
+        delegate?.questionAnswered(r)
     }
     
     func convertImageToText(image: UIImage) {
@@ -42,7 +53,22 @@ class SolveService: OCRServiceDelegate {
         }
     }
     
-    private func solveQuestion(question: String) {
-        delegate?.questionAnswered("A")
+    private func solveQuestion(question: String) -> Observable<SolveResult?> {
+        return requestJSON(.GET, "", headers: ["Content-Type": "application/json"], encoding: .JSON)
+            .observeOn(MainScheduler.instance)
+            .map({ (response, data) -> SolveResult? in
+                guard response.statusCode == 200 else {
+                    return nil
+                }
+                
+                if let json = data as? [String: AnyObject] {
+                    let result = SolveResult()
+                    result.answer = json["answer_letter"] as! String
+                    result.answerChoices = json["answer_choices"] as! [String]
+                    return result
+                }
+                
+                return nil
+            })
     }
 }

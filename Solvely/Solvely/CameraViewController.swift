@@ -147,11 +147,12 @@ extension CameraViewController: SolveServiceDelegate {
         }
     }
     
-    func questionAnswered(correctAnswer: String) {
+    func questionAnswered(answerData: SolveResult) {
         print("questionAnswered")
         
         self.popup?.dismissViewControllerAnimated(true) {[weak self] in
             let solvedViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+            solvedViewController!.answer = answerData
             
             self!.showPopupWithContent(solvedViewController!)
         }

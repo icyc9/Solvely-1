@@ -35,16 +35,19 @@ class ResultsViewController: UIViewController {
     
     @IBOutlet weak var questionTextView: UITextView!
     
-    private var answerChoices = ["A) John Wilkes Booth", "B) George Washington", "C) John Adams", "D) Karma Patel"]
+    var answer: SolveResult!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         answersTableView.delegate = self
         answersTableView.dataSource = self
         
         answersTableView.reloadData()
         
-        solve()
+        showResults()
+        
+        self.questionTextView.text = answer.question
         
         self.answersTableView.layer.cornerRadius = Radius.inputCornerRadius
         self.solveAnotherButton.layer.cornerRadius = Radius.buttonCornerRadius
@@ -59,20 +62,22 @@ class ResultsViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    private func solve() {
-        let correctAnswer = "A) John Wilkes Booth"
-        
-        for answer in answerChoices {
-            let cell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerChoices.indexOf(answer)!, inSection: 0)) as! AnswerTableViewCell
-            if answer == correctAnswer {
-                cell.selectAsAnswer()
+    private func showResults() {
+        if let answerData = answer {
+            let correctAnswer = answerData.answer
+            
+            for choice in answerData.answerChoices {
+                let cell = self.answersTableView.cellForRowAtIndexPath(NSIndexPath(forRow: answerData.answerChoices.indexOf(choice)!, inSection: 0)) as! AnswerTableViewCell
+                if choice == correctAnswer {
+                    cell.selectAsAnswer()
+                }
+                else {
+                    cell.selectAsIncorrect()
+                }
             }
-            else {
-                cell.selectAsIncorrect()
-            }
+            
+            self.solveAnotherButton.hidden = false
         }
-        
-        self.solveAnotherButton.hidden = false
     }
 }
 
@@ -83,12 +88,12 @@ extension ResultsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return answerChoices.count
+        return answer.answerChoices.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("answer_cell") as! AnswerTableViewCell
-        cell.answerChoiceLabel.text = answerChoices[indexPath.row] as String
+        cell.answerChoiceLabel.text = answer.answerChoices[indexPath.row] as String
         return cell
     }
 }
