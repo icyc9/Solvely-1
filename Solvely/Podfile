@@ -12,4 +12,5 @@ target 'Solvely' do
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'havenondemand'
   pod 'RxAlamofire'
+  
 end

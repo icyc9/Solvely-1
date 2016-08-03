@@ -101,13 +101,15 @@ class CameraViewController: UIViewController {
 extension CameraViewController: EditQuestionViewControllerDelegate {
     
     func userDidValidateQuestion() {
+        let editedQuestion = (self.popup?.contentController as! EditQuestionViewController).questionTextView.text!
+        
         self.popup?.dismissViewControllerAnimated(true) { [weak self] in
             let solvingViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("loading") as? LoadingViewController
             
             solvingViewController?.loadingMessage = "Computing..."
             
             self!.showPopupWithContent(solvingViewController!)
-            self!.solveService.solve(self!.ocrText)
+            self!.solveService.solve(editedQuestion)
         }
     }
 }
@@ -147,11 +149,12 @@ extension CameraViewController: SolveServiceDelegate {
         }
     }
     
-    func questionAnswered(correctAnswer: String) {
+    func questionAnswered(answerData: SolveResult) {
         print("questionAnswered")
         
         self.popup?.dismissViewControllerAnimated(true) {[weak self] in
             let solvedViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+            solvedViewController!.answer = answerData
             
             self!.showPopupWithContent(solvedViewController!)
         }
@@ -163,5 +166,16 @@ extension CameraViewController: SolveServiceDelegate {
     
     func invalidQuestionFormat() {
         print("invalidQuestionFormat")
+        self.popup?.dismissViewControllerAnimated(true) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+            
+            let messageViewController = storyboard.instantiateViewControllerWithIdentifier("bad_question_format") as? UIViewController
+            
+            self.popup!.contentController = messageViewController
+            
+            // Show a view controller that allows user to edit OCR output
+            self.presentViewController(self.popup!, animated: true, completion: nil)
+        }
     }
 }

@@ -62,14 +62,7 @@ class OCRService: HODClientDelegate {
         var params =  Dictionary<String,AnyObject>()
         params["file"] = filePath
         params["mode"] = "document_photo"
-//        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
-        // TEMPORARILY RETURNING HARDCODED DATA BECAUSE I AM TESTING ON A HOTSPOT
-        var text = "1) Who killed Abraham Lincoln in the theater during a play?\nA) John Wilkes Booth\nB) George Washington\nC)John Adams\nD)Karma Patel"
-        
-        // Correct OCR output
-        text = try! clean(text)
-   
-        delegate!.text(text)
+        client.PostRequest(&params, hodApp: "ocrdocument", requestMode: HODClient.REQ_MODE.SYNC)
     }
     
     func resizeImage(imageSize: CGSize, image: UIImage) -> NSData {
