@@ -24,6 +24,8 @@ class EditQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.questionTextView.delegate = self
+        self.questionTextView.returnKeyType = UIReturnKeyType.Done
         self.questionTextView.text = questionText
         self.questionTextView.layer.cornerRadius = Radius.inputCornerRadius
         self.solveButton.layer.cornerRadius = Radius.buttonCornerRadius
@@ -41,5 +43,17 @@ class EditQuestionViewController: UIViewController {
         if delegate != nil {
             delegate?.userDidValidateQuestion()
         }
+    }
+}
+
+extension EditQuestionViewController: UITextViewDelegate {
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        // Close keyboard on done button (alias for return key)
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

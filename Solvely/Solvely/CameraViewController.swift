@@ -101,13 +101,15 @@ class CameraViewController: UIViewController {
 extension CameraViewController: EditQuestionViewControllerDelegate {
     
     func userDidValidateQuestion() {
+        let editedQuestion = (self.popup?.contentController as! EditQuestionViewController).questionTextView.text!
+        
         self.popup?.dismissViewControllerAnimated(true) { [weak self] in
             let solvingViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("loading") as? LoadingViewController
             
             solvingViewController?.loadingMessage = "Computing..."
             
             self!.showPopupWithContent(solvingViewController!)
-            self!.solveService.solve(self!.ocrText)
+            self!.solveService.solve(editedQuestion)
         }
     }
 }
