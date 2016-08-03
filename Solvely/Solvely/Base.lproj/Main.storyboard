@@ -85,6 +85,88 @@
             </objects>
             <point key="canvasLocation" x="-748" y="1216"/>
         </scene>
+        <!--Unknown Server Error View Controller-->
+        <scene sceneID="N3R-e6-ZM5">
+            <objects>
+                <viewController storyboardIdentifier="unknown_error" id="UK9-Eq-XMX" customClass="UnknownServerErrorViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TDn-Ch-VQZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fju-y4-apX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qcn-we-U1I">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong, try asking me again..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Czv-ED-gU8">
+                                <rect key="frame" x="28" y="96" width="544" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TODO: Add graphic explaining an unknown error happened" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fmp-Vd-a8j">
+                                <rect key="frame" x="20" y="131" width="560" height="397"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.4313725531" green="0.47450980539999998" blue="0.52549022440000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solvely" translatesAutoresizingMaskIntoConstraints="NO" id="8vy-c1-QFd">
+                                <rect key="frame" x="270" y="28" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="qvm-Vn-Jbr"/>
+                                    <constraint firstAttribute="width" constant="60" id="s16-Dt-aOj"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGV-ul-Ioj">
+                                <rect key="frame" x="20" y="28" width="30" height="30"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="pIZ-YU-Qml"/>
+                                    <action selector="goBack:" destination="uga-lX-xMd" eventType="touchUpInside" id="CKN-JZ-cwW"/>
+                                    <action selector="goBack:" destination="UK9-Eq-XMX" eventType="touchUpInside" id="yQw-JO-jVM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eps-4s-OGp">
+                                <rect key="frame" x="20" y="536" width="560" height="56"/>
+                                <color key="backgroundColor" red="0.0078431377190000002" green="0.76470589639999997" blue="0.60392159219999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="16" maxX="8" maxY="16"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="uga-lX-xMd" eventType="touchUpInside" id="oXF-RG-RQa"/>
+                                    <action selector="solve:" destination="6N8-dR-Aeb" eventType="touchUpInside" id="67g-PT-oVc"/>
+                                    <action selector="solveAnother:" destination="dOU-1A-FEq" eventType="touchUpInside" id="Qsp-Ti-jYM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fmp-Vd-a8j" firstAttribute="trailing" secondItem="Eps-4s-OGp" secondAttribute="trailing" id="1DJ-DR-R2v"/>
+                            <constraint firstItem="fmp-Vd-a8j" firstAttribute="leading" secondItem="Eps-4s-OGp" secondAttribute="leading" id="Jjp-4w-qa9"/>
+                            <constraint firstItem="Fju-y4-apX" firstAttribute="top" secondItem="Eps-4s-OGp" secondAttribute="bottom" constant="8" symbolic="YES" id="MUJ-qo-anb"/>
+                            <constraint firstItem="LGV-ul-Ioj" firstAttribute="top" secondItem="TDn-Ch-VQZ" secondAttribute="bottom" constant="8" symbolic="YES" id="NXW-iX-4Go"/>
+                            <constraint firstItem="8vy-c1-QFd" firstAttribute="centerX" secondItem="Czv-ED-gU8" secondAttribute="centerX" id="aDu-gj-LDy"/>
+                            <constraint firstItem="fmp-Vd-a8j" firstAttribute="top" secondItem="Czv-ED-gU8" secondAttribute="bottom" constant="8" id="efi-yM-tzI"/>
+                            <constraint firstItem="LGV-ul-Ioj" firstAttribute="top" secondItem="8vy-c1-QFd" secondAttribute="top" id="j36-Ey-jCd"/>
+                            <constraint firstItem="Czv-ED-gU8" firstAttribute="leading" secondItem="Qcn-we-U1I" secondAttribute="leadingMargin" constant="8" id="lOL-eZ-36h"/>
+                            <constraint firstItem="LGV-ul-Ioj" firstAttribute="leading" secondItem="fmp-Vd-a8j" secondAttribute="leading" id="pC7-gJ-KEo"/>
+                            <constraint firstItem="Czv-ED-gU8" firstAttribute="top" secondItem="8vy-c1-QFd" secondAttribute="bottom" constant="8" symbolic="YES" id="s0A-Cs-wut"/>
+                            <constraint firstItem="Czv-ED-gU8" firstAttribute="centerX" secondItem="fmp-Vd-a8j" secondAttribute="centerX" id="sz2-Np-V0u"/>
+                            <constraint firstItem="fmp-Vd-a8j" firstAttribute="trailing" secondItem="Qcn-we-U1I" secondAttribute="trailingMargin" id="t0g-HQ-ZDw"/>
+                            <constraint firstItem="LGV-ul-Ioj" firstAttribute="leading" secondItem="Qcn-we-U1I" secondAttribute="leadingMargin" id="tfS-Dq-xJv"/>
+                            <constraint firstItem="Eps-4s-OGp" firstAttribute="top" secondItem="fmp-Vd-a8j" secondAttribute="bottom" constant="8" symbolic="YES" id="wOm-Ef-AmJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logo" destination="8vy-c1-QFd" id="1ij-J8-nEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5m-BM-aYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-755" y="1961"/>
+        </scene>
         <!--Edit Question View Controller-->
         <scene sceneID="rtj-nf-x4q">
             <objects>
@@ -103,7 +185,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When did Abe Lincoln die?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XDz-9m-9hJ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XDz-9m-9hJ">
                                 <rect key="frame" x="20" y="131" width="560" height="397"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.4313725531" green="0.47450980539999998" blue="0.52549022440000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -296,7 +378,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Who killed Abraham Lincoln in the theater during a play?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-ak-nE4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-ak-nE4">
                                 <rect key="frame" x="20" y="38" width="560" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
