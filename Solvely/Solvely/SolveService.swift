@@ -34,6 +34,7 @@ class SolveService: OCRServiceDelegate {
             .observeOn(MainScheduler.instance)
             .doOnError({ (error) in
                 print(error)
+                self.delegate?.unknownError()
             })
             .subscribe(onNext: { (response, data) in
                 print(response)

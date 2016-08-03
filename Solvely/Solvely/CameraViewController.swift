@@ -162,6 +162,14 @@ extension CameraViewController: SolveServiceDelegate {
     
     func unknownError() {
         print("unknownError")
+        self.popup?.dismissViewControllerAnimated(true) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.popup = storyboard.instantiateViewControllerWithIdentifier("popup") as? PopupViewController
+            
+            let messageViewController = storyboard.instantiateViewControllerWithIdentifier("unknown_error") as? UIViewController
+            self.popup!.contentController = messageViewController
+            self.presentViewController(self.popup!, animated: true, completion: nil)
+        }
     }
     
     func invalidQuestionFormat() {
