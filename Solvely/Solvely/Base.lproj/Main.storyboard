@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gFB-Tn-5rf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pCH-ef-cOA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -332,9 +332,56 @@
             <point key="canvasLocation" x="10" y="1912"/>
         </scene>
         <!--Results View Controller-->
+        <scene sceneID="Gvu-3W-gdO">
+            <objects>
+                <viewController storyboardIdentifier="results" id="cla-IP-a32" customClass="ResultsViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3F-3x-Ymb"/>
+                        <viewControllerLayoutGuide type="bottom" id="yDL-pR-6D0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZO0-yy-w69">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R6d-RK-hIW">
+                                <rect key="frame" x="234" y="28" width="133" height="29"/>
+                                <segments>
+                                    <segment title="Answer"/>
+                                    <segment title="Concept"/>
+                                </segments>
+                                <color key="tintColor" red="0.5215686559677124" green="0.68235296010971069" blue="0.97647058963775635" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="indexChanged:" destination="cla-IP-a32" eventType="valueChanged" id="l24-7z-jGz"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSz-oF-10J">
+                                <rect key="frame" x="20" y="64" width="560" height="516"/>
+                                <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DSz-oF-10J" firstAttribute="trailing" secondItem="ZO0-yy-w69" secondAttribute="trailingMargin" id="cTD-Wh-1Gr"/>
+                            <constraint firstItem="DSz-oF-10J" firstAttribute="top" secondItem="R6d-RK-hIW" secondAttribute="bottom" constant="8" symbolic="YES" id="gEv-ny-dHA"/>
+                            <constraint firstItem="DSz-oF-10J" firstAttribute="leading" secondItem="ZO0-yy-w69" secondAttribute="leadingMargin" id="gov-M3-kTe"/>
+                            <constraint firstAttribute="bottom" secondItem="DSz-oF-10J" secondAttribute="bottom" constant="20" symbolic="YES" id="l6n-ZP-bjc"/>
+                            <constraint firstItem="R6d-RK-hIW" firstAttribute="centerX" secondItem="DSz-oF-10J" secondAttribute="centerX" id="yRG-0P-tzl"/>
+                            <constraint firstItem="R6d-RK-hIW" firstAttribute="top" secondItem="T3F-3x-Ymb" secondAttribute="bottom" constant="8" symbolic="YES" id="ySl-og-dvu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="DSz-oF-10J" id="IJW-Yu-tpp"/>
+                        <outlet property="segmentControl" destination="R6d-RK-hIW" id="Zdm-J9-0O4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKk-sD-Lax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="759" y="1905"/>
+        </scene>
+        <!--Answer View Controller-->
         <scene sceneID="tA3-Vf-xlh">
             <objects>
-                <viewController storyboardIdentifier="solved" id="dOU-1A-FEq" customClass="ResultsViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="answer" id="dOU-1A-FEq" customClass="AnswerViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4E-QM-Vnq"/>
                         <viewControllerLayoutGuide type="bottom" id="hYy-cy-GTw"/>
@@ -425,7 +472,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFn-cw-nLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="1899"/>
+            <point key="canvasLocation" x="1467" y="1903"/>
+        </scene>
+        <!--Concept View Controller-->
+        <scene sceneID="s7D-mQ-PWC">
+            <objects>
+                <tableViewController storyboardIdentifier="concepts" id="LxZ-fF-Vds" customClass="ConceptViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MJP-Vc-JRV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="concept_table_view_cell" id="2cr-PM-8g8" customClass="ConceptCell" customModule="Solvely" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cr-PM-8g8" id="BDn-85-u6a">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcf-HR-8i4">
+                                            <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.16862745583057404" green="0.23921568691730499" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xcf-HR-8i4" firstAttribute="leading" secondItem="BDn-85-u6a" secondAttribute="leadingMargin" id="abg-VX-dtq"/>
+                                        <constraint firstItem="xcf-HR-8i4" firstAttribute="trailing" secondItem="BDn-85-u6a" secondAttribute="trailingMargin" id="f23-Qx-Pkm"/>
+                                        <constraint firstItem="xcf-HR-8i4" firstAttribute="centerY" secondItem="BDn-85-u6a" secondAttribute="centerY" id="jfL-Xo-61P"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="conceptLabel" destination="xcf-HR-8i4" id="2Pf-6P-G9o"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LxZ-fF-Vds" id="53d-TX-Se4"/>
+                            <outlet property="delegate" destination="LxZ-fF-Vds" id="dvh-o1-2QY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PI7-9Y-ASf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="2647"/>
         </scene>
         <!--Background Info View Controller-->
         <scene sceneID="dgS-eB-6eK">

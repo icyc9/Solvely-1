@@ -33,7 +33,6 @@ class BackgroundInfoViewController: UIViewController {
         self.logo.layer.borderColor = UIColor.whiteColor().CGColor
         self.logo.layer.masksToBounds = true
         
-        topic = "Abraham Lincoln"
         let underlineAttribute = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
         
         let underlineAttributedString = NSAttributedString(string: topic, attributes: underlineAttribute)

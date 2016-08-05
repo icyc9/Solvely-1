@@ -9,18 +9,36 @@
 import RxAlamofire
 import UIKit
 import RxSwift
+import Gloss
 
 protocol SolveServiceDelegate {
     func questionText(questionText: String)
     func questionAnswered(correctAnswer: SolveResult)
     func invalidQuestionFormat()
     func unknownError()
+    func unableToAnswer()
+}
+
+class Answer {
+    var answerText: String?
+    var backgroundInfo: [BackgroundInfo]?
+    var correctAnswer: Bool?
+    var answerIdentifier: String?
+}
+
+class BackgroundInfo {
+    var sentenceChunk: String?
+    var backgroundInfoAboutChunk: String?
+}
+
+class Question {
+    var questionText: String!
+    var backgroundInfo: [BackgroundInfo]?
 }
 
 class SolveResult {
-    var answer: String!
-    var answerChoices: [String]!
-    var question: String!
+    var answerChoices: [Answer]?
+    var question: Question?
 }
 
 class SolveService: OCRServiceDelegate {
@@ -30,6 +48,7 @@ class SolveService: OCRServiceDelegate {
     func solve(question: String) {
         let q = question.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         print(q)
+        
         requestJSON(.GET, "http://192.168.1.248:8080/answer?question=\(q)", headers: ["Content-Type": "application/json"], encoding: .JSON)
             .observeOn(MainScheduler.instance)
             .doOnError({ (error) in
@@ -37,32 +56,61 @@ class SolveService: OCRServiceDelegate {
                 self.delegate?.unknownError()
             })
             .subscribe(onNext: { (response, data) in
-                print(response)
-                print(data)
                 
                 guard response.statusCode == 200 else {
                     self.delegate?.unknownError()
                     return
                 }
                 
-                if let json = data as? [String: AnyObject] {
+                if let data = data as? [String: AnyObject] {
                     let result = SolveResult()
-                    let prediction = (json["predictions"] as! [[String: AnyObject]])[0]
-                    var parsed = "\(prediction["answer_choice"] as! String)) \(prediction["answer_text"] as! String)"
+                
+                    var answers: [Answer] = []
                     
-                    if parsed.isEmpty {
-                        parsed = "I am not yet smart enough to answer that."
-                    }
-                    
-                    result.question = json["question"] as! String
-                    result.answer = parsed
-                    
-                    var answers: [String] = []
-                    for ans in json["answer_choices"] as! [[String: AnyObject]] {
-                        answers.append("\(ans["answer_choice"] as! String)) \(ans["answer_text"] as! String)")
+                    for ans in (data["answers"] as! [[String: AnyObject]]) {
+                        var answer = Answer()
+                        
+                        var backgroundInfo: [BackgroundInfo] = []
+                        
+                        for info in ans["background_info"] as! [[String: AnyObject]] {
+                            let b = BackgroundInfo()
+                            b.sentenceChunk = info["sentence_chunk"] as? String
+                            b.backgroundInfoAboutChunk = info["background_info_about_chunk"] as? String
+                            print(info)
+                            backgroundInfo.append(b)
+                        }
+                        
+                        answer.backgroundInfo = backgroundInfo
+                        answer.answerText = ans["answer_text"] as? String
+                        answer.correctAnswer = ans["correct_answer"] as? Bool
+                        answer.answerIdentifier = ans["answer_choice"] as? String
+                        
+                        answers.append(answer)
                     }
                     
                     result.answerChoices = answers
+                    
+                    let question = data["question"] as! [String: AnyObject]
+                    
+                    var q = Question()
+                    q.questionText = question["text"] as! String
+                    
+                    let bginfo = question["background_info"] as! [[String: AnyObject]]
+                    var backgroundInfo: [BackgroundInfo] = []
+                    
+                    for info in bginfo {
+                        var b = BackgroundInfo()
+                        b.backgroundInfoAboutChunk = info["background_info_about_chunk"] as! String
+                        b.sentenceChunk = info["sentence_chunk"] as! String
+                        
+                        backgroundInfo.append(b)
+                    }
+                    
+                    q.backgroundInfo = backgroundInfo
+                    
+                    result.question = q
+                    
+                    print(result)
                     self.delegate?.questionAnswered(result)
                 }
             })

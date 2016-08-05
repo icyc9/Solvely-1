@@ -153,7 +153,7 @@ extension CameraViewController: SolveServiceDelegate {
         print("questionAnswered")
         
         self.popup?.dismissViewControllerAnimated(true) {[weak self] in
-            let solvedViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("solved") as? ResultsViewController
+            let solvedViewController = self!.storyboard!.instantiateViewControllerWithIdentifier("results") as? ResultsViewController
             solvedViewController!.answer = answerData
             
             self!.showPopupWithContent(solvedViewController!)
@@ -170,6 +170,10 @@ extension CameraViewController: SolveServiceDelegate {
             self.popup!.contentController = messageViewController
             self.presentViewController(self.popup!, animated: true, completion: nil)
         }
+    }
+    
+    func unableToAnswer() {
+        // todo: show unable to answer view controller
     }
     
     func invalidQuestionFormat() {
