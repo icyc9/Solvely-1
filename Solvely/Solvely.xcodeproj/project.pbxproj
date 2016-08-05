@@ -17,6 +17,7 @@
 		02878B151D43499B00935EBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02878B141D43499B00935EBA /* Constants.swift */; };
 		0298A3CE1D470FAE0049E2E2 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */; };
 		029F0CCF1D523C7E0079E17E /* UnknownServerErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F0CCE1D523C7E0079E17E /* UnknownServerErrorViewController.swift */; };
+		029F0CD11D543BF70079E17E /* BackgroundInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F0CD01D543BF70079E17E /* BackgroundInfoViewController.swift */; };
 		02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581B1D43207100D317EE /* AppDelegate.swift */; };
 		02A5581E1D43207100D317EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581D1D43207100D317EE /* ViewController.swift */; };
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		029F0CCE1D523C7E0079E17E /* UnknownServerErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownServerErrorViewController.swift; sourceTree = "<group>"; };
+		029F0CD01D543BF70079E17E /* BackgroundInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundInfoViewController.swift; sourceTree = "<group>"; };
 		02A558181D43207100D317EE /* Solvely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solvely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A5581B1D43207100D317EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A5581D1D43207100D317EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */,
 				02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */,
 				029F0CCE1D523C7E0079E17E /* UnknownServerErrorViewController.swift */,
+				029F0CD01D543BF70079E17E /* BackgroundInfoViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
 				027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */,
 				02D25B481D46E83B00F9382E /* ResultsViewController.swift in Sources */,
+				029F0CD11D543BF70079E17E /* BackgroundInfoViewController.swift in Sources */,
 				0298A3CE1D470FAE0049E2E2 /* LoadingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
