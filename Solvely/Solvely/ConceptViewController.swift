@@ -18,6 +18,7 @@ class ConceptViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.layer.cornerRadius = Radius.inputCornerRadius
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

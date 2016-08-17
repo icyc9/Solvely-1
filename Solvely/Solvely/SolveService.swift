@@ -63,6 +63,7 @@ class SolveService: OCRServiceDelegate {
                 }
                 
                 if let data = data as? [String: AnyObject] {
+                    print(data)
                     let result = SolveResult()
                 
                     var answers: [Answer] = []
@@ -100,8 +101,8 @@ class SolveService: OCRServiceDelegate {
                     
                     for info in bginfo {
                         var b = BackgroundInfo()
-                        b.backgroundInfoAboutChunk = info["background_info_about_chunk"] as! String
-                        b.sentenceChunk = info["sentence_chunk"] as! String
+                        b.backgroundInfoAboutChunk = info["background_info_about_chunk"] as? String
+                        b.sentenceChunk = info["sentence_chunk"] as? String
                         
                         backgroundInfo.append(b)
                     }
