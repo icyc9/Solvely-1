@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RxO-6c-4As" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-748" y="1216"/>
+            <point key="canvasLocation" x="-765" y="1220"/>
         </scene>
         <!--Unknown Server Error View Controller-->
         <scene sceneID="N3R-e6-ZM5">

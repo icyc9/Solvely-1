@@ -15,6 +15,7 @@
 		027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35851D457ACF00B7EA5A /* PopupViewController.swift */; };
 		027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35A41D45C68400B7EA5A /* OCRService.swift */; };
 		027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35AA1D45E07300B7EA5A /* SolveService.swift */; };
+		02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02814E4F1D640E9C00C640DB /* Welcome.storyboard */; };
 		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
 		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		02878B151D43499B00935EBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02878B141D43499B00935EBA /* Constants.swift */; };
@@ -51,6 +52,7 @@
 		027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		027C35A41D45C68400B7EA5A /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
 		027C35AA1D45E07300B7EA5A /* SolveService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolveService.swift; sourceTree = "<group>"; };
+		02814E4F1D640E9C00C640DB /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				02A5581F1D43207100D317EE /* Main.storyboard */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
+				02814E4F1D640E9C00C640DB /* Welcome.storyboard */,
 			);
 			name = storyboards;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */,
+				02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */,
 				02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */,
 				02A558211D43207100D317EE /* Main.storyboard in Resources */,
 			);
