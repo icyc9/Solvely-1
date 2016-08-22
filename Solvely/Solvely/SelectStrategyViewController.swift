@@ -13,7 +13,8 @@ class SelectStrategyViewController: UIViewController, UIImagePickerControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named: "background")!)
+        self.navigationController?.navigationBarHidden = true
+        self.view.useCheckeredSolvelyBackground()
     }
     
     @IBAction func cancel(sender: UIButton) {

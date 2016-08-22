@@ -10,6 +10,10 @@ import Foundation
 
 extension UIView {
     
+    func useCheckeredSolvelyBackground() {
+        self.backgroundColor = UIColor.init(patternImage: UIImage(named: "background")!)
+    }
+    
     func useRoundedCorners() {
         self.layer.cornerRadius = Radius.inputCornerRadius
     }
