@@ -61,7 +61,7 @@ class SelectMethodViewController: UICollectionViewController {
         
         let bounds = UIScreen.mainScreen().bounds
         
-        cell.frame = CGRectMake(cell.frame.origin.x + (bounds.width * 0.8), cell.frame.origin.y, bounds.width * 0.8, cell.frame.size.height)
+        cell.frame = CGRectMake(cell.frame.origin.x , cell.frame.origin.y, bounds.width * 0.8, cell.frame.size.height)
         
         let type = options[indexPath.row]
         
