@@ -23,7 +23,7 @@ class SelectStrategyViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func takePicture(sender: UIButton) {
         let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = .Camera
         imagePicker.delegate = self
         self.presentViewController(imagePicker, animated: true, completion: nil)
