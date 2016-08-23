@@ -10,6 +10,7 @@
 		021B9A181D54E40800827266 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B9A171D54E40800827266 /* AnswerViewController.swift */; };
 		021B9A1A1D54E4DF00827266 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B9A191D54E4DF00827266 /* ResultsViewController.swift */; };
 		025EE4E41D6AADCF008C509B /* EnterQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */; };
+		025EE4E71D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */; };
 		026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D339B1D54E77600DECCAD /* ConceptViewController.swift */; };
 		027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
@@ -54,6 +55,7 @@
 		021B9A171D54E40800827266 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		021B9A191D54E4DF00827266 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterQuestionViewController.swift; sourceTree = "<group>"; };
+		025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceAnswerViewController.swift; sourceTree = "<group>"; };
 		026D339B1D54E77600DECCAD /* ConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConceptViewController.swift; sourceTree = "<group>"; };
 		027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				02814E5D1D694C7400C640DB /* SelectStrategyViewController.swift */,
 				02C53F081D695BF400244410 /* MethodViewController.swift */,
 				025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */,
+				025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
 				027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */,
 				027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */,
+				025EE4E71D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift in Sources */,
 				02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */,
 				025EE4E41D6AADCF008C509B /* EnterQuestionViewController.swift in Sources */,
 				021B9A1A1D54E4DF00827266 /* ResultsViewController.swift in Sources */,

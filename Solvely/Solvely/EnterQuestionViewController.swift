@@ -14,14 +14,14 @@ class EnterQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
-        
-        self.navigationController!.navigationBar.translucent = true
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.setNavigationBarHidden(false, animated:true)
-        
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+//        
+//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
+//        
+//        self.navigationController!.navigationBar.translucent = true
+//        self.navigationController!.navigationBar.shadowImage = UIImage()
+//        self.navigationController!.setNavigationBarHidden(false, animated:true)
+//        
         self.view.useCheckeredSolvelyBackground()
         
         questionTextView.useRoundedCorners()

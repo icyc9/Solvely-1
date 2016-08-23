@@ -13,7 +13,7 @@ class SelectStrategyViewController: UIViewController, UIImagePickerControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
+        //self.navigationController?.navigationBarHidden = true
         self.view.useCheckeredSolvelyBackground()
     }
     
