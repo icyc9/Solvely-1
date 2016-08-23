@@ -14,4 +14,6 @@ target 'Solvely' do
   pod 'RxAlamofire'
   pod 'Gloss', '~> 0.7'
   pod 'TTTAttributedLabel'
+  pod 'BubbleTransition', '~> 1.0.0'
+  pod 'TOCropViewController'
 end

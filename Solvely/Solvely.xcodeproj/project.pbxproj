@@ -9,12 +9,20 @@
 /* Begin PBXBuildFile section */
 		021B9A181D54E40800827266 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B9A171D54E40800827266 /* AnswerViewController.swift */; };
 		021B9A1A1D54E4DF00827266 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B9A191D54E4DF00827266 /* ResultsViewController.swift */; };
+		025EE4E41D6AADCF008C509B /* EnterQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */; };
 		026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D339B1D54E77600DECCAD /* ConceptViewController.swift */; };
 		027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
 		027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35851D457ACF00B7EA5A /* PopupViewController.swift */; };
 		027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35A41D45C68400B7EA5A /* OCRService.swift */; };
 		027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35AA1D45E07300B7EA5A /* SolveService.swift */; };
+		02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02814E4F1D640E9C00C640DB /* Welcome.storyboard */; };
+		02814E541D68F2A900C640DB /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02814E531D68F2A900C640DB /* Landing.storyboard */; };
+		02814E561D68F40000C640DB /* Solve.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02814E551D68F40000C640DB /* Solve.storyboard */; };
+		02814E581D69336700C640DB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02814E571D69336700C640DB /* HomeViewController.swift */; };
+		02814E5A1D6933FA00C640DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02814E591D6933FA00C640DB /* UIView.swift */; };
+		02814E5C1D69370200C640DB /* SelectMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02814E5B1D69370200C640DB /* SelectMethodViewController.swift */; };
+		02814E5E1D694C7400C640DB /* SelectStrategyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02814E5D1D694C7400C640DB /* SelectStrategyViewController.swift */; };
 		028565851D43341100FC36E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028565841D43341100FC36E2 /* CameraViewController.swift */; };
 		028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A558221D43207100D317EE /* Assets.xcassets */; };
 		02878B151D43499B00935EBA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02878B141D43499B00935EBA /* Constants.swift */; };
@@ -25,6 +33,7 @@
 		02A5581E1D43207100D317EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5581D1D43207100D317EE /* ViewController.swift */; };
 		02A558211D43207100D317EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5581F1D43207100D317EE /* Main.storyboard */; };
 		02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A558241D43207100D317EE /* LaunchScreen.storyboard */; };
+		02C53F091D695BF400244410 /* MethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C53F081D695BF400244410 /* MethodViewController.swift */; };
 		02FAB4261D512F95009E4256 /* InvalidQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */; };
 		17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +53,7 @@
 /* Begin PBXFileReference section */
 		021B9A171D54E40800827266 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		021B9A191D54E4DF00827266 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterQuestionViewController.swift; sourceTree = "<group>"; };
 		026D339B1D54E77600DECCAD /* ConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConceptViewController.swift; sourceTree = "<group>"; };
 		027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +61,13 @@
 		027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		027C35A41D45C68400B7EA5A /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
 		027C35AA1D45E07300B7EA5A /* SolveService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolveService.swift; sourceTree = "<group>"; };
+		02814E4F1D640E9C00C640DB /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		02814E531D68F2A900C640DB /* Landing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Landing.storyboard; sourceTree = "<group>"; };
+		02814E551D68F40000C640DB /* Solve.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Solve.storyboard; sourceTree = "<group>"; };
+		02814E571D69336700C640DB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		02814E591D6933FA00C640DB /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		02814E5B1D69370200C640DB /* SelectMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMethodViewController.swift; sourceTree = "<group>"; };
+		02814E5D1D694C7400C640DB /* SelectStrategyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStrategyViewController.swift; sourceTree = "<group>"; };
 		028565841D43341100FC36E2 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		02878B141D43499B00935EBA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0298A3CD1D470FAE0049E2E2 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +80,7 @@
 		02A558221D43207100D317EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A558251D43207100D317EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A558271D43207100D317EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02C53F081D695BF400244410 /* MethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodViewController.swift; sourceTree = "<group>"; };
 		02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidQuestionViewController.swift; sourceTree = "<group>"; };
 		07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.release.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.release.xcconfig"; sourceTree = "<group>"; };
 		A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solvely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +123,11 @@
 				021B9A171D54E40800827266 /* AnswerViewController.swift */,
 				021B9A191D54E4DF00827266 /* ResultsViewController.swift */,
 				026D339B1D54E77600DECCAD /* ConceptViewController.swift */,
+				02814E571D69336700C640DB /* HomeViewController.swift */,
+				02814E5B1D69370200C640DB /* SelectMethodViewController.swift */,
+				02814E5D1D694C7400C640DB /* SelectStrategyViewController.swift */,
+				02C53F081D695BF400244410 /* MethodViewController.swift */,
+				025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -138,6 +161,7 @@
 				02A558221D43207100D317EE /* Assets.xcassets */,
 				02A558271D43207100D317EE /* Info.plist */,
 				027C35A01D45BD7F00B7EA5A /* Solvely-Bridging-Header.h */,
+				02814E591D6933FA00C640DB /* UIView.swift */,
 			);
 			path = Solvely;
 			sourceTree = "<group>";
@@ -147,6 +171,9 @@
 			children = (
 				02A5581F1D43207100D317EE /* Main.storyboard */,
 				02A558241D43207100D317EE /* LaunchScreen.storyboard */,
+				02814E4F1D640E9C00C640DB /* Welcome.storyboard */,
+				02814E531D68F2A900C640DB /* Landing.storyboard */,
+				02814E551D68F40000C640DB /* Solve.storyboard */,
 			);
 			name = storyboards;
 			sourceTree = "<group>";
@@ -230,7 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02814E561D68F40000C640DB /* Solve.storyboard in Resources */,
 				028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */,
+				02814E541D68F2A900C640DB /* Landing.storyboard in Resources */,
+				02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */,
 				02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */,
 				02A558211D43207100D317EE /* Main.storyboard in Resources */,
 			);
@@ -294,18 +324,24 @@
 				02FAB4261D512F95009E4256 /* InvalidQuestionViewController.swift in Sources */,
 				026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */,
 				027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */,
+				02814E581D69336700C640DB /* HomeViewController.swift in Sources */,
 				029F0CCF1D523C7E0079E17E /* UnknownServerErrorViewController.swift in Sources */,
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
+				02C53F091D695BF400244410 /* MethodViewController.swift in Sources */,
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
 				027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */,
 				027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */,
 				02A5581C1D43207100D317EE /* AppDelegate.swift in Sources */,
+				025EE4E41D6AADCF008C509B /* EnterQuestionViewController.swift in Sources */,
 				021B9A1A1D54E4DF00827266 /* ResultsViewController.swift in Sources */,
 				021B9A181D54E40800827266 /* AnswerViewController.swift in Sources */,
 				027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */,
 				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
+				02814E5C1D69370200C640DB /* SelectMethodViewController.swift in Sources */,
+				02814E5E1D694C7400C640DB /* SelectStrategyViewController.swift in Sources */,
 				027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */,
 				029F0CD11D543BF70079E17E /* BackgroundInfoViewController.swift in Sources */,
+				02814E5A1D6933FA00C640DB /* UIView.swift in Sources */,
 				0298A3CE1D470FAE0049E2E2 /* LoadingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
