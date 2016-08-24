@@ -11,8 +11,16 @@ import TOCropViewController
 
 class SelectStrategyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var takePictureButton: UIButton!
+    @IBOutlet weak var typeQuestionButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        takePictureButton.useRoundedCorners()
+        typeQuestionButton.useRoundedCorners()
+        cancelButton.useRoundedCorners()
+        
         //self.navigationController?.navigationBarHidden = true
         self.view.useCheckeredSolvelyBackground()
     }
