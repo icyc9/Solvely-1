@@ -11,6 +11,10 @@
 		021B9A1A1D54E4DF00827266 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B9A191D54E4DF00827266 /* ResultsViewController.swift */; };
 		025EE4E41D6AADCF008C509B /* EnterQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */; };
 		025EE4E71D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */; };
+		025EE4EA1D6D5AC0008C509B /* TutorialSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4E91D6D5AC0008C509B /* TutorialSlideView.swift */; };
+		025EE4EC1D6D5B09008C509B /* TutorialSlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 025EE4EB1D6D5B09008C509B /* TutorialSlideView.xib */; };
+		025EE4EE1D6D5F2D008C509B /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4ED1D6D5F2D008C509B /* TutorialViewController.swift */; };
+		025EE4F01D6D653E008C509B /* TutorialSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4EF1D6D653E008C509B /* TutorialSlideViewController.swift */; };
 		026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D339B1D54E77600DECCAD /* ConceptViewController.swift */; };
 		027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
@@ -56,6 +60,10 @@
 		021B9A191D54E4DF00827266 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterQuestionViewController.swift; sourceTree = "<group>"; };
 		025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceAnswerViewController.swift; sourceTree = "<group>"; };
+		025EE4E91D6D5AC0008C509B /* TutorialSlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialSlideView.swift; sourceTree = "<group>"; };
+		025EE4EB1D6D5B09008C509B /* TutorialSlideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialSlideView.xib; sourceTree = "<group>"; };
+		025EE4ED1D6D5F2D008C509B /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		025EE4EF1D6D653E008C509B /* TutorialSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialSlideViewController.swift; sourceTree = "<group>"; };
 		026D339B1D54E77600DECCAD /* ConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConceptViewController.swift; sourceTree = "<group>"; };
 		027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		025EE4E81D6D5AAF008C509B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				025EE4E91D6D5AC0008C509B /* TutorialSlideView.swift */,
+				025EE4EB1D6D5B09008C509B /* TutorialSlideView.xib */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		027C35A31D45C67000B7EA5A /* services */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +148,8 @@
 				02C53F081D695BF400244410 /* MethodViewController.swift */,
 				025EE4E31D6AADCF008C509B /* EnterQuestionViewController.swift */,
 				025EE4E61D6C3E0C008C509B /* MultipleChoiceAnswerViewController.swift */,
+				025EE4ED1D6D5F2D008C509B /* TutorialViewController.swift */,
+				025EE4EF1D6D653E008C509B /* TutorialSlideViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -156,6 +175,7 @@
 		02A5581A1D43207100D317EE /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
+				025EE4E81D6D5AAF008C509B /* views */,
 				02D25B491D46E87900F9382E /* storyboards */,
 				027C35A31D45C67000B7EA5A /* services */,
 				02878B131D43498D00935EBA /* controllers */,
@@ -263,6 +283,7 @@
 				02814E561D68F40000C640DB /* Solve.storyboard in Resources */,
 				028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */,
 				02814E541D68F2A900C640DB /* Landing.storyboard in Resources */,
+				025EE4EC1D6D5B09008C509B /* TutorialSlideView.xib in Resources */,
 				02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */,
 				02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */,
 				02A558211D43207100D317EE /* Main.storyboard in Resources */,
@@ -328,6 +349,7 @@
 				026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */,
 				027C35A51D45C68400B7EA5A /* OCRService.swift in Sources */,
 				02814E581D69336700C640DB /* HomeViewController.swift in Sources */,
+				025EE4F01D6D653E008C509B /* TutorialSlideViewController.swift in Sources */,
 				029F0CCF1D523C7E0079E17E /* UnknownServerErrorViewController.swift in Sources */,
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
 				02C53F091D695BF400244410 /* MethodViewController.swift in Sources */,
@@ -341,7 +363,9 @@
 				021B9A181D54E40800827266 /* AnswerViewController.swift in Sources */,
 				027C35861D457ACF00B7EA5A /* PopupViewController.swift in Sources */,
 				028565851D43341100FC36E2 /* CameraViewController.swift in Sources */,
+				025EE4EE1D6D5F2D008C509B /* TutorialViewController.swift in Sources */,
 				02814E5C1D69370200C640DB /* SelectMethodViewController.swift in Sources */,
+				025EE4EA1D6D5AC0008C509B /* TutorialSlideView.swift in Sources */,
 				02814E5E1D694C7400C640DB /* SelectStrategyViewController.swift in Sources */,
 				027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */,
 				029F0CD11D543BF70079E17E /* BackgroundInfoViewController.swift in Sources */,

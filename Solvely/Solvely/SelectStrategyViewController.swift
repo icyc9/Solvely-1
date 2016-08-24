@@ -19,16 +19,11 @@ class SelectStrategyViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         takePictureButton.useRoundedCorners()
         typeQuestionButton.useRoundedCorners()
-        cancelButton.useRoundedCorners()
         
         //self.navigationController?.navigationBarHidden = true
         self.view.useCheckeredSolvelyBackground()
     }
-    
-    @IBAction func cancel(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+
     @IBAction func takePicture(sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false

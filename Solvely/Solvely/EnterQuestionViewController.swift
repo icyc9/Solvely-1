@@ -10,9 +10,11 @@ import UIKit
 
 class EnterQuestionViewController: UIViewController {
     @IBOutlet weak var questionTextView: UITextView!
+    @IBOutlet weak var solveButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.solveButton.useRoundedCorners()
         
 //        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 //        
@@ -24,9 +26,9 @@ class EnterQuestionViewController: UIViewController {
 //        
         self.view.useCheckeredSolvelyBackground()
         
-        questionTextView.useRoundedCorners()
-        questionTextView.layer.borderColor = Colors.purple.CGColor
-        questionTextView.layer.borderWidth = 2
+        self.questionTextView.useRoundedCorners()
+        self.questionTextView.layer.borderColor = Colors.purple.CGColor
+        self.questionTextView.layer.borderWidth = 2
     
         
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(EnterQuestionViewController.doneEditing))
@@ -42,6 +44,10 @@ class EnterQuestionViewController: UIViewController {
         keyboardToolbar.sizeToFit()
         
         questionTextView.inputAccessoryView = keyboardToolbar
+    }
+    
+    @IBAction func goBack(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func doneEditing() {
