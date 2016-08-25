@@ -16,6 +16,6 @@ enum Colors {
 }
 
 enum Radius {
-    static let buttonCornerRadius: CGFloat = 5
+    static let buttonCornerRadius: CGFloat = 8
     static let inputCornerRadius: CGFloat = 5
 }

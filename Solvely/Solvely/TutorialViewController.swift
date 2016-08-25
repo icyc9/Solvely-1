@@ -10,16 +10,20 @@ import UIKit
 
 class TutorialViewController: UIPageViewController {
     private var orderedViewControllers: [UIViewController] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         
+        self.view.backgroundColor = UIColor.clearColor()
+        //self.view.useCheckeredSolvelyBackground()
+        self.view.useRoundedCorners()
+        
         let storyboard = UIStoryboard(name: "Landing", bundle: nil)
         
         let one = storyboard.instantiateViewControllerWithIdentifier("TutorialSlide") as! TutorialSlideViewController
-        one.imageName = "one"
-        one.text = "Hey, I’m Solvely!\nSnap a pic of your question and I'll solve it."
+        one.imageName = "icon"
+        one.text = "I'm Solvely!\nI can answer open ended and multiple choice questions."
         
         let two = storyboard.instantiateViewControllerWithIdentifier("TutorialSlide") as! TutorialSlideViewController
         two.imageName = "two"
@@ -27,7 +31,7 @@ class TutorialViewController: UIPageViewController {
         
         let three = storyboard.instantiateViewControllerWithIdentifier("TutorialSlide") as! TutorialSlideViewController
         three.imageName = "three"
-        three.text = "I can't solve math problems...\n Give me your open ended and multiple choice questions!"
+        three.text = "I can't solve math problems.\n Only open ended and multiple choice questions!"
         
         self.orderedViewControllers.append(one)
         self.orderedViewControllers.append(two)

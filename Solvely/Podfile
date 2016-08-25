@@ -16,4 +16,6 @@ target 'Solvely' do
   pod 'TTTAttributedLabel'
   pod 'BubbleTransition', '~> 1.0.0'
   pod 'TOCropViewController'
+  pod 'MBProgressHUD'
+  pod "BAFluidView"
 end

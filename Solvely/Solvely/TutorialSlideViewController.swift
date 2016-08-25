@@ -19,12 +19,16 @@ class TutorialSlideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.useRoundedCorners()
+        //self.view.useCheckeredSolvelyBackground()
+        
         titleLabel.text = text
         image.image = UIImage(named: imageName)
         
         // Bold any occurence of "Solvely" in the message
         if self.titleLabel.text?.containsString("Solvely") == true {
-            self.titleLabel.attributedText = self.addBoldText(titleLabel.text!, boldPartOfString: "Solvely", font: self.titleLabel.font, boldFont: UIFont.boldSystemFontOfSize(20))
+            let ralewayBold = UIFont(name: "Raleway-Bold", size: 20)
+            self.titleLabel.attributedText = self.addBoldText(titleLabel.text!, boldPartOfString: "Solvely", font: self.titleLabel.font, boldFont: ralewayBold)
         }
     }
     

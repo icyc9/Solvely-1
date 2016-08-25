@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class EnterQuestionViewController: UIViewController {
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var solveButton: UIButton!
 
+    private let solveService = SolveService()
+    private var hud: MBProgressHUD?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.solveButton.useRoundedCorners()
@@ -21,7 +25,9 @@ class EnterQuestionViewController: UIViewController {
 //        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:UIBarMetrics.Default)
 //        
 //        self.navigationController!.navigationBar.translucent = true
+//        
 //        self.navigationController!.navigationBar.shadowImage = UIImage()
+//
 //        self.navigationController!.setNavigationBarHidden(false, animated:true)
 //        
         self.view.useCheckeredSolvelyBackground()
@@ -44,10 +50,8 @@ class EnterQuestionViewController: UIViewController {
         keyboardToolbar.sizeToFit()
         
         questionTextView.inputAccessoryView = keyboardToolbar
-    }
-    
-    @IBAction func goBack(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        solveService.delegate = self
     }
     
     func doneEditing() {
@@ -55,9 +59,35 @@ class EnterQuestionViewController: UIViewController {
         self.questionTextView.endEditing(true)
     }
     
+    @IBAction func solve(sender: UIButton) {
+        hud = MBProgressHUD.showHUDAddedTo(self.view!, animated: true)
+        hud!.mode = MBProgressHUDMode.Indeterminate
+        hud!.labelText = "Answering..."
+        hud!.color = Colors.purple
+        
+        solveService.solve(self.questionTextView.text)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBarHidden = true
+    }
+}
+
+extension EnterQuestionViewController: SolveServiceDelegate {
+    
+    func questionAnswered(correctAnswer: SolveResult) {
+        if hud != nil {
+            hud!.hide(true)
+        }
+    }
+    
+    func unknownError() {
+        
+    }
+    
+    func unableToAnswer() {
+        
     }
 }
 
