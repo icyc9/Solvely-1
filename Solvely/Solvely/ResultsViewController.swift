@@ -45,23 +45,23 @@ class ResultsViewController: UIViewController {
                 answerViewController = nil
             }
             
-            if answer != nil {
-                if answer!.question?.backgroundInfo != nil {
-                    for info in (answer!.question?.backgroundInfo!)! {
-                        concepts?.append(info)
-                    }
-                }
-                
-                if answer!.answerChoices != nil {
-                    for ans in answer!.answerChoices! {
-                        if ans.backgroundInfo != nil {
-                            for info in ans.backgroundInfo! {
-                                concepts?.append(info)
-                            }
-                        }
-                    }
-                }
-            }
+//            if answer != nil {
+//                if answer!.question?.backgroundInfo != nil {
+//                    for info in (answer!.question?.backgroundInfo!)! {
+//                        concepts?.append(info)
+//                    }
+//                }
+//                
+//                if answer!.answerChoices != nil {
+//                    for ans in answer!.answerChoices! {
+//                        if ans.backgroundInfo != nil {
+//                            for info in ans.backgroundInfo! {
+//                                concepts?.append(info)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             
             conceptViewController!.concepts = concepts
             

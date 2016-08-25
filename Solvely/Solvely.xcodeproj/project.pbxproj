@@ -22,6 +22,8 @@
 		025EE4FE1D6E859F008C509B /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE4FD1D6E859F008C509B /* SelectViewController.swift */; };
 		025EE5011D6E9C5D008C509B /* SquidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE5001D6E9C5D008C509B /* SquidViewController.swift */; };
 		025EE5031D6ED2C9008C509B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE5021D6ED2C9008C509B /* EditViewController.swift */; };
+		025EE5051D6EE225008C509B /* AnsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE5041D6EE225008C509B /* AnsViewController.swift */; };
+		025EE5071D6F45AD008C509B /* GeneralErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EE5061D6F45AD008C509B /* GeneralErrorViewController.swift */; };
 		026D339C1D54E77600DECCAD /* ConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D339B1D54E77600DECCAD /* ConceptViewController.swift */; };
 		027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */; };
 		027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C35831D449F1200B7EA5A /* SolverViewController.swift */; };
@@ -78,6 +80,8 @@
 		025EE4FD1D6E859F008C509B /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		025EE5001D6E9C5D008C509B /* SquidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquidViewController.swift; sourceTree = "<group>"; };
 		025EE5021D6ED2C9008C509B /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		025EE5041D6EE225008C509B /* AnsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnsViewController.swift; sourceTree = "<group>"; };
+		025EE5061D6F45AD008C509B /* GeneralErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralErrorViewController.swift; sourceTree = "<group>"; };
 		026D339B1D54E77600DECCAD /* ConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConceptViewController.swift; sourceTree = "<group>"; };
 		027C357F1D44873C00B7EA5A /* EditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		027C35831D449F1200B7EA5A /* SolverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolverViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 			children = (
 				025EE5001D6E9C5D008C509B /* SquidViewController.swift */,
 				025EE5021D6ED2C9008C509B /* EditViewController.swift */,
+				025EE5041D6EE225008C509B /* AnsViewController.swift */,
+				025EE5061D6F45AD008C509B /* GeneralErrorViewController.swift */,
 			);
 			name = squid;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
 				02C53F091D695BF400244410 /* MethodViewController.swift in Sources */,
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
+				025EE5071D6F45AD008C509B /* GeneralErrorViewController.swift in Sources */,
 				025EE5011D6E9C5D008C509B /* SquidViewController.swift in Sources */,
 				027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */,
 				027C35801D44873C00B7EA5A /* EditQuestionViewController.swift in Sources */,
@@ -413,6 +420,7 @@
 				02814E5E1D694C7400C640DB /* SelectStrategyViewController.swift in Sources */,
 				027C35841D449F1200B7EA5A /* SolverViewController.swift in Sources */,
 				029F0CD11D543BF70079E17E /* BackgroundInfoViewController.swift in Sources */,
+				025EE5051D6EE225008C509B /* AnsViewController.swift in Sources */,
 				02814E5A1D6933FA00C640DB /* UIView.swift in Sources */,
 				0298A3CE1D470FAE0049E2E2 /* LoadingViewController.swift in Sources */,
 			);

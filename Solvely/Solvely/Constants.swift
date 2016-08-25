@@ -13,6 +13,8 @@ enum Colors {
     static let red = UIColor(red: 0.8275, green: 0.1843, blue: 0.1843, alpha: 1.0)
     static let purple = UIColor(red: 0.2745, green: 0.1608, blue: 0.6667, alpha: 1.0)
     static let lightPurple = UIColor(red: 0.2745, green: 0.1608, blue: 0.6667, alpha: 0.75)
+    static let basavaBlue = UIColor(red: 0.302, green: 0.5569, blue: 0.9176, alpha: 1.0)
+    static let basavaGray = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 0.5)
 }
 
 enum Radius {
