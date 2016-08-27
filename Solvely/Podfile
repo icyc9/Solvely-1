@@ -7,17 +7,10 @@ target 'Solvely' do
 
   # Pods for Solvely
   pod "CameraEngine"
-  pod 'NVActivityIndicatorView'
   pod 'TOCropViewController'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-  pod 'havenondemand'
   pod 'RxAlamofire'
   pod 'Gloss', '~> 0.7'
-  pod 'TTTAttributedLabel'
   pod 'BubbleTransition', '~> 1.0.0'
-  pod 'TOCropViewController'
   pod 'MBProgressHUD'
-  pod 'TesseractOCRiOS'
-  pod "BAFluidView"
-  pod "GPUImage"
 end

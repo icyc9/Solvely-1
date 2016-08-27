@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Solvely
 //
-//  Created by Daniel Christopher on 7/22/16.
+//  Created by Daniel Christopher on 8/27/16.
 //  Copyright © 2016 Solvely. All rights reserved.
 //
 
@@ -15,11 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var pageControl = UIPageControl.appearance()
-        pageControl.pageIndicatorTintColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        pageControl.currentPageIndicatorTintColor = UIColor.whiteColor()
-        pageControl.backgroundColor = UIColor.clearColor()
-        
+        // Override point for customization after application launch.
         return true
     }
 
