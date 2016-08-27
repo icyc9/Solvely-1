@@ -49,6 +49,8 @@
 		02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A558241D43207100D317EE /* LaunchScreen.storyboard */; };
 		02C53F091D695BF400244410 /* MethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C53F081D695BF400244410 /* MethodViewController.swift */; };
 		02FAB4261D512F95009E4256 /* InvalidQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */; };
+		02FE840B1D709F120027AC8A /* SelectSolveMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE840A1D709F120027AC8A /* SelectSolveMethodViewController.swift */; };
+		02FE84141D70A4520027AC8A /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 02FE84131D70A4520027AC8A /* tessdata */; };
 		17D382CE31AD020BCE9E4717 /* Pods_Solvely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		02A558271D43207100D317EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02C53F081D695BF400244410 /* MethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodViewController.swift; sourceTree = "<group>"; };
 		02FAB4251D512F95009E4256 /* InvalidQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidQuestionViewController.swift; sourceTree = "<group>"; };
+		02FE840A1D709F120027AC8A /* SelectSolveMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSolveMethodViewController.swift; sourceTree = "<group>"; };
+		02FE84131D70A4520027AC8A /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		07CBE70C20FB0F6557F45BCF /* Pods-Solvely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.release.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.release.xcconfig"; sourceTree = "<group>"; };
 		A8AC2C71E42701E4395175C0 /* Pods_Solvely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Solvely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD7149843F9463D56370055B /* Pods-Solvely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Solvely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Solvely/Pods-Solvely.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				025EE5021D6ED2C9008C509B /* EditViewController.swift */,
 				025EE5041D6EE225008C509B /* AnsViewController.swift */,
 				025EE5061D6F45AD008C509B /* GeneralErrorViewController.swift */,
+				02FE840A1D709F120027AC8A /* SelectSolveMethodViewController.swift */,
 			);
 			name = squid;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 		02A5581A1D43207100D317EE /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
+				02FE84131D70A4520027AC8A /* tessdata */,
 				025EE4FF1D6E9C32008C509B /* squid */,
 				025EE4F31D6E77BA008C509B /* fonts */,
 				025EE4E81D6D5AAF008C509B /* views */,
@@ -328,6 +334,7 @@
 				028565871D4339CC00FC36E2 /* Assets.xcassets in Resources */,
 				02814E541D68F2A900C640DB /* Landing.storyboard in Resources */,
 				025EE4EC1D6D5B09008C509B /* TutorialSlideView.xib in Resources */,
+				02FE84141D70A4520027AC8A /* tessdata in Resources */,
 				025EE4F81D6E7817008C509B /* Raleway-Medium.ttf in Resources */,
 				02814E501D640E9C00C640DB /* Welcome.storyboard in Resources */,
 				02A558261D43207100D317EE /* LaunchScreen.storyboard in Resources */,
@@ -401,6 +408,7 @@
 				02878B151D43499B00935EBA /* Constants.swift in Sources */,
 				02C53F091D695BF400244410 /* MethodViewController.swift in Sources */,
 				02A5581E1D43207100D317EE /* ViewController.swift in Sources */,
+				02FE840B1D709F120027AC8A /* SelectSolveMethodViewController.swift in Sources */,
 				025EE5071D6F45AD008C509B /* GeneralErrorViewController.swift in Sources */,
 				025EE5011D6E9C5D008C509B /* SquidViewController.swift in Sources */,
 				027C35AB1D45E07300B7EA5A /* SolveService.swift in Sources */,

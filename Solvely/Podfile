@@ -17,5 +17,7 @@ target 'Solvely' do
   pod 'BubbleTransition', '~> 1.0.0'
   pod 'TOCropViewController'
   pod 'MBProgressHUD'
+  pod 'TesseractOCRiOS'
   pod "BAFluidView"
+  pod "GPUImage"
 end

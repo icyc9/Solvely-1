@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BAFluidView/BAFluidView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BubbleTransition/BubbleTransition.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CameraEngine/CameraEngine.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GPUImage/GPUImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Gloss/Gloss.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
@@ -96,6 +97,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TOCropViewController/TOCropViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TesseractOCRiOS/TesseractOCR.framework"
   install_framework "$BUILT_PRODUCTS_DIR/havenondemand/havenondemand.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,6 +105,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/BAFluidView/BAFluidView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BubbleTransition/BubbleTransition.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CameraEngine/CameraEngine.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GPUImage/GPUImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Gloss/Gloss.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
@@ -111,5 +114,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TOCropViewController/TOCropViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TesseractOCRiOS/TesseractOCR.framework"
   install_framework "$BUILT_PRODUCTS_DIR/havenondemand/havenondemand.framework"
 fi

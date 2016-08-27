@@ -247,10 +247,10 @@ I can answer open ended and multiple choice questions.</string>
             </objects>
             <point key="canvasLocation" x="3621" y="1243"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Solve Method View Controller-->
         <scene sceneID="rFj-2H-Vw3">
             <objects>
-                <viewController id="99c-kV-fgY" sceneMemberID="viewController">
+                <viewController id="99c-kV-fgY" customClass="SelectSolveMethodViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mrd-cX-vP9"/>
                         <viewControllerLayoutGuide type="bottom" id="i47-Db-yDn"/>
@@ -289,6 +289,9 @@ I can answer open ended and multiple choice questions.</string>
                                 <state key="normal" title="Yeah, I'll take a picture">
                                     <color key="titleColor" red="0.30196078431372547" green="0.55686274509803924" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePicture:" destination="99c-kV-fgY" eventType="touchUpInside" id="0HJ-Fu-hft"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.55686274509803924" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>

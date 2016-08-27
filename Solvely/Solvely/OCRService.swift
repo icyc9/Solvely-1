@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import havenondemand
+import TesseractOCR
 
 protocol OCRServiceDelegate {
     func text(imageText: String)
@@ -43,6 +44,17 @@ class OCRService: HODClientDelegate {
     }
     
     func convertImageToText(image: UIImage) {
+//        var tesseract:G8Tesseract = G8Tesseract(language:"eng");
+//        //tesseract.language = "eng+ita";
+//        //tesseract.delegate = self;
+//        tesseract.charWhitelist = "01234567890";
+//        tesseract.image = image
+//        tesseract.recognize();
+//        
+//        NSLog("%@", tesseract.recognizedText);
+//        
+//        return
+        
         let size = CGSize(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height)
         
         let resized = UIImagePNGRepresentation(image)
@@ -126,6 +138,111 @@ class OCRService: HODClientDelegate {
             Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890),.!_?:%$\n".characters)
         return String(text.characters.filter {okayChars.contains($0) })
     }
+    
+    func base64EncodeImage(image: UIImage) -> String {
+        let imagedata = UIImagePNGRepresentation(image)
+        return imagedata!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
+    }
+    
+    func googleOCR(image: UIImage) {
+        let resized = image.resizeWithPercentage(0.5)
+        let data = resized!.mediumQualityJPEGNSData
+        let compressed = UIImage(data: data)
+        
+        print(compressed?.size)
+        print(data.length/1024)
+        
+        createRequest(base64EncodeImage(compressed!))
+    }
+    
+    func createRequest(imageData: String) {
+        // Create our request URL
+        let request = NSMutableURLRequest(
+            URL: NSURL(string: "https://vision.googleapis.com/v1/images:annotate?key=\("AIzaSyBYujLfKB2ZLsZI-cnCssdWkqkTpjOpJqk")")!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(
+            NSBundle.mainBundle().bundleIdentifier ?? "",
+            forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+        
+        // Build our API request
+        let jsonRequest: [String: AnyObject] = [
+            "requests": [
+                "imageContext": [
+                    "languageHints": [
+                        "en"
+                    ],
+                ],
+                "image": [
+                    "content": imageData
+                ],
+                "features": [
+                    [
+                        "type": "TEXT_DETECTION",
+                        "maxResults": 50
+                    ]
+                ]
+            ]
+        ]
+        
+        // Serialize the JSON
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonRequest, options: [])
+        
+        // Run the request on a background thread
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.runRequestOnBackgroundThread(request)
+        });
+        
+    }
+    
+    func runRequestOnBackgroundThread(request: NSMutableURLRequest) {
+        
+        let session = NSURLSession.sharedSession()
+        
+        // run the request
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            let json = JSON(data: data!)
+            print(json["textAnnotations"]["boundingPoly"])
+            
+        })
+        task.resume()
+    }
+}
+
+extension UIImage {
+    
+    func resizeWithPercentage(percentage: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: size.width * percentage, height: size.height * percentage)))
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
+    }
+    
+    func resizeWithWidth(width: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
+    }
+}
+
+extension UIImage {
+    var uncompressedPNGData: NSData      { return UIImagePNGRepresentation(self)!        }
+    var highestQualityJPEGNSData: NSData { return UIImageJPEGRepresentation(self, 1.0)!  }
+    var highQualityJPEGNSData: NSData    { return UIImageJPEGRepresentation(self, 0.75)! }
+    var mediumQualityJPEGNSData: NSData  { return UIImageJPEGRepresentation(self, 0.5)!  }
+    var lowQualityJPEGNSData: NSData     { return UIImageJPEGRepresentation(self, 0.25)! }
+    var lowestQualityJPEGNSData:NSData   { return UIImageJPEGRepresentation(self, 0.0)!  }
 }
 
 extension String {
