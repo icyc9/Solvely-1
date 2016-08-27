@@ -69,7 +69,7 @@ class AnswerViewController: UIViewController {
     
     private func showResults() {
         if answer != nil {
-            questionTextView.text = answer!.question?.questionText
+            //questionTextView.text = answer!.question?.questionText
             
             var index = 0
             if answer!.answerChoices != nil {

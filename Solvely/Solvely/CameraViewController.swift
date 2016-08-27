@@ -94,7 +94,7 @@ class CameraViewController: UIViewController {
         self.showPopupWithContent(ocrProgressController)
         
         // Get text from image
-        solveService.convertImageToText(image)
+        //solveService.convertImageToText(image)
     }
 }
 

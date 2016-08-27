@@ -3,3 +3,5 @@
 //
 
 #import "TOCropViewController/TOCropViewController.h"
+#import "MBProgressHUD/MBProgressHUD.h"
+#import <TesseractOCR/TesseractOCR.h>

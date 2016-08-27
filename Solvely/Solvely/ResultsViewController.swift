@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     var answer: SolveResult!
-    var answerViewController: AnswerViewController?
+    var answerViewController: MultipleChoiceAnswerViewController?
     var conceptViewController: ConceptViewController?
     
     @IBOutlet weak var containerView: UIView!
@@ -36,7 +36,7 @@ class ResultsViewController: UIViewController {
     
     private func showConceptController() {
         if conceptViewController == nil {
-            conceptViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("concepts") as! ConceptViewController
+            conceptViewController = UIStoryboard(name: "Landing", bundle: nil).instantiateViewControllerWithIdentifier("Concept") as! ConceptViewController
             var concepts: [BackgroundInfo]? = []
             
             if answerViewController != nil {
@@ -45,23 +45,23 @@ class ResultsViewController: UIViewController {
                 answerViewController = nil
             }
             
-            if answer != nil {
-                if answer!.question?.backgroundInfo != nil {
-                    for info in (answer!.question?.backgroundInfo!)! {
-                        concepts?.append(info)
-                    }
-                }
-                
-                if answer!.answerChoices != nil {
-                    for ans in answer!.answerChoices! {
-                        if ans.backgroundInfo != nil {
-                            for info in ans.backgroundInfo! {
-                                concepts?.append(info)
-                            }
-                        }
-                    }
-                }
-            }
+//            if answer != nil {
+//                if answer!.question?.backgroundInfo != nil {
+//                    for info in (answer!.question?.backgroundInfo!)! {
+//                        concepts?.append(info)
+//                    }
+//                }
+//                
+//                if answer!.answerChoices != nil {
+//                    for ans in answer!.answerChoices! {
+//                        if ans.backgroundInfo != nil {
+//                            for info in ans.backgroundInfo! {
+//                                concepts?.append(info)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             
             conceptViewController!.concepts = concepts
             
@@ -72,7 +72,7 @@ class ResultsViewController: UIViewController {
     
     private func showAnswerController() {
         if answerViewController == nil {
-            answerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("answer") as! AnswerViewController
+            answerViewController = UIStoryboard(name: "Landing", bundle: nil).instantiateViewControllerWithIdentifier("Answer") as! MultipleChoiceAnswerViewController
             answerViewController?.answer = answer
             print(answer)
             if conceptViewController != nil {

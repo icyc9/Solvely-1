@@ -8,17 +8,29 @@
 
 import UIKit
 import TOCropViewController
+import BAFluidView
 
 class SelectStrategyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
+//    @IBOutlet weak var takePictureButton: UIButton!
+//    @IBOutlet weak var typeQuestionButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var getStartedButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
-        self.view.useCheckeredSolvelyBackground()
-    }
     
-    @IBAction func cancel(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.getStartedButton.useRoundedCorners()
+        
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Colors.purple]
+        
+//        takePictureButton.useRoundedCorners()
+//        typeQuestionButton.useRoundedCorners()
+        
+        self.navigationController?.navigationBarHidden = true
+        //self.view.useCheckeredSolvelyBackground()
     }
     
     @IBAction func takePicture(sender: UIButton) {

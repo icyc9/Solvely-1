@@ -11,14 +11,25 @@ import BubbleTransition
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var askButton: UIButton!
-    let transition = BubbleTransition()
+    private let transition = BubbleTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.askButton.useRoundedCorners()
+        
+        self.greetingLabel.attributedText = self.addBoldText(greetingLabel.text!, boldPartOfString: "Solvely", font: self.greetingLabel.font, boldFont: UIFont.boldSystemFontOfSize(17))
     }
 
+    private func addBoldText(fullString: NSString, boldPartOfString: NSString, font: UIFont!, boldFont: UIFont!) -> NSAttributedString {
+        let nonBoldFontAttribute = [NSFontAttributeName:font!]
+        let boldFontAttribute = [NSFontAttributeName:boldFont!]
+        let boldString = NSMutableAttributedString(string: fullString as String, attributes:nonBoldFontAttribute)
+        boldString.addAttributes(boldFontAttribute, range: fullString.rangeOfString(boldPartOfString as String))
+        return boldString
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
