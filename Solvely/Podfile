@@ -6,7 +6,7 @@ target 'Solvely' do
   use_frameworks!
 
   # Pods for Solvely
-  pod "CameraEngine"
+  pod "FastttCamera/Filters"
   pod 'TOCropViewController'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'RxAlamofire'
