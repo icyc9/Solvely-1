@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var takePictureButton: UIButton!
+    @IBOutlet weak var squidGif: UIImageView!
     
     private var camera: FastttCamera!
     private let solveService = SolveService()
@@ -23,6 +24,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        we
+        squidGif.image = UIImage.gifWithURL("https://media.giphy.com/media/CLLlVrnuuhTq0/giphy.gif")
         
         camera = FastttCamera()
         camera.delegate = self

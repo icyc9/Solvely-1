@@ -34,6 +34,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9S-Nq-PNt">
+                                <rect key="frame" x="20" y="72" width="560" height="245"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6I-WT-jCR">
                                 <rect key="frame" x="189" y="337" width="222" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,10 +62,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9S-Nq-PNt">
-                                <rect key="frame" x="20" y="72" width="560" height="245"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iqP-1d-3Yj">
+                                <rect key="frame" x="236" y="452" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="rz4-30-r8K"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -70,8 +76,11 @@
                             <constraint firstItem="q9S-Nq-PNt" firstAttribute="top" secondItem="WvA-ZM-c1M" secondAttribute="bottom" constant="20" id="E25-0h-n3D"/>
                             <constraint firstItem="WvA-ZM-c1M" firstAttribute="leading" secondItem="02x-mS-gMM" secondAttribute="leadingMargin" id="LaU-PW-uIG"/>
                             <constraint firstItem="uKG-e3-Zb0" firstAttribute="top" secondItem="s6I-WT-jCR" secondAttribute="bottom" constant="221" id="QH5-lC-7ZP"/>
+                            <constraint firstItem="iqP-1d-3Yj" firstAttribute="centerX" secondItem="s6I-WT-jCR" secondAttribute="centerX" id="Qmj-Aq-NRT"/>
                             <constraint firstItem="s6I-WT-jCR" firstAttribute="top" secondItem="q9S-Nq-PNt" secondAttribute="bottom" constant="20" id="VBZ-Vl-wFJ"/>
+                            <constraint firstItem="iqP-1d-3Yj" firstAttribute="top" secondItem="s6I-WT-jCR" secondAttribute="bottom" constant="73" id="bHO-Mk-D9G"/>
                             <constraint firstItem="WvA-ZM-c1M" firstAttribute="trailing" secondItem="02x-mS-gMM" secondAttribute="trailingMargin" id="foR-fu-wJR"/>
+                            <constraint firstAttribute="bottom" secondItem="iqP-1d-3Yj" secondAttribute="bottom" constant="20" symbolic="YES" id="hBX-bH-OCk"/>
                             <constraint firstItem="WvA-ZM-c1M" firstAttribute="leading" secondItem="q9S-Nq-PNt" secondAttribute="leading" id="jzF-TJ-oAd"/>
                             <constraint firstItem="q9S-Nq-PNt" firstAttribute="centerX" secondItem="s6I-WT-jCR" secondAttribute="centerX" id="nUc-TI-Njg"/>
                         </constraints>
@@ -79,6 +88,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraView" destination="q9S-Nq-PNt" id="Wvi-pm-Myv"/>
+                        <outlet property="squidGif" destination="iqP-1d-3Yj" id="mE0-Vm-eRn"/>
                         <outlet property="takePictureButton" destination="s6I-WT-jCR" id="Ded-Zp-DQv"/>
                     </connections>
                 </viewController>
@@ -168,7 +178,7 @@
                                     <action selector="goBack:" destination="S9H-d7-ysh" eventType="touchUpInside" id="Hj0-lY-wcd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't understand your question. Make sure your picture is clear and cropped." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-im-zee">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't understand your question. Make sure your picture is not of handwriting and is clear and cropped." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-im-zee">
                                 <rect key="frame" x="20" y="98" width="560" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="137" id="Uxc-A8-Noc"/>
