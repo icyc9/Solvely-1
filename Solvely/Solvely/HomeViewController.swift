@@ -22,9 +22,11 @@ class HomeViewController: UIViewController {
     private let ocrService = OCRService()
     private let disposeBag = DisposeBag()
     
+    private var answeringViewController: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        we
+        
         squidGif.image = UIImage.gifWithURL("https://media.giphy.com/media/CLLlVrnuuhTq0/giphy.gif")
         
         camera = FastttCamera()
@@ -105,6 +107,7 @@ class HomeViewController: UIViewController {
             .subscribeOn(MainScheduler.instance)
             .observeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
             .subscribe(onNext: { (answer) in
+                self.hideAnsweringViewController()
                 if answer != nil {
                     print(answer?.identifier)
                     
@@ -116,7 +119,9 @@ class HomeViewController: UIViewController {
                     self.unableToAnswerQuestion()
                 }
             }, onError: { (error) in
+                self.hideAnsweringViewController()
                 print(error)
+                
                 switch(error) {
                 case SolveError.UnknownError:
                     self.unknownError()
@@ -144,12 +149,21 @@ class HomeViewController: UIViewController {
         
         self.presentViewController(unableToReadQuestionViewController, animated: true, completion: nil)
     }
+    
+    private func hideAnsweringViewController() {
+        answeringViewController?.dismissViewControllerAnimated(true, completion: nil)
+        answeringViewController = nil
+    }
+    
+    private func showAnsweringViewController() {
+        answeringViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Answering") 
+        self.presentViewController(answeringViewController!, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: FastttCameraDelegate {
     
     func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
-        
         self.crop(capturedImage.scaledImage)
     }
 }
@@ -160,6 +174,7 @@ extension HomeViewController: TOCropViewControllerDelegate {
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
         
         self.dismissViewControllerAnimated(true, completion: {
+            self.showAnsweringViewController()
             self.convertImageToText(image)
         })
         
