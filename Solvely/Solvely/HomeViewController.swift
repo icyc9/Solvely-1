@@ -8,30 +8,55 @@
 
 import UIKit
 import FastttCamera
+import TOCropViewController
+import RxSwift
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var takePictureButton: UIButton!
+    
+    private var camera: FastttCamera!
+    private let ocrService = OCRService()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
-        let camera = FastttCamera()
+        camera = FastttCamera()
         camera.delegate = self
-        
-        // camera preview should be the size of the camera view
-        camera.view.frame = cameraView.frame
-        
-        camera.view.makeRoundedAndOutline(UIColor.whiteColor())
-        cameraView.makeRoundedAndOutline(UIColor.whiteColor())
         
         // add the camera preview to the camera view
         self.fastttAddChildViewController(camera)
         
+        camera.view.makeRoundedAndOutline(UIColor.whiteColor())
+        cameraView.makeRoundedAndOutline(UIColor.whiteColor())
+       
+        takePictureButton.makeRounded()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // camera preview should be the size of the camera view
+        camera.view.frame = cameraView.frame
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    @IBAction func takePicture(sender: UIButton) {
+        camera.takePicture()
+    }
+    
+    private func crop(image: UIImage!) {
+        let crop = TOCropViewController(image: image)
+        crop.delegate = self
+        self.presentViewController(crop, animated: true, completion: nil)
+    }
+    
+    private func addCrosshair() {
         let crosshairWidth = 18.0
         let crosshairHeight = 18.0
         
@@ -46,13 +71,36 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(crosshair)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    private func convertImageToText(image: UIImage!) {
+        self.ocrService.convertImageToText(image)
+            .subscribeOn(MainScheduler.instance)
+            .observeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
+            .subscribe(onNext: { (text) in
+                print(text!)
+            }, onError: { (error) in
+                print(error)
+            }, onCompleted: nil, onDisposed: nil)
+        .addDisposableTo(self.disposeBag)
     }
-
 }
 
 extension HomeViewController: FastttCameraDelegate {
     
+    func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
+        
+        self.crop(capturedImage.scaledImage)
+    }
+}
+
+
+extension HomeViewController: TOCropViewControllerDelegate {
+    
+    func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
+        
+        self.dismissViewControllerAnimated(true, completion: {
+            self.convertImageToText(image)
+        })
+        
+    }
 }

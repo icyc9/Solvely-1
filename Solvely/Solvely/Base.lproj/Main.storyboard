@@ -43,6 +43,9 @@
                                 <state key="normal" title="Take picture">
                                     <color key="titleColor" red="0.30588235289999999" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePicture:" destination="leI-xT-L5D" eventType="touchUpInside" id="RB3-Kc-c2L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,6 +60,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="q9S-Nq-PNt" id="Wvi-pm-Myv"/>
+                        <outlet property="takePictureButton" destination="s6I-WT-jCR" id="Ded-Zp-DQv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcB-ik-Rcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
