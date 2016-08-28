@@ -1,5 +1,5 @@
 //
-//  UnableToReadQuestionViewController.swift
+//  UnknownErrorViewController.swift
 //  Solvely
 //
 //  Created by Daniel Christopher on 8/28/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UnableToReadQuestionViewController: UIViewController {
+class UnknownErrorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,8 +11,11 @@
             <string>Raleway-Bold</string>
             <string>Raleway-Bold</string>
             <string>Raleway-Bold</string>
+            <string>Raleway-Bold</string>
         </mutableArray>
         <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway</string>
             <string>Raleway</string>
             <string>Raleway</string>
             <string>Raleway</string>
@@ -162,7 +165,7 @@
                                     <color key="titleColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tryAgain:" destination="S9H-d7-ysh" eventType="touchUpInside" id="joQ-Lg-wob"/>
+                                    <action selector="goBack:" destination="S9H-d7-ysh" eventType="touchUpInside" id="Hj0-lY-wcd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't understand your question. Make sure your picture is clear and cropped." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-im-zee">
@@ -192,6 +195,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0m0-xk-ne0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2312" y="495"/>
+        </scene>
+        <!--Unknown Error View Controller-->
+        <scene sceneID="7GK-UA-oGr">
+            <objects>
+                <viewController storyboardIdentifier="UnknownError" id="GLb-rm-Xlr" customClass="UnknownErrorViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NNQ-yA-Xgc"/>
+                        <viewControllerLayoutGuide type="bottom" id="f1F-M0-NHW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BSy-aR-Xku">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaN-9J-z2b">
+                                <rect key="frame" x="20" y="28" width="560" height="92"/>
+                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49u-zF-1cX">
+                                <rect key="frame" x="0.0" y="496" width="600" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="hE4-tU-KNi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="GLb-rm-Xlr" eventType="touchUpInside" id="CUq-7H-g2k"/>
+                                    <action selector="tryAgain:" destination="GLb-rm-Xlr" eventType="touchUpInside" id="kk1-Ko-Y7T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyU-OD-qvw">
+                                <rect key="frame" x="159" y="128" width="284" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="284" id="2Zy-vG-bCJ"/>
+                                    <constraint firstAttribute="height" constant="81" id="Mrv-xY-5Nv"/>
+                                </constraints>
+                                <string key="text">It could be that I am answering more questions than I can handle, you have no internet connection, or I just completely messed up.</string>
+                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="f1F-M0-NHW" firstAttribute="top" secondItem="TyU-OD-qvw" secondAttribute="bottom" constant="391" id="7WY-6f-A30"/>
+                            <constraint firstItem="f1F-M0-NHW" firstAttribute="top" secondItem="49u-zF-1cX" secondAttribute="bottom" constant="52" id="9Eg-PB-8aH"/>
+                            <constraint firstItem="TyU-OD-qvw" firstAttribute="top" secondItem="yaN-9J-z2b" secondAttribute="bottom" constant="8" symbolic="YES" id="aWc-UZ-ziq"/>
+                            <constraint firstItem="yaN-9J-z2b" firstAttribute="centerX" secondItem="TyU-OD-qvw" secondAttribute="centerX" constant="-1" id="fJx-xb-dvx"/>
+                            <constraint firstItem="yaN-9J-z2b" firstAttribute="trailing" secondItem="BSy-aR-Xku" secondAttribute="trailingMargin" id="ghY-xd-Jt1"/>
+                            <constraint firstItem="49u-zF-1cX" firstAttribute="leading" secondItem="BSy-aR-Xku" secondAttribute="leading" id="j6G-YR-73g"/>
+                            <constraint firstItem="yaN-9J-z2b" firstAttribute="leading" secondItem="BSy-aR-Xku" secondAttribute="leadingMargin" id="nD3-H8-L5f"/>
+                            <constraint firstItem="yaN-9J-z2b" firstAttribute="top" secondItem="NNQ-yA-Xgc" secondAttribute="bottom" constant="8" symbolic="YES" id="ryW-Yc-I5F"/>
+                            <constraint firstItem="49u-zF-1cX" firstAttribute="centerX" secondItem="yaN-9J-z2b" secondAttribute="centerX" id="uil-Yn-6xR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgZ-87-ld3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2985" y="495"/>
         </scene>
     </scenes>
 </document>

@@ -113,9 +113,26 @@ class HomeViewController: UIViewController {
                     self.unableToAnswerQuestion()
                 }
             }, onError: { (error) in
-                    print(error)
+                print(error)
+                switch(error) {
+                case SolveError.UnknownError:
+                    self.unknownError()
+                    break
+                case SolveError.InvalidQuestionError:
+                    self.unableToAnswerQuestion()
+                    break
+                default:
+                    self.unknownError()
+                    break
+                }
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+    }
+    
+    private func unknownError() {
+        let errorViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("UnkownError") as! UnknownErrorViewController
+        
+        self.presentViewController(errorViewController, animated: true, completion: nil)
     }
     
     private func unableToAnswerQuestion() {
