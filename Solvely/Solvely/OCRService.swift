@@ -15,7 +15,7 @@ import RxAlamofire
 class OCRService {
     private let ocrEndpoint = "https://vision.googleapis.com/v1/images:annotate?"
     private let apiKey = "AIzaSyBy2TlIIJndSpnuAgtgDncCV6o2Fw-y79k"
-    private let compressionPercent: CGFloat = 0.5
+    private let compressionPercent: CGFloat = 1
     
     func convertImageToText(image: UIImage?) -> Observable<String?> {
         if image == nil {

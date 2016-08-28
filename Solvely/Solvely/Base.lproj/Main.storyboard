@@ -9,9 +9,9 @@
         <mutableArray key="Raleway-Bold.ttf">
             <string>Raleway-Bold</string>
             <string>Raleway-Bold</string>
+            <string>Raleway-Bold</string>
         </mutableArray>
         <mutableArray key="Raleway-Regular.ttf">
-            <string>Raleway</string>
             <string>Raleway</string>
         </mutableArray>
     </customFonts>
@@ -28,16 +28,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9S-Nq-PNt">
-                                <rect key="frame" x="20" y="71" width="560" height="271"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6I-WT-jCR">
-                                <rect key="frame" x="159" y="360" width="283" height="52"/>
+                                <rect key="frame" x="189" y="337" width="222" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="283" id="V0p-VX-Y9x"/>
-                                    <constraint firstAttribute="height" constant="52" id="YxD-aX-t19"/>
+                                    <constraint firstAttribute="width" constant="222" id="HLs-Et-I32"/>
+                                    <constraint firstAttribute="height" constant="42" id="ZpM-rL-S3P"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="15"/>
                                 <state key="normal" title="Take picture">
@@ -47,17 +43,34 @@
                                     <action selector="takePicture:" destination="leI-xT-L5D" eventType="touchUpInside" id="RB3-Kc-c2L"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solvely" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvA-ZM-c1M">
+                                <rect key="frame" x="20" y="20" width="560" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="5RX-QE-1Nb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9S-Nq-PNt">
+                                <rect key="frame" x="20" y="72" width="560" height="245"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="q9S-Nq-PNt" firstAttribute="leading" secondItem="02x-mS-gMM" secondAttribute="leadingMargin" id="A3b-st-dio"/>
-                            <constraint firstItem="uKG-e3-Zb0" firstAttribute="top" secondItem="q9S-Nq-PNt" secondAttribute="bottom" constant="258" id="AXR-Fh-2dm"/>
-                            <constraint firstItem="s6I-WT-jCR" firstAttribute="top" secondItem="q9S-Nq-PNt" secondAttribute="bottom" constant="18" id="Cfc-ja-AYC"/>
-                            <constraint firstItem="s6I-WT-jCR" firstAttribute="centerX" secondItem="q9S-Nq-PNt" secondAttribute="centerX" id="ICx-fU-3Vv"/>
-                            <constraint firstItem="q9S-Nq-PNt" firstAttribute="top" secondItem="kLr-un-bln" secondAttribute="bottom" constant="51" id="gd1-gg-5kb"/>
-                            <constraint firstItem="q9S-Nq-PNt" firstAttribute="trailing" secondItem="02x-mS-gMM" secondAttribute="trailingMargin" id="opi-KM-K8i"/>
+                            <constraint firstItem="WvA-ZM-c1M" firstAttribute="trailing" secondItem="q9S-Nq-PNt" secondAttribute="trailing" id="33M-jD-qTC"/>
+                            <constraint firstItem="WvA-ZM-c1M" firstAttribute="top" secondItem="02x-mS-gMM" secondAttribute="top" constant="20" symbolic="YES" id="B9L-MY-2l7"/>
+                            <constraint firstItem="q9S-Nq-PNt" firstAttribute="top" secondItem="WvA-ZM-c1M" secondAttribute="bottom" constant="20" id="E25-0h-n3D"/>
+                            <constraint firstItem="WvA-ZM-c1M" firstAttribute="leading" secondItem="02x-mS-gMM" secondAttribute="leadingMargin" id="LaU-PW-uIG"/>
+                            <constraint firstItem="uKG-e3-Zb0" firstAttribute="top" secondItem="s6I-WT-jCR" secondAttribute="bottom" constant="221" id="QH5-lC-7ZP"/>
+                            <constraint firstItem="s6I-WT-jCR" firstAttribute="top" secondItem="q9S-Nq-PNt" secondAttribute="bottom" constant="20" id="VBZ-Vl-wFJ"/>
+                            <constraint firstItem="WvA-ZM-c1M" firstAttribute="trailing" secondItem="02x-mS-gMM" secondAttribute="trailingMargin" id="foR-fu-wJR"/>
+                            <constraint firstItem="WvA-ZM-c1M" firstAttribute="leading" secondItem="q9S-Nq-PNt" secondAttribute="leading" id="jzF-TJ-oAd"/>
+                            <constraint firstItem="q9S-Nq-PNt" firstAttribute="centerX" secondItem="s6I-WT-jCR" secondAttribute="centerX" id="nUc-TI-Njg"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraView" destination="q9S-Nq-PNt" id="Wvi-pm-Myv"/>
                         <outlet property="takePictureButton" destination="s6I-WT-jCR" id="Ded-Zp-DQv"/>
@@ -65,12 +78,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcB-ik-Rcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="439"/>
+            <point key="canvasLocation" x="519" y="495"/>
         </scene>
         <!--Answer View Controller-->
         <scene sceneID="1jy-eH-e1s">
             <objects>
-                <viewController id="qSw-1L-DNK" customClass="AnswerViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Answer" id="qSw-1L-DNK" customClass="AnswerViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gxF-ds-uyx"/>
                         <viewControllerLayoutGuide type="bottom" id="4Yy-Gu-Obk"/>
@@ -79,67 +92,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZa-kk-ShW">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh3-sG-zFf">
-                                        <rect key="frame" x="159" y="213" width="283" height="52"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="lY9-9Y-N3T"/>
-                                            <constraint firstAttribute="width" constant="283" id="yu1-Zo-Nbl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="15"/>
-                                        <state key="normal" title="Want me to solve another?">
-                                            <color key="titleColor" red="0.30588235289999999" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I think the answer is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Htq-sv-mdl">
+                                <rect key="frame" x="20" y="42" width="560" height="80"/>
                                 <constraints>
-                                    <constraint firstItem="Qh3-sG-zFf" firstAttribute="centerX" secondItem="zZa-kk-ShW" secondAttribute="centerX" id="7Ms-zE-8zP"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qh3-sG-zFf" secondAttribute="bottom" constant="35" id="TD4-Gv-jSO"/>
+                                    <constraint firstAttribute="height" constant="80" id="lUo-IQ-tvF"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-I3-avh">
-                                <rect key="frame" x="278" y="87" width="44" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="ZLb-ra-hOK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="64"/>
+                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I think the answer is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwT-VQ-1Uq">
-                                <rect key="frame" x="144" y="28" width="312" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="312" id="Z76-EJ-DdA"/>
-                                    <constraint firstAttribute="height" constant="51" id="wNv-nG-9se"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-I3-avh">
+                                <rect key="frame" x="20" y="136" width="560" height="80"/>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="64"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2ik-I3-avh" firstAttribute="top" secondItem="nwT-VQ-1Uq" secondAttribute="bottom" constant="8" symbolic="YES" id="GjF-nT-ulQ"/>
-                            <constraint firstItem="nwT-VQ-1Uq" firstAttribute="top" secondItem="gxF-ds-uyx" secondAttribute="bottom" constant="8" symbolic="YES" id="IcE-K2-7a9"/>
-                            <constraint firstAttribute="trailing" secondItem="zZa-kk-ShW" secondAttribute="trailing" id="Z5c-D1-Pbe"/>
-                            <constraint firstItem="zZa-kk-ShW" firstAttribute="bottom" secondItem="4Yy-Gu-Obk" secondAttribute="top" id="gN5-Id-AJe"/>
-                            <constraint firstItem="nwT-VQ-1Uq" firstAttribute="centerX" secondItem="2ik-I3-avh" secondAttribute="centerX" id="iaL-CT-FiF"/>
-                            <constraint firstItem="2ik-I3-avh" firstAttribute="centerX" secondItem="zZa-kk-ShW" secondAttribute="centerX" id="qu5-eW-DeC"/>
-                            <constraint firstItem="zZa-kk-ShW" firstAttribute="top" secondItem="NZd-bj-p06" secondAttribute="top" constant="300" id="vMg-6F-O9h"/>
-                            <constraint firstItem="zZa-kk-ShW" firstAttribute="leading" secondItem="NZd-bj-p06" secondAttribute="leading" id="yyp-Nu-PfE"/>
+                            <constraint firstItem="4Yy-Gu-Obk" firstAttribute="top" secondItem="2ik-I3-avh" secondAttribute="bottom" constant="384" id="Fsc-E5-fYm"/>
+                            <constraint firstItem="Htq-sv-mdl" firstAttribute="leading" secondItem="2ik-I3-avh" secondAttribute="leading" id="Htr-7e-vCB"/>
+                            <constraint firstItem="Htq-sv-mdl" firstAttribute="trailing" secondItem="2ik-I3-avh" secondAttribute="trailing" id="KuO-M6-C0K"/>
+                            <constraint firstItem="Htq-sv-mdl" firstAttribute="leading" secondItem="NZd-bj-p06" secondAttribute="leadingMargin" id="YN6-dI-OfU"/>
+                            <constraint firstItem="Htq-sv-mdl" firstAttribute="trailing" secondItem="NZd-bj-p06" secondAttribute="trailingMargin" id="aG9-f5-DQp"/>
+                            <constraint firstItem="2ik-I3-avh" firstAttribute="top" secondItem="Htq-sv-mdl" secondAttribute="bottom" constant="14" id="htb-n0-omR"/>
+                            <constraint firstItem="Htq-sv-mdl" firstAttribute="top" secondItem="gxF-ds-uyx" secondAttribute="bottom" constant="22" id="whK-ih-fcc"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="answerLetterLabel" destination="2ik-I3-avh" id="fyq-ru-DhW"/>
+                        <outlet property="answerLabel" destination="2ik-I3-avh" id="Sgp-Bo-u4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbs-RX-mdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="439"/>
+            <point key="canvasLocation" x="1285" y="525"/>
         </scene>
     </scenes>
 </document>

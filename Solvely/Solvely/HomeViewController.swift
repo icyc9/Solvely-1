@@ -33,7 +33,13 @@ class HomeViewController: UIViewController {
         camera.view.makeRoundedAndOutline(UIColor.whiteColor())
         cameraView.makeRoundedAndOutline(UIColor.whiteColor())
        
+        // Add shadow and make it rounded
         takePictureButton.makeRounded()
+        takePictureButton.layer.masksToBounds = false
+        takePictureButton.layer.shadowColor = UIColor.darkGrayColor().CGColor
+        takePictureButton.layer.shadowOpacity = 0.4
+        takePictureButton.layer.shadowRadius = 3
+        takePictureButton.layer.shadowOffset = CGSizeMake(2, 2)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,6 +104,10 @@ class HomeViewController: UIViewController {
             .subscribe(onNext: { (answer) in
                 if answer != nil {
                     print(answer?.identifier)
+                    
+                    let answerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Answer") as! AnswerViewController
+                    answerViewController.answer = answer?.identifier ?? ""
+                    self.presentViewController(answerViewController, animated: true, completion: nil)
                 }
                 else {
                     // todo: Show message saying there is no answer
