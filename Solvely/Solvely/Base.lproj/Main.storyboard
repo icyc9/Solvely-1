@@ -10,8 +10,11 @@
             <string>Raleway-Bold</string>
             <string>Raleway-Bold</string>
             <string>Raleway-Bold</string>
+            <string>Raleway-Bold</string>
         </mutableArray>
         <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway</string>
             <string>Raleway</string>
         </mutableArray>
     </customFonts>
@@ -126,6 +129,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbs-RX-mdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1285" y="525"/>
+        </scene>
+        <!--Unable To Read Question View Controller-->
+        <scene sceneID="Fvl-Ky-IcH">
+            <objects>
+                <viewController storyboardIdentifier="QuestionParseError" id="S9H-d7-ysh" customClass="UnableToReadQuestionViewController" customModule="Solvely" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X2y-dM-Dlt"/>
+                        <viewControllerLayoutGuide type="bottom" id="QyD-Bp-y6v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ynu-j2-uJv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsK-Uk-mfs">
+                                <rect key="frame" x="20" y="28" width="560" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="WnV-U0-GUi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWg-P0-agN">
+                                <rect key="frame" x="0.0" y="496" width="600" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="IOn-MX-zEK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgain:" destination="S9H-d7-ysh" eventType="touchUpInside" id="joQ-Lg-wob"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I couldn't understand your question. Make sure your picture is clear and cropped." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-im-zee">
+                                <rect key="frame" x="20" y="98" width="560" height="137"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="137" id="Uxc-A8-Noc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.5568627451" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CWg-P0-agN" firstAttribute="leading" secondItem="Ynu-j2-uJv" secondAttribute="leading" id="BKy-CD-0CZ"/>
+                            <constraint firstAttribute="trailing" secondItem="CWg-P0-agN" secondAttribute="trailing" id="MjN-N0-iiB"/>
+                            <constraint firstItem="SsK-Uk-mfs" firstAttribute="top" secondItem="X2y-dM-Dlt" secondAttribute="bottom" constant="8" symbolic="YES" id="OWD-t7-cUR"/>
+                            <constraint firstItem="SsK-Uk-mfs" firstAttribute="centerX" secondItem="Aa7-im-zee" secondAttribute="centerX" id="TBa-d0-blL"/>
+                            <constraint firstItem="QyD-Bp-y6v" firstAttribute="top" secondItem="CWg-P0-agN" secondAttribute="bottom" constant="52" id="WVF-DB-t5q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Aa7-im-zee" secondAttribute="trailing" id="fhN-gd-JXR"/>
+                            <constraint firstItem="Aa7-im-zee" firstAttribute="top" secondItem="SsK-Uk-mfs" secondAttribute="bottom" constant="-22" id="oac-Jm-cSK"/>
+                            <constraint firstItem="SsK-Uk-mfs" firstAttribute="leading" secondItem="Ynu-j2-uJv" secondAttribute="leadingMargin" id="xqn-ZM-SKr"/>
+                            <constraint firstItem="Aa7-im-zee" firstAttribute="leading" secondItem="Ynu-j2-uJv" secondAttribute="leadingMargin" id="zct-E4-tlg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0m0-xk-ne0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2312" y="495"/>
         </scene>
     </scenes>
 </document>

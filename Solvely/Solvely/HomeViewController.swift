@@ -89,7 +89,7 @@ class HomeViewController: UIViewController {
                     self.solve(text!)
                 }
                 else {
-                    // todo: Show message saying OCR returned nothing
+                    self.unableToAnswerQuestion()
                 }
             }, onError: { (error) in
                 print(error)
@@ -110,12 +110,19 @@ class HomeViewController: UIViewController {
                     self.presentViewController(answerViewController, animated: true, completion: nil)
                 }
                 else {
-                    // todo: Show message saying there is no answer
+                    self.unableToAnswerQuestion()
                 }
             }, onError: { (error) in
                     print(error)
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+    }
+    
+    private func unableToAnswerQuestion() {
+        // Show no message error
+        let unableToReadQuestionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("QuestionParseError") as! UnableToReadQuestionViewController
+        
+        self.presentViewController(unableToReadQuestionViewController, animated: true, completion: nil)
     }
 }
 
