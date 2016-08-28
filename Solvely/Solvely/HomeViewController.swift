@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var takePictureButton: UIButton!
     
     private var camera: FastttCamera!
+    private let solveService = SolveService()
     private let ocrService = OCRService()
     private let disposeBag = DisposeBag()
     
@@ -77,11 +78,34 @@ class HomeViewController: UIViewController {
             .subscribeOn(MainScheduler.instance)
             .observeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
             .subscribe(onNext: { (text) in
-                print(text!)
+                if text != nil && text != "" {
+                    print(text!)
+                    self.solve(text!)
+                }
+                else {
+                    // todo: Show message saying OCR returned nothing
+                }
             }, onError: { (error) in
                 print(error)
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
+    }
+    
+    private func solve(question: String) {
+        solveService.solveQuestion(question)
+            .subscribeOn(MainScheduler.instance)
+            .observeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
+            .subscribe(onNext: { (answer) in
+                if answer != nil {
+                    print(answer?.identifier)
+                }
+                else {
+                    // todo: Show message saying there is no answer
+                }
+            }, onError: { (error) in
+                    print(error)
+            }, onCompleted: nil, onDisposed: nil)
+            .addDisposableTo(self.disposeBag)
     }
 }
 

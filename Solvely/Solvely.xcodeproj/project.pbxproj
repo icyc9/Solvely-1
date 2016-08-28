@@ -12,6 +12,7 @@
 		02F552121D71743500F6E2F6 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F552111D71743500F6E2F6 /* Error.storyboard */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
+		02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5521B1D72830400F6E2F6 /* SolveService.swift */; };
 		02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE84211D7170AE0027AC8A /* AppDelegate.swift */; };
 		02FE84241D7170AE0027AC8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE84231D7170AE0027AC8A /* ViewController.swift */; };
 		02FE84271D7170AE0027AC8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FE84251D7170AE0027AC8A /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02F552191D722A4E00F6E2F6 /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
+		02F5521B1D72830400F6E2F6 /* SolveService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolveService.swift; sourceTree = "<group>"; };
 		02FE841E1D7170AE0027AC8A /* Solvely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solvely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FE84211D7170AE0027AC8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02FE84231D7170AE0027AC8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				02F552191D722A4E00F6E2F6 /* OCRService.swift */,
+				02F5521B1D72830400F6E2F6 /* SolveService.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				02F552171D72205100F6E2F6 /* Constants.swift in Sources */,
 				02F552101D71735300F6E2F6 /* AnswerViewController.swift in Sources */,
+				02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */,
 				02FE84241D7170AE0027AC8A /* ViewController.swift in Sources */,
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,
