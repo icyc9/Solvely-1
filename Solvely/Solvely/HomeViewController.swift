@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        squidGif.image = UIImage.gifWithURL("https://media.giphy.com/media/CLLlVrnuuhTq0/giphy.gif")
+        //squidGif.image = UIImage.gifWithURL("https://media.giphy.com/media/CLLlVrnuuhTq0/giphy.gif")
         
         camera = FastttCamera()
         camera.delegate = self
@@ -37,13 +37,13 @@ class HomeViewController: UIViewController {
         
         camera.view.makeRoundedAndOutline(UIColor.whiteColor())
         cameraView.makeRoundedAndOutline(UIColor.whiteColor())
-       
+        
         // Add shadow and make it rounded
         takePictureButton.makeRounded()
         takePictureButton.layer.masksToBounds = false
         takePictureButton.layer.shadowColor = UIColor.darkGrayColor().CGColor
-        takePictureButton.layer.shadowOpacity = 0.4
-        takePictureButton.layer.shadowRadius = 3
+        takePictureButton.layer.shadowOpacity = 0.2
+        takePictureButton.layer.shadowRadius = 2
         takePictureButton.layer.shadowOffset = CGSizeMake(2, 2)
     }
     
@@ -108,11 +108,14 @@ class HomeViewController: UIViewController {
             .observeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
             .subscribe(onNext: { (answer) in
                 self.hideAnsweringViewController()
+                
                 if answer != nil {
                     print(answer?.identifier)
                     
                     let answerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Answer") as! AnswerViewController
-                    answerViewController.answer = answer?.identifier ?? ""
+                    
+                    answerViewController.answer = answer?.text ?? ""
+                    answerViewController.answerIdentifier = (answer?.identifier ?? "").uppercaseString
                     self.presentViewController(answerViewController, animated: true, completion: nil)
                 }
                 else {

@@ -26,7 +26,7 @@ class SolveService {
     func solveQuestion(question: String?) -> Observable<Answer?> {
         let q = question!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
-        let url = "http://192.168.1.248:8080/answer?question=\(q)"
+        let url = "http://solvelygateway-production.us-east-1.elasticbeanstalk.com/answer?question=\(q)"
         
         let start = NSDate().timeIntervalSince1970
         return requestString(.GET, url, headers: ["Content-Type": "application/json"])
@@ -49,7 +49,7 @@ class SolveService {
                                 let correctAnswer = Answer()
                                 correctAnswer.identifier = answer["answer_choice"] as? String ?? ""
                                 correctAnswer.text = answer["answer_text"] as? String ?? ""
-                            
+                                correctAnswer.question = data["question"]!["text"] as! String ?? ""
                                 let questionType = data["question"]!["type"] as! String ?? ""
                                 correctAnswer.isMultipleChoiceAnswer = questionType == "multiple_choice"
                                 
