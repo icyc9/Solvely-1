@@ -94,7 +94,9 @@ class HomeViewController: UIViewController {
                     self.solve(text!)
                 }
                 else {
-                    self.unableToAnswerQuestion()
+                    self.dismissViewControllerAnimated(true) { [weak self] in
+                        self!.unableToAnswerQuestion()
+                    }
                 }
             }, onError: { (error) in
                 print(error)
@@ -176,9 +178,9 @@ extension HomeViewController: TOCropViewControllerDelegate {
     
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
         
-        self.dismissViewControllerAnimated(true, completion: {
-            self.showAnsweringViewController()
-            self.convertImageToText(image)
+        self.dismissViewControllerAnimated(true, completion: { [weak self] in
+            self!.showAnsweringViewController()
+            self!.convertImageToText(image)
         })
         
     }
