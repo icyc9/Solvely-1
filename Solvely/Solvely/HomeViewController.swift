@@ -72,7 +72,7 @@ class HomeViewController: UIViewController {
         crosshair = UIView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
         crosshair.userInteractionEnabled = false
         crosshair.makeRounded()
-        crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.35)
+        crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.4)
         
         self.view.addSubview(crosshair)
         
@@ -332,7 +332,8 @@ class HomeViewController: UIViewController {
         }
         
         
-        let sad = UIImageView(image: UIImage(named: "sad squid"))
+        let sad = UIImageView(image: UIImage.gifWithName("cry"))
+        
         sad.frame = CGRect(x: w / 2, y: 0, width: w / 2, height: w / 2)
         sad.contentMode = .ScaleAspectFit
         

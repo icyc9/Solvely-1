@@ -19,15 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy squid" translatesAutoresizingMaskIntoConstraints="NO" id="roL-Qd-TDJ">
-                                <rect key="frame" x="23" y="152" width="554" height="296"/>
+                                <rect key="frame" x="21" y="152" width="554" height="296"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please don't use Solvely as a cheating tool! If you decide to, that's on you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2Dx-8x-1tC">
+                                <rect key="frame" x="20" y="456" width="557" height="124"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="3" id="U26-yK-ilN"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YTh-IO-Os0"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dKB-yg-Ydd"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="132" id="vHz-Vj-Ns0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Dx-8x-1tC" secondAttribute="trailing" constant="3" id="2sd-wn-Sln"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4nU-2K-rvl"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="1" id="C69-3F-nCT"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2Dx-8x-1tC" secondAttribute="bottom" constant="20" id="Hse-T8-xwL"/>
+                            <constraint firstItem="2Dx-8x-1tC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="MuL-0e-fKK"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="132" id="Wg0-j7-9bL"/>
+                            <constraint firstItem="2Dx-8x-1tC" firstAttribute="top" secondItem="roL-Qd-TDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="anR-EV-PNR"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="2Dx-8x-1tC" secondAttribute="centerX" id="rsh-Oz-miZ"/>
                         </constraints>
                     </view>
                 </viewController>
