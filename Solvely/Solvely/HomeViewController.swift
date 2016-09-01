@@ -302,6 +302,7 @@ class HomeViewController: UIViewController {
     
     private func unknownError() {
         print("unknown error")
+        FIRAnalytics.logEventWithName("unknownError", parameters: [:])
         showError("Something went wrong!")
     }
     
@@ -354,6 +355,7 @@ class HomeViewController: UIViewController {
     }
     
     private func unableToAnswerQuestion() {
+        FIRAnalytics.logEventWithName("couldntAnswerQuestion", parameters: [:])
         showError("Couldn't answer that!")
     }
     
@@ -394,6 +396,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: FastttCameraDelegate {
     
     func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
+        FIRAnalytics.logEventWithName("beginCrop", parameters: [:])
         self.crop(capturedImage.fullImage)
     }
 }
@@ -402,6 +405,7 @@ extension HomeViewController: FastttCameraDelegate {
 extension HomeViewController: TOCropViewControllerDelegate {
     
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
+        FIRAnalytics.logEventWithName("finishCrop", parameters: [:])
         
         self.dismissViewControllerAnimated(true, completion: { [weak self] in
             self!.showAnsweringViewController()
