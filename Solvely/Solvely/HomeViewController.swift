@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     private var answeringPopup: CNPPopupController!
     private var unknownErrorPopup: CNPPopupController!
     private var unableToAnswerPopup: CNPPopupController!
+    private var answerPopup: CNPPopupController!
     
     private var crosshairX: CGFloat = 0
     private var crosshairY: CGFloat = 0
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController {
         crosshair = UIView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
         crosshair.userInteractionEnabled = false
         crosshair.makeRounded()
-        crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.25)
+        crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.35)
         
         self.view.addSubview(crosshair)
     }
@@ -129,6 +130,7 @@ class HomeViewController: UIViewController {
                 
                 if answer != nil {
                     print(answer?.identifier)
+                    self.showAnswer(answer)
                 }
                 else {
                     self.unableToAnswerQuestion()
@@ -150,6 +152,67 @@ class HomeViewController: UIViewController {
                 }
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+    }
+    
+    private func showAnswer(answer: Answer?) {
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        
+        let w = CGFloat(screenWidth)
+        let h = CGFloat(w)
+        let y = CGFloat((h / 2))
+        
+        let title = UILabel()
+        title.textColor = UIColor.whiteColor()
+        title.font = UIFont(name: "Raleway", size: 18)
+        title.text = "The answer is most likely"
+        title.textAlignment = NSTextAlignment.Center;
+        title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
+        
+        let answerLetter = UILabel()
+        answerLetter.textColor = UIColor.whiteColor()
+        answerLetter.font = UIFont(name: "Raleway-Bold", size: 64)
+        answerLetter.text = (answer?.identifier ?? "").uppercaseString
+        answerLetter.textAlignment = NSTextAlignment.Center;
+        answerLetter.frame = CGRect(x: 0, y: 0, width: w, height: 50)
+        
+        let answerText = UILabel()
+        answerText.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        answerText.textColor = UIColor.whiteColor()
+        answerText.font = UIFont(name: "Raleway", size: 24)
+        answerText.text = answer?.text ?? ""
+        answerText.textAlignment = NSTextAlignment.Center;
+        answerText.frame = CGRect(x: 0, y: 0, width: w, height: 50)
+        
+        let close = CNPPopupButton(frame: CGRectMake(0, 0, 150, 50))
+        close.setTitleColor(UIColor.solvelyPrimaryBlue(), forState: .Normal)
+        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+        close.setTitle("Ok", forState: .Normal)
+        close.backgroundColor = UIColor.whiteColor()
+        close.layer.cornerRadius = Radius.standardCornerRadius
+        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            self.answerPopup.dismissPopupControllerAnimated(true)
+        }
+        
+        let topPaddingView = UIView()
+        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView = UIView()
+        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView2 = UIView()
+        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let theme = CNPPopupTheme()
+        theme.maxPopupWidth = screenWidth
+        
+        theme.cornerRadius = Radius.standardCornerRadius
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        
+        answerPopup = CNPPopupController(contents:[topPaddingView, title, answerLetter, answerText, paddingView2, close, paddingView])
+        answerPopup.theme = theme
+        answerPopup.theme.popupStyle = CNPPopupStyle.Centered
+        answerPopup.delegate = nil
+        answerPopup.presentPopupControllerAnimated(true)
     }
     
     private func unknownError() {
