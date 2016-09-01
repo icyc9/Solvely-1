@@ -140,6 +140,7 @@ class HomeViewController: UIViewController {
                 }
             }, onError: { (error) in
                 print(error)
+                self.answeringPopup.dismissPopupControllerAnimated(true)
                 self.unknownError()
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
