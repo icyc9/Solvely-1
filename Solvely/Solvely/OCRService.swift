@@ -28,9 +28,10 @@ class OCRService {
     }
     
     private func compress(image: UIImage) -> UIImage {
-        let resized = image.resizeWithPercentage(compressionPercent)
+        let resized = image.resizeWithWidth(UIScreen.mainScreen().bounds.width)
         let data = resized!.mediumQualityJPEGNSData
         let compressed = UIImage(data: data)
+        
         
         print(compressed?.size)
         print(data.length/1024)

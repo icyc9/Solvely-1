@@ -26,6 +26,11 @@ class HomeViewController: UIViewController {
     private var unknownErrorPopup: CNPPopupController!
     private var unableToAnswerPopup: CNPPopupController!
     
+    private var crosshairX: CGFloat = 0
+    private var crosshairY: CGFloat = 0
+    private var crosshairW: CGFloat = 0
+    private var crosshairH: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,12 +61,12 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(squid)
         
-        let w = CGFloat(screenWidth - 16)
-        let h = CGFloat(screenHeight / 3)
-        let x = CGFloat((screenWidth / 2 ) - (w / 2))
-        let y = CGFloat((screenHeight / 2) - (h / 2))
+        crosshairW = CGFloat(screenWidth - 16)
+        crosshairH = CGFloat(screenHeight / 3)
+        crosshairX = CGFloat((screenWidth / 2 ) - (crosshairW / 2))
+        crosshairY = CGFloat((screenHeight / 2) - (crosshairH / 2))
         
-        crosshair = UIView(frame: CGRect(x: x, y: y, width: w, height: h))
+        crosshair = UIView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
         crosshair.userInteractionEnabled = false
         crosshair.makeRounded()
         crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.25)
@@ -70,9 +75,25 @@ class HomeViewController: UIViewController {
     }
     
     private func crop(image: UIImage!) {
-        let crop = TOCropViewController(image: image)
+        let cropped = cropToBox(image)
+        
+        let crop = TOCropViewController(image: cropped)
         crop.delegate = self
         self.presentViewController(crop, animated: true, completion: nil)
+    }
+    
+    func cropToBox(screenshot: UIImage) -> UIImage {
+        let x = crosshairX / self.view.frame.width
+        let y = crosshairY / self.view.frame.height
+        let w = crosshairW / self.view.frame.width
+        let h = crosshairH / self.view.frame.height
+        
+        let cropped = CGRect(x: x * screenshot.size.width, y: y * screenshot.size.height, width: w * screenshot.size.width, height: h * screenshot.size.height)
+        
+        print(cropped)
+        let cgImage = CGImageCreateWithImageInRect(screenshot.CGImage, cropped)
+        let image: UIImage = UIImage(CGImage: cgImage!)
+        return image
     }
     
     private func convertImageToText(image: UIImage!) {
@@ -225,7 +246,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: FastttCameraDelegate {
     
     func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
-        self.crop(capturedImage.scaledImage)
+        self.crop(capturedImage.fullImage)
     }
 }
 
