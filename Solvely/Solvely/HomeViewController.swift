@@ -211,9 +211,9 @@ class HomeViewController: UIViewController {
         message.numberOfLines = 0
         message.textAlignment = NSTextAlignment.Center
         message.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        message.text = "Get started by taking a picture of a fact-based multiple choice question!"
+        message.text = "Solvely exists for answering simple fact based multiple choice questions, not word problems or math."
         message.textAlignment = NSTextAlignment.Center;
-        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40, height: 60)
+        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40 - 20, height: 100)
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth - 40
