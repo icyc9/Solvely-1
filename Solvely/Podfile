@@ -15,4 +15,5 @@ target 'Solvely' do
   pod 'MBProgressHUD'
   pod "NMPopUpViewSwift"
   pod 'CNPPopupController'
+  pod 'Firebase'
 end

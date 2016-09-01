@@ -12,8 +12,10 @@ import TOCropViewController
 import RxSwift
 import NMPopUpViewSwift
 import CNPPopupController
+import FirebaseAnalytics
 
 class HomeViewController: UIViewController {
+    private let hasSolvedKey = "hasSolved"
     
     private var camera: FastttCamera!
     private let solveService = SolveService()
@@ -73,6 +75,32 @@ class HomeViewController: UIViewController {
         crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.35)
         
         self.view.addSubview(crosshair)
+        
+        let help = UIButton(type: .Custom)
+        
+        if let image = UIImage(named: "help") {
+            help.setImage(image, forState: .Normal)
+            let hw = image.size.width
+            let hh = image.size.height
+            help.frame = CGRect(x: screenWidth - hw - 8, y: screenHeight - hh - 8, width: hw, height: hh)
+            help.addTarget(self, action: #selector(HomeViewController.showHelp), forControlEvents: .TouchUpInside)
+        }
+        
+        self.view.addSubview(help)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let hasSolvedQuestion = defaults.valueForKey(hasSolvedKey) as? Bool
+        
+        if hasSolvedQuestion == nil || hasSolvedQuestion == false {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(true, forKey: self.hasSolvedKey)
+            
+            showHelp(nil)
+        }
     }
     
     private func crop(image: UIImage!) {
@@ -118,6 +146,8 @@ class HomeViewController: UIViewController {
     }
     
     func takePicture(sender: UIButton?) {
+        FIRAnalytics.logEventWithName("takePicture", parameters: [:])
+        
         camera.takePicture()
     }
     
@@ -129,7 +159,6 @@ class HomeViewController: UIViewController {
                 self.answeringPopup.dismissPopupControllerAnimated(true)
                 
                 if answer != nil {
-                    print(answer?.identifier)
                     self.showAnswer(answer)
                 }
                 else {
@@ -152,6 +181,61 @@ class HomeViewController: UIViewController {
                 }
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(self.disposeBag)
+    }
+    
+    func showHelp(sender: UIButton?) {
+        FIRAnalytics.logEventWithName("showHelp", parameters: [:])
+        
+        let close = CNPPopupButton(frame: CGRectMake(0, 0, 150, 50))
+        close.setTitleColor(UIColor.solvelyPrimaryBlue(), forState: .Normal)
+        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+        close.setTitle("Ok", forState: .Normal)
+        close.backgroundColor = UIColor.whiteColor()
+        close.layer.cornerRadius = Radius.standardCornerRadius
+        
+        
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        
+        let w = CGFloat(screenWidth - 40)
+        let h = CGFloat(w)
+        let y = CGFloat((h / 2))
+        
+        let gif = UIImageView(image: UIImage.gifWithName("think"))
+        gif.contentMode = .ScaleAspectFit
+        gif.frame = CGRect(x: w / 2, y: y, width: w / 2, height: w / 2)
+        
+        let message = UILabel()
+        message.textColor = UIColor.whiteColor()
+        message.font = UIFont(name: "Raleway", size: 17)
+        message.numberOfLines = 0
+        message.textAlignment = NSTextAlignment.Center
+        message.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        message.text = "Get started by taking a picture of a fact-based multiple choice question!"
+        message.textAlignment = NSTextAlignment.Center;
+        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40, height: 60)
+        
+        let theme = CNPPopupTheme()
+        theme.maxPopupWidth = screenWidth - 40
+        
+        theme.cornerRadius = Radius.standardCornerRadius
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        
+        let paddingView = UIView()
+        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView2 = UIView()
+        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let helpPopup = CNPPopupController(contents:[gif, message, paddingView2, close, paddingView])
+        helpPopup.theme = theme
+        helpPopup.theme.popupStyle = CNPPopupStyle.Centered
+        helpPopup.delegate = nil
+        
+        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            helpPopup.dismissPopupControllerAnimated(true)
+        }
+        
+        helpPopup.presentPopupControllerAnimated(true)
     }
     
     private func showAnswer(answer: Answer?) {
@@ -191,6 +275,7 @@ class HomeViewController: UIViewController {
         close.layer.cornerRadius = Radius.standardCornerRadius
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
             self.answerPopup.dismissPopupControllerAnimated(true)
+            FIRAnalytics.logEventWithName("acceptAnswer", parameters: [:])
         }
         
         let topPaddingView = UIView()
