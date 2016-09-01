@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02219D001D7855D4002CC90F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02219CFF1D7855D4002CC90F /* GoogleService-Info.plist */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552101D71735300F6E2F6 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520F1D71735300F6E2F6 /* AnswerViewController.swift */; };
 		02F552121D71743500F6E2F6 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F552111D71743500F6E2F6 /* Error.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02219CFF1D7855D4002CC90F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F5520F1D71735300F6E2F6 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		02F552111D71743500F6E2F6 /* Error.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		02FE84201D7170AE0027AC8A /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
+				02219CFF1D7855D4002CC90F /* GoogleService-Info.plist */,
 				02F5526C1D779D9700F6E2F6 /* gif */,
 				02F5524C1D768ADB00F6E2F6 /* views */,
 				02F552361D72A86D00F6E2F6 /* fonts */,
@@ -273,6 +276,7 @@
 				02F552501D768B5700F6E2F6 /* SolvingView.xib in Resources */,
 				02F552451D72A9D400F6E2F6 /* Raleway-Thin.ttf in Resources */,
 				02FE842C1D7170AE0027AC8A /* LaunchScreen.storyboard in Resources */,
+				02219D001D7855D4002CC90F /* GoogleService-Info.plist in Resources */,
 				02F552121D71743500F6E2F6 /* Error.storyboard in Resources */,
 				02FE84291D7170AE0027AC8A /* Assets.xcassets in Resources */,
 				02FE84271D7170AE0027AC8A /* Main.storyboard in Resources */,
