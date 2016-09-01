@@ -12,8 +12,6 @@ class AnswerViewController: UIViewController {
 
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var answerText: UITextView!
-    @IBOutlet weak var shadow: UIView!
-    @IBOutlet weak var answerCard: UIView!
     
     var answerIdentifier = ""
     var answer = ""
@@ -22,15 +20,9 @@ class AnswerViewController: UIViewController {
         super.viewDidLoad()
         answerLabel.text = answerIdentifier
         answerText.text = answer
-        shadow.makeRounded()
-        answerCard.makeRounded()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    @IBAction func goBack(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

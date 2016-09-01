@@ -13,4 +13,6 @@ target 'Solvely' do
   pod 'Gloss', '~> 0.7'
   pod 'BubbleTransition', '~> 1.0.0'
   pod 'MBProgressHUD'
+  pod "NMPopUpViewSwift"
+  pod 'CNPPopupController'
 end

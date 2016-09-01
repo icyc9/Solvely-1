@@ -21,6 +21,13 @@
 		02F552471D735EDF00F6E2F6 /* UnableToReadQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552461D735EDF00F6E2F6 /* UnableToReadQuestionViewController.swift */; };
 		02F552491D7362DC00F6E2F6 /* UnknownErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552481D7362DC00F6E2F6 /* UnknownErrorViewController.swift */; };
 		02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5524A1D73698700F6E2F6 /* UIImage+Gif.swift */; };
+		02F5524E1D768B2C00F6E2F6 /* Answer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02F5524D1D768B2C00F6E2F6 /* Answer.xib */; };
+		02F552501D768B5700F6E2F6 /* SolvingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02F5524F1D768B5700F6E2F6 /* SolvingView.xib */; };
+		02F552521D768B7D00F6E2F6 /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552511D768B7D00F6E2F6 /* AnswerView.swift */; };
+		02F552541D768B8900F6E2F6 /* SolvingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552531D768B8900F6E2F6 /* SolvingView.swift */; };
+		02F552561D7696A000F6E2F6 /* MCAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552551D7696A000F6E2F6 /* MCAnswerViewController.swift */; };
+		02F552701D77D70500F6E2F6 /* Answering.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02F5526F1D77D70500F6E2F6 /* Answering.xib */; };
+		02F552721D77E18300F6E2F6 /* think.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02F552711D77E18300F6E2F6 /* think.gif */; };
 		02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE84211D7170AE0027AC8A /* AppDelegate.swift */; };
 		02FE84241D7170AE0027AC8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE84231D7170AE0027AC8A /* ViewController.swift */; };
 		02FE84271D7170AE0027AC8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FE84251D7170AE0027AC8A /* Main.storyboard */; };
@@ -45,6 +52,13 @@
 		02F552461D735EDF00F6E2F6 /* UnableToReadQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnableToReadQuestionViewController.swift; sourceTree = "<group>"; };
 		02F552481D7362DC00F6E2F6 /* UnknownErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownErrorViewController.swift; sourceTree = "<group>"; };
 		02F5524A1D73698700F6E2F6 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		02F5524D1D768B2C00F6E2F6 /* Answer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Answer.xib; sourceTree = "<group>"; };
+		02F5524F1D768B5700F6E2F6 /* SolvingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolvingView.xib; sourceTree = "<group>"; };
+		02F552511D768B7D00F6E2F6 /* AnswerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
+		02F552531D768B8900F6E2F6 /* SolvingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvingView.swift; sourceTree = "<group>"; };
+		02F552551D7696A000F6E2F6 /* MCAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAnswerViewController.swift; sourceTree = "<group>"; };
+		02F5526F1D77D70500F6E2F6 /* Answering.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Answering.xib; sourceTree = "<group>"; };
+		02F552711D77E18300F6E2F6 /* think.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = think.gif; sourceTree = "<group>"; };
 		02FE841E1D7170AE0027AC8A /* Solvely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solvely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FE84211D7170AE0027AC8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02FE84231D7170AE0027AC8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +101,7 @@
 				02F5520F1D71735300F6E2F6 /* AnswerViewController.swift */,
 				02F552461D735EDF00F6E2F6 /* UnableToReadQuestionViewController.swift */,
 				02F552481D7362DC00F6E2F6 /* UnknownErrorViewController.swift */,
+				02F552551D7696A000F6E2F6 /* MCAnswerViewController.swift */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -112,6 +127,25 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		02F5524C1D768ADB00F6E2F6 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				02F5524D1D768B2C00F6E2F6 /* Answer.xib */,
+				02F552511D768B7D00F6E2F6 /* AnswerView.swift */,
+				02F5524F1D768B5700F6E2F6 /* SolvingView.xib */,
+				02F552531D768B8900F6E2F6 /* SolvingView.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		02F5526C1D779D9700F6E2F6 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				02F552711D77E18300F6E2F6 /* think.gif */,
+			);
+			name = gif;
+			sourceTree = "<group>";
+		};
 		02FE84151D7170AE0027AC8A = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +168,8 @@
 		02FE84201D7170AE0027AC8A /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
+				02F5526C1D779D9700F6E2F6 /* gif */,
+				02F5524C1D768ADB00F6E2F6 /* views */,
 				02F552361D72A86D00F6E2F6 /* fonts */,
 				02F552181D722A3700F6E2F6 /* services */,
 				02F5520C1D7172D500F6E2F6 /* viewcontrollers */,
@@ -143,6 +179,7 @@
 				02FE842D1D7170AE0027AC8A /* Info.plist */,
 				02F552161D72205100F6E2F6 /* Constants.swift */,
 				02F5524A1D73698700F6E2F6 /* UIImage+Gif.swift */,
+				02F5526F1D77D70500F6E2F6 /* Answering.xib */,
 			);
 			path = Solvely;
 			sourceTree = "<group>";
@@ -226,10 +263,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F552701D77D70500F6E2F6 /* Answering.xib in Resources */,
 				02F552411D72A9D400F6E2F6 /* Raleway-Bold.ttf in Resources */,
 				02F552421D72A9D400F6E2F6 /* Raleway-Light.ttf in Resources */,
+				02F5524E1D768B2C00F6E2F6 /* Answer.xib in Resources */,
 				02F552431D72A9D400F6E2F6 /* Raleway-Medium.ttf in Resources */,
+				02F552721D77E18300F6E2F6 /* think.gif in Resources */,
 				02F552441D72A9D400F6E2F6 /* Raleway-Regular.ttf in Resources */,
+				02F552501D768B5700F6E2F6 /* SolvingView.xib in Resources */,
 				02F552451D72A9D400F6E2F6 /* Raleway-Thin.ttf in Resources */,
 				02FE842C1D7170AE0027AC8A /* LaunchScreen.storyboard in Resources */,
 				02F552121D71743500F6E2F6 /* Error.storyboard in Resources */,
@@ -293,13 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F552561D7696A000F6E2F6 /* MCAnswerViewController.swift in Sources */,
 				02F552471D735EDF00F6E2F6 /* UnableToReadQuestionViewController.swift in Sources */,
+				02F552541D768B8900F6E2F6 /* SolvingView.swift in Sources */,
 				02F552171D72205100F6E2F6 /* Constants.swift in Sources */,
 				02F552101D71735300F6E2F6 /* AnswerViewController.swift in Sources */,
 				02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */,
 				02F552491D7362DC00F6E2F6 /* UnknownErrorViewController.swift in Sources */,
 				02FE84241D7170AE0027AC8A /* ViewController.swift in Sources */,
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
+				02F552521D768B7D00F6E2F6 /* AnswerView.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,
 				02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */,
 				02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */,

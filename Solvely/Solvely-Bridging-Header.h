@@ -3,3 +3,4 @@
 //
 
 #include "FastttCamera/FastttCamera.h"
+#include "CNPPopupController/CNPPopupController.h"
