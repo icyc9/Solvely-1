@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		02219D041D786305002CC90F /* cry.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02219D031D786305002CC90F /* cry.gif */; };
 		02264A6B1D78BEA10010C37C /* happy squid.png in Resources */ = {isa = PBXBuildFile; fileRef = 02264A6A1D78BEA10010C37C /* happy squid.png */; };
-		02264A6D1D78E6E40010C37C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02264A6C1D78E6E40010C37C /* GoogleService-Info.plist */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
@@ -31,7 +30,6 @@
 /* Begin PBXFileReference section */
 		02219D031D786305002CC90F /* cry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cry.gif; sourceTree = "<group>"; };
 		02264A6A1D78BEA10010C37C /* happy squid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "happy squid.png"; sourceTree = "<group>"; };
-		02264A6C1D78E6E40010C37C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		02FE84201D7170AE0027AC8A /* Solvely */ = {
 			isa = PBXGroup;
 			children = (
-				02264A6C1D78E6E40010C37C /* GoogleService-Info.plist */,
 				02264A691D78BE980010C37C /* launch */,
 				02F5526C1D779D9700F6E2F6 /* gif */,
 				02F552361D72A86D00F6E2F6 /* fonts */,
@@ -242,7 +239,6 @@
 				02F552411D72A9D400F6E2F6 /* Raleway-Bold.ttf in Resources */,
 				02F552421D72A9D400F6E2F6 /* Raleway-Light.ttf in Resources */,
 				02F552431D72A9D400F6E2F6 /* Raleway-Medium.ttf in Resources */,
-				02264A6D1D78E6E40010C37C /* GoogleService-Info.plist in Resources */,
 				02F552721D77E18300F6E2F6 /* think.gif in Resources */,
 				02F552441D72A9D400F6E2F6 /* Raleway-Regular.ttf in Resources */,
 				02F552451D72A9D400F6E2F6 /* Raleway-Thin.ttf in Resources */,
