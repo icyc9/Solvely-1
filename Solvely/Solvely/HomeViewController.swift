@@ -158,7 +158,7 @@ class HomeViewController: UIViewController {
             .subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
             .subscribe(onNext: { (answer) in
                 self.answeringPopup.dismissPopupControllerAnimated(true)
-                
+                    
                 if answer != nil {
                     self.showAnswer(answer)
                 }
@@ -168,7 +168,7 @@ class HomeViewController: UIViewController {
             }, onError: { (error) in
                 self.answeringPopup.dismissPopupControllerAnimated(true)
                 print(error)
-                
+                        
                 switch(error) {
                 case SolveError.UnknownError:
                     self.unknownError()
@@ -181,7 +181,7 @@ class HomeViewController: UIViewController {
                     break
                 }
             }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(self.disposeBag)
+        .addDisposableTo(self.disposeBag)
     }
     
     func showHelp(sender: UIButton?) {
@@ -197,7 +197,7 @@ class HomeViewController: UIViewController {
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         
-        let w = CGFloat(screenWidth - 40)
+        let w = CGFloat(screenWidth)
         let h = CGFloat(w)
         let y = CGFloat((h / 2))
         
@@ -211,12 +211,12 @@ class HomeViewController: UIViewController {
         message.numberOfLines = 0
         message.textAlignment = NSTextAlignment.Center
         message.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        message.text = "Solvely exists for answering simple fact based multiple choice questions, not word problems or math."
+        message.text = "Hey there! I'm Solvely. I'll answer your fact based multiple choice questions."
         message.textAlignment = NSTextAlignment.Center;
         message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40 - 20, height: 100)
         
         let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth - 40
+        theme.maxPopupWidth = screenWidth
         
         theme.cornerRadius = Radius.standardCornerRadius
         theme.backgroundColor = UIColor.solvelyPrimaryBlue()
@@ -255,7 +255,7 @@ class HomeViewController: UIViewController {
         
         let answerLetter = UILabel()
         answerLetter.textColor = UIColor.whiteColor()
-        answerLetter.font = UIFont(name: "Raleway-Bold", size: 64)
+        answerLetter.font = UIFont(name: "Raleway", size: 64)
         answerLetter.text = (answer?.identifier ?? "").uppercaseString
         answerLetter.textAlignment = NSTextAlignment.Center;
         answerLetter.frame = CGRect(x: 0, y: 0, width: w, height: 50)
@@ -288,13 +288,16 @@ class HomeViewController: UIViewController {
         let paddingView2 = UIView()
         paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
+        let paddingView3 = UIView()
+        paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
         
         theme.cornerRadius = Radius.standardCornerRadius
         theme.backgroundColor = UIColor.solvelyPrimaryBlue()
         
-        answerPopup = CNPPopupController(contents:[topPaddingView, title, answerLetter, answerText, paddingView2, close, paddingView])
+        answerPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, close, paddingView])
         answerPopup.theme = theme
         answerPopup.theme.popupStyle = CNPPopupStyle.Centered
         answerPopup.delegate = nil
@@ -330,7 +333,7 @@ class HomeViewController: UIViewController {
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
             self.answeringPopup.dismissPopupControllerAnimated(true)
         }
-        
+
         
         let sad = UIImageView(image: UIImage.gifWithName("cry"))
         
@@ -362,27 +365,25 @@ class HomeViewController: UIViewController {
     }
     
     private func showAnsweringViewController() {
-        let button = CNPPopupButton.init(frame: CGRectMake(0, 0, 200, 60))
-        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        button.setTitle("Answering", forState: UIControlState.Normal)
-        
         let screenWidth = UIScreen.mainScreen().bounds.width
 
-        let w = CGFloat(screenWidth - 20)
+        let w = CGFloat(screenWidth)
         let h = CGFloat(w)
         let y = CGFloat((h / 2))
         
         let gif = UIImageView(image: UIImage.gifWithName("think"))
-        gif.frame = CGRect(x: w / 2, y: y, width: w, height: h)
+        gif.frame = CGRect(x: 0, y: 0, width: w * 0.75, height: w * 0.75)
+        
+        let space = UIView()
+        space.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 1)
         
         let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth - 16
+        theme.maxPopupWidth = screenWidth
         
         theme.cornerRadius = Radius.standardCornerRadius
         theme.backgroundColor = UIColor.solvelyPrimaryBlue()
         
-        answeringPopup = CNPPopupController(contents:[gif])
+        answeringPopup = CNPPopupController(contents:[gif, space])
         answeringPopup.theme = theme
         answeringPopup.theme.popupStyle = CNPPopupStyle.Centered
         answeringPopup.delegate = nil
