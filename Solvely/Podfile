@@ -12,5 +12,4 @@ target 'Solvely' do
   pod 'RxAlamofire'
   pod "NMPopUpViewSwift"
   pod 'CNPPopupController'
-  pod 'Firebase'
 end

@@ -12,7 +12,6 @@ import TOCropViewController
 import RxSwift
 import NMPopUpViewSwift
 import CNPPopupController
-import FirebaseAnalytics
 
 class HomeViewController: UIViewController {
     private let hasSolvedKey = "hasSolved"
@@ -147,8 +146,6 @@ class HomeViewController: UIViewController {
     }
     
     func takePicture(sender: UIButton?) {
-        FIRAnalytics.logEventWithName("takePicture", parameters: [:])
-        
         camera.takePicture()
     }
     
@@ -185,8 +182,6 @@ class HomeViewController: UIViewController {
     }
     
     func showHelp(sender: UIButton?) {
-        FIRAnalytics.logEventWithName("showHelp", parameters: [:])
-        
         let close = CNPPopupButton(frame: CGRectMake(0, 0, 150, 50))
         close.setTitleColor(UIColor.solvelyPrimaryBlue(), forState: .Normal)
         close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
@@ -276,7 +271,6 @@ class HomeViewController: UIViewController {
         close.layer.cornerRadius = Radius.standardCornerRadius
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
             self.answerPopup.dismissPopupControllerAnimated(true)
-            FIRAnalytics.logEventWithName("acceptAnswer", parameters: [:])
         }
         
         let topPaddingView = UIView()
@@ -306,7 +300,6 @@ class HomeViewController: UIViewController {
     
     private func unknownError() {
         print("unknown error")
-        FIRAnalytics.logEventWithName("unknownError", parameters: [:])
         showError("Something went wrong!")
     }
     
@@ -360,7 +353,6 @@ class HomeViewController: UIViewController {
     }
     
     private func unableToAnswerQuestion() {
-        FIRAnalytics.logEventWithName("couldntAnswerQuestion", parameters: [:])
         showError("Couldn't answer that!")
     }
     
@@ -399,7 +391,6 @@ class HomeViewController: UIViewController {
 extension HomeViewController: FastttCameraDelegate {
     
     func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
-        FIRAnalytics.logEventWithName("beginCrop", parameters: [:])
         self.crop(capturedImage.fullImage)
     }
 }
@@ -408,8 +399,6 @@ extension HomeViewController: FastttCameraDelegate {
 extension HomeViewController: TOCropViewControllerDelegate {
     
     func cropViewController(cropViewController: TOCropViewController!, didCropToImage image: UIImage!, withRect cropRect: CGRect, angle: Int) {
-        FIRAnalytics.logEventWithName("finishCrop", parameters: [:])
-        
         self.dismissViewControllerAnimated(true, completion: { [weak self] in
             self!.showAnsweringViewController()
             self!.convertImageToText(image)
