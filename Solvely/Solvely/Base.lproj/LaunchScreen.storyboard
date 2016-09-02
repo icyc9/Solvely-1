@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -25,21 +24,11 @@
                                     <constraint firstAttribute="height" constant="269" id="QF9-Ok-9v6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please don't use Solvely as a cheating tool! If you decide to, that's on you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2Dx-8x-1tC">
-                                <rect key="frame" x="22" y="436" width="557" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="1" id="55m-Xt-OIf"/>
-                            <constraint firstItem="2Dx-8x-1tC" firstAttribute="top" secondItem="roL-Qd-TDJ" secondAttribute="bottom" constant="8" id="GPe-O8-jiQ"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="2Dx-8x-1tC" secondAttribute="centerX" id="KrA-AZ-XO2"/>
                             <constraint firstItem="roL-Qd-TDJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="139" id="TDJ-AR-C6h"/>
-                            <constraint firstItem="2Dx-8x-1tC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="2" id="cd3-Qy-hNp"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2Dx-8x-1tC" secondAttribute="bottom" constant="110" id="nV9-n8-Q9K"/>
                         </constraints>
                     </view>
                 </viewController>
