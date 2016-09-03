@@ -27,11 +27,14 @@ class HomeViewController: UIViewController {
     private var unknownErrorPopup: CNPPopupController!
     private var unableToAnswerPopup: CNPPopupController!
     private var answerPopup: CNPPopupController!
+    private var editPopup: CNPPopupController!
     
     private var crosshairX: CGFloat = 0
     private var crosshairY: CGFloat = 0
     private var crosshairW: CGFloat = 0
     private var crosshairH: CGFloat = 0
+    
+    private var editQuestionTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +134,7 @@ class HomeViewController: UIViewController {
             .subscribe(onNext: { (text) in
                 if text != nil && text != "" {
                     print(text!)
-                    self.solve(text!)
+                    self.showEdit(text!)
                 }
                 else {
                     self.answeringPopup.dismissPopupControllerAnimated(true)
@@ -303,6 +306,78 @@ class HomeViewController: UIViewController {
         showError("Something went wrong!")
     }
     
+    private func showEdit(text: String?) {
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        
+        let w = CGFloat(screenWidth)
+        let h = CGFloat(w)
+        let y = CGFloat((h / 2))
+        
+        let title = UILabel()
+        title.textColor = UIColor.whiteColor()
+        title.font = UIFont(name: "Raleway", size: 17)
+        title.text = "Edit your question"
+        title.textAlignment = NSTextAlignment.Center;
+        title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
+        
+        editQuestionTextView = UITextView(frame: CGRect(x: 0, y: 0, width: screenWidth - 16, height: 250))
+        editQuestionTextView.font = UIFont(name: "Raleway", size: 20)
+        editQuestionTextView.text = text
+        editQuestionTextView.makeRounded()
+        
+        let close = CNPPopupButton(frame: CGRectMake(0, 0, 150, 50))
+        close.setTitleColor(UIColor.solvelyPrimaryBlue(), forState: .Normal)
+        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+        close.setTitle("Solve", forState: .Normal)
+        close.backgroundColor = UIColor.whiteColor()
+        close.layer.cornerRadius = Radius.standardCornerRadius
+
+
+        let topPaddingView = UIView()
+        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView = UIView()
+        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView2 = UIView()
+        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let theme = CNPPopupTheme()
+        theme.maxPopupWidth = screenWidth
+        theme.cornerRadius = Radius.standardCornerRadius
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        
+        editPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, close, paddingView])
+        editPopup.theme = theme
+        editPopup.theme.popupStyle = CNPPopupStyle.Centered
+        editPopup.delegate = nil
+        editPopup.presentPopupControllerAnimated(true)
+        
+        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            self.editPopup.dismissPopupControllerAnimated(true)
+            self.solve(self.editQuestionTextView.text)
+        }
+        
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(HomeViewController.doneEditingQuestion))
+        doneButton.tintColor = UIColor.whiteColor()
+        
+        let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        
+        let keyboardToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
+        keyboardToolbar.barTintColor = UIColor.solvelyPrimaryBlue()
+        keyboardToolbar.translucent = false
+        keyboardToolbar.barStyle = UIBarStyle.Default
+        keyboardToolbar.setItems([flexButton, doneButton], animated: true)
+        keyboardToolbar.sizeToFit()
+        editQuestionTextView.inputAccessoryView = keyboardToolbar
+    }
+    
+    func doneEditingQuestion() {
+        if editQuestionTextView != nil {
+            editQuestionTextView!.endEditing(true)
+        }
+    }
+
     private func showError(message: String?) {
         let screenWidth = UIScreen.mainScreen().bounds.width
         
