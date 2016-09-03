@@ -31,6 +31,9 @@ class SolveService {
         let start = NSDate().timeIntervalSince1970
         return requestString(.GET, url, headers: ["Content-Type": "application/json"])
             .flatMap { (response, data) -> Observable<Answer?> in
+                print("\n")
+                print(response)
+                print("\n")
                 print(NSDate().timeIntervalSince1970 - start)
                 if response.statusCode == 500 {
                     return Observable.error(SolveError.InvalidQuestionError("Invalid question"))

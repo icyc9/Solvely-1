@@ -23,17 +23,13 @@ class HomeViewController: UIViewController {
     
     private var crosshair: UIView!
     
-    private var answeringPopup: CNPPopupController!
-    private var unknownErrorPopup: CNPPopupController!
-    private var unableToAnswerPopup: CNPPopupController!
-    private var answerPopup: CNPPopupController!
-    private var editPopup: CNPPopupController!
+    private var currentPopup: CNPPopupController!
     
     private var crosshairX: CGFloat = 0
     private var crosshairY: CGFloat = 0
     private var crosshairW: CGFloat = 0
     private var crosshairH: CGFloat = 0
-    
+    private let popupAlpha: CGFloat = 0.75
     private var editQuestionTextView: UITextView!
     
     override func viewDidLoad() {
@@ -66,14 +62,14 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(squid)
         
-        crosshairW = CGFloat(screenWidth - 16)
+        crosshairW = CGFloat(screenWidth)
         crosshairH = CGFloat(screenHeight / 3)
         crosshairX = CGFloat((screenWidth / 2 ) - (crosshairW / 2))
         crosshairY = CGFloat((screenHeight / 2) - (crosshairH / 2))
         
         crosshair = UIView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
         crosshair.userInteractionEnabled = false
-        crosshair.makeRounded()
+        
         crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).colorWithAlphaComponent(0.4)
         
         self.view.addSubview(crosshair)
@@ -93,7 +89,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-    
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         let hasSolvedQuestion = defaults.valueForKey(hasSolvedKey) as? Bool
         
@@ -134,15 +130,16 @@ class HomeViewController: UIViewController {
             .subscribe(onNext: { (text) in
                 if text != nil && text != "" {
                     print(text!)
+                    self.hidePopup(self.currentPopup)
                     self.showEdit(text!)
                 }
                 else {
-                    self.answeringPopup.dismissPopupControllerAnimated(true)
-                    self.unableToAnswerQuestion()
+                    self.hidePopup(self.currentPopup)
+                    self.couldntReadThat()
                 }
             }, onError: { (error) in
                 print(error)
-                self.answeringPopup.dismissPopupControllerAnimated(true)
+                self.hidePopup(self.currentPopup)
                 self.unknownError()
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
@@ -157,7 +154,7 @@ class HomeViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
             .subscribe(onNext: { (answer) in
-                self.answeringPopup.dismissPopupControllerAnimated(true)
+                self.hidePopup(self.currentPopup)
                     
                 if answer != nil {
                     self.showAnswer(answer)
@@ -166,7 +163,7 @@ class HomeViewController: UIViewController {
                     self.unableToAnswerQuestion()
                 }
             }, onError: { (error) in
-                self.answeringPopup.dismissPopupControllerAnimated(true)
+                self.hidePopup(self.currentPopup)
                 print(error)
                         
                 switch(error) {
@@ -215,9 +212,7 @@ class HomeViewController: UIViewController {
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
-        
-        theme.cornerRadius = Radius.standardCornerRadius
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
         let paddingView = UIView()
         paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
@@ -225,16 +220,32 @@ class HomeViewController: UIViewController {
         let paddingView2 = UIView()
         paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
-        let helpPopup = CNPPopupController(contents:[gif, message, paddingView2, close, paddingView])
-        helpPopup.theme = theme
-        helpPopup.theme.popupStyle = CNPPopupStyle.Centered
-        helpPopup.delegate = nil
+        currentPopup = CNPPopupController(contents:[gif, message, paddingView2, close, paddingView])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.Centered
+        currentPopup.delegate = nil
         
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            helpPopup.dismissPopupControllerAnimated(true)
+            self.hidePopup(self.currentPopup)
         }
         
-        helpPopup.presentPopupControllerAnimated(true)
+        self.presentPopup(currentPopup)
+    }
+    
+    private func hidePopup(popup: CNPPopupController) {
+        UIView.animateWithDuration(0.3, animations: {
+            self.crosshair.alpha = 1
+        })
+        
+        popup.dismissPopupControllerAnimated(true)
+    }
+    
+    private func presentPopup(popup: CNPPopupController) {
+        UIView.animateWithDuration(0.3, animations: {
+            self.crosshair.alpha = 0
+        })
+        
+        popup.presentPopupControllerAnimated(true)
     }
     
     private func showAnswer(answer: Answer?) {
@@ -273,7 +284,7 @@ class HomeViewController: UIViewController {
         close.backgroundColor = UIColor.whiteColor()
         close.layer.cornerRadius = Radius.standardCornerRadius
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.answerPopup.dismissPopupControllerAnimated(true)
+            self.hidePopup(self.currentPopup)
         }
         
         let topPaddingView = UIView()
@@ -290,15 +301,18 @@ class HomeViewController: UIViewController {
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        theme.cornerRadius = Radius.standardCornerRadius
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, close, paddingView])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.Centered
+        currentPopup.delegate = nil
         
-        answerPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, close, paddingView])
-        answerPopup.theme = theme
-        answerPopup.theme.popupStyle = CNPPopupStyle.Centered
-        answerPopup.delegate = nil
-        answerPopup.presentPopupControllerAnimated(true)
+        self.presentPopup(currentPopup)
+    }
+    
+    private func couldntReadThat() {
+        showError("Couldn't read that!")
     }
     
     private func unknownError() {
@@ -306,7 +320,10 @@ class HomeViewController: UIViewController {
         showError("Something went wrong!")
     }
     
+    
     private func showEdit(text: String?) {
+        self.hidePopup(self.currentPopup)
+        
         let screenWidth = UIScreen.mainScreen().bounds.width
         
         let w = CGFloat(screenWidth)
@@ -320,8 +337,8 @@ class HomeViewController: UIViewController {
         title.textAlignment = NSTextAlignment.Center;
         title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
         
-        editQuestionTextView = UITextView(frame: CGRect(x: 0, y: 0, width: screenWidth - 16, height: 250))
-        editQuestionTextView.font = UIFont(name: "Raleway", size: 20)
+        editQuestionTextView = UITextView(frame: CGRect(x: 0, y: 0, width: screenWidth - 16, height: UIScreen.mainScreen().bounds.height / 3))
+        editQuestionTextView.font = UIFont(name: "Raleway", size: 17)
         editQuestionTextView.text = text
         editQuestionTextView.makeRounded()
         
@@ -342,29 +359,34 @@ class HomeViewController: UIViewController {
         let paddingView2 = UIView()
         paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
+        let paddingView3 = UIView()
+        paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
-        theme.cornerRadius = Radius.standardCornerRadius
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
+        theme.movesAboveKeyboard = true
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        editPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, close, paddingView])
-        editPopup.theme = theme
-        editPopup.theme.popupStyle = CNPPopupStyle.Centered
-        editPopup.delegate = nil
-        editPopup.presentPopupControllerAnimated(true)
+        currentPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, close, paddingView])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.Centered
+        currentPopup.delegate = nil
+        self.presentPopup(currentPopup)
         
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.editPopup.dismissPopupControllerAnimated(true)
+            self.hidePopup(self.currentPopup)
+            self.showAnsweringViewController()
             self.solve(self.editQuestionTextView.text)
         }
         
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(HomeViewController.doneEditingQuestion))
-        doneButton.tintColor = UIColor.whiteColor()
+        doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Raleway-Bold", size: 17)!], forState: UIControlState.Normal)
+        doneButton.tintColor = UIColor.solvelyPrimaryBlue()
         
         let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         
         let keyboardToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
-        keyboardToolbar.barTintColor = UIColor.solvelyPrimaryBlue()
+        keyboardToolbar.barTintColor = UIColor.whiteColor()
         keyboardToolbar.translucent = false
         keyboardToolbar.barStyle = UIBarStyle.Default
         keyboardToolbar.setItems([flexButton, doneButton], animated: true)
@@ -399,7 +421,7 @@ class HomeViewController: UIViewController {
         close.backgroundColor = UIColor.whiteColor()
         close.layer.cornerRadius = Radius.standardCornerRadius
         close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.answeringPopup.dismissPopupControllerAnimated(true)
+            self.hidePopup(self.currentPopup)
         }
 
         
@@ -416,15 +438,13 @@ class HomeViewController: UIViewController {
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        theme.cornerRadius = Radius.standardCornerRadius
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
-        
-        answeringPopup = CNPPopupController(contents:[topPaddingView, sad, somethingWentWrong, close, paddingView])
-        answeringPopup.theme = theme
-        answeringPopup.theme.popupStyle = CNPPopupStyle.Centered
-        answeringPopup.delegate = nil
-        answeringPopup.presentPopupControllerAnimated(true)
+        currentPopup = CNPPopupController(contents:[topPaddingView, sad, somethingWentWrong, close, paddingView])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.Centered
+        currentPopup.delegate = nil
+        self.presentPopup(currentPopup)
     }
     
     private func unableToAnswerQuestion() {
@@ -446,15 +466,13 @@ class HomeViewController: UIViewController {
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        theme.cornerRadius = Radius.standardCornerRadius
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
-        
-        answeringPopup = CNPPopupController(contents:[gif, space])
-        answeringPopup.theme = theme
-        answeringPopup.theme.popupStyle = CNPPopupStyle.Centered
-        answeringPopup.delegate = nil
-        answeringPopup.presentPopupControllerAnimated(true)
+        currentPopup = CNPPopupController(contents:[gif, space])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.Centered
+        currentPopup.delegate = nil
+        self.presentPopup(currentPopup)
     }
     
     private func removeViewControllerFromContainer(controller: UIViewController?) {

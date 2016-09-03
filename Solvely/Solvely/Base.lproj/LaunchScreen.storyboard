@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy squid.png" translatesAutoresizingMaskIntoConstraints="NO" id="roL-Qd-TDJ">
-                                <rect key="frame" x="149" y="159" width="304" height="269"/>
+                                <rect key="frame" x="186" y="199" width="228" height="201"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="304" id="NVN-1U-688"/>
-                                    <constraint firstAttribute="height" constant="269" id="QF9-Ok-9v6"/>
+                                    <constraint firstAttribute="width" constant="228" id="Dm9-gW-ZZ8"/>
+                                    <constraint firstAttribute="height" constant="201" id="kLE-gX-fBZ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="1" id="55m-Xt-OIf"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="139" id="TDJ-AR-C6h"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hSy-Lu-G6e"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jUe-qP-nAl"/>
                         </constraints>
                     </view>
                 </viewController>
