@@ -316,9 +316,9 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         message2.numberOfLines = 0
         message2.textAlignment = NSTextAlignment.Center
         message2.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        message2.text = "Math.\nWord problems.\nQuestions requiring critical thought."
+        message2.text = "Math.\nWord problems.\nQuestions on reading passages.\nQuestions requiring critical thought."
         message2.textAlignment = NSTextAlignment.Center;
-        message2.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 75)
+        message2.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 100)
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
@@ -342,7 +342,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let paddingView6 = UIView()
         paddingView6.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
-        currentPopup = CNPPopupController(contents:[paddingView4, topTitle, paddingView6, title, message, paddingView3, title2, message2, paddingView2, bottomTitle, paddingView5, close, paddingView])
+        currentPopup = CNPPopupController(contents:[paddingView4, topTitle, paddingView6, title, message, paddingView3, title2, message2, paddingView5, close, paddingView])
         currentPopup.theme = theme
         currentPopup.theme.popupStyle = CNPPopupStyle.Centered
         currentPopup.delegate = nil
@@ -472,6 +472,16 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         close.backgroundColor = UIColor.whiteColor()
         close.layer.cornerRadius = Radius.standardCornerRadius
 
+        let retake = UIButton(frame: CGRectMake(0, 0, 150, 50))
+        retake.setTitleColor(UIColor.solvelyPrimaryBlue(), forState: .Normal)
+        retake.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+        retake.setTitle("Retake", forState: .Normal)
+        retake.backgroundColor = UIColor.whiteColor()
+        retake.layer.cornerRadius = Radius.standardCornerRadius
+        retake.addTarget(self, action: #selector(HomeViewController.retakePicture), forControlEvents: .TouchUpInside)
+        
+        let paddingView4 = UIView()
+        paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 8)
 
         let topPaddingView = UIView()
         topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
@@ -490,7 +500,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         theme.movesAboveKeyboard = true
         theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        currentPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, close, paddingView])
+        currentPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, retake, paddingView4, close, paddingView])
         currentPopup.theme = theme
         currentPopup.theme.popupStyle = CNPPopupStyle.Centered
         currentPopup.delegate = nil
@@ -515,6 +525,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         keyboardToolbar.setItems([flexButton, doneButton], animated: true)
         keyboardToolbar.sizeToFit()
         editQuestionTextView.inputAccessoryView = keyboardToolbar
+    }
+    
+    func retakePicture() {
+        hidePopup(currentPopup)
     }
     
     func doneEditingQuestion() {
