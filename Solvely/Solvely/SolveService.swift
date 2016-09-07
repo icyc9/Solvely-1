@@ -31,11 +31,11 @@ class SolveService {
         let start = NSDate().timeIntervalSince1970
         return requestString(.GET, url, headers: ["Content-Type": "application/json"])
             .flatMap { (response, data) -> Observable<Answer?> in
-                print("\n")
-                print(response)
-                print("\n")
+//                print("\n")
+//                print(response)
+//                print("\n")
                 print(NSDate().timeIntervalSince1970 - start)
-                if response.statusCode == 500 {
+                if response.statusCode == 500 || response.statusCode == 400 {
                     return Observable.error(SolveError.InvalidQuestionError("Invalid question"))
                 }
                 else if response.statusCode != 200 {
@@ -52,8 +52,8 @@ class SolveService {
                                 let correctAnswer = Answer()
                                 correctAnswer.identifier = answer["answer_choice"] as? String ?? ""
                                 correctAnswer.text = answer["answer_text"] as? String ?? ""
-                                correctAnswer.question = data["question"]!["text"] as! String ?? ""
-                                let questionType = data["question"]!["type"] as! String ?? ""
+                                correctAnswer.question = data["question"]!["text"] as? String ?? ""
+                                let questionType = data["question"]!["type"] as? String ?? ""
                                 correctAnswer.isMultipleChoiceAnswer = questionType == "multiple_choice"
                                 
                                 return Observable.just(correctAnswer)
