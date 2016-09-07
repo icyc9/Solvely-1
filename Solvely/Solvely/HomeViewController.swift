@@ -380,16 +380,25 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let title = UILabel()
         title.textColor = UIColor.whiteColor()
         title.font = UIFont(name: "Raleway", size: 18)
-        title.text = "The answer is most likely"
+        title.text = "the answer may be"
         title.textAlignment = NSTextAlignment.Center;
         title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
         
+        let disclaimer = UILabel()
+        disclaimer.textColor = UIColor.whiteColor()
+        disclaimer.numberOfLines = 0
+        disclaimer.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        disclaimer.font = UIFont(name: "Raleway", size: 14)
+        disclaimer.text = "This is a beta. There is a chance Solvely's answer may be wrong."
+        disclaimer.textAlignment = NSTextAlignment.Center;
+        disclaimer.frame = CGRect(x: 0, y: 0, width: w - 16, height: 50)
+        
         let answerLetter = UILabel()
         answerLetter.textColor = UIColor.whiteColor()
-        answerLetter.font = UIFont(name: "Raleway", size: 64)
+        answerLetter.font = UIFont(name: "Raleway", size: 72)
         answerLetter.text = (answer?.identifier ?? "").uppercaseString
         answerLetter.textAlignment = NSTextAlignment.Center;
-        answerLetter.frame = CGRect(x: 0, y: 0, width: w, height: 50)
+        answerLetter.frame = CGRect(x: 0, y: 0, width: w, height: 58)
         
         let answerText = UILabel()
         answerText.lineBreakMode = NSLineBreakMode.ByTruncatingTail
@@ -416,16 +425,19 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
         let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 24)
         
         let paddingView3 = UIView()
         paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+    
+        let paddingView4 = UIView()
+        paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
         theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, close, paddingView])
+        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, disclaimer, close, paddingView4, paddingView])
         currentPopup.theme = theme
         currentPopup.theme.popupStyle = CNPPopupStyle.Centered
         currentPopup.delegate = nil
