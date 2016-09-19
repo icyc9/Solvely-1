@@ -6,18 +6,10 @@ target 'Solvely' do
   use_frameworks!
 
   # Pods for Solvely
-  pod "CameraEngine"
-  pod 'NVActivityIndicatorView'
+  pod "FastttCamera/Filters"
   pod 'TOCropViewController'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-  pod 'havenondemand'
   pod 'RxAlamofire'
-  pod 'Gloss', '~> 0.7'
-  pod 'TTTAttributedLabel'
-  pod 'BubbleTransition', '~> 1.0.0'
-  pod 'TOCropViewController'
-  pod 'MBProgressHUD'
-  pod 'TesseractOCRiOS'
-  pod "BAFluidView"
-  pod "GPUImage"
+  pod "NMPopUpViewSwift"
+  pod 'CNPPopupController'
 end
