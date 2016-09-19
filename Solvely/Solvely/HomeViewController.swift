@@ -389,7 +389,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         disclaimer.numberOfLines = 0
         disclaimer.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         disclaimer.font = UIFont(name: "Raleway", size: 14)
-        disclaimer.text = "This is a beta. There is a chance Solvely's answer may be wrong."
+        disclaimer.text = "This is a beta. There's always a chance that Solvely's answer is wrong. We are working to improve Solvely's accuracy every day."
         disclaimer.textAlignment = NSTextAlignment.Center;
         disclaimer.frame = CGRect(x: 0, y: 0, width: w - 16, height: 50)
         
@@ -433,11 +433,14 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let paddingView4 = UIView()
         paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 8)
         
+        let paddingView5 = UIView()
+        paddingView5.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = screenWidth
         theme.backgroundColor = UIColor.solvelyPrimaryBlue().colorWithAlphaComponent(popupAlpha)
         
-        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, disclaimer, close, paddingView4, paddingView])
+        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, disclaimer, paddingView5, close, paddingView4, paddingView])
         currentPopup.theme = theme
         currentPopup.theme.popupStyle = CNPPopupStyle.Centered
         currentPopup.delegate = nil
