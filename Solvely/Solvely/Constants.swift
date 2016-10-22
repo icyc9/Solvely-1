@@ -18,7 +18,7 @@ extension UIView {
         if outlineColor != nil {
             self.makeRounded()
             self.layer.borderWidth = 4
-            self.layer.borderColor = outlineColor?.CGColor
+            self.layer.borderColor = outlineColor?.cgColor
         }
     }
     

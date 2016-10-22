@@ -85,22 +85,24 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Branch/Branch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FastttCamera/FastttCamera.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GPUImage/GPUImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NMPopUpViewSwift/NMPopUpViewSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxAlamofire/RxAlamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TOCropViewController/TOCropViewController.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Branch/Branch.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CNPPopupController/CNPPopupController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FastttCamera/FastttCamera.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GPUImage/GPUImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NMPopUpViewSwift/NMPopUpViewSwift.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/RxAlamofire/RxAlamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TOCropViewController/TOCropViewController.framework"

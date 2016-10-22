@@ -7,7 +7,6 @@
 //
 
 import RxSwift
-import RxAlamofire
 
 class Answer {
     var question: String!
@@ -16,7 +15,7 @@ class Answer {
     var isMultipleChoiceAnswer: Bool!
 }
 
-enum SolveError: ErrorType {
+enum SolveError: Error {
     case InvalidQuestionError(String)
     case UnknownError(String)
 }
@@ -24,12 +23,13 @@ enum SolveError: ErrorType {
 class SolveService {
     
     func solveQuestion(question: String?) -> Observable<Answer?> {
-        let q = question!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let q = ""
+      //question!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.U//RLQueryAllowedCharacterSet())!
         
         let url = "http://solvelygateway-production.us-east-1.elasticbeanstalk.com/answer?question=\(q)"
         
         let start = NSDate().timeIntervalSince1970
-        return requestString(.GET, url, headers: ["Content-Type": "application/json"])
+        return requestString(.get, url, headers: ["Content-Type": "application/json"])
             .flatMap { (response, data) -> Observable<Answer?> in
 //                print("\n")
 //                print(response)
@@ -43,7 +43,7 @@ class SolveService {
                 }
                 
                 do {
-                    let data = try NSJSONSerialization.JSONObjectWithData(data.dataUsingEncoding(NSUTF8StringEncoding)!, options: NSJSONReadingOptions.AllowFragments)
+                    let data = try JSONSerialization.jsonObject(with: data.data(using: String.Encoding.utf8)!, options: JSONSerialization.ReadingOptions.allowFragments)
                     
                     if let data = data as? [String: AnyObject] {
                         print(data)
