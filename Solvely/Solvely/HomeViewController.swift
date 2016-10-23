@@ -66,14 +66,18 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         
         self.view.addSubview(squid)
         
-        crosshairW = CGFloat(screenWidth)
-        crosshairH = CGFloat(screenHeight / 3)
-        crosshairX = CGFloat((screenWidth / 2 ) - (crosshairW / 2))
-        crosshairY = CGFloat((screenHeight / 2) - (crosshairH / 2))
+        // Parent view should extend from top of screen to top of squid head
+        let crosshairParent = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - squid.frame.height))
         
-        crosshair = CropBoxView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
+        crosshairW = CGFloat(crosshairParent.frame.width)
+        crosshairH = CGFloat(crosshairParent.frame.height / 3)
+        crosshairX = CGFloat((crosshairParent.frame.width / 2 ) - (crosshairParent.frame.width / 2))
+        crosshairY = CGFloat((crosshairParent.frame.height / 2) - (crosshairParent.frame.height / 2))
         
-        self.view.addSubview(crosshair)
+        crosshair = CropBoxView(frame: CGRect(x: 0, y: (crosshairParent.frame.midY) - (crosshairH / 2) , width: crosshairW, height: crosshairH))
+        
+        crosshairParent.addSubview(crosshair)
+        view.addSubview(crosshairParent)
         
         let help = UIButton(type: .custom)
         
