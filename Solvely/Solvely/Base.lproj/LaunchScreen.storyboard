@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,21 +15,17 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy squid.png" translatesAutoresizingMaskIntoConstraints="NO" id="roL-Qd-TDJ">
-                                <rect key="frame" x="186" y="199" width="228" height="201"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="228" id="Dm9-gW-ZZ8"/>
-                                    <constraint firstAttribute="height" constant="201" id="kLE-gX-fBZ"/>
-                                </constraints>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy squid.png" translatesAutoresizingMaskIntoConstraints="NO" id="roL-Qd-TDJ"/>
                         </subviews>
-                        <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hSy-Lu-G6e"/>
-                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jUe-qP-nAl"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="213" id="6rX-tF-hBK"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="57" id="GBQ-Vz-CfN"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="J0e-BZ-F02"/>
+                            <constraint firstItem="roL-Qd-TDJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xOZ-Sf-MP3"/>
                         </constraints>
                     </view>
                 </viewController>

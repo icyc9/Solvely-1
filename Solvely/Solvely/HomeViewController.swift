@@ -36,6 +36,9 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     private var hasShownHelp = false
     
+    var start: Int64 = 0
+    var end: Int64 = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,12 +93,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
         
         self.view.addSubview(help)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         //self.showGrowthHack()
 //        if hasShownHelp == false {
 //            hasShownHelp = true
@@ -158,6 +159,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
     
     func takePicture(sender: UIButton?) {
+        start = getCurrentMillis()
         camera.takePicture()
     }
     
@@ -191,6 +193,47 @@ class HomeViewController: UIViewController, UITextViewDelegate {
                 }
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
+    }
+    
+    func showSelectMethod() {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        
+        let w = CGFloat(screenWidth)
+        let h = CGFloat(w)
+    
+        let theme = CNPPopupTheme()
+        theme.maxPopupWidth = screenWidth
+        theme.backgroundColor = UIColor.clear
+        
+        let paddingView = UIView()
+        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let paddingView2 = UIView()
+        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
+        
+        let cancelView = UIButton(frame: CGRect(x: 0, y:0, width: screenWidth, height: 50))
+        cancelView.setImage(UIImage(named: "cancel"), for: .normal)
+        cancelView.contentHorizontalAlignment = .left
+        cancelView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
+        cancelView.contentEdgeInsets.left = 8
+        
+        cancelView.addTarget(self, action: #selector(HomeViewController.retakePicture), for: UIControlEvents.touchUpInside)
+        let cancelWrapperView = UIView(frame: CGRect(x: 0, y:0, width: screenWidth, height: 50))
+        cancelWrapperView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
+        cancelWrapperView.addSubview(cancelView)
+        
+        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight / 3)
+        let methodSelectionView = MethodSelectionTableView(frame: frame, style: UITableViewStyle.plain)
+        methodSelectionView.backgroundColor = UIColor.clear
+        methodSelectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: methodSelectionView.frame.height)
+        
+        currentPopup = CNPPopupController(contents:[cancelWrapperView, methodSelectionView])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.centered
+        currentPopup.delegate = methodSelectionView
+        
+        self.presentPopup(popup: currentPopup)
     }
     
     func showHelp(sender: UIButton?) {
@@ -761,13 +804,21 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         controller?.removeFromParentViewController()
         controller?.view.removeFromSuperview()
     }
+    
+    func getCurrentMillis()->Int64 {
+        return Int64(Date().timeIntervalSince1970 * 1000)
+    }
 }
 
 extension HomeViewController: FastttCameraDelegate {
     
-    func cameraController(cameraController: FastttCameraInterface!, didFinishNormalizingCapturedImage capturedImage: FastttCapturedImage!) {
-        self.crop(image: capturedImage.fullImage)
+    func cameraController(_ cameraController: FastttCameraInterface!, didFinishNormalizing capturedImage: FastttCapturedImage!) {
+        print(capturedImage.fullImage.size)
+        end = getCurrentMillis()
+        print(end - start)
+        self.showSelectMethod()
     }
+    
 }
 
 
