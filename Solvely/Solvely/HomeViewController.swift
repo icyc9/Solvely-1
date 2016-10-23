@@ -14,6 +14,7 @@ import RxSwift
 import NMPopUpViewSwift
 import CNPPopupController
 import MessageUI
+import ReachabilitySwift
 
 class HomeViewController: UIViewController, UITextViewDelegate {
     private let hasSolvedKey = "hasSolved"
@@ -38,6 +39,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     var start: Int64 = 0
     var end: Int64 = 0
+    
+    let reachability = Reachability()!
+    var connectionErrorShowing = false
+    var popupBeforeConnectionError: CNPPopupController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +98,44 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
         
         self.view.addSubview(help)
+        
+        configureReachability()
+    }
+    
+    private func configureReachability() {
+        reachability.whenReachable = { reachability in
+            // this is called on a background thread
+            DispatchQueue.main.async {
+                if self.connectionErrorShowing {
+                    self.currentPopup.dismiss(animated: true)
+                    
+                    // Reshow the popup from before the connection error
+                    if self.popupBeforeConnectionError != nil {
+                        self.currentPopup = self.popupBeforeConnectionError
+                        self.popupBeforeConnectionError?.present(animated: true)
+                    }
+                }
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            // this is called on a background thread
+            DispatchQueue.main.async {
+                self.connectionErrorShowing = true
+                self.popupBeforeConnectionError = self.currentPopup
+                
+                if self.popupBeforeConnectionError != nil {
+                    self.popupBeforeConnectionError?.dismiss(animated: true)
+                }
+                
+                self.showError(message: "Solvely can't help you without an internet connection!", closeable: false, closeHandler: nil)
+            }
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -610,7 +653,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
         else {
             self.hidePopup(popup: self.currentPopup)
-            self.showError(message: "It seems like your device can't send text messages!") {(button: CNPPopupButton!) -> Void in
+            self.showError(message: "It seems like your device can't send text messages!", closeable: true) {(button: CNPPopupButton!) -> Void in
                 self.currentPopup.dismiss(animated: true)
                 self.showGrowthHack()
             }
@@ -618,14 +661,14 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
     
     func couldntReadThat() {
-        showError(message: "Couldn't read that!") {(button: CNPPopupButton!) -> Void in
+        showError(message: "Couldn't read that!", closeable: true) {(button: CNPPopupButton!) -> Void in
             self.hidePopup(popup: self.currentPopup)
         }
     }
     
     func unknownError() {
         print("unknown error")
-        showError(message: "Something went wrong!") {(button: CNPPopupButton!) -> Void in
+        showError(message: "Something went wrong!", closeable: true) {(button: CNPPopupButton!) -> Void in
             self.hidePopup(popup: self.currentPopup)
         }
     }
@@ -723,7 +766,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    func showError(message: String?, closeHandler: SelectionHandler?) {
+    func showError(message: String?, closeable: DarwinBoolean?, closeHandler: SelectionHandler?) {
         let screenWidth = UIScreen.main.bounds.width
         
         let w = CGFloat(screenWidth)
@@ -738,14 +781,6 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         somethingWentWrong.numberOfLines = 0
         somethingWentWrong.textAlignment = NSTextAlignment.center;
         somethingWentWrong.frame = CGRect(x: 0, y: 0, width: w, height: 100)
-        
-        let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        close.setTitle("Close", for: .normal)
-        close.backgroundColor = UIColor.white
-        close.layer.cornerRadius = Radius.standardCornerRadius
-        close.selectionHandler = closeHandler
         
         
         let sad = UIImageView(image: UIImage.gifWithName(name: "cry"))
@@ -763,15 +798,32 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         theme.maxPopupWidth = screenWidth
         theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
         
-        currentPopup = CNPPopupController(contents:[topPaddingView, sad, somethingWentWrong, close, paddingView])
+        var contents = [topPaddingView, sad, somethingWentWrong]
+        
+        if closeable == true {
+            let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
+            close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
+            close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+            close.setTitle("Close", for: .normal)
+            close.backgroundColor = UIColor.white
+            close.layer.cornerRadius = Radius.standardCornerRadius
+            close.selectionHandler = closeHandler
+            
+            contents.append(close)
+        }
+        
+        contents.append(paddingView)
+        
+        currentPopup = CNPPopupController(contents: contents)
         currentPopup.theme = theme
         currentPopup.theme.popupStyle = CNPPopupStyle.centered
         currentPopup.delegate = nil
+        
         self.presentPopup(popup: currentPopup)
     }
     
     func unableToAnswerQuestion() {
-        showError(message: "Couldn't answer that!") {(button: CNPPopupButton!) -> Void in
+        showError(message: "Couldn't answer that!", closeable: true) {(button: CNPPopupButton!) -> Void in
             self.hidePopup(popup: self.currentPopup)
         }
     }
@@ -812,13 +864,12 @@ class HomeViewController: UIViewController, UITextViewDelegate {
 
 extension HomeViewController: FastttCameraDelegate {
     
-    func cameraController(_ cameraController: FastttCameraInterface!, didFinishNormalizing capturedImage: FastttCapturedImage!) {
+    func cameraController(_ cameraController: FastttCameraInterface!, didFinishCapturing capturedImage: FastttCapturedImage!) {
         print(capturedImage.fullImage.size)
         end = getCurrentMillis()
         print(end - start)
         self.showSelectMethod()
     }
-    
 }
 
 
@@ -841,7 +892,7 @@ extension HomeViewController: MFMessageComposeViewControllerDelegate {
             break
         case is MessageComposeResult:
             self.hidePopup(popup: self.currentPopup)
-            self.showError(message: "Looks like your text message failed to send! Try again.") {(button: CNPPopupButton!) -> Void in
+            self.showError(message: "Looks like your text message failed to send! Try again.", closeable: true) {(button: CNPPopupButton!) -> Void in
                 self.currentPopup.dismiss(animated: true)
                 self.showGrowthHack()
             }

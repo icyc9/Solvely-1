@@ -13,6 +13,7 @@
 		0237199F1DBCDB2B00EEB12E /* MethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237199E1DBCDB2B00EEB12E /* MethodTableViewCell.swift */; };
 		023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023719A01DBCDB4D00EEB12E /* MethodSelectionView.swift */; };
 		023719A31DBCDC8600EEB12E /* MethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023719A21DBCDC8600EEB12E /* MethodTableViewCell.xib */; };
+		023719AD1DBD1A8800EEB12E /* InternetAvailabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023719AC1DBD1A8700EEB12E /* InternetAvailabilityService.swift */; };
 		028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
@@ -39,6 +40,7 @@
 		0237199E1DBCDB2B00EEB12E /* MethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodTableViewCell.swift; sourceTree = "<group>"; };
 		023719A01DBCDB4D00EEB12E /* MethodSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSelectionView.swift; sourceTree = "<group>"; };
 		023719A21DBCDC8600EEB12E /* MethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodTableViewCell.xib; sourceTree = "<group>"; };
+		023719AC1DBD1A8700EEB12E /* InternetAvailabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetAvailabilityService.swift; sourceTree = "<group>"; };
 		028000571DBB034A00D22BAA /* Solvely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solvely.entitlements; sourceTree = "<group>"; };
 		028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyRxAlamofire.swift; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				02F552191D722A4E00F6E2F6 /* OCRService.swift */,
 				02F5521B1D72830400F6E2F6 /* SolveService.swift */,
 				028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */,
+				023719AC1DBD1A8700EEB12E /* InternetAvailabilityService.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
 				028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,
+				023719AD1DBD1A8800EEB12E /* InternetAvailabilityService.swift in Sources */,
 				0237198E1DBBD65A00EEB12E /* CropBox.swift in Sources */,
 				02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */,
 				023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */,
