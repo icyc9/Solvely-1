@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02219D041D786305002CC90F /* cry.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02219D031D786305002CC90F /* cry.gif */; };
 		02264A6B1D78BEA10010C37C /* happy squid.png in Resources */ = {isa = PBXBuildFile; fileRef = 02264A6A1D78BEA10010C37C /* happy squid.png */; };
+		0237198E1DBBD65A00EEB12E /* CropBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0237198D1DBBD65A00EEB12E /* CropBox.swift */; };
 		028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		02219D031D786305002CC90F /* cry.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cry.gif; sourceTree = "<group>"; };
 		02264A6A1D78BEA10010C37C /* happy squid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "happy squid.png"; sourceTree = "<group>"; };
+		0237198D1DBBD65A00EEB12E /* CropBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropBox.swift; sourceTree = "<group>"; };
 		028000571DBB034A00D22BAA /* Solvely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solvely.entitlements; sourceTree = "<group>"; };
 		028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyRxAlamofire.swift; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 				02264A6A1D78BEA10010C37C /* happy squid.png */,
 			);
 			name = launch;
+			sourceTree = "<group>";
+		};
+		0237198C1DBBD64F00EEB12E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				0237198D1DBBD65A00EEB12E /* CropBox.swift */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 		02F5520B1D7172CF00F6E2F6 /* storyboards */ = {
@@ -147,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				028000571DBB034A00D22BAA /* Solvely.entitlements */,
+				0237198C1DBBD64F00EEB12E /* views */,
 				02264A691D78BE980010C37C /* launch */,
 				02F5526C1D779D9700F6E2F6 /* gif */,
 				02F552361D72A86D00F6E2F6 /* fonts */,
@@ -211,12 +222,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Solvely;
 				TargetAttributes = {
 					02FE841D1D7170AE0027AC8A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = HXVX4CH7QY;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
 								enabled = 1;
@@ -348,6 +360,7 @@
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
 				028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,
+				0237198E1DBBD65A00EEB12E /* CropBox.swift in Sources */,
 				02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */,
 				02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */,
 			);
@@ -389,8 +402,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -434,8 +449,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -454,6 +471,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -462,17 +480,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 402D09A6843AD2C090BA6A9D /* Pods-Solvely.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Solvely/Solvely.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IcyPickups, LLC (HXVX4CH7QY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IcyPickups, LLC (HXVX4CH7QY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HXVX4CH7QY;
 				INFOPLIST_FILE = Solvely/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.solvely.solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0bc3bcf-2e4a-4be4-848e-553c9e6b0491";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Solvely-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -484,17 +505,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2CD9636A3E885DDD02B64A9F /* Pods-Solvely.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Solvely/Solvely.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IcyPickups, LLC (HXVX4CH7QY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IcyPickups, LLC (HXVX4CH7QY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HXVX4CH7QY;
 				INFOPLIST_FILE = Solvely/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.solvely.solvely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0bc3bcf-2e4a-4be4-848e-553c9e6b0491";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Solvely-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

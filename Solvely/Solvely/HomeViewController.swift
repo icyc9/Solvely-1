@@ -71,10 +71,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         crosshairX = CGFloat((screenWidth / 2 ) - (crosshairW / 2))
         crosshairY = CGFloat((screenHeight / 2) - (crosshairH / 2))
         
-        crosshair = UIView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
-        crosshair.isUserInteractionEnabled = false
-        
-        crosshair.backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).withAlphaComponent(0.4)
+        crosshair = CropBoxView(frame: CGRect(x: crosshairX, y: crosshairY, width: crosshairW, height: crosshairH))
         
         self.view.addSubview(crosshair)
         
@@ -95,7 +92,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.showGrowthHack()
+        //self.showGrowthHack()
 //        if hasShownHelp == false {
 //            hasShownHelp = true
 //            self.showHelp2(nil)
@@ -776,8 +773,7 @@ extension HomeViewController: TOCropViewControllerDelegate {
         self.dismiss(animated: true, completion: { [weak self] in
             self!.showAnsweringViewController()
             self!.convertImageToText(image: image)
-        })
-        
+            })
     }
 }
 
