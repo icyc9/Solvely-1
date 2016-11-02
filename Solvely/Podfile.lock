@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - Alamofire (4.0.1)
   - Branch (0.12.12):
     - Branch/Core (= 0.12.12)
@@ -11,8 +32,12 @@ PODS:
   - FastttCamera/Filters (0.3.4):
     - FastttCamera/Default
     - GPUImage (~> 0.1.0)
+  - FGTranslator (1.1.3):
+    - AFNetworking (~> 2.0)
+    - PINCache (~> 2.1)
   - GPUImage (0.1.7)
   - NMPopUpViewSwift (4.0.2)
+  - PINCache (2.3)
   - ReachabilitySwift (3)
   - RxCocoa (3.0.0-rc.1):
     - RxSwift (~> 3.0.0-rc.1)
@@ -30,6 +55,7 @@ DEPENDENCIES:
   - CNPPopupController
   - Fabric
   - FastttCamera/Filters
+  - FGTranslator
   - NMPopUpViewSwift
   - ReachabilitySwift
   - RxCocoa (= 3.0.0-rc.1)
@@ -49,13 +75,16 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Branch: 714cc02afc4676902f14f949157cdbf8c73f64f4
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   FastttCamera: 51f16712cbd5bdb08bc6231b957325c6be5e478d
+  FGTranslator: 5a18bd1419e883a2aae6d56fb41c82bab484298a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   NMPopUpViewSwift: 9a2ea26dd7875804c478eb97bbc41cdab5d25da8
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
   RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
@@ -64,6 +93,6 @@ SPEC CHECKSUMS:
   TwitterCore: 95c46af93112768a7983bd370d66023553601d01
   TwitterKit: dd8042698b0ff5bd3066fa919b3b2b50d8eed829
 
-PODFILE CHECKSUM: d82f564554ce36ad2d7b72a7c0aec00941d69f6d
+PODFILE CHECKSUM: 5d91175d6d4521ee2f06849b11fa40e6a9638935
 
 COCOAPODS: 1.1.1

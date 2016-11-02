@@ -99,7 +99,19 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         
         self.view.addSubview(help)
         
+        self.setupActionSelector()
+        
         configureReachability()
+    }
+    
+    private func setupActionSelector() {
+        let w = self.view.frame.width
+        let h: CGFloat = self.view.frame.height / 2
+        let x = (UIScreen.main.bounds.width / 2) - (w / 2)
+        let y: CGFloat = 0
+        let methodTableView = MethodSelectionTableView(frame: CGRect(x: x, y: y, width: w, height: h))
+        
+        view.addSubview(methodTableView)
     }
     
     private func configureReachability() {
@@ -140,6 +152,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         //self.showGrowthHack()
 //        if hasShownHelp == false {
 //            hasShownHelp = true
@@ -236,47 +249,6 @@ class HomeViewController: UIViewController, UITextViewDelegate {
                 }
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
-    }
-    
-    func showSelectMethod() {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        
-        let w = CGFloat(screenWidth)
-        let h = CGFloat(w)
-    
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.clear
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let cancelView = UIButton(frame: CGRect(x: 0, y:0, width: screenWidth, height: 50))
-        cancelView.setImage(UIImage(named: "cancel"), for: .normal)
-        cancelView.contentHorizontalAlignment = .left
-        cancelView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        cancelView.contentEdgeInsets.left = 8
-        
-        cancelView.addTarget(self, action: #selector(HomeViewController.retakePicture), for: UIControlEvents.touchUpInside)
-        let cancelWrapperView = UIView(frame: CGRect(x: 0, y:0, width: screenWidth, height: 50))
-        cancelWrapperView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        cancelWrapperView.addSubview(cancelView)
-        
-        let frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight / 3)
-        let methodSelectionView = MethodSelectionTableView(frame: frame, style: UITableViewStyle.plain)
-        methodSelectionView.backgroundColor = UIColor.clear
-        methodSelectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: methodSelectionView.frame.height)
-        
-        currentPopup = CNPPopupController(contents:[cancelWrapperView, methodSelectionView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = methodSelectionView
-        
-        self.presentPopup(popup: currentPopup)
     }
     
     func showHelp(sender: UIButton?) {
@@ -852,6 +824,78 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         self.presentPopup(popup: currentPopup)
     }
     
+    func showTranslatePopup() {
+        let screenWidth = UIScreen.main.bounds.width
+        
+        let w = CGFloat(screenWidth)
+        
+        let message = UILabel()
+        message.textColor = UIColor.white
+        message.font = UIFont(name: "Raleway", size: 17)
+        message.numberOfLines = 0
+        message.textAlignment = NSTextAlignment.center
+        message.lineBreakMode = NSLineBreakMode.byWordWrapping
+        message.text = "Tap to select language"
+        message.textAlignment = NSTextAlignment.center;
+        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40 - 20, height: 40)
+        
+        let inputLang = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 25))
+        inputLang.setTitleColor(UIColor.white, for: .normal)
+        inputLang.titleLabel!.font = UIFont(name: "Raleway", size: 17)
+        inputLang.setTitle("detect", for: .normal)
+        inputLang.backgroundColor = UIColor.clear
+        inputLang.layer.cornerRadius = Radius.standardCornerRadius
+        inputLang.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            self.hidePopup(popup: self.currentPopup)
+        }
+        
+        let arrow = UIImageView(image: UIImage(named: "right"))
+        arrow.frame = CGRect(x: inputLang.frame.maxX, y: inputLang.frame.origin.y, width: arrow.frame.width, height: arrow.frame.height)
+        
+        let outputLang = CNPPopupButton(frame: CGRect(x: arrow.frame.maxX, y: arrow.frame.origin.y, width: 150, height: 25))
+        outputLang.setTitleColor(UIColor.white, for: .normal)
+        outputLang.titleLabel!.font = UIFont(name: "Raleway", size: 17)
+        outputLang.setTitle("tap to select", for: .normal)
+        outputLang.backgroundColor = UIColor.clear
+        outputLang.layer.cornerRadius = Radius.standardCornerRadius
+        outputLang.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            self.hidePopup(popup: self.currentPopup)
+        }
+
+        let languageSelectionView = UIView(frame: CGRect(x: 0, y: 0, width: inputLang.frame.width + arrow.frame.width + outputLang.frame.width, height: 100))
+        languageSelectionView.addSubview(arrow)
+        languageSelectionView.addSubview(inputLang)
+        languageSelectionView.addSubview(outputLang)
+        
+
+        let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
+        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
+        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
+        close.setTitle("Translate", for: .normal)
+        close.backgroundColor = UIColor.white
+        close.layer.cornerRadius = Radius.standardCornerRadius
+        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
+            self.hidePopup(popup: self.currentPopup)
+        }
+        
+        let theme = CNPPopupTheme()
+        theme.maxPopupWidth = screenWidth
+        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
+        
+        currentPopup = CNPPopupController(contents:[pad(), languageSelectionView, pad(), close, pad()])
+        currentPopup.theme = theme
+        currentPopup.theme.popupStyle = CNPPopupStyle.centered
+        currentPopup.delegate = nil
+        
+        self.presentPopup(popup: currentPopup)
+    }
+    
+    func pad(vert: CGFloat = 8) -> UIView {
+        let paddingView = UIView()
+        paddingView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: vert)
+        return paddingView
+    }
+    
     func removeViewControllerFromContainer(controller: UIViewController?) {
         controller?.removeFromParentViewController()
         controller?.view.removeFromSuperview()
@@ -868,7 +912,6 @@ extension HomeViewController: FastttCameraDelegate {
         print(capturedImage.fullImage.size)
         end = getCurrentMillis()
         print(end - start)
-        self.showSelectMethod()
     }
 }
 

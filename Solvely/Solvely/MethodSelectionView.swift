@@ -14,10 +14,17 @@ class MethodSelectionTableView: UITableView {
     let cancel_table_view_cell = "cancel_table_view_cell"
     let titleIndex = 1
     let imageIndex = 0
-    var data: [[String]] = []
+    var originalHeight: CGFloat?
+    var collapsed = false
+    var items = ["What do you want help with?", "Summarize", "Define", "Translate", "Solve"]
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
+        
+        originalHeight = frame.height
+        
+        self.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+     
         setup()
     }
     
@@ -27,13 +34,10 @@ class MethodSelectionTableView: UITableView {
     }
 
     private func setup() {
+        isScrollEnabled = false
+        
         backgroundColor = UIColor.solvelyPrimaryBlue()
         separatorStyle = .none
-        
-        data.append(["Summarize", "Summarize"])
-        data.append(["Define", "Define"])
-        data.append(["Translate", "Translate"])
-        data.append(["Solve", "Solve"])
         
         let nib = UINib(nibName: "MethodTableViewCell", bundle: nil)
         register(nib, forCellReuseIdentifier: method_table_view_cell)
@@ -50,50 +54,44 @@ extension MethodSelectionTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: method_table_view_cell) as! MethodTableViewCell
-        cell.title.text = data[indexPath.row][titleIndex]
+        cell.title.text = items[indexPath.row]
         cell.contentView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
         cell.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        //cell.iconImageView.image = UIImage(named: data[indexPath.row][titleIndex])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return items.count
     }
     
-    override func numberOfRows(inSection section: Int) -> Int {
-        return data.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 }
 
 extension MethodSelectionTableView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return frame.height / CGFloat(data.count)
+        return self.frame.height / CGFloat(items.count)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            if collapsed == true {
+                collapsed = false
+                UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                    self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.originalHeight!)
+                    self.layoutIfNeeded()
+                })
+            }
+            else {
+                collapsed = true
+                UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                    self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.originalHeight! / CGFloat(self.items.count))
+                    self.layoutIfNeeded()
+                })
+            }
+        }
     }
 }
-
-extension MethodSelectionTableView: CNPPopupControllerDelegate {
-    func popupControllerDidDismiss(_ controller: CNPPopupController) {
-        
-    }
-    
-    func popupControllerDidPresent(_ controller: CNPPopupController) {
-        let tableViewInset: CGFloat = max((frame.height - contentSize.height) / 2.0, 0.0)
-        contentInset = UIEdgeInsetsMake(tableViewInset, 0, -tableViewInset, 0)
-    }
-    
-    func popupControllerWillDismiss(_ controller: CNPPopupController) {
-        
-    }
-    
-    func popupControllerWillPresent(_ controller: CNPPopupController) {
-        
-    }
-}
-
