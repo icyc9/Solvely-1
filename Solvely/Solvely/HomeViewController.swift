@@ -13,10 +13,10 @@ import RxSwift
 import NMPopUpViewSwift
 import CNPPopupController
 import MessageUI
-import ReachabilitySwift
 
 class HomeViewController: UIViewController, UITextViewDelegate {
     private let hasSolvedKey = "hasSolved"
+    private let reachabilityService = ReachabilityService()
     
     private var camera: FastttCamera!
     private let solveService = SolveService()
@@ -27,30 +27,13 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     var currentPopup: CNPPopupController!
     
-    private let popupAlpha: CGFloat = 0.75
-    private var editQuestionTextView: UITextView!
-    
-    private var hasShownHelp = false
-    
-    let reachability = Reachability()!
     var connectionErrorShowing = false
     var popupBeforeConnectionError: CNPPopupController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //camera = FastttCamera()
         //camera.delegate = self
-        
-//        Font: Raleway-Thin
-//        Font: Raleway-Light
-//        Font: Raleway-Bold
-//        Font: Raleway
-//        Font: Raleway-Medium
-        
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        
         //self.view.addSubview(camera.view)
         
         let squid = UIButton(type: .custom)
@@ -59,7 +42,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
             squid.setImage(image, for: .normal)
             let sw = image.size.width / 2
             let sh = image.size.height / 2
-            squid.frame = CGRect(x: (screenWidth / 2) - (sw / 2), y: screenHeight - sh + 5, width: sw, height: sh)
+            squid.frame = CGRect(x: (UIScreen.main.bounds.width / 2) - (sw / 2), y: UIScreen.main.bounds.height - sh + 5, width: sw, height: sh)
         }
         
         squid.addTarget(self, action: #selector(HomeViewController.takePicture), for: .touchUpInside)
@@ -67,7 +50,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(squid)
         
         // Parent view should extend from top of screen to top of squid head
-        let cropBoxParent = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - squid.frame.height))
+        let cropBoxParent = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - squid.frame.height))
         
         let cropBoxWidth = CGFloat(cropBoxParent.frame.width)
         let cropBoxHeight = CGFloat(cropBoxParent.frame.height / 3)
@@ -83,15 +66,13 @@ class HomeViewController: UIViewController, UITextViewDelegate {
             help.setImage(image, for: .normal)
             let hw = image.size.width
             let hh = image.size.height
-            help.frame = CGRect(x: screenWidth - hw - 8, y: screenHeight - hh - 8, width: hw, height: hh)
+            help.frame = CGRect(x: UIScreen.main.bounds.width - hw - 8, y: UIScreen.main.bounds.height - hh - 8, width: hw, height: hh)
             help.addTarget(self, action: #selector(HomeViewController.showHelp), for: .touchUpInside)
         }
         
         self.view.addSubview(help)
         
         //self.setupActionSelector()
-        
-        //configureReachability()
     }
     
     private func setupActionSelector() {
@@ -104,61 +85,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         view.addSubview(methodTableView)
     }
     
-    private func configureReachability() {
-        reachability.whenReachable = { reachability in
-            // this is called on a background thread
-            DispatchQueue.main.async {
-                if self.connectionErrorShowing {
-                    self.currentPopup.dismiss(animated: true)
-                    
-                    // Reshow the popup from before the connection error
-                    if self.popupBeforeConnectionError != nil {
-                        self.currentPopup = self.popupBeforeConnectionError
-                        self.popupBeforeConnectionError?.present(animated: true)
-                    }
-                }
-            }
-        }
-        reachability.whenUnreachable = { reachability in
-            // this is called on a background thread
-            DispatchQueue.main.async {
-                self.connectionErrorShowing = true
-                self.popupBeforeConnectionError = self.currentPopup
-                
-                if self.popupBeforeConnectionError != nil {
-                    self.popupBeforeConnectionError?.dismiss(animated: true)
-                }
-                
-                self.showError(message: "Solvely can't help you without an internet connection!", closeable: false, closeHandler: nil)
-            }
-        }
-        
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.showEdit(text: "Who killed Abraham Lincoln?")
-        //self.showGrowthHack()
-//        if hasShownHelp == false {
-//            hasShownHelp = true
-//            self.showHelp2(nil)
-//        }
-        
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        let hasSolvedQuestion = defaults.valueForKey(hasSolvedKey) as? Bool
-//        
-//        if hasSolvedQuestion == nil || hasSolvedQuestion == false {
-//            let defaults = NSUserDefaults.standardUserDefaults()
-//            defaults.setObject(true, forKey: self.hasSolvedKey)
-//            
-//            showHelp(nil)
-//        }
     }
    
     func cropToBox(screenshot: UIImage) -> UIImage {
@@ -298,78 +226,16 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    
     func showEdit(text: String?) {
         currentPopup = EditQuestionPopUp.create(questionText: text ?? "", delegate: self)
         presentPopup(popup: currentPopup)
     }
-    
-    func retakePicture() {
-        hidePopup(popup: currentPopup)
-    }
-    
-    func doneEditingQuestion() {
-        if editQuestionTextView != nil {
-            editQuestionTextView!.endEditing(true)
-        }
-    }
 
-    func showError(message: String?, closeable: DarwinBoolean?, closeHandler: SelectionHandler?) {
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        let h = CGFloat(w)
-        _ = CGFloat((h / 2))
-        
-        let somethingWentWrong = UILabel()
-        somethingWentWrong.textColor = UIColor.white
-        somethingWentWrong.font = UIFont(name: "Raleway", size: 18)
-        somethingWentWrong.text = message
-        somethingWentWrong.lineBreakMode = .byWordWrapping
-        somethingWentWrong.numberOfLines = 0
-        somethingWentWrong.textAlignment = NSTextAlignment.center;
-        somethingWentWrong.frame = CGRect(x: 0, y: 0, width: w, height: 100)
-        
-        
-        let sad = UIImageView(image: UIImage.gifWithName(name: "cry"))
-        
-        sad.frame = CGRect(x: w / 2, y: 0, width: w / 2, height: w / 2)
-        sad.contentMode = .scaleAspectFit
-        
-        let topPaddingView = UIView()
-        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        var contents = [topPaddingView, sad, somethingWentWrong]
-        
-        if closeable == true {
-            let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-            close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-            close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-            close.setTitle("Close", for: .normal)
-            close.backgroundColor = UIColor.white
-            close.layer.cornerRadius = Radius.standardCornerRadius
-            close.selectionHandler = closeHandler
-            
-            contents.append(close)
-        }
-        
-        contents.append(paddingView)
-        
-        currentPopup = CNPPopupController(contents: contents)
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
+    func showError(message: String! = "Something went wrong!", closeable: Bool! = true, handler: SelectionHandler?) {
+        currentPopup = ErrorPopUp.create(message: message, closeable: closeable, handler: handler)
         self.presentPopup(popup: currentPopup)
     }
-    
+
     func unableToAnswerQuestion() {
         showError(message: "Couldn't answer that!", closeable: true) {(button: CNPPopupButton!) -> Void in
             self.hidePopup(popup: self.currentPopup)
@@ -389,6 +255,13 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let paddingView = UIView()
         paddingView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: vert)
         return paddingView
+    }
+}
+
+extension HomeViewController: ReachabilityServiceDelegate {
+    
+    func reachabilityChanged(connectionAvailable: Bool!) {
+        
     }
 }
 

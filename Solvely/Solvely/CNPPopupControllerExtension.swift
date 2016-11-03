@@ -29,10 +29,10 @@ extension CNPPopupController {
         return textView
     }
     
-    static func gif(name: String!) -> UIImageView {
+    static func gif(name: String!, scale: CGSize = CGSize(width: 0.5, height: 0.5)) -> UIImageView {
         let gif = UIImageView(image: UIImage.gifWithName(name: name))
         gif.contentMode = .scaleAspectFit
-        gif.frame = CGRect(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.5, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.5)
+        gif.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * scale.width, height: UIScreen.main.bounds.height * scale.height)
         return gif
     }
     
