@@ -20,6 +20,7 @@
 		0284B5E21DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */; };
 		0284B5E41DCB7B3100BDFEAC /* HelpPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5E31DCB7B3100BDFEAC /* HelpPopUp.swift */; };
 		0284B5E61DCB80EE00BDFEAC /* AnsweringPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5E51DCB80EE00BDFEAC /* AnsweringPopUp.swift */; };
+		0284B5E81DCB84FD00BDFEAC /* EditQuestionPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5E71DCB84FD00BDFEAC /* EditQuestionPopUp.swift */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
@@ -53,6 +54,7 @@
 		0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNPPopupControllerExtension.swift; sourceTree = "<group>"; };
 		0284B5E31DCB7B3100BDFEAC /* HelpPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpPopUp.swift; sourceTree = "<group>"; };
 		0284B5E51DCB80EE00BDFEAC /* AnsweringPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnsweringPopUp.swift; sourceTree = "<group>"; };
+		0284B5E71DCB84FD00BDFEAC /* EditQuestionPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionPopUp.swift; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */,
 				0284B5E31DCB7B3100BDFEAC /* HelpPopUp.swift */,
 				0284B5E51DCB80EE00BDFEAC /* AnsweringPopUp.swift */,
+				0284B5E71DCB84FD00BDFEAC /* EditQuestionPopUp.swift */,
 				0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */,
 			);
 			name = popup;
@@ -397,6 +400,7 @@
 				0237199F1DBCDB2B00EEB12E /* MethodTableViewCell.swift in Sources */,
 				0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */,
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
+				0284B5E81DCB84FD00BDFEAC /* EditQuestionPopUp.swift in Sources */,
 				028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */,
 				0284B5E21DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,

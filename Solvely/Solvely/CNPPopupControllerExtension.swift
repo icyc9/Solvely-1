@@ -15,9 +15,18 @@ extension CNPPopupController {
         let theme = CNPPopupTheme()
         theme.maxPopupWidth = UIScreen.main.bounds.width
         theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
+        theme.movesAboveKeyboard = true
         
         self.theme = theme
         self.theme.popupStyle = CNPPopupStyle.centered
+    }
+    
+    static func textView(text: String! = "") -> UITextView {
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 16, height: UIScreen.main.bounds.height / 3))
+        textView.font = UIFont(name: "Raleway", size: 17)
+        textView.text = text
+        textView.makeRounded()
+        return textView
     }
     
     static func gif(name: String!) -> UIImageView {

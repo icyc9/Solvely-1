@@ -43,8 +43,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gcamera = FastttCamera()
-        camera.delegate = self
+        //camera = FastttCamera()
+        //camera.delegate = self
         
 //        Font: Raleway-Thin
 //        Font: Raleway-Light
@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
         
-        self.view.addSubview(camera.view)
+        //self.view.addSubview(camera.view)
         
         let squid = UIButton(type: .custom)
         
@@ -95,9 +95,9 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         
         self.view.addSubview(help)
         
-        self.setupActionSelector()
+        //self.setupActionSelector()
         
-        configureReachability()
+        //configureReachability()
     }
     
     private func setupActionSelector() {
@@ -149,6 +149,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.showEdit(text: "Who killed Abraham Lincoln?")
         //self.showGrowthHack()
 //        if hasShownHelp == false {
 //            hasShownHelp = true
@@ -305,85 +306,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     
     func showEdit(text: String?) {
-        self.hidePopup(popup: self.currentPopup)
-        
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        
-        
-        let title = UILabel()
-        title.textColor = UIColor.white
-        title.font = UIFont(name: "Raleway", size: 17)
-        title.text = "Edit your question"
-        title.textAlignment = NSTextAlignment.center;
-        title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
-        
-        editQuestionTextView = UITextView(frame: CGRect(x: 0, y: 0, width: screenWidth - 16, height: UIScreen.main.bounds.height / 3))
-        editQuestionTextView.font = UIFont(name: "Raleway", size: 17)
-        editQuestionTextView.text = text
-        editQuestionTextView.makeRounded()
-        
-        let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        close.setTitle("Solve", for: .normal)
-        close.backgroundColor = UIColor.white
-        close.layer.cornerRadius = Radius.standardCornerRadius
-
-        let retake = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        retake.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        retake.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        retake.setTitle("Retake", for: .normal)
-        retake.backgroundColor = UIColor.white
-        retake.layer.cornerRadius = Radius.standardCornerRadius
-        retake.addTarget(self, action: #selector(HomeViewController.retakePicture), for: .touchUpInside)
-        
-        let paddingView4 = UIView()
-        paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-
-        let topPaddingView = UIView()
-        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView3 = UIView()
-        paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.movesAboveKeyboard = true
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        currentPopup = CNPPopupController(contents:[topPaddingView, title, editQuestionTextView!, paddingView2, retake, paddingView4, close, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        self.presentPopup(popup: currentPopup)
-        
-        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.hidePopup(popup: self.currentPopup)
-            self.showAnsweringViewController()
-            self.solve(question: self.editQuestionTextView.text)
-        }
-        
-        let doneButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(HomeViewController.doneEditingQuestion))
-        doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Raleway-Bold", size: 17)!], for: UIControlState.normal)
-        doneButton.tintColor = UIColor.solvelyPrimaryBlue()
-        
-        let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        
-        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
-        keyboardToolbar.barTintColor = UIColor.white
-        keyboardToolbar.isTranslucent = false
-        keyboardToolbar.barStyle = UIBarStyle.default
-        keyboardToolbar.setItems([flexButton, doneButton], animated: true)
-        keyboardToolbar.sizeToFit()
-        editQuestionTextView.inputAccessoryView = keyboardToolbar
+        currentPopup = EditQuestionPopUp.create(questionText: text ?? "", delegate: self)
+        presentPopup(popup: currentPopup)
     }
     
     func retakePicture() {
@@ -458,7 +382,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func showAnsweringViewController() {
+    func showAnsweringPopup() {
         currentPopup = AnsweringPopUp.create()
         presentPopup(popup: currentPopup)
     }
@@ -474,8 +398,12 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-extension HomeViewController {
+extension HomeViewController: EditQuestionPopUpDelegate {
     
+    func didPressSolve(editedQuestion: String!) {
+        showAnsweringPopup()
+        solve(question: editedQuestion)
+    }
 }
 
 extension HomeViewController: SolvelyPopUpDelegate {
