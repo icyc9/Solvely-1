@@ -20,7 +20,6 @@ target 'Solvely' do
   pod 'RxSwift',    '3.0.0-rc.1'
   pod 'RxCocoa',    '3.0.0-rc.1'
   pod "FastttCamera/Filters"
-  pod 'TOCropViewController'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod "NMPopUpViewSwift"
   pod 'CNPPopupController'
