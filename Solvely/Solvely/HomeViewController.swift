@@ -152,22 +152,6 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //self.showGrowthHack()
-//        if hasShownHelp == false {
-//            hasShownHelp = true
-//            self.showHelp2(nil)
-//        }
-        
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        let hasSolvedQuestion = defaults.valueForKey(hasSolvedKey) as? Bool
-//        
-//        if hasSolvedQuestion == nil || hasSolvedQuestion == false {
-//            let defaults = NSUserDefaults.standardUserDefaults()
-//            defaults.setObject(true, forKey: self.hasSolvedKey)
-//            
-//            showHelp(nil)
-//        }
     }
     
     func crop(image: UIImage!) {
@@ -273,103 +257,6 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     func showAnswer(answer: Answer?) {
         currentPopup = AnswerPopUp.create(answer: answer, delegate: self)
-        self.presentPopup(popup: currentPopup)
-    }
-    
-    func showGrowthHack() {
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        let topPaddingView = UIView()
-        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-
-        let paddingView1 = UIView()
-        paddingView1.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let message = UILabel()
-        message.textColor = UIColor.white
-        message.numberOfLines = 0
-        message.lineBreakMode = .byWordWrapping
-        message.font = UIFont(name: "Raleway", size: 17)
-        message.text = "If you want unlimited solves, you must share Solvely with a friend!"
-        message.textAlignment = NSTextAlignment.center;
-        message.frame = CGRect(x: 0, y: 0, width: w, height: 100)
-        
-        let sendMessageButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        sendMessageButton.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        sendMessageButton.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        sendMessageButton.setTitle("Text a friend", for: .normal)
-        sendMessageButton.backgroundColor = UIColor.white
-        sendMessageButton.layer.cornerRadius = Radius.standardCornerRadius
-        sendMessageButton.addTarget(self, action: #selector(HomeViewController.sendSMSMessage), for: .touchUpInside)
-        
-        let sendTweetButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        sendTweetButton.setTitleColor(UIColor.white, for: .normal)
-        sendTweetButton.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        sendTweetButton.setTitle("Tweet", for: .normal)
-        sendTweetButton.backgroundColor = UIColor.solvelyPrimaryBlue()
-        sendTweetButton.layer.cornerRadius = Radius.standardCornerRadius
-        sendTweetButton.addTarget(self, action: #selector(HomeViewController.retakePicture), for: .touchUpInside)
-        
-        currentPopup = CNPPopupController(contents:[topPaddingView, message, paddingView1, sendMessageButton, paddingView2, sendTweetButton, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
-        self.presentPopup(popup: currentPopup)
-    }
-    
-    func showThanksForSharing() {
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        let topPaddingView = UIView()
-        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView1 = UIView()
-        paddingView1.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let message = UILabel()
-        message.textColor = UIColor.white
-        message.numberOfLines = 0
-        message.lineBreakMode = .byWordWrapping
-        message.font = UIFont(name: "Raleway", size: 17)
-        message.text = "Thanks for sharing Solvely! You now have unlimited solves!"
-        message.textAlignment = NSTextAlignment.center;
-        message.frame = CGRect(x: 0, y: 0, width: w, height: 100)
-        
-        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        closeButton.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        closeButton.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        closeButton.setTitle("Get Solvin'", for: .normal)
-        closeButton.backgroundColor = UIColor.white
-        closeButton.layer.cornerRadius = Radius.standardCornerRadius
-        closeButton.addTarget(self, action: #selector(HomeViewController.sendSMSMessage), for: .touchUpInside)
-        
-        currentPopup = CNPPopupController(contents:[topPaddingView, message, paddingView1, closeButton, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
         self.presentPopup(popup: currentPopup)
     }
     
