@@ -23,7 +23,7 @@ extension CNPPopupController {
     static func gif(name: String!) -> UIImageView {
         let gif = UIImageView(image: UIImage.gifWithName(name: name))
         gif.contentMode = .scaleAspectFit
-        gif.frame = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 2)
+        gif.frame = CGRect(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.5, width: UIScreen.main.bounds.width * 0.5, height: UIScreen.main.bounds.height * 0.5)
         return gif
     }
     
@@ -39,7 +39,7 @@ extension CNPPopupController {
     }
 
     static func pad(height: CGFloat = 8) -> UIView {
-        return UIView(frame: CGRect(x: 0, y: 0, width: 1, height: height))
+        return UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height))
     }
     
     static func title(text: String!) -> UILabel {
