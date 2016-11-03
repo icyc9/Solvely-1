@@ -15,6 +15,9 @@
 		023719A31DBCDC8600EEB12E /* MethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023719A21DBCDC8600EEB12E /* MethodTableViewCell.xib */; };
 		023719AD1DBD1A8800EEB12E /* InternetAvailabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023719AC1DBD1A8700EEB12E /* InternetAvailabilityService.swift */; };
 		028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */; };
+		0284B5DC1DCB67BA00BDFEAC /* AnswerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */; };
+		0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */; };
+		0284B5E21DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
@@ -43,6 +46,9 @@
 		023719AC1DBD1A8700EEB12E /* InternetAvailabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetAvailabilityService.swift; sourceTree = "<group>"; };
 		028000571DBB034A00D22BAA /* Solvely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solvely.entitlements; sourceTree = "<group>"; };
 		028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyRxAlamofire.swift; sourceTree = "<group>"; };
+		0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerPopUp.swift; sourceTree = "<group>"; };
+		0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyPopUp.swift; sourceTree = "<group>"; };
+		0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNPPopupControllerExtension.swift; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -95,6 +101,16 @@
 				023719A01DBCDB4D00EEB12E /* MethodSelectionView.swift */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		0284B5DA1DCB67A100BDFEAC /* popup */ = {
+			isa = PBXGroup;
+			children = (
+				0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */,
+				0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */,
+				0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */,
+			);
+			name = popup;
 			sourceTree = "<group>";
 		};
 		02F5520B1D7172CF00F6E2F6 /* storyboards */ = {
@@ -169,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				028000571DBB034A00D22BAA /* Solvely.entitlements */,
+				0284B5DA1DCB67A100BDFEAC /* popup */,
 				0237198C1DBBD64F00EEB12E /* views */,
 				02264A691D78BE980010C37C /* launch */,
 				02F5526C1D779D9700F6E2F6 /* gif */,
@@ -371,10 +388,13 @@
 				02F552171D72205100F6E2F6 /* Constants.swift in Sources */,
 				02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */,
 				0237199F1DBCDB2B00EEB12E /* MethodTableViewCell.swift in Sources */,
+				0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */,
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
 				028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */,
+				0284B5E21DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift in Sources */,
 				02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */,
 				023719AD1DBD1A8800EEB12E /* InternetAvailabilityService.swift in Sources */,
+				0284B5DC1DCB67BA00BDFEAC /* AnswerPopUp.swift in Sources */,
 				0237198E1DBBD65A00EEB12E /* CropBox.swift in Sources */,
 				02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */,
 				023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */,

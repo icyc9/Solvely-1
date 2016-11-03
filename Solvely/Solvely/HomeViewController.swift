@@ -418,11 +418,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
     
     func hidePopup(popup: CNPPopupController) {
+        currentPopup.dismiss(animated: true)
         UIView.animate(withDuration: 0.3, animations: {
             self.crosshair.alpha = 1
         })
-        
-        popup.dismiss(animated: true)
     }
     
     func presentPopup(popup: CNPPopupController) {
@@ -903,6 +902,13 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     
     func getCurrentMillis()->Int64 {
         return Int64(Date().timeIntervalSince1970 * 1000)
+    }
+}
+
+extension HomeViewController: SolvelyPopUpDelegate {
+    
+    func popUpDidClose() {
+        self.hidePopup(popup: currentPopup)
     }
 }
 
