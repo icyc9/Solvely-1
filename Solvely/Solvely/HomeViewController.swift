@@ -47,8 +47,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        camera = FastttCamera()
-        camera.delegate = self
+        //camera = FastttCamera()
+        //camera.delegate = self
         
 //        Font: Raleway-Thin
 //        Font: Raleway-Light
@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
         
-        self.view.addSubview(camera.view)
+        //self.view.addSubview(camera.view)
         
         let squid = UIButton(type: .custom)
         
@@ -94,14 +94,14 @@ class HomeViewController: UIViewController, UITextViewDelegate {
             let hw = image.size.width
             let hh = image.size.height
             help.frame = CGRect(x: screenWidth - hw - 8, y: screenHeight - hh - 8, width: hw, height: hh)
-            help.addTarget(self, action: #selector(HomeViewController.showHelp2), for: .touchUpInside)
+            help.addTarget(self, action: #selector(HomeViewController.showHelp), for: .touchUpInside)
         }
         
         self.view.addSubview(help)
         
-        self.setupActionSelector()
+        //self.setupActionSelector()
         
-        configureReachability()
+        //configureReachability()
     }
     
     private func setupActionSelector() {
@@ -250,171 +250,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
             }, onCompleted: nil, onDisposed: nil)
         .addDisposableTo(self.disposeBag)
     }
-    
-    func showHelp(sender: UIButton?) {
-        let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        close.setTitle("Got it!", for: .normal)
-        close.backgroundColor = UIColor.white
-        close.layer.cornerRadius = Radius.standardCornerRadius
-        
-        
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        let h = CGFloat(w)
-        let y = CGFloat((h / 2))
-        
-        let gif = UIImageView(image: UIImage.gifWithName(name: "think"))
-        gif.contentMode = .scaleAspectFit
-        gif.frame = CGRect(x: w / 2, y: y, width: w / 2, height: w / 2)
-        
-        let message = UILabel()
-        message.textColor = UIColor.white
-        message.font = UIFont(name: "Raleway", size: 17)
-        message.numberOfLines = 0
-        message.textAlignment = NSTextAlignment.center
-        message.lineBreakMode = NSLineBreakMode.byWordWrapping
-        message.text = "Hey, I'm Solvely the squid!\n Fit your question in the white box and then tap my head on the bottom of the screen to get your answer!"
-        message.textAlignment = NSTextAlignment.center;
-        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 40 - 20, height: 100)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        currentPopup = CNPPopupController(contents:[gif, message, paddingView2, close, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
-        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.hidePopup(popup: self.currentPopup)
-        }
-        
-        self.presentPopup(popup: currentPopup)
-    }
 
-    
-    func showHelp2(sender: UIButton?) {
-        let close = CNPPopupButton(frame: CGRect(x: 0, y:0, width: 150, height: 50))
-        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        close.setTitle("Got it!", for: .normal)
-        close.backgroundColor = UIColor.white
-        close.layer.cornerRadius = Radius.standardCornerRadius
-        
-        
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        let h = CGFloat(w)
-        let y = CGFloat((h / 2))
-        
-        let gif = UIImageView(image: UIImage.gifWithName(name: "think"))
-        gif.contentMode = .scaleAspectFit
-        gif.frame = CGRect(x: w / 2, y: y, width: w / 2, height: w / 2)
-        
-        let topTitle = UILabel()
-        topTitle.textColor = UIColor.white
-        topTitle.font = UIFont(name: "Raleway-Bold", size: 17)
-        topTitle.numberOfLines = 0
-        topTitle.textAlignment = NSTextAlignment.center
-        topTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        topTitle.text = "** multiple choice questions only **"
-        topTitle.textAlignment = NSTextAlignment.center;
-        topTitle.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 75)
-        
-        let bottomTitle = UILabel()
-        bottomTitle.textColor = UIColor.white
-        bottomTitle.font = UIFont(name: "Raleway-Bold", size: 17)
-        bottomTitle.numberOfLines = 0
-        bottomTitle.textAlignment = NSTextAlignment.center
-        bottomTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        bottomTitle.text = "Solvely was created by two high school juniors. Don't expect perfect accuracy."
-        bottomTitle.textAlignment = NSTextAlignment.center;
-        bottomTitle.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 75)
-        
-        let title = UILabel()
-        title.textColor = UIColor.white
-        title.font = UIFont(name: "Raleway-Bold", size: 21)
-        title.numberOfLines = 0
-        title.textAlignment = NSTextAlignment.center
-        title.lineBreakMode = NSLineBreakMode.byWordWrapping
-        title.text = "Works well on"
-        title.textAlignment = NSTextAlignment.center;
-        title.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 20)
-        
-        let message = UILabel()
-        message.textColor = UIColor.white
-        message.font = UIFont(name: "Raleway", size: 17)
-        message.numberOfLines = 0
-        message.textAlignment = NSTextAlignment.center
-        message.lineBreakMode = NSLineBreakMode.byWordWrapping
-        message.text = "Factual questions.\nMany subjects (stay simple).\nHistory questions."
-        message.textAlignment = NSTextAlignment.center;
-        message.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 75)
-        
-        
-        let title2 = UILabel()
-        title2.textColor = UIColor.white
-        title2.font = UIFont(name: "Raleway-Bold", size: 21)
-        title2.numberOfLines = 0
-        title2.textAlignment = NSTextAlignment.center
-        title2.lineBreakMode = NSLineBreakMode.byWordWrapping
-        title2.text = "Doesn't work on"
-        title2.textAlignment = NSTextAlignment.center;
-        title2.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 20)
-        
-        let message2 = UILabel()
-        message2.textColor = UIColor.white
-        message2.font = UIFont(name: "Raleway", size: 17)
-        message2.numberOfLines = 0
-        message2.textAlignment = NSTextAlignment.center
-        message2.lineBreakMode = NSLineBreakMode.byWordWrapping
-        message2.text = "Math.\nWord problems.\nQuestions on reading passages.\nQuestions requiring critical thought."
-        message2.textAlignment = NSTextAlignment.center;
-        message2.frame = CGRect(x: 0, y: 0, width: screenWidth - 16, height: 100)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue()
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 16)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView3 = UIView()
-        paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView4 = UIView()
-        paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 16)
-        
-        let paddingView5 = UIView()
-        paddingView5.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-   
-        let paddingView6 = UIView()
-        paddingView6.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        currentPopup = CNPPopupController(contents:[paddingView4, topTitle, paddingView6, title, message, paddingView3, title2, message2, paddingView5, close, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
-        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.hidePopup(popup: self.currentPopup)
-        }
-        
-        self.presentPopup(popup: currentPopup)
+    func showHelp(sender: UIButton?) {
+        currentPopup = HelpPopUp.create(delegate: self)
+        presentPopup(popup: currentPopup)
     }
     
     func hidePopup(popup: CNPPopupController) {
@@ -433,85 +272,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
     
     func showAnswer(answer: Answer?) {
-        let screenWidth = UIScreen.main.bounds.width
-        
-        let w = CGFloat(screenWidth)
-        
-        let title = UILabel()
-        title.textColor = UIColor.white
-        title.font = UIFont(name: "Raleway", size: 18)
-        title.text = "the answer may be"
-        title.textAlignment = NSTextAlignment.center;
-        title.frame = CGRect(x: 0, y: 0, width: w, height: 50)
-        
-        let disclaimer = UILabel()
-        disclaimer.textColor = UIColor.white
-        disclaimer.numberOfLines = 0
-        disclaimer.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        disclaimer.font = UIFont(name: "Raleway", size: 14)
-        disclaimer.text = "This is a beta. There's always a chance that Solvely's answer is wrong. We are working to improve Solvely's accuracy every day."
-        disclaimer.textAlignment = NSTextAlignment.center;
-        disclaimer.frame = CGRect(x: 0, y: 0, width: w - 16, height: 50)
-        
-        let answerLetter = UILabel()
-        answerLetter.textColor = UIColor.white
-        answerLetter.font = UIFont(name: "Raleway", size: 72)
-        
-        var identifier = ""
-        
-        if answer?.identifier != nil {
-            identifier = (answer?.identifier)!
-        }
-        
-        answerLetter.text = identifier.uppercased()
-        answerLetter.textAlignment = NSTextAlignment.center;
-        answerLetter.frame = CGRect(x: 0, y: 0, width: w, height: 58)
-        
-        let answerText = UILabel()
-        answerText.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        answerText.textColor = UIColor.white
-        answerText.font = UIFont(name: "Raleway", size: 24)
-        answerText.text = answer?.text ?? ""
-        answerText.textAlignment = NSTextAlignment.center;
-        answerText.frame = CGRect(x: 0, y: 0, width: w, height: 50)
-        
-        let close = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        close.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
-        close.titleLabel!.font = UIFont(name: "Raleway", size: 24)
-        close.setTitle("Ok", for: .normal)
-        close.backgroundColor = UIColor.white
-        close.layer.cornerRadius = Radius.standardCornerRadius
-        close.selectionHandler = {(button: CNPPopupButton!) -> Void in
-            self.hidePopup(popup: self.currentPopup)
-        }
-        
-        let topPaddingView = UIView()
-        topPaddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView = UIView()
-        paddingView.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView2 = UIView()
-        paddingView2.frame = CGRect(x: 0, y: 0, width: w, height: 24)
-        
-        let paddingView3 = UIView()
-        paddingView3.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-    
-        let paddingView4 = UIView()
-        paddingView4.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let paddingView5 = UIView()
-        paddingView5.frame = CGRect(x: 0, y: 0, width: w, height: 8)
-        
-        let theme = CNPPopupTheme()
-        theme.maxPopupWidth = screenWidth
-        theme.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(popupAlpha)
-        
-        currentPopup = CNPPopupController(contents:[topPaddingView, title, paddingView3, answerLetter, answerText, paddingView2, disclaimer, paddingView5, close, paddingView4, paddingView])
-        currentPopup.theme = theme
-        currentPopup.theme.popupStyle = CNPPopupStyle.centered
-        currentPopup.delegate = nil
-        
+        currentPopup = AnswerPopUp.create(answer: answer, delegate: self)
         self.presentPopup(popup: currentPopup)
     }
     

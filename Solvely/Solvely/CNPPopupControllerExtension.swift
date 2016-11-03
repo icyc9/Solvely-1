@@ -20,6 +20,13 @@ extension CNPPopupController {
         self.theme.popupStyle = CNPPopupStyle.centered
     }
     
+    static func gif(name: String!) -> UIImageView {
+        let gif = UIImageView(image: UIImage.gifWithName(name: name))
+        gif.contentMode = .scaleAspectFit
+        gif.frame = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 2)
+        return gif
+    }
+    
     static func button(text: String!) -> CNPPopupButton {
         let button = CNPPopupButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
         button.setTitleColor(UIColor.solvelyPrimaryBlue(), for: .normal)
