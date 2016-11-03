@@ -23,14 +23,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     private let ocrService = OCRService()
     private let disposeBag = DisposeBag()
     
-    private var crosshair: UIView!
+    private var cropBox: CropBoxView!
     
     var currentPopup: CNPPopupController!
     
-    private var crosshairX: CGFloat = 0
-    private var crosshairY: CGFloat = 0
-    private var crosshairW: CGFloat = 0
-    private var crosshairH: CGFloat = 0
     private let popupAlpha: CGFloat = 0.75
     private var editQuestionTextView: UITextView!
     
@@ -71,17 +67,15 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(squid)
         
         // Parent view should extend from top of screen to top of squid head
-        let crosshairParent = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - squid.frame.height))
+        let cropBoxParent = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - squid.frame.height))
         
-        crosshairW = CGFloat(crosshairParent.frame.width)
-        crosshairH = CGFloat(crosshairParent.frame.height / 3)
-        crosshairX = CGFloat((crosshairParent.frame.width / 2 ) - (crosshairParent.frame.width / 2))
-        crosshairY = CGFloat((crosshairParent.frame.height / 2) - (crosshairParent.frame.height / 2))
+        let cropBoxWidth = CGFloat(cropBoxParent.frame.width)
+        let cropBoxHeight = CGFloat(cropBoxParent.frame.height / 3)
         
-        crosshair = CropBoxView(frame: CGRect(x: 0, y: (crosshairParent.frame.midY) - (crosshairH / 2) , width: crosshairW, height: crosshairH))
+        cropBox = CropBoxView(frame: CGRect(x: 0, y: (cropBoxParent.frame.midY) - (cropBoxHeight / 2) , width: cropBoxWidth, height: cropBoxHeight / 3))
         
-        crosshairParent.addSubview(crosshair)
-        view.addSubview(crosshairParent)
+        cropBoxParent.addSubview(cropBox)
+        view.addSubview(cropBoxParent)
         
         let help = UIButton(type: .custom)
         
@@ -168,10 +162,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
    
     func cropToBox(screenshot: UIImage) -> UIImage {
-        let x = crosshairX / self.view.frame.width
-        let y = crosshairY / self.view.frame.height
-        let w = crosshairW / self.view.frame.width
-        let h = crosshairH / self.view.frame.height
+        let x = cropBox.bounds.minX / self.view.frame.width
+        let y = cropBox.bounds.minY / self.view.frame.height
+        let w = cropBox.bounds.width / self.view.frame.width
+        let h = cropBox.bounds.height / self.view.frame.height
         
         let cropped = CGRect(x: x * screenshot.size.width, y: y * screenshot.size.height, width: w * screenshot.size.width, height: h * screenshot.size.height)
         
@@ -247,13 +241,13 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     func hidePopup(popup: CNPPopupController) {
         currentPopup.dismiss(animated: true)
         UIView.animate(withDuration: 0.3, animations: {
-            self.crosshair.alpha = 1
+            self.cropBox.alpha = 1
         })
     }
     
     func presentPopup(popup: CNPPopupController) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.crosshair.alpha = 0
+            self.cropBox.alpha = 0
         })
         
         popup.present(animated: true)
