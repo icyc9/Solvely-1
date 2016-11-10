@@ -67,15 +67,13 @@ class CameraView: UIView{
     
     private func addCropBox() {
         // Parent view should extend from top of screen to top of squid head
-        let cropBoxParent = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - takePictureButton!.frame.height))
+        let centerY = UIScreen.main.bounds.height / 2
+        let cropBoxWidth = UIScreen.main.bounds.width
+        let cropBoxHeight = UIScreen.main.bounds.height / 3
         
-        let cropBoxWidth = CGFloat(cropBoxParent.frame.width)
-        let cropBoxHeight = CGFloat(cropBoxParent.frame.height / 3)
+        cropBox = CropBoxView(frame: CGRect(x: 0, y: centerY - (cropBoxHeight / 2), width: cropBoxWidth, height: cropBoxHeight))
         
-        cropBox = CropBoxView(frame: CGRect(x: 0, y: (cropBoxParent.frame.midY) - (cropBoxHeight / 2) , width: cropBoxWidth, height: cropBoxHeight / 3))
-        
-        cropBoxParent.addSubview(cropBox)
-        addSubview(cropBoxParent)
+        addSubview(cropBox)
     }
     
     private func addTakePictureButton() {
