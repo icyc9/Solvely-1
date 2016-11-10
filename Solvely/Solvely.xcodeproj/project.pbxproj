@@ -19,6 +19,9 @@
 		0276EA321DD30A900069463C /* MultipleChoiceStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA311DD30A900069463C /* MultipleChoiceStrategy.swift */; };
 		0276EA351DD3AB960069463C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA341DD3AB960069463C /* Presenter.swift */; };
 		0276EA371DD3AC8F0069463C /* MultipleChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA361DD3AC8F0069463C /* MultipleChoicePresenter.swift */; };
+		0276EA391DD46AC20069463C /* SummarizeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA381DD46AC20069463C /* SummarizeStrategy.swift */; };
+		0276EA3B1DD46B280069463C /* SummarizationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA3A1DD46B280069463C /* SummarizationPopUp.swift */; };
+		0276EA3D1DD46C370069463C /* SummarizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA3C1DD46C370069463C /* SummarizationPresenter.swift */; };
 		028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */; };
 		0284B5DC1DCB67BA00BDFEAC /* AnswerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */; };
 		0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */; };
@@ -66,6 +69,9 @@
 		0276EA311DD30A900069463C /* MultipleChoiceStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceStrategy.swift; sourceTree = "<group>"; };
 		0276EA341DD3AB960069463C /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		0276EA361DD3AC8F0069463C /* MultipleChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoicePresenter.swift; sourceTree = "<group>"; };
+		0276EA381DD46AC20069463C /* SummarizeStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizeStrategy.swift; sourceTree = "<group>"; };
+		0276EA3A1DD46B280069463C /* SummarizationPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizationPopUp.swift; sourceTree = "<group>"; };
+		0276EA3C1DD46C370069463C /* SummarizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizationPresenter.swift; sourceTree = "<group>"; };
 		028000571DBB034A00D22BAA /* Solvely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solvely.entitlements; sourceTree = "<group>"; };
 		028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyRxAlamofire.swift; sourceTree = "<group>"; };
 		0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerPopUp.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0276EA311DD30A900069463C /* MultipleChoiceStrategy.swift */,
+				0276EA381DD46AC20069463C /* SummarizeStrategy.swift */,
 				0276EA2C1DD2F28B0069463C /* Strategy.swift */,
 			);
 			name = strategy;
@@ -152,6 +159,7 @@
 		0276EA331DD3AB8B0069463C /* presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0276EA3C1DD46C370069463C /* SummarizationPresenter.swift */,
 				0276EA361DD3AC8F0069463C /* MultipleChoicePresenter.swift */,
 				0276EA341DD3AB960069463C /* Presenter.swift */,
 			);
@@ -166,6 +174,7 @@
 				0284B5E51DCB80EE00BDFEAC /* AnsweringPopUp.swift */,
 				0284B5E71DCB84FD00BDFEAC /* EditQuestionPopUp.swift */,
 				0284B5EB1DCBE90300BDFEAC /* ErrorPopUp.swift */,
+				0276EA3A1DD46B280069463C /* SummarizationPopUp.swift */,
 				0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */,
 				0284B5E11DCB6ECF00BDFEAC /* CNPPopupControllerExtension.swift */,
 			);
@@ -463,6 +472,7 @@
 				0276EA351DD3AB960069463C /* Presenter.swift in Sources */,
 				0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */,
 				0284B6091DCE890400BDFEAC /* SelectActionTableViewCell.swift in Sources */,
+				0276EA3D1DD46C370069463C /* SummarizationPresenter.swift in Sources */,
 				02FE84221D7170AE0027AC8A /* AppDelegate.swift in Sources */,
 				0276EA321DD30A900069463C /* MultipleChoiceStrategy.swift in Sources */,
 				0284B5E81DCB84FD00BDFEAC /* EditQuestionPopUp.swift in Sources */,
@@ -477,7 +487,9 @@
 				02F5524B1D73698700F6E2F6 /* UIImage+Gif.swift in Sources */,
 				0284B5F61DCBF52C00BDFEAC /* HomeViewController+SummarizeUI.swift in Sources */,
 				0284B5F21DCBF50300BDFEAC /* HomeViewController+ReachabilityUI.swift in Sources */,
+				0276EA391DD46AC20069463C /* SummarizeStrategy.swift in Sources */,
 				0284B5FA1DCBF54600BDFEAC /* HomeViewController+MathUI.swift in Sources */,
+				0276EA3B1DD46B280069463C /* SummarizationPopUp.swift in Sources */,
 				023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */,
 				0276EA2D1DD2F28B0069463C /* Strategy.swift in Sources */,
 				0284B5E41DCB7B3100BDFEAC /* HelpPopUp.swift in Sources */,

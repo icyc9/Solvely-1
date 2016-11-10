@@ -9,51 +9,48 @@
 import Foundation
 import RxSwift
 
-class MultipleChoicePresenter: Presenter {
-    weak var viewController: HomeViewController!
-    var strategy: MultipleChoiceStrategy!
-    var disposeBag: DisposeBag!
+class MultipleChoicePresenter: BasePresenter {
     
-    init(viewController: HomeViewController, strategy: MultipleChoiceStrategy, disposeBag: DisposeBag) {
-        self.viewController = viewController
-        self.strategy = strategy
-        self.disposeBag = disposeBag
+    override init(viewController: HomeViewController, strategy: MultipleChoiceStrategy, disposeBag: DisposeBag) {
+        super.init(viewController: viewController, strategy: strategy, disposeBag: disposeBag)
     }
     
-    func processImage(image: UIImage!) {
+    override func processImage(image: UIImage!) {
+        super.processImage(image: image)
         showLoadingPopUp()
-        
-        strategy.convertImageToText(image: image)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { text in
-                print(text)
-                self.edit(text: text)
-            }, onError: { error in
-                self.showSolveErrorPopUp(error: error as! SolveError)
-            }).addDisposableTo(disposeBag)
     }
     
-    func edit(text: String!) {
+    override func edit(text: String!) {
+        super.edit(text: text)
         showEditPopUp(text: text)
     }
     
-    func solve(question: String!) {
+    override func solve(question: String!) {
+        super.solve(question: question)
         showLoadingPopUp()
-        
-        strategy.solve(input: question)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { answer in
-                self.showAnswerPopUp(answer: answer)
-            }, onError: { error in
-                self.showSolveErrorPopUp(error: error)
-            }).addDisposableTo(disposeBag)
     }
     
     private func showLoadingPopUp() {
         let loadingPopUp = AnsweringPopUp.create()
         viewController.presentPopup(popup: loadingPopUp)
+    }
+    
+    override func processImageDidFinish(text: String?, error: Error?) {
+        if error == nil {
+            showEditPopUp(text: text)
+        }
+        else {
+            showErrorPopUp(message: "Couldn't read that!")
+        }
+    }
+    
+    override func solveQuestionDidFinish(answer: Answer?, error: Error?) {
+        if error == nil {
+            showAnswerPopUp(answer: answer!)
+        }
+        else {
+            showSolveErrorPopUp(error: error!)
+        }
     }
     
     private func showSolveErrorPopUp(error: Error) {
