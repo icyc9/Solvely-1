@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class MultipleChoicePresenter: BasePresenter {
+class MultipleChoicePresenter: BasePresenter<MultipleChoiceStrategy> {
     
     override init(viewController: HomeViewController, strategy: MultipleChoiceStrategy, disposeBag: DisposeBag) {
         super.init(viewController: viewController, strategy: strategy, disposeBag: disposeBag)

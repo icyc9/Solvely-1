@@ -9,26 +9,36 @@
 import Foundation
 import RxSwift
 
-class SummarizationPresenter: Presenter {
-    weak var viewController: HomeViewController!
-    var strategy: MultipleChoiceStrategy!
-    var disposeBag: DisposeBag!
+class SummarizationPresenter: BasePresenter<SummarizeStrategy> {
     
-    init(viewController: HomeViewController, strategy: MultipleChoiceStrategy, disposeBag: DisposeBag) {
-        self.viewController = viewController
-        self.strategy = strategy
-        self.disposeBag = disposeBag
+    override init(viewController: HomeViewController, strategy: SummarizeStrategy, disposeBag: DisposeBag) {
+        super.init(viewController: viewController, strategy: strategy, disposeBag: disposeBag)
     }
     
-    func processImage(image: UIImage!) {
+    override func processImage(image: UIImage!) {
+        super.processImage(image: image)
+    }
+    
+    override func edit(text: String!) {
         
     }
     
-    func edit(text: String!) {
+    override func solve(question: String!) {
+        strategy.solve(input: question)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] answer in
+                self?.showSummarizedTextPopUp(answer: answer)
+            }, onError: { [weak self] error in
+                self?.showSummarizeErrorPopUp(error: error)
+            }).addDisposableTo(disposeBag)
+    }
+    
+    private func showSummarizedTextPopUp(answer: String?) {
         
     }
     
-    func solve(question: String!) {
+    private func showSummarizeErrorPopUp(error: Error!) {
         
     }
 }

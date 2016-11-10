@@ -15,12 +15,12 @@ protocol Presenter {
     func solve(question: String!)
 }
 
-class BasePresenter: Presenter {
+class BasePresenter<S: Strategy>: Presenter {
     weak var viewController: HomeViewController!
-    var strategy: MultipleChoiceStrategy!
+    var strategy: S!
     var disposeBag: DisposeBag!
     
-    init(viewController: HomeViewController, strategy: MultipleChoiceStrategy, disposeBag: DisposeBag) {
+    init(viewController: HomeViewController, strategy: S, disposeBag: DisposeBag) {
         self.viewController = viewController
         self.strategy = strategy
         self.disposeBag = disposeBag
