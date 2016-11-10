@@ -15,9 +15,8 @@ class MultipleChoiceStrategy: Strategy {
         return OCRService().convertImageToText(image: image)
     }
     
-    func solve(input: String?) -> Observable<Answer> {
-        let answer = Answer()
-        return Observable.just(answer)
+    func solve(input: String?) -> Observable<Answer?> {
+        return SolveService().solveQuestion(question: input)
     }
     
 }

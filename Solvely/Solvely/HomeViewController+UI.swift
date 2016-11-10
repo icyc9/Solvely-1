@@ -47,8 +47,8 @@ extension HomeViewController {
     }
     
     func showError(message: String! = "Something went wrong!") {
-        showError(message: message, closeable: true) {(button: CNPPopupButton!) -> Void in
-            self.hidePopup(popup: self.currentPopup)
+        showError(message: message, closeable: true) {[weak self] (button: CNPPopupButton!) -> Void in
+            self?.hideCurrentPopup()
         }
     }
     
@@ -62,7 +62,7 @@ extension HomeViewController {
         presentPopup(popup: currentPopup)
     }
     
-    func hidePopup(popup: CNPPopupController) {
+    func hideCurrentPopup() {
         cameraView.showContents()
         currentPopup.dismiss(animated: true)
         currentPopup = nil
@@ -92,6 +92,6 @@ extension HomeViewController: EditQuestionPopUpDelegate {
 extension HomeViewController: SolvelyPopUpDelegate {
     
     func popUpDidClose() {
-        self.hidePopup(popup: currentPopup)
+        self.hideCurrentPopup()
     }
 }

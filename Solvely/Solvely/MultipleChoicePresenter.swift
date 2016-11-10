@@ -30,7 +30,7 @@ class MultipleChoicePresenter: Presenter {
                 print(text)
                 self.edit(text: text)
             }, onError: { error in
-                self.showErrorPopUp(error: error)
+                self.showSolveErrorPopUp(error: error as! SolveError)
             }).addDisposableTo(disposeBag)
     }
     
@@ -39,13 +39,15 @@ class MultipleChoicePresenter: Presenter {
     }
     
     func solve(question: String!) {
+        showLoadingPopUp()
+        
         strategy.solve(input: question)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { answer in
                 self.showAnswerPopUp(answer: answer)
             }, onError: { error in
-                self.showErrorPopUp(error: error)
+                self.showSolveErrorPopUp(error: error)
             }).addDisposableTo(disposeBag)
     }
     
@@ -54,8 +56,25 @@ class MultipleChoicePresenter: Presenter {
         viewController.presentPopup(popup: loadingPopUp)
     }
     
-    private func showErrorPopUp(error: Error?) {
-        let errorPopUp = ErrorPopUp.create(message: "An error has occurred.", closeable: true, handler: nil)
+    private func showSolveErrorPopUp(error: Error) {
+        switch error {
+        case SolveError.UnknownError:
+            showErrorPopUp()
+            break
+        case SolveError.InvalidQuestionError:
+            showErrorPopUp(message: "Couldn't answer that!")
+            break
+        default:
+            showErrorPopUp()
+            break
+        }
+    }
+    
+    private func showErrorPopUp(message: String! = "An error has occurred.") {
+        let errorPopUp = ErrorPopUp.create(message: message, closeable: true) { [weak self] cl in
+            self?.viewController.hideCurrentPopup()
+        }
+        
         viewController.presentPopup(popup: errorPopUp)
     }
     

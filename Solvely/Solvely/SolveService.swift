@@ -23,17 +23,14 @@ enum SolveError: Error {
 class SolveService {
     
     func solveQuestion(question: String?) -> Observable<Answer?> {
-        let q = ""
-      //question!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.U//RLQueryAllowedCharacterSet())!
+        let q = question!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
-        let url = "http://solvelygateway-production.us-east-1.elasticbeanstalk.com/answer?question=\(q)"
+        let url = "http://solvelygateway-production.us-east-1.elasticbeanstalk.com/answer?question=\(q!)"
         
         let start = NSDate().timeIntervalSince1970
         return requestString(.get, url, headers: ["Content-Type": "application/json"])
             .flatMap { (response, data) -> Observable<Answer?> in
-//                print("\n")
-//                print(response)
-//                print("\n")
+                print(response)
                 print(NSDate().timeIntervalSince1970 - start)
                 if response.statusCode == 500 || response.statusCode == 400 {
                     return Observable.error(SolveError.InvalidQuestionError("Invalid question"))

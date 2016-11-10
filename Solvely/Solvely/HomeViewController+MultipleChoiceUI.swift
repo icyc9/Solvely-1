@@ -20,17 +20,17 @@ extension HomeViewController {
         solveService.solveQuestion(question: question)
             .observeOn(MainScheduler.instance)
             //.subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
-            .subscribe(onNext: { (answer) in
-                self.hidePopup(popup: self.currentPopup)
+            .subscribe(onNext: { [weak self] (answer) in
+                self?.hideCurrentPopup()
                 
                 if answer != nil {
-                    self.showAnswer(answer: answer)
+                    self?.showAnswer(answer: answer)
                 }
                 else {
-                    self.showError(message: "Can't answer that!")
+                    self?.showError(message: "Can't answer that!")
                 }
             }, onError: { (error) in
-                self.hidePopup(popup: self.currentPopup)
+                self.hideCurrentPopup()
                 print(error)
                     
                 switch(error) {
@@ -51,19 +51,19 @@ extension HomeViewController {
     func processImageForMultipleChoice(image: UIImage) {
         convertImageToText(image: image)
             //.subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS.background))
-            .subscribe(onNext: { (text) in
+            .subscribe(onNext: { [weak self] (text) in
                 if text != nil && text != "" {
                     print(text!)
-                    self.hidePopup(popup: self.currentPopup)
-                    self.showEdit(text: text!)
+                    self?.hideCurrentPopup()
+                    self?.showEdit(text: text!)
                 }
                 else {
-                    self.hidePopup(popup: self.currentPopup)
-                    self.showError(message: "Couldn't read that. Make sure your picture is clear and has no handwriting!")
+                    self?.hideCurrentPopup()
+                    self?.showError(message: "Couldn't read that. Make sure your picture is clear and has no handwriting!")
                 }
             }, onError: { (error) in
                 print(error)
-                self.hidePopup(popup: self.currentPopup)
+                self.hideCurrentPopup()
                 self.showError()
             }, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(disposeBag)

@@ -31,7 +31,7 @@ extension HomeViewController: MFMessageComposeViewControllerDelegate {
             self.present(composeVC, animated: true, completion: nil)
         }
         else {
-            self.hidePopup(popup: self.currentPopup)
+            self.hideCurrentPopup()
             self.showError(message: "It seems like your device can't send text messages!", closeable: true) {(button: CNPPopupButton!) -> Void in
                 self.currentPopup.dismiss(animated: true)
                 self.showGrowthHack()
@@ -45,7 +45,7 @@ extension HomeViewController: MFMessageComposeViewControllerDelegate {
             self.showGrowthHack()
             break
         case is MessageComposeResult:
-            self.hidePopup(popup: self.currentPopup)
+            self.hideCurrentPopup()
             self.showError(message: "Looks like your text message failed to send! Try again.", closeable: true) {(button: CNPPopupButton!) -> Void in
                 self.currentPopup.dismiss(animated: true)
                 self.showGrowthHack()
