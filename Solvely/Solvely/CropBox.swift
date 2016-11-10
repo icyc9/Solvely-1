@@ -104,11 +104,11 @@ class CropBoxView: UIView {
     
     private func setup() {
         isUserInteractionEnabled = true
-        backgroundColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).withAlphaComponent(0.4)
+        backgroundColor = UIColor.black.withAlphaComponent(0.4)
         
         layer.borderWidth = 4
         layer.cornerRadius = 4
-        layer.borderColor = backgroundColor?.withAlphaComponent(1).cgColor
+        layer.borderColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9333, alpha: 1.0).withAlphaComponent(1).cgColor
         
         let panGesture = UIPanGestureRecognizer()
         panGesture.addTarget(self, action: #selector(CropBoxView.didPan))
