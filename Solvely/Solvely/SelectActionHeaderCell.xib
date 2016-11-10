@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="method_table_view_cell" id="e0A-Gm-C5J" customClass="SelectActionHeaderCell" customModule="Solvely" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e0A-Gm-C5J" id="1xX-Tg-6BS">
+                <frame key="frameInset" width="375" height="83"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-5D-9xX">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="SCl-G2-vso"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="21"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="uHd-m1-z9L">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="XMO-P5-a9E"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.3058823645" green="0.55686277149999996" blue="0.91764706370000004" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="uHd-m1-z9L" firstAttribute="bottom" secondItem="1xX-Tg-6BS" secondAttribute="bottomMargin" id="3b3-G4-hpy"/>
+                    <constraint firstItem="pgl-5D-9xX" firstAttribute="top" secondItem="1xX-Tg-6BS" secondAttribute="topMargin" constant="2" id="6pT-0N-66L"/>
+                    <constraint firstItem="uHd-m1-z9L" firstAttribute="top" secondItem="pgl-5D-9xX" secondAttribute="bottom" constant="8" symbolic="YES" id="eHa-QX-pTp"/>
+                    <constraint firstItem="pgl-5D-9xX" firstAttribute="centerX" secondItem="1xX-Tg-6BS" secondAttribute="centerX" id="iab-rR-thW"/>
+                    <constraint firstItem="pgl-5D-9xX" firstAttribute="centerX" secondItem="uHd-m1-z9L" secondAttribute="centerX" id="wdI-GA-eva"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.3058823645" green="0.55686277149999996" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="title" destination="pgl-5D-9xX" id="LqQ-vY-7vR"/>
+                <outlet property="view" destination="1xX-Tg-6BS" id="XKy-CT-mjt"/>
+            </connections>
+            <point key="canvasLocation" x="-183.5" y="-45"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="down" width="30" height="30"/>
+    </resources>
+</document>

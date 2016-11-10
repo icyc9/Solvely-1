@@ -16,86 +16,67 @@ import MessageUI
 
 class HomeViewController: UIViewController, UITextViewDelegate {
     private let reachabilityService = ReachabilityService()
-    private let solveService = SolveService()
-    private let ocrService = OCRService()
-    private let disposeBag = DisposeBag()
+    let solveService = SolveService()
+    let ocrService = OCRService()
     
-    var camera: FastttCamera!
-    var cropBox: CropBoxView!
+    let disposeBag = DisposeBag()
     
     var currentPopup: CNPPopupController!
     var connectionErrorShowing = false
     var popupBeforeConnectionError: CNPPopupController?
     
-    var takePictureButton: UIButton?
+    var cameraView: CameraView!
+    
+    var multipleChoicePresenter: MultipleChoicePresenter!
+    var actionSelector: MethodSelectionTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //camera = FastttCamera()
-        //camera.delegate = self
-        //self.view.addSubview(camera.view)
         
-        addTakePictureButton()
-        addCropBox()
+        multipleChoicePresenter = MultipleChoicePresenter(viewController: self, strategy: MultipleChoiceStrategy(), disposeBag: disposeBag)
+        
+        cameraView = CameraView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        cameraView.delegate = self
+        
+        view.addSubview(cameraView)
+        
         addHelpButton()
         addActionSelector()
+        
+        reachabilityService.registerForUpdates(delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
    
-    func convertImageToText(image: UIImage!) {
-        self.ocrService.convertImageToText(image: image)
+    func convertImageToText(image: UIImage!) -> Observable<String?> {
+        return self.ocrService.convertImageToText(image: image)
             .observeOn(MainScheduler.instance)
-            //.subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS.background))
-            .subscribe(onNext: { (text) in
-                if text != nil && text != "" {
-                    print(text!)
-                    self.hidePopup(popup: self.currentPopup)
-                    self.showEdit(text: text!)
-                }
-                else {
-                    self.hidePopup(popup: self.currentPopup)
-                    self.couldntReadThat()
-                }
-            }, onError: { (error) in
-                print(error)
-                self.hidePopup(popup: self.currentPopup)
-                self.unknownError()
-            }, onCompleted: nil, onDisposed: nil)
-        .addDisposableTo(self.disposeBag)
     }
+}
+
+extension HomeViewController: CameraViewDelegate {
     
-    func solve(question: String) {
-        solveService.solveQuestion(question: question)
-            .observeOn(MainScheduler.instance)
-            //.subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
-            .subscribe(onNext: { (answer) in
-                self.hidePopup(popup: self.currentPopup)
-                    
-                if answer != nil {
-                    self.showAnswer(answer: answer)
-                }
-                else {
-                    self.unableToAnswerQuestion()
-                }
-            }, onError: { (error) in
-                self.hidePopup(popup: self.currentPopup)
-                print(error)
-                        
-                switch(error) {
-                case SolveError.UnknownError:
-                    self.unknownError()
-                    break
-                case SolveError.InvalidQuestionError:
-                    self.unableToAnswerQuestion()
-                    break
-                default:
-                    self.unknownError()
-                    break
-                }
-            }, onCompleted: nil, onDisposed: nil)
-        .addDisposableTo(self.disposeBag)
+    func didTakeImage(croppedImage: UIImage) {
+        let selectedAction = actionSelector.getSelectedAction()
+        
+        switch selectedAction {
+        case .solveMath:
+            break
+        case .solveMultipleChoice:
+            multipleChoicePresenter.processImage(image: croppedImage)
+            break
+        case .summarize:
+            break
+        case .solveOpenEnded:
+            break
+        case .none:
+            presentPopup(popup: ErrorPopUp.create(message: "You must first select an action up top!", closeable: true, handler: nil))
+            break
+        default:
+            presentPopup(popup: ErrorPopUp.create(message: "You must first select an action up top!", closeable: true, handler: nil))
+            break
+        }
     }
 }

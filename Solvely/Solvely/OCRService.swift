@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import RxSwift
+import Alamofire
 
 class OCRService {
     private let ocrEndpoint = "https://vision.googleapis.com/v1/images:annotate?"
@@ -21,6 +22,7 @@ class OCRService {
             return Observable.just("")
         }
         
+        print("converting")
         let compressed = compress(image: image!)
         
         return ocr(imageData: base64EncodeImage(image: compressed))
@@ -41,51 +43,50 @@ class OCRService {
     private func ocr(imageData: String) -> Observable<String?> {
         let url = ocrEndpoint.appendingFormat("key=\(apiKey)")
         
-       // let parameters: [String:AnyObject] = [
-      //      "requests": [
-      //          "imageContext": [
-       //             "languageHints": [
-       //                 "en"
-        //            ],
-         //       ],
-         //       "image": [
-         //           "content": imageData
-         //       ],
-         //       "features": [
-         //           [
-          //              "type": "TEXT_DETECTION",
-         //               "maxResults": 50
-         //           ]
-         //       ]
-         //   ]
-       // ]
+        let parameters: [String: Any] = [
+            "requests": [
+                "imageContext": [
+                    "languageHints": [
+                        "en"
+                    ],
+                ],
+                "image": [
+                    "content": imageData
+                ],
+                "features": [
+                    [
+                        "type": "TEXT_DETECTION",
+                        "maxResults": 50
+                    ]
+                ]
+            ]
+        ]
         
         let headers: [String: String] = [
             "Content-Type": "application/json",
             "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
         ]
-        return Observable.just(nil)
-//        return requestJSON(.post, NSURL(string: url)!, parameters: parameters, encoding: .JSON, headers: headers)
-//            .map({ (response, data) -> String in
+        
+        return requestJSON(.post, URL(string: url)!, parameters: parameters,encoding: JSONEncoding.default, headers: headers)
+            .map({ (response, data) -> String in
+                print(data)
+                if let json = data as? [String: AnyObject] {
+                    if let responses = json["responses"] as? [[String: AnyObject]] {
+                        if let annotations = responses[0]["textAnnotations"] as? [[String: AnyObject]] {
+                            if annotations.count > 0 {
+                                return annotations[0]["description"] as? String ?? ""
+                            }
+                        }
+                    }
+                }
                 
-//                if let json = data as? [String: AnyObject] {
-//                    if let responses = json["responses"] as? [[String: AnyObject]] {
-//                        if let annotations = responses[0]["textAnnotations"] as? [[String: AnyObject]] {
-//                            if annotations.count > 0 {
-  //                              return annotations[0]["description"] as? String ?? ""
-    //                        }
-      //                  }
-     //               }
-      //          }
-                
-     //           return ""
-      //      })
+                return ""
+            })
     }
     
     private func base64EncodeImage(image: UIImage) -> String {
         let imagedata = UIImagePNGRepresentation(image)
-        return ""
-        //return imagedata!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
+        return imagedata!.base64EncodedString()
     }
 }
 
