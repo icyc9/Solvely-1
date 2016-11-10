@@ -33,3 +33,8 @@ extension UIColor {
         return UIColor(red: 0.302, green: 0.5569, blue: 0.9176, alpha: 1.0)
     }
 }
+
+class AnimationConfig {
+    static let collapseSpeed = 0.15
+    static let expandSpeed = 0.15
+}

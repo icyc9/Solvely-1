@@ -14,6 +14,11 @@ import NMPopUpViewSwift
 import CNPPopupController
 import MessageUI
 
+protocol Collapsible {
+    func collapse()
+    func expand()
+}
+
 class HomeViewController: UIViewController, UITextViewDelegate {
     private let reachabilityService = ReachabilityService()
     let solveService = SolveService()
@@ -30,6 +35,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     var multipleChoicePresenter: MultipleChoicePresenter!
     var actionSelector: MethodSelectionTableView!
     
+    var help: UIButton?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +63,38 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
 }
 
+extension HomeViewController: Collapsible {
+    
+    func collapse() {
+        cameraView.collapse()
+        actionSelector.collapse()
+        
+        // Hide help button
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed) { [weak self] in
+            self?.help?.frame = CGRect(x: (self?.help?.frame.origin.x)!, y: UIScreen.main.bounds.height, width: (self?.help?.frame.width)!, height: (self?.help?.frame.height)!)
+        }
+    }
+    
+    func expand() {
+        cameraView.expand()
+        actionSelector.expand()
+        
+        // Show help button
+        UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
+            self?.help?.frame = CGRect(x: (self?.help?.frame.origin.x)!, y: UIScreen.main.bounds.height - (self?.help?.frame.height)! - 8, width: (self?.help?.frame.width)!, height: (self?.help?.frame.height)!)
+        }
+    }
+}
+
 extension HomeViewController: CameraViewDelegate {
+    
+    func didPressTakeImage() {
+        let loadingPopUp = AnsweringPopUp.create()
+        presentPopup(popup: loadingPopUp)
+        
+        // Collapse views
+        collapse()
+    }
     
     func didTakeImage(croppedImage: UIImage) {
         let selectedAction = actionSelector.getSelectedAction()

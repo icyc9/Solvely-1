@@ -123,3 +123,20 @@ extension MethodSelectionTableView: UITableViewDelegate {
         }
     }
 }
+
+extension MethodSelectionTableView: Collapsible {
+    
+    func collapse() {
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed) { [weak self] in
+            self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0 - (self?.frame.height)!, width: (self?.frame.width)!, height: (self?.frame.height)!)
+            self?.layoutIfNeeded()
+        }
+    }
+    
+    func expand() {
+        UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
+            self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0, width: (self?.frame.width)!, height: (self?.frame.height)!)
+            self?.layoutIfNeeded()
+        }
+    }
+}

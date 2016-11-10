@@ -23,17 +23,17 @@ extension HomeViewController {
     }
     
     func addHelpButton() {
-        let help = UIButton(type: .custom)
+        help = UIButton(type: .custom)
         
         if let image = UIImage(named: "help") {
-            help.setImage(image, for: .normal)
+            help?.setImage(image, for: .normal)
             let hw = image.size.width
             let hh = image.size.height
-            help.frame = CGRect(x: UIScreen.main.bounds.width - hw - 8, y: UIScreen.main.bounds.height - hh - 8, width: hw, height: hh)
-            help.addTarget(self, action: #selector(HomeViewController.showHelp), for: .touchUpInside)
+            help?.frame = CGRect(x: UIScreen.main.bounds.width - hw - 8, y: UIScreen.main.bounds.height - hh - 8, width: hw, height: hh)
+            help?.addTarget(self, action: #selector(HomeViewController.showHelp), for: .touchUpInside)
         }
         
-        self.view.addSubview(help)
+        self.view.addSubview(help!)
     }
     
     func showEdit(text: String?) {
@@ -63,6 +63,7 @@ extension HomeViewController {
     }
     
     func hideCurrentPopup() {
+        expand()
         cameraView.showContents()
         currentPopup.dismiss(animated: true)
         currentPopup = nil

@@ -10,10 +10,11 @@ import UIKit
 import FastttCamera
 
 protocol CameraViewDelegate {
+    func didPressTakeImage()
     func didTakeImage(croppedImage: UIImage)
 }
 
-class CameraView: UIView{
+class CameraView: UIView {
     var camera: FastttCamera!
     var cropBox: CropBoxView!
     var takePictureButton: UIButton?
@@ -31,18 +32,22 @@ class CameraView: UIView{
     }
     
     func takePicture(sender: UIButton?) {
+        if delegate != nil {
+            delegate!.didPressTakeImage()
+        }
+        
         camera.takePicture()
     }
     
     func hideContents() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.cropBox.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.cropBox.alpha = 0
         })
     }
     
     func showContents() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.cropBox.alpha = 1
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.cropBox.alpha = 1
         })
     }
     
@@ -98,6 +103,21 @@ class CameraView: UIView{
         
         addTakePictureButton()
         addCropBox()
+    }
+}
+
+extension CameraView: Collapsible {
+    
+    func collapse() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.takePictureButton?.frame = CGRect(x: (self?.takePictureButton?.frame.origin.x)!, y: UIScreen.main.bounds.height, width: (self?.takePictureButton?.frame.width)!, height: (self?.takePictureButton?.frame.height)!)
+        }
+    }
+    
+    func expand() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.takePictureButton?.frame = CGRect(x: (self?.takePictureButton?.frame.origin.x)!, y: UIScreen.main.bounds.height - (self?.takePictureButton?.frame.height)!, width: (self?.takePictureButton?.frame.width)!, height: (self?.takePictureButton?.frame.height)!)
+        }
     }
 }
 
