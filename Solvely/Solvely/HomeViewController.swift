@@ -51,6 +51,10 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         addHelpButton()
         addActionSelector()
         
+        // Initially collapse everything except action selector
+        collapseHelpButton()
+        cameraView.collapse()
+        
         reachabilityService.registerForUpdates(delegate: self)
     }
     
@@ -66,24 +70,30 @@ class HomeViewController: UIViewController, UITextViewDelegate {
 
 extension HomeViewController: Collapsible {
     
-    func collapse() {
-        cameraView.collapse()
-        actionSelector.collapse()
-        
+    func collapseHelpButton() {
         // Hide help button
         UIView.animate(withDuration: AnimationConfig.collapseSpeed) { [weak self] in
             self?.help?.frame = CGRect(x: (self?.help?.frame.origin.x)!, y: UIScreen.main.bounds.height, width: (self?.help?.frame.width)!, height: (self?.help?.frame.height)!)
         }
     }
     
+    func expandHelpButton() {
+       // Show help button
+        UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
+            self?.help?.frame = CGRect(x: (self?.help?.frame.origin.x)!, y: UIScreen.main.bounds.height - (self?.help?.frame.height)! - 8, width: (self?.help?.frame.width)!, height: (self?.help?.frame.height)!)
+        } 
+    }
+    
+    func collapse() {
+        cameraView.collapse()
+        actionSelector.collapse()
+        collapseHelpButton()
+    }
+    
     func expand() {
         cameraView.expand()
         actionSelector.expand()
-        
-        // Show help button
-        UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
-            self?.help?.frame = CGRect(x: (self?.help?.frame.origin.x)!, y: UIScreen.main.bounds.height - (self?.help?.frame.height)! - 8, width: (self?.help?.frame.width)!, height: (self?.help?.frame.height)!)
-        }
+        expandHelpButton()
     }
 }
 

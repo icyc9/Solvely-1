@@ -110,11 +110,14 @@ extension CameraView: Collapsible {
     
     func collapse() {
         UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.cropBox.alpha = 0
+            
             self?.takePictureButton?.frame = CGRect(x: (self?.takePictureButton?.frame.origin.x)!, y: UIScreen.main.bounds.height, width: (self?.takePictureButton?.frame.width)!, height: (self?.takePictureButton?.frame.height)!)
         }
     }
     
     func expand() {
+        self.cropBox.alpha = 1
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.takePictureButton?.frame = CGRect(x: (self?.takePictureButton?.frame.origin.x)!, y: UIScreen.main.bounds.height - (self?.takePictureButton?.frame.height)!, width: (self?.takePictureButton?.frame.width)!, height: (self?.takePictureButton?.frame.height)!)
         }
