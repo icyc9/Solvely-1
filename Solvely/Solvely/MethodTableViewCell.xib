@@ -17,16 +17,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vTZ-rr-tmx" id="cRX-pF-reL">
-                <frame key="frameInset" width="375" height="43.5"/>
+                <frame key="frameInset" width="375" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk6-d2-kQu">
                         <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="21"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.24561962485313416" green="0.4685407280921936" blue="0.89600718021392822" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.30588236451148987" green="0.55686277151107788" blue="0.91764706373214722" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="Hk6-d2-kQu" firstAttribute="top" secondItem="cRX-pF-reL" secondAttribute="topMargin" constant="3" id="g0H-oz-WCr"/>
                     <constraint firstItem="Hk6-d2-kQu" firstAttribute="centerX" secondItem="cRX-pF-reL" secondAttribute="centerX" id="gYk-9l-UNo"/>

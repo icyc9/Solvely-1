@@ -20,12 +20,13 @@ enum SolvelyAction {
 class MethodSelectionTableView: UITableView {
     let method_table_view_cell = "method_table_view_cell"
     let cancel_table_view_cell = "cancel_table_view_cell"
+    let method_table_view_header_cell = "method_table_view_header_cell"
     let titleIndex = 1
     let imageIndex = 0
     var originalHeight: CGFloat?
     var collapsed = false
     var selectedRow: Int?
-    var items = ["What do you want help with?", "Summarize Text", "Solve Math", "Solve Open Ended", "Solve Multiple Choice"]
+    var items = ["Summarize", "Answer Math", "Answer Question"]
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -69,6 +70,9 @@ class MethodSelectionTableView: UITableView {
         let cancelNib = UINib(nibName: "CancelTableViewCell", bundle: nil)
         register(cancelNib, forCellReuseIdentifier: cancel_table_view_cell)
         
+        let headerNib = UINib(nibName: "SelectActionHeaderCell", bundle: nil)
+        register(headerNib, forCellReuseIdentifier: method_table_view_header_cell)
+        
         delegate = self
         dataSource = self
     }
@@ -79,13 +83,8 @@ extension MethodSelectionTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: method_table_view_cell) as! MethodTableViewCell
         cell.title.text = items[indexPath.row]
-        cell.contentView.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        cell.backgroundColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        
-        if indexPath.row > 0 {
-            cell.view.backgroundColor = UIColor.white
-            cell.title.textColor = UIColor.solvelyPrimaryBlue().withAlphaComponent(0.75)
-        }
+        cell.contentView.backgroundColor = UIColor.white
+        cell.backgroundColor = UIColor.white
         
         return cell
     }
@@ -99,13 +98,10 @@ extension MethodSelectionTableView: UITableViewDataSource {
     }
 }
 
-extension MethodSelectionTableView: UITableViewDelegate {
+extension MethodSelectionTableView: SelectActionHeaderCellDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (self.frame.height / 2) / CGFloat(items.count)
-    }
-  
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func didTouch() {
+        // Header cell was touched, collapse table view
         if collapsed == true {
             collapsed = false
             UIView.animate(withDuration: 0.1, animations: { () -> Void in
@@ -114,13 +110,34 @@ extension MethodSelectionTableView: UITableViewDelegate {
             })
         }
         else {
-            selectedRow = indexPath.row
             collapsed = true
             UIView.animate(withDuration: 0.1, animations: { () -> Void in
                 self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: (self.originalHeight! / 2) / CGFloat(self.items.count))
                 self.layoutIfNeeded()
             })
         }
+    }
+}
+
+extension MethodSelectionTableView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (self.frame.height / 2) / CGFloat(items.count)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: method_table_view_header_cell) as! SelectActionHeaderCell
+        headerCell.touchDelegate = self
+        
+        return headerCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (self.frame.height / 2) / CGFloat(items.count)
+    }
+  
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
     }
 }
 
