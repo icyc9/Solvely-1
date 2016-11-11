@@ -17,6 +17,11 @@ enum SolvelyAction {
     case none
 }
 
+protocol MethodSelectionTableViewDelegate {
+    func didSelectMethod()
+    func didExpand()
+}
+
 class MethodSelectionTableView: UITableView {
     let method_table_view_cell = "method_table_view_cell"
     let cancel_table_view_cell = "cancel_table_view_cell"
@@ -26,7 +31,9 @@ class MethodSelectionTableView: UITableView {
     var originalHeight: CGFloat?
     var collapsed = false
     var selectedRow: Int?
+    var originalFrame: CGRect?
     var items = ["Summarize", "Answer Math", "Answer Question"]
+    var selectionDelegate: MethodSelectionTableViewDelegate?
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -103,18 +110,10 @@ extension MethodSelectionTableView: SelectActionHeaderCellDelegate {
     func didTouch() {
         // Header cell was touched, collapse table view
         if collapsed == true {
-            collapsed = false
-            UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.originalHeight!)
-                self.layoutIfNeeded()
-            })
+            expand()
         }
         else {
-            collapsed = true
-            UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: (self.originalHeight! / 2) / CGFloat(self.items.count))
-                self.layoutIfNeeded()
-            })
+            collapseTableView()
         }
     }
 }
@@ -138,22 +137,51 @@ extension MethodSelectionTableView: UITableViewDelegate {
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
+        
+        if selectionDelegate != nil {
+            selectionDelegate!.didSelectMethod()
+        }
     }
 }
 
 extension MethodSelectionTableView: Collapsible {
     
+    func collapseTableView() {
+        collapsed = true
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { () -> Void in
+            self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: (self.originalHeight! / 2) / CGFloat(self.items.count))
+            self.layoutIfNeeded()
+        })
+    }
+    
+    func expandTableView() {
+        collapsed = false
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { () -> Void in
+            self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.originalHeight!)
+            self.layoutIfNeeded()
+        })
+    }
+    
     func collapse() {
-        UIView.animate(withDuration: AnimationConfig.collapseSpeed) { [weak self] in
-            self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0 - (self?.frame.height)!, width: (self?.frame.width)!, height: (self?.frame.height)!)
+        originalFrame = self.frame
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { [weak self] in
+            self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0, width: (self?.frame.width)!, height: (self?.frame.height)!)
             self?.layoutIfNeeded()
+        
+        }) { [weak self] complete in
+            self?.collapseTableView()
         }
     }
     
     func expand() {
-        UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
-            self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0, width: (self?.frame.width)!, height: (self?.frame.height)!)
-            self?.layoutIfNeeded()
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { [weak self] in
+            let orig = (self?.originalFrame!)!
+            self?.frame = CGRect(x: orig.minX, y: orig.minY, width: (self?.frame.width)!, height: (self?.frame.height)!)
+        }) { [weak self] complete in
+            self?.expandTableView()
+            if self?.selectionDelegate != nil {
+                self?.selectionDelegate!.didExpand()
+            }
         }
     }
 }

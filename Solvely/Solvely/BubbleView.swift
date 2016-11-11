@@ -12,6 +12,7 @@ class BubbleView: UIView {
     private let bubbleWidth = 32
     private let bubbleHeight = 32
     private var wasLastWhite = false
+    var timer: Timer?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,8 +24,8 @@ class BubbleView: UIView {
         setup()
     }
     
-    private func setup() {
-        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(spawnBubble), userInfo: nil, repeats: true)
+    func setup() {
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(spawnBubble), userInfo: nil, repeats: true)
     }
     
     func spawnBubble() {
@@ -73,6 +74,23 @@ class BubbleView: UIView {
         })
         
         bubble?.layer.add(animation, forKey: "float")
+    }
+}
+
+extension BubbleView: Collapsible {
+    
+    func collapse() {
+        timer?.invalidate()
+        
+        for bubble in subviews {
+            UIView.animate(withDuration: AnimationConfig.expandSpeed) { [weak self] in
+                bubble.alpha = 0
+            }
+        }
+    }
+    
+    func expand() {
+        setup()
     }
 }
 

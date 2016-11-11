@@ -35,7 +35,9 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     var actionSelector: MethodSelectionTableView!
     
     var help: UIButton?
-
+    var topSquidHead: UIImageView?
+    var bubbleView: BubbleView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +70,18 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
 }
 
+extension HomeViewController: MethodSelectionTableViewDelegate {
+    
+    func didExpand() {
+        expandTopSquidHead()
+        bubbleView?.expand()
+    }
+    
+    func didSelectMethod() {
+        collapse()
+    }
+}
+
 extension HomeViewController: Collapsible {
     
     func collapseHelpButton() {
@@ -84,16 +98,32 @@ extension HomeViewController: Collapsible {
         } 
     }
     
+    func collapseTopSquidHead() {
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed) {  [weak self] in
+            self?.topSquidHead?.alpha = 0
+        }
+    }
+    
+    func expandTopSquidHead() {
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed) {  [weak self] in
+            self?.topSquidHead?.alpha = 1
+        }
+    }
+    
     func collapse() {
         cameraView.collapse()
         actionSelector.collapse()
+        bubbleView?.collapse()
         collapseHelpButton()
+        collapseTopSquidHead()
     }
     
     func expand() {
         cameraView.expand()
         actionSelector.expand()
+        bubbleView?.expand()
         expandHelpButton()
+        expandTopSquidHead()
     }
 }
 
