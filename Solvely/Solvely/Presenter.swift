@@ -26,7 +26,14 @@ class BasePresenter<S: Strategy>: Presenter {
         self.disposeBag = disposeBag
     }
     
+    func showLoadingPopUp() {
+        let loadingPopUp = AnsweringPopUp.create()
+        viewController.presentPopup(popup: loadingPopUp)
+    }
+    
     func processImage(image: UIImage!) {
+        showLoadingPopUp()
+        
         strategy.convertImageToText(image: image)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
             .observeOn(MainScheduler.instance)
@@ -37,11 +44,21 @@ class BasePresenter<S: Strategy>: Presenter {
             }).addDisposableTo(disposeBag)
     }
     
+    func showErrorPopUp(message: String! = "An error has occurred.") {
+        let errorPopUp = ErrorPopUp.create(message: message, closeable: true) { [weak self] cl in
+            self?.viewController.hideCurrentPopup()
+        }
+        
+        viewController.presentPopup(popup: errorPopUp)
+    }
+    
     func edit(text: String!) {
         
     }
     
     func solve(question: String!) {
+        showLoadingPopUp()
+        
         strategy.solve(input: question)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
             .observeOn(MainScheduler.instance)
@@ -52,6 +69,6 @@ class BasePresenter<S: Strategy>: Presenter {
             }).addDisposableTo(disposeBag)
     }
     
-    func solveQuestionDidFinish(answer: Answer?, error: Error?) { }
+    func solveQuestionDidFinish(answer: StrategyResult?, error: Error?) { }
     func processImageDidFinish(text: String?, error: Error?) { }
 }

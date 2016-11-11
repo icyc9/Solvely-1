@@ -21,7 +21,6 @@ protocol Collapsible {
 
 class HomeViewController: UIViewController, UITextViewDelegate {
     private let reachabilityService = ReachabilityService()
-    let solveService = SolveService()
     let ocrService = OCRService()
     
     let disposeBag = DisposeBag()
@@ -31,7 +30,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     var popupBeforeConnectionError: CNPPopupController?
     
     var cameraView: CameraView!
-    
+    var summarizePresenter: SummarizationPresenter!
     var multipleChoicePresenter: MultipleChoicePresenter!
     var actionSelector: MethodSelectionTableView!
     
@@ -41,6 +40,8 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         multipleChoicePresenter = MultipleChoicePresenter(viewController: self, strategy: MultipleChoiceStrategy(), disposeBag: disposeBag)
+        
+        summarizePresenter = SummarizationPresenter(viewController: self, strategy: SummarizeStrategy(), disposeBag: disposeBag)
         
         cameraView = CameraView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         cameraView.delegate = self
@@ -106,6 +107,7 @@ extension HomeViewController: CameraViewDelegate {
             multipleChoicePresenter.processImage(image: croppedImage)
             break
         case .summarize:
+            summarizePresenter.processImage(image: croppedImage)
             break
         case .solveOpenEnded:
             break

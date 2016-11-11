@@ -52,7 +52,7 @@ extension CNPPopupController {
     }
     
     static func title(text: String!) -> UILabel {
-        return label(text: text, size: 72)
+        return label(text: text, size: 36)
     }
     
     static func label(text: String!, size: CGFloat = 18.0) -> UILabel {
@@ -65,12 +65,23 @@ extension CNPPopupController {
         return label
     }
     
+    static func scrollable(text: String!) -> UITextView {
+        let label = UITextView()
+        label.font = UIFont(name: "Raleway", size: 18)
+        label.text = text
+        label.isEditable = false
+        label.textAlignment = NSTextAlignment.center
+        label.frame = CGRect(x: 16, y: 0, width: UIScreen.main.bounds.width - 16, height: UIScreen.main.bounds.height / 2)
+        
+        return label
+    }
+    
     static func multiline(text: String!) -> UILabel {
         let label = UILabel()
         label.textColor = UIColor.white
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        label.font = UIFont(name: "Raleway", size: 14)
+        label.font = UIFont(name: "Raleway", size: 18)
         label.text = text
         label.textAlignment = NSTextAlignment.center
         label.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 16, height: 50)

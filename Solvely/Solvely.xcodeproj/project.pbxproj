@@ -41,7 +41,6 @@
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
-		02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5521B1D72830400F6E2F6 /* SolveService.swift */; };
 		02F552411D72A9D400F6E2F6 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F552371D72A97200F6E2F6 /* Raleway-Bold.ttf */; };
 		02F552421D72A9D400F6E2F6 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F552381D72A97200F6E2F6 /* Raleway-Light.ttf */; };
 		02F552431D72A9D400F6E2F6 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F552391D72A97200F6E2F6 /* Raleway-Medium.ttf */; };
@@ -93,7 +92,6 @@
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02F552191D722A4E00F6E2F6 /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
-		02F5521B1D72830400F6E2F6 /* SolveService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolveService.swift; sourceTree = "<group>"; };
 		02F552371D72A97200F6E2F6 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		02F552381D72A97200F6E2F6 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
 		02F552391D72A97200F6E2F6 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				02F552191D722A4E00F6E2F6 /* OCRService.swift */,
-				02F5521B1D72830400F6E2F6 /* SolveService.swift */,
 				028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */,
 				023719AC1DBD1A8700EEB12E /* ReachabilityService.swift */,
 			);
@@ -466,7 +463,6 @@
 				0284B5EE1DCBF0F300BDFEAC /* HomeViewController+UI.swift in Sources */,
 				0284B5E61DCB80EE00BDFEAC /* AnsweringPopUp.swift in Sources */,
 				0276EA371DD3AC8F0069463C /* MultipleChoicePresenter.swift in Sources */,
-				02F5521C1D72830400F6E2F6 /* SolveService.swift in Sources */,
 				0237199F1DBCDB2B00EEB12E /* MethodTableViewCell.swift in Sources */,
 				0284B5FC1DCBF55E00BDFEAC /* HomeViewController+GrowthHackUI.swift in Sources */,
 				0276EA351DD3AB960069463C /* Presenter.swift in Sources */,

@@ -16,37 +16,7 @@ extension HomeViewController {
         presentPopup(popup: currentPopup)
     }
     
-    func solveMultipleChoice(question: String!) {
-        solveService.solveQuestion(question: question)
-            .observeOn(MainScheduler.instance)
-            //.subscribeOn(ConcurrentDispatchQueueScheduler(globalConcurrentQueueQOS: .Background))
-            .subscribe(onNext: { [weak self] (answer) in
-                self?.hideCurrentPopup()
-                
-                if answer != nil {
-                    self?.showAnswer(answer: answer)
-                }
-                else {
-                    self?.showError(message: "Can't answer that!")
-                }
-            }, onError: { (error) in
-                self.hideCurrentPopup()
-                print(error)
-                    
-                switch(error) {
-                case SolveError.UnknownError:
-                    self.showError()
-                    break
-                case SolveError.InvalidQuestionError:
-                    self.showError(message: "Can't answer that!")
-                    break
-                default:
-                    self.showError()
-                    break
-                }
-            }, onCompleted: nil, onDisposed: nil)
-            .addDisposableTo(self.disposeBag)
-    }
+    
     
     func processImageForMultipleChoice(image: UIImage) {
         convertImageToText(image: image)

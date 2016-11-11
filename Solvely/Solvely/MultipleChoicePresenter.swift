@@ -15,24 +15,9 @@ class MultipleChoicePresenter: BasePresenter<MultipleChoiceStrategy> {
         super.init(viewController: viewController, strategy: strategy, disposeBag: disposeBag)
     }
     
-    override func processImage(image: UIImage!) {
-        super.processImage(image: image)
-        showLoadingPopUp()
-    }
-    
     override func edit(text: String!) {
         super.edit(text: text)
         showEditPopUp(text: text)
-    }
-    
-    override func solve(question: String!) {
-        super.solve(question: question)
-        showLoadingPopUp()
-    }
-    
-    private func showLoadingPopUp() {
-        let loadingPopUp = AnsweringPopUp.create()
-        viewController.presentPopup(popup: loadingPopUp)
     }
     
     override func processImageDidFinish(text: String?, error: Error?) {
@@ -44,9 +29,9 @@ class MultipleChoicePresenter: BasePresenter<MultipleChoiceStrategy> {
         }
     }
     
-    override func solveQuestionDidFinish(answer: Answer?, error: Error?) {
+    override func solveQuestionDidFinish(answer: StrategyResult?, error: Error?) {
         if error == nil {
-            showAnswerPopUp(answer: answer!)
+            showAnswerPopUp(answer: answer as! Answer)
         }
         else {
             showSolveErrorPopUp(error: error!)
@@ -65,14 +50,6 @@ class MultipleChoicePresenter: BasePresenter<MultipleChoiceStrategy> {
             showErrorPopUp()
             break
         }
-    }
-    
-    private func showErrorPopUp(message: String! = "An error has occurred.") {
-        let errorPopUp = ErrorPopUp.create(message: message, closeable: true) { [weak self] cl in
-            self?.viewController.hideCurrentPopup()
-        }
-        
-        viewController.presentPopup(popup: errorPopUp)
     }
     
     private func showEditPopUp(text: String!) {

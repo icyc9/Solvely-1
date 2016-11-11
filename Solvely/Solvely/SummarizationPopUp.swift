@@ -7,18 +7,27 @@
 //
 
 import Foundation
+import CNPPopupController
 
 class SummarizationPopUp: SolvelyPopUp {
     
-    static func create(summarizedText: String!) -> SummarizationPopUp {
+    static func create(summarizedText: String!, handler: SelectionHandler?) -> SummarizationPopUp {
+        
+        let closeButton = button(text: "Got it!")
         
         let contents: [UIView] = [
-            title(text: "Summarized"),
-            multiline(text: summarizedText),
-            button(text: "Got it!")
+            pad(),
+            title(text: "Summarized:"),
+            pad(),
+            scrollable(text: summarizedText),
+            pad(),
+            closeButton,
+            pad()
         ]
         
         let popup = SummarizationPopUp(contents: contents)
+        closeButton.selectionHandler = handler
+        
         return popup
     }
 }

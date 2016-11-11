@@ -15,30 +15,52 @@ class SummarizationPresenter: BasePresenter<SummarizeStrategy> {
         super.init(viewController: viewController, strategy: strategy, disposeBag: disposeBag)
     }
     
-    override func processImage(image: UIImage!) {
-        super.processImage(image: image)
-    }
-    
     override func edit(text: String!) {
-        
+        let editPopUp = EditQuestionPopUp.create(questionText: text, delegate: self)
+        viewController.presentPopup(popup: editPopUp)
     }
     
-    override func solve(question: String!) {
-        strategy.solve(input: question)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] answer in
-                self?.showSummarizedTextPopUp(answer: answer)
-            }, onError: { [weak self] error in
-                self?.showSummarizeErrorPopUp(error: error)
-            }).addDisposableTo(disposeBag)
+    override func solveQuestionDidFinish(answer: StrategyResult?, error: Error?) {
+        if error == nil {
+            showSummarizedTextPopUp(answer: (answer as! SummarizeResult).summarization)
+        }
+        else {
+            showSummarizeErrorPopUp(error: error)
+        }
+    }
+    
+    override func processImageDidFinish(text: String?, error: Error?) {
+        if error == nil {
+            edit(text: text)
+        }
+        else {
+            showErrorPopUp(message: "Couldn't read that!")
+        }
     }
     
     private func showSummarizedTextPopUp(answer: String?) {
+        let summarizedPopUp = SummarizationPopUp.create(summarizedText: answer) { [weak self] cl in
+            self?.viewController.hideCurrentPopup()
+        }
         
+        viewController.presentPopup(popup: summarizedPopUp)
     }
     
     private func showSummarizeErrorPopUp(error: Error!) {
-        
+        showErrorPopUp(message: "Couldn't summarize that!")
+    }
+}
+
+extension SummarizationPresenter: SolvelyPopUpDelegate {
+    
+    func popUpDidClose() {
+        viewController.hideCurrentPopup()
+    }
+}
+
+extension SummarizationPresenter: EditQuestionPopUpDelegate {
+    
+    func didPressSolve(editedQuestion: String!) {
+        solve(question: editedQuestion)
     }
 }

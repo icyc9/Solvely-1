@@ -9,9 +9,11 @@
 import Foundation
 import RxSwift
 
-protocol Strategy {
-    associatedtype Result
+class StrategyResult {
     
+}
+
+protocol Strategy {
     func convertImageToText(image: UIImage?) -> Observable<String?>
-    func solve(input: String?) -> Observable<Result>
+    func solve(input: String?) -> Observable<StrategyResult?>
 }
