@@ -22,6 +22,7 @@
 		0276EA391DD46AC20069463C /* SummarizeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA381DD46AC20069463C /* SummarizeStrategy.swift */; };
 		0276EA3B1DD46B280069463C /* SummarizationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA3A1DD46B280069463C /* SummarizationPopUp.swift */; };
 		0276EA3D1DD46C370069463C /* SummarizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA3C1DD46C370069463C /* SummarizationPresenter.swift */; };
+		0276EA3F1DD56DF80069463C /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276EA3E1DD56DF80069463C /* BubbleView.swift */; };
 		028000591DBB14A300D22BAA /* SolvelyRxAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */; };
 		0284B5DC1DCB67BA00BDFEAC /* AnswerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */; };
 		0284B5E01DCB6AAF00BDFEAC /* SolvelyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5DF1DCB6AAF00BDFEAC /* SolvelyPopUp.swift */; };
@@ -71,6 +72,7 @@
 		0276EA381DD46AC20069463C /* SummarizeStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizeStrategy.swift; sourceTree = "<group>"; };
 		0276EA3A1DD46B280069463C /* SummarizationPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizationPopUp.swift; sourceTree = "<group>"; };
 		0276EA3C1DD46C370069463C /* SummarizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummarizationPresenter.swift; sourceTree = "<group>"; };
+		0276EA3E1DD56DF80069463C /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		028000571DBB034A00D22BAA /* Solvely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solvely.entitlements; sourceTree = "<group>"; };
 		028000581DBB14A300D22BAA /* SolvelyRxAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvelyRxAlamofire.swift; sourceTree = "<group>"; };
 		0284B5DB1DCB67BA00BDFEAC /* AnswerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerPopUp.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				0284B6061DCE878D00BDFEAC /* SelectActionHeaderCell.xib */,
 				0284B6081DCE890400BDFEAC /* SelectActionTableViewCell.swift */,
 				0276EA2E1DD2F49F0069463C /* CameraView.swift */,
+				0276EA3E1DD56DF80069463C /* BubbleView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */,
 				0276EA2D1DD2F28B0069463C /* Strategy.swift in Sources */,
 				0284B5E41DCB7B3100BDFEAC /* HelpPopUp.swift in Sources */,
+				0276EA3F1DD56DF80069463C /* BubbleView.swift in Sources */,
 				02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */,
 				0284B5EC1DCBE90300BDFEAC /* ErrorPopUp.swift in Sources */,
 			);

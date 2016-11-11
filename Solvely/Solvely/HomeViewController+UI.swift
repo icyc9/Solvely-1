@@ -14,7 +14,7 @@ extension HomeViewController {
     
     func addActionSelector() {
         let w = self.view.frame.width
-        let h: CGFloat = self.view.frame.height
+        let h: CGFloat = UIScreen.main.bounds.height * 0.75
         let x = (UIScreen.main.bounds.width / 2) - (w / 2)
         let y: CGFloat = UIScreen.main.bounds.height / 4
         actionSelector = MethodSelectionTableView(frame: CGRect(x: x, y: y, width: w, height: h))
@@ -25,6 +25,9 @@ extension HomeViewController {
         let sh = (image?.size.height)! / 2
         squid.frame = CGRect(x: (w / 2) - (sw / 2), y: y - sh, width: sw, height: sh)
         
+        let bubblesView = BubbleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            
+        view.addSubview(bubblesView)
         view.addSubview(actionSelector)
         view.addSubview(squid)
     }
