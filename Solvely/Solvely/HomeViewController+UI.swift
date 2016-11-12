@@ -17,20 +17,22 @@ extension HomeViewController {
         let h: CGFloat = UIScreen.main.bounds.height * 0.75
         let x = (UIScreen.main.bounds.width / 2) - (w / 2)
         let y: CGFloat = UIScreen.main.bounds.height / 4
-        actionSelector = MethodSelectionTableView(frame: CGRect(x: x, y: y, width: w, height: h))
+        actionSelector = MethodSelectorView(frame: CGRect(x: x, y: y, width: w, height: h))
         actionSelector.selectionDelegate = self
         
         let image = UIImage(named: "squid top")
         topSquidHead = UIImageView(image: image)
         let sw = (image?.size.width)! / 2
         let sh = (image?.size.height)! / 2
-        topSquidHead?.frame = CGRect(x: (w / 2) - (sw / 2), y: y - sh, width: sw, height: sh)
+        topSquidHead?.frame = CGRect(x: (w / 2) - (sw / 2), y: y, width: sw, height: sh)
         
         bubbleView = BubbleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             
         view.addSubview(bubbleView!)
-        view.addSubview(actionSelector)
         view.addSubview(topSquidHead!)
+        view.addSubview(actionSelector)
+        
+        expandTopSquidHead()
     }
     
     func addHelpButton() {

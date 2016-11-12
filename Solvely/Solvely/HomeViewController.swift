@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     var cameraView: CameraView!
     var summarizePresenter: SummarizationPresenter!
     var multipleChoicePresenter: MultipleChoicePresenter!
-    var actionSelector: MethodSelectionTableView!
+    var actionSelector: MethodSelectorView!
     
     var help: UIButton?
     var topSquidHead: UIImageView?
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-extension HomeViewController: MethodSelectionTableViewDelegate {
+extension HomeViewController: MethodSelectorDelegate {
     
     func didExpand() {
         expandTopSquidHead()
@@ -99,14 +99,16 @@ extension HomeViewController: Collapsible {
     }
     
     func collapseTopSquidHead() {
-        UIView.animate(withDuration: AnimationConfig.collapseSpeed) {  [weak self] in
+        UIView.animate(withDuration: AnimationConfig.collapseSpeed / 2) {  [weak self] in
             self?.topSquidHead?.alpha = 0
+            self?.topSquidHead?.frame = CGRect(x: (self?.topSquidHead!.frame.minX)!, y: (self?.topSquidHead!.frame.minY)! + (self?.topSquidHead!.frame.height)!, width: (self?.topSquidHead!.frame.width)!, height: (self?.topSquidHead!.frame.height)!)
         }
     }
     
     func expandTopSquidHead() {
         UIView.animate(withDuration: AnimationConfig.collapseSpeed) {  [weak self] in
             self?.topSquidHead?.alpha = 1
+            self?.topSquidHead?.frame = CGRect(x: (self?.topSquidHead!.frame.minX)!, y: (self?.topSquidHead!.frame.minY)! - (self?.topSquidHead!.frame.height)!, width: (self?.topSquidHead!.frame.width)!, height: (self?.topSquidHead!.frame.height)!)
         }
     }
     

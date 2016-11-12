@@ -39,6 +39,8 @@
 		0284B5FC1DCBF55E00BDFEAC /* HomeViewController+GrowthHackUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B5FB1DCBF55E00BDFEAC /* HomeViewController+GrowthHackUI.swift */; };
 		0284B6071DCE878D00BDFEAC /* SelectActionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0284B6061DCE878D00BDFEAC /* SelectActionHeaderCell.xib */; };
 		0284B6091DCE890400BDFEAC /* SelectActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284B6081DCE890400BDFEAC /* SelectActionTableViewCell.swift */; };
+		02D175741DD6AF2C0046B848 /* MethodSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02D175731DD6AF2C0046B848 /* MethodSelector.xib */; };
+		02D175761DD6B1630046B848 /* MethodSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D175751DD6B1630046B848 /* MethodSelectorView.swift */; };
 		02F5520E1D71733C00F6E2F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */; };
 		02F552171D72205100F6E2F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552161D72205100F6E2F6 /* Constants.swift */; };
 		02F5521A1D722A4E00F6E2F6 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F552191D722A4E00F6E2F6 /* OCRService.swift */; };
@@ -90,6 +92,8 @@
 		0284B5FB1DCBF55E00BDFEAC /* HomeViewController+GrowthHackUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+GrowthHackUI.swift"; sourceTree = "<group>"; };
 		0284B6061DCE878D00BDFEAC /* SelectActionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectActionHeaderCell.xib; sourceTree = "<group>"; };
 		0284B6081DCE890400BDFEAC /* SelectActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActionTableViewCell.swift; sourceTree = "<group>"; };
+		02D175731DD6AF2C0046B848 /* MethodSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodSelector.xib; sourceTree = "<group>"; };
+		02D175751DD6B1630046B848 /* MethodSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodSelectorView.swift; sourceTree = "<group>"; };
 		02F5520D1D71733C00F6E2F6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F552131D72146B00F6E2F6 /* Solvely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Solvely-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F552161D72205100F6E2F6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				0284B6081DCE890400BDFEAC /* SelectActionTableViewCell.swift */,
 				0276EA2E1DD2F49F0069463C /* CameraView.swift */,
 				0276EA3E1DD56DF80069463C /* BubbleView.swift */,
+				02D175731DD6AF2C0046B848 /* MethodSelector.xib */,
+				02D175751DD6B1630046B848 /* MethodSelectorView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				02FE842C1D7170AE0027AC8A /* LaunchScreen.storyboard in Resources */,
 				02219D041D786305002CC90F /* cry.gif in Resources */,
 				02FE84291D7170AE0027AC8A /* Assets.xcassets in Resources */,
+				02D175741DD6AF2C0046B848 /* MethodSelector.xib in Resources */,
 				02264A6B1D78BEA10010C37C /* happy squid.png in Resources */,
 				02FE84271D7170AE0027AC8A /* Main.storyboard in Resources */,
 			);
@@ -490,6 +497,7 @@
 				0284B5FA1DCBF54600BDFEAC /* HomeViewController+MathUI.swift in Sources */,
 				0276EA3B1DD46B280069463C /* SummarizationPopUp.swift in Sources */,
 				023719A11DBCDB4D00EEB12E /* MethodSelectionView.swift in Sources */,
+				02D175761DD6B1630046B848 /* MethodSelectorView.swift in Sources */,
 				0276EA2D1DD2F28B0069463C /* Strategy.swift in Sources */,
 				0284B5E41DCB7B3100BDFEAC /* HelpPopUp.swift in Sources */,
 				0276EA3F1DD56DF80069463C /* BubbleView.swift in Sources */,

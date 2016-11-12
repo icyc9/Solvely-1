@@ -39,28 +39,54 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="uHd-m1-z9L">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDn-5b-OMT">
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="YTq-F4-ad9">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="f1G-Wn-zIn"/>
+                                    <constraint firstAttribute="height" constant="32" id="zbd-13-JbO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fq8-Ic-zla">
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.24561962485313416" green="0.4685407280921936" blue="0.89600718021392822" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="5Mi-x7-ShD"/>
+                            <constraint firstItem="Fq8-Ic-zla" firstAttribute="leading" secondItem="dDn-5b-OMT" secondAttribute="leading" constant="8" id="KC8-TO-ouL"/>
+                            <constraint firstAttribute="bottom" secondItem="Fq8-Ic-zla" secondAttribute="bottom" constant="19" id="TU2-gJ-z1s"/>
+                            <constraint firstAttribute="trailing" secondItem="YTq-F4-ad9" secondAttribute="trailing" constant="164" id="UiD-g4-hi1"/>
+                            <constraint firstItem="YTq-F4-ad9" firstAttribute="top" secondItem="dDn-5b-OMT" secondAttribute="top" constant="19" id="iGC-D3-Pk2"/>
+                            <constraint firstItem="Fq8-Ic-zla" firstAttribute="top" secondItem="YTq-F4-ad9" secondAttribute="bottom" constant="8" id="soS-mV-Bnp"/>
+                            <constraint firstItem="YTq-F4-ad9" firstAttribute="leading" secondItem="dDn-5b-OMT" secondAttribute="leading" constant="163" id="yBu-Zf-8eZ"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.3058823645" green="0.55686277149999996" blue="0.91764706370000004" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="PyN-sB-F0l" firstAttribute="centerX" secondItem="uHd-m1-z9L" secondAttribute="centerX" id="59F-sg-w1r"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fq8-Ic-zla" secondAttribute="trailing" constant="8" id="19M-EC-9ji"/>
                     <constraint firstItem="pgl-5D-9xX" firstAttribute="trailing" secondItem="PyN-sB-F0l" secondAttribute="trailing" id="Jng-SH-nYd"/>
                     <constraint firstItem="pgl-5D-9xX" firstAttribute="leading" secondItem="1xX-Tg-6BS" secondAttribute="leading" id="Jva-EX-J1Y"/>
+                    <constraint firstItem="dDn-5b-OMT" firstAttribute="top" secondItem="1xX-Tg-6BS" secondAttribute="topMargin" id="MBq-VG-Ssq"/>
                     <constraint firstItem="PyN-sB-F0l" firstAttribute="top" secondItem="pgl-5D-9xX" secondAttribute="bottom" constant="8" symbolic="YES" id="OyO-qJ-gSo"/>
                     <constraint firstItem="pgl-5D-9xX" firstAttribute="top" secondItem="1xX-Tg-6BS" secondAttribute="topMargin" constant="4" id="Uxz-3L-rSc"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="uHd-m1-z9L" secondAttribute="bottom" constant="5" id="gpt-MH-tcy"/>
+                    <constraint firstItem="dDn-5b-OMT" firstAttribute="trailing" secondItem="1xX-Tg-6BS" secondAttribute="trailingMargin" id="XNn-Pu-BX7"/>
+                    <constraint firstItem="dDn-5b-OMT" firstAttribute="leading" secondItem="1xX-Tg-6BS" secondAttribute="leadingMargin" id="asq-ag-fCj"/>
                     <constraint firstAttribute="trailing" secondItem="pgl-5D-9xX" secondAttribute="trailing" id="oFP-Qh-NaD"/>
-                    <constraint firstItem="uHd-m1-z9L" firstAttribute="top" secondItem="PyN-sB-F0l" secondAttribute="bottom" constant="8" symbolic="YES" id="oSW-UE-mhN"/>
                     <constraint firstItem="pgl-5D-9xX" firstAttribute="leading" secondItem="PyN-sB-F0l" secondAttribute="leading" id="vwF-aq-YGh"/>
+                    <constraint firstItem="dDn-5b-OMT" firstAttribute="bottom" secondItem="1xX-Tg-6BS" secondAttribute="bottomMargin" id="yGi-I0-vHc"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.3058823645" green="0.55686277149999996" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="arrowImageView" destination="YTq-F4-ad9" id="6Wz-BD-lxI"/>
+                <outlet property="selectedActionLabel" destination="Fq8-Ic-zla" id="ghI-ti-2y5"/>
+                <outlet property="selectedActionView" destination="dDn-5b-OMT" id="ooD-gC-Kjm"/>
+                <outlet property="subtitleLabel" destination="PyN-sB-F0l" id="a6F-De-4UX"/>
+                <outlet property="titleLabel" destination="pgl-5D-9xX" id="cb3-JW-WeT"/>
                 <outlet property="view" destination="1xX-Tg-6BS" id="XKy-CT-mjt"/>
             </connections>
             <point key="canvasLocation" x="-183.5" y="-31"/>

@@ -14,6 +14,11 @@ protocol SelectActionHeaderCellDelegate {
 
 class SelectActionHeaderCell: UITableViewCell {
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var selectedActionView: UIView!
+    @IBOutlet weak var selectedActionLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
     var touchDelegate: SelectActionHeaderCellDelegate?
     
     required init?(coder aDecoder: NSCoder) {

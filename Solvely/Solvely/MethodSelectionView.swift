@@ -9,13 +9,6 @@
 import UIKit
 import CNPPopupController
 
-enum SolvelyAction {
-    case summarize
-    case solveMath
-    case solveOpenEnded
-    case solveMultipleChoice
-    case none
-}
 
 protocol MethodSelectionTableViewDelegate {
     func didSelectMethod()
@@ -124,6 +117,10 @@ extension MethodSelectionTableView: UITableViewDelegate {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: method_table_view_header_cell) as! SelectActionHeaderCell
         headerCell.touchDelegate = self
         
+        if selectedRow != nil {
+            headerCell.selectedActionView.isHidden = false
+        }
+        
         return headerCell
     }
     
@@ -148,7 +145,6 @@ extension MethodSelectionTableView: Collapsible {
             self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: (self.originalHeight! / 2) / CGFloat(self.items.count))
             self.layoutIfNeeded()
         }) { [weak self] complete in
-            //self?.reloadData()
         }
     }
     
@@ -156,12 +152,17 @@ extension MethodSelectionTableView: Collapsible {
         collapsed = false
         UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { () -> Void in
             self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: self.originalHeight!)
+            
+            self.selectedRow = nil
+            self.reloadData()
+            
             self.layoutIfNeeded()
         })
     }
     
     func collapse() {
         originalFrame = self.frame
+        self.reloadData()
         UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { [weak self] in
             self?.frame = CGRect(x: (self?.frame.origin.x)!, y: 0, width: (self?.frame.width)!, height: (self?.frame.height)!)
             self?.layoutIfNeeded()
