@@ -108,12 +108,8 @@ extension MethodSelectionTableView: UITableViewDataSource {
 extension MethodSelectionTableView: SelectActionHeaderCellDelegate {
     
     func didTouch() {
-        // Header cell was touched, collapse table view
         if collapsed == true {
             expand()
-        }
-        else {
-            collapseTableView()
         }
     }
 }
@@ -151,7 +147,9 @@ extension MethodSelectionTableView: Collapsible {
         UIView.animate(withDuration: AnimationConfig.collapseSpeed, animations: { () -> Void in
             self.frame = CGRect(x: self.frame.minX, y: self.frame.minY, width: self.frame.width, height: (self.originalHeight! / 2) / CGFloat(self.items.count))
             self.layoutIfNeeded()
-        })
+        }) { [weak self] complete in
+            //self?.reloadData()
+        }
     }
     
     func expandTableView() {
