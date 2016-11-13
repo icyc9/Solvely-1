@@ -13,6 +13,7 @@ class BubbleView: UIView {
     private let bubbleHeight = 32
     private var wasLastWhite = false
     var timer: Timer?
+    var bubbleDuration = 1
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,7 +26,7 @@ class BubbleView: UIView {
     }
     
     func setup() {
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(spawnBubble), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(BubbleView.spawnBubble), userInfo: nil, repeats: true)
     }
     
     func spawnBubble() {
@@ -58,7 +59,7 @@ class BubbleView: UIView {
     func addFloatAnimation(bubble: UIView?) {
         let animation = CAKeyframeAnimation()
         animation.keyPath = "position"
-        animation.duration = CFTimeInterval(Int(self.randInRange(min: 3, max: 5)))
+        animation.duration = CFTimeInterval(Int(self.randInRange(min: 2, max: 3)))
         animation.isAdditive = true
         animation.delegate = AnimationDelegate(
             didStart: nil,

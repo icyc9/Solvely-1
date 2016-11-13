@@ -9,8 +9,15 @@
 import Foundation
 import CNPPopupController
 import MessageUI
+import Spring
 
 extension HomeViewController {
+    
+    func addBubbles() {
+        bubbleView = BubbleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        
+        view.addSubview(bubbleView!)
+    }
     
     func addActionSelector() {
         let w = self.view.frame.width
@@ -21,18 +28,13 @@ extension HomeViewController {
         actionSelector.selectionDelegate = self
         
         let image = UIImage(named: "squid top")
-        topSquidHead = UIImageView(image: image)
+        topSquidHead = SpringImageView(image: image)
         let sw = (image?.size.width)! / 2
         let sh = (image?.size.height)! / 2
-        topSquidHead?.frame = CGRect(x: (w / 2) - (sw / 2), y: y, width: sw, height: sh)
+        topSquidHead?.frame = CGRect(x: (w / 2) - (sw / 2), y: y + sh, width: sw, height: sh)
         
-        bubbleView = BubbleView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-            
-        view.addSubview(bubbleView!)
         view.addSubview(topSquidHead!)
         view.addSubview(actionSelector)
-        
-        expandTopSquidHead()
     }
     
     func addHelpButton() {

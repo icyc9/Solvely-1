@@ -13,6 +13,7 @@ import RxSwift
 import NMPopUpViewSwift
 import CNPPopupController
 import MessageUI
+import Spring
 
 protocol Collapsible {
     func collapse()
@@ -35,7 +36,7 @@ class HomeViewController: UIViewController, UITextViewDelegate {
     var actionSelector: MethodSelectorView!
     
     var help: UIButton?
-    var topSquidHead: UIImageView?
+    var topSquidHead: SpringImageView?
     var bubbleView: BubbleView?
     
     override func viewDidLoad() {
@@ -50,12 +51,15 @@ class HomeViewController: UIViewController, UITextViewDelegate {
         
         view.addSubview(cameraView)
         
+        addBubbles()
         addHelpButton()
         addActionSelector()
         
         // Initially collapse everything except action selector
         collapseHelpButton()
         cameraView.collapse()
+        
+        expandTopSquidHead()
         
         reachabilityService.registerForUpdates(delegate: self)
     }
@@ -99,16 +103,14 @@ extension HomeViewController: Collapsible {
     }
     
     func collapseTopSquidHead() {
-        UIView.animate(withDuration: AnimationConfig.collapseSpeed / 2) {  [weak self] in
-            self?.topSquidHead?.alpha = 0
-            self?.topSquidHead?.frame = CGRect(x: (self?.topSquidHead!.frame.minX)!, y: (self?.topSquidHead!.frame.minY)! + (self?.topSquidHead!.frame.height)!, width: (self?.topSquidHead!.frame.width)!, height: (self?.topSquidHead!.frame.height)!)
+        SpringAnimation.springEaseInOut(duration: AnimationConfig.collapseSpeed) { [weak self] in
+            self?.topSquidHead?.frame.origin.y = UIScreen.main.bounds.height - (self?.topSquidHead?.frame.height)!
         }
     }
     
     func expandTopSquidHead() {
-        UIView.animate(withDuration: AnimationConfig.collapseSpeed) {  [weak self] in
-            self?.topSquidHead?.alpha = 1
-            self?.topSquidHead?.frame = CGRect(x: (self?.topSquidHead!.frame.minX)!, y: (self?.topSquidHead!.frame.minY)! - (self?.topSquidHead!.frame.height)!, width: (self?.topSquidHead!.frame.width)!, height: (self?.topSquidHead!.frame.height)!)
+        SpringAnimation.springEaseInOut(duration: AnimationConfig.expandSpeed) { [weak self] in
+            self?.topSquidHead?.frame.origin.y = (self?.actionSelector.frame.minY)! - (self?.topSquidHead?.frame.height)!
         }
     }
     

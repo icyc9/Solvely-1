@@ -29,4 +29,5 @@ target 'Solvely' do
   pod 'TwitterCore'
   pod 'Branch'
   pod 'ReachabilitySwift'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 end

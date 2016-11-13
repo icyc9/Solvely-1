@@ -37,4 +37,5 @@ extension UIColor {
 class AnimationConfig {
     static let collapseSpeed = 0.15
     static let expandSpeed = 0.15
+    static let startDelay = CGFloat(0.75)
 }

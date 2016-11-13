@@ -16,8 +16,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MethodSelectorView" customModule="Solvely" customModuleProvider="target">
             <connections>
+                <outlet property="answerButton" destination="2Hi-hd-LQ2" id="bUo-m9-mWw"/>
                 <outlet property="bottomView" destination="NV3-Fd-dFn" id="AoR-94-AMj"/>
+                <outlet property="collapsedTopView" destination="uQA-Mu-hho" id="v32-ve-OTf"/>
+                <outlet property="collapsedTopViewArrow" destination="mCP-M8-XuR" id="FFy-gZ-HLI"/>
+                <outlet property="collapsedTopViewTitle" destination="PfI-cX-YIz" id="BvM-pB-mJG"/>
+                <outlet property="mathButton" destination="AiA-hS-Tg2" id="ejJ-Id-vt6"/>
+                <outlet property="summarizeButton" destination="2eM-lp-Adc" id="wcx-JS-tir"/>
                 <outlet property="topView" destination="CUa-tc-DHZ" id="jRx-dV-sBk"/>
+                <outlet property="topViewSubtitleLabel" destination="af8-bR-8C5" id="oka-ja-wUD"/>
+                <outlet property="topViewTitleLabel" destination="Txq-Em-r0p" id="p3X-mQ-AHw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,7 +33,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="424"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUa-tc-DHZ">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUa-tc-DHZ" customClass="SpringView" customModule="Spring">
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, I'm Solvely!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txq-Em-r0p">
                             <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="24"/>
@@ -52,9 +60,34 @@
                         <constraint firstAttribute="bottom" secondItem="af8-bR-8C5" secondAttribute="bottom" constant="17" id="sGo-Bv-F7N"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQA-Mu-hho" customClass="SpringView" customModule="Spring">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarize" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfI-cX-YIz" customClass="SpringLabel" customModule="Spring">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="225" id="YkW-Fy-oXq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="24"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="mCP-M8-XuR" customClass="SpringImageView" customModule="Spring">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="ufo-xV-7QG"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.24561962485313416" green="0.4685407280921936" blue="0.89600718021392822" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="mCP-M8-XuR" firstAttribute="leading" secondItem="PfI-cX-YIz" secondAttribute="trailing" constant="8" symbolic="YES" id="68g-TE-Jej"/>
+                        <constraint firstItem="PfI-cX-YIz" firstAttribute="leading" secondItem="uQA-Mu-hho" secondAttribute="leading" constant="8" id="DLj-Z8-3A6"/>
+                        <constraint firstItem="mCP-M8-XuR" firstAttribute="top" secondItem="uQA-Mu-hho" secondAttribute="top" constant="26" id="gej-oX-cLc"/>
+                        <constraint firstItem="mCP-M8-XuR" firstAttribute="centerY" secondItem="uQA-Mu-hho" secondAttribute="centerY" id="uyJ-Kq-eb3"/>
+                        <constraint firstItem="PfI-cX-YIz" firstAttribute="centerY" secondItem="mCP-M8-XuR" secondAttribute="centerY" id="xR6-2a-XJO"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV3-Fd-dFn">
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eM-lp-Adc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eM-lp-Adc" customClass="SpringButton" customModule="Spring">
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="szW-S7-Ofm"/>
@@ -67,7 +100,7 @@
                                 <action selector="summarize:" destination="-1" eventType="touchUpInside" id="fqo-vJ-9ez"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hi-hd-LQ2">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hi-hd-LQ2" customClass="SpringButton" customModule="Spring">
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="24"/>
                             <state key="normal" title="Answer Question">
@@ -77,7 +110,7 @@
                                 <action selector="answerQuestion:" destination="-1" eventType="touchUpInside" id="NNr-2I-9jx"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-hS-Tg2">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-hS-Tg2" customClass="SpringButton" customModule="Spring">
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="24"/>
                             <state key="normal" title="Answer Math">
@@ -88,7 +121,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="2eM-lp-Adc" secondAttribute="trailing" id="1Ch-iE-baw"/>
                         <constraint firstItem="2Hi-hd-LQ2" firstAttribute="height" secondItem="AiA-hS-Tg2" secondAttribute="height" id="3OU-NF-v5a"/>
@@ -109,14 +142,21 @@
             <color key="backgroundColor" red="0.19592052698135376" green="0.80223548412322998" blue="0.38377273082733154" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="NV3-Fd-dFn" secondAttribute="bottom" constant="104" id="Id3-y2-Mk0"/>
+                <constraint firstItem="uQA-Mu-hho" firstAttribute="top" secondItem="CUa-tc-DHZ" secondAttribute="top" id="Pbg-lX-UmC"/>
                 <constraint firstItem="NV3-Fd-dFn" firstAttribute="trailing" secondItem="CUa-tc-DHZ" secondAttribute="trailing" id="Rrt-Ye-YEB"/>
                 <constraint firstItem="CUa-tc-DHZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RsO-NH-hjY"/>
                 <constraint firstItem="NV3-Fd-dFn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="TyO-uh-iwP"/>
                 <constraint firstItem="NV3-Fd-dFn" firstAttribute="leading" secondItem="CUa-tc-DHZ" secondAttribute="leading" id="bQ2-EB-ZV6"/>
+                <constraint firstItem="uQA-Mu-hho" firstAttribute="trailing" secondItem="CUa-tc-DHZ" secondAttribute="trailing" id="bko-ii-BaV"/>
+                <constraint firstItem="uQA-Mu-hho" firstAttribute="bottom" secondItem="CUa-tc-DHZ" secondAttribute="bottom" id="ltx-EJ-UiG"/>
                 <constraint firstAttribute="trailing" secondItem="CUa-tc-DHZ" secondAttribute="trailing" id="oNc-Qq-rEt"/>
                 <constraint firstItem="CUa-tc-DHZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xYR-Ne-ILp"/>
+                <constraint firstItem="uQA-Mu-hho" firstAttribute="leading" secondItem="CUa-tc-DHZ" secondAttribute="leading" id="yQC-gP-IQa"/>
             </constraints>
-            <point key="canvasLocation" x="138.5" y="181.5"/>
+            <point key="canvasLocation" x="132.5" y="170.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="down" width="30" height="30"/>
+    </resources>
 </document>
